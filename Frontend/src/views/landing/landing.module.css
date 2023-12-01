@@ -1,0 +1,105 @@
+@import url('../../varColours.css');
+
+:root {
+    --raleway-font-700: 'https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap';
+}
+
+
+/*Extra small devices(phones, 600px and down)*/
+@media only screen and (min-width: 200px) {
+    .containerForm {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        height: 100%;
+        background-color: rgb(202, 195, 195);
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .Title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-left: 61px;
+        margin-top: 75px;
+    }
+
+    .conteinerTitle{
+        display: flex ;
+        flex-direction: row-reverse;
+    }
+
+    .sliderLandingClass{
+      margin-top: 142px;
+      margin-left: 129px;
+    }
+
+    .Title h1 {
+        color: white;
+    }
+
+    .Title h2 {
+        color: white;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .containerForm {
+        background-image: url('../../images/fondoLanding.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .title1Landing {
+        color: #FFF;
+        font-family: var(--raleway-font-700), sans-serif;
+        font-size: 45px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    .subTitle1Landing {
+        font-family: var(--raleway-font-700), sans-serif;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    .buttonConteinerForm{
+        background-color: rgba(255, 211, 0, 1);
+        padding: 6px;
+        border: 0px;
+        font-family: var(--raleway-font-700), sans-serif;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        color: rgb(0, 0, 0);
+        margin: 0px 5px 0px 150px;
+    }
+
+    .buttonConteinerForm:hover {
+        transition: all 0.5s ease-in-out;
+        color: rgb(84, 84, 84);
+        border: 0px;
+      }
+    
+      .buttonConteinerForm:not(:hover) {
+        transition: all 0.5s ease-in-out;
+        color: rgb(0, 0, 0);
+      }
+
+    .iconosLanding{
+      width: 490px;
+      height: 129px;
+    }
+
+}
+
+/*Extra large devices(large laptops and desktops, 1200px and up)*/
+@media only screen and (min-width: 1200px) {}
