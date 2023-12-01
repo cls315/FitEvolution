@@ -1,6 +1,9 @@
 const router = require("express").Router();
 
-const { createCheckoutSession, statusCheckout } = require("../controllers");
+const {
+  createCheckoutSession,
+  statusCheckout,
+} = require("../controllers/Stripe");
 
 router.post("/create-checkout-session", async (req, res) => {
   const data = req.body;
