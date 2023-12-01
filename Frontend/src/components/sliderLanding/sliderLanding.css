@@ -1,0 +1,98 @@
+@media only screen and (min-width: 200px) {}
+
+@media only screen and (min-width: 992px) {
+    .conteinerSlider {
+        display: flex;
+        flex-direction: row;
+        width: 448.242px;
+        height: 204px;
+        border-radius: 17px;
+        background: rgba(30, 30, 30, 0.47);
+    }
+    .section {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .imgSlider{
+        display: flex;
+        flex-direction: column;
+        width: 125px;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .imgSlideLanding1 {
+        width: 125px;
+        height: 100px;
+        z-index: 1;
+        margin:5px;
+        border-radius: 8px;
+      }
+      .section p{
+        font-size: 15px;
+      }
+      
+      
+      .arrow-next-item {
+        display:block;
+        left: 0%;
+        font-size: 3rem;
+        padding: 0 0.4rem;
+        background: transparent;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+        transition: all .2s;
+        border: none;
+      }
+      
+      .arrow-prev-item {
+        display:block;
+        right: 0%;
+        font-size: 3rem;
+        padding: 0 0.4rem;
+        background: transparent;
+        font-weight: bold;
+        color: rgb(245, 245, 245);
+        transition: all .2s;
+        border: none;
+      }
+      
+      .buttons-section {
+        display: flex;
+        z-index: 2;
+        width: 100%;
+        height: 330px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .imgSlideLanding2{
+        height: 30px;
+        width: 100px;
+      }
+
+      .commentsSLider{
+        display: flex;
+        flex-direction: column;
+      }
+
+      .commentsSLider h1{
+        color: white;
+        font-size: 25px;
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .commentsSLider p{
+        font-style: italic;
+        color: white;
+        font-size: 16px;
+      }
+}
