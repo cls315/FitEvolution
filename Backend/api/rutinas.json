@@ -1,0 +1,145 @@
+{
+    "rutinas": [
+      {
+        "id": 1,
+        "exerc": [2, 5, 7, 12, 20],
+        "totalDuration": "30m 0s",
+        "enfoque": "Entrenamiento deportivo",
+        "precio": 2000
+      },
+      {
+        "id": 2,
+        "exerc": [1, 4, 9, 15, 22],
+        "totalDuration": "35m 0s",
+        "enfoque": "Entrenamiento funcional",
+        "precio": 2000
+      },
+      {
+        "id": 3,
+        "exerc": [3, 6, 10, 16, 25],
+        "totalDuration": "40m 0s",
+        "enfoque": "Entrenamiento cardiovascular",
+        "precio": 3000
+      },
+      {
+        "id": 4,
+        "exerc": [8, 11, 14, 19, 27],
+        "totalDuration": "45m 0s",
+        "enfoque": "Entrenamiento de fuerza",
+        "precio": 3500
+      },
+      {
+        "id": 5,
+        "exerc": [13, 17, 21, 26, 33],
+        "totalDuration": "32m 0s",
+        "enfoque": "Entrenamiento deportivo",
+        "precio": 3000
+      },
+      {
+        "id": 6,
+        "exerc": [18, 23, 28, 31, 37],
+        "totalDuration": "38m 0s",
+        "enfoque": "Entrenamiento funcional",
+        "precio": 3000
+      },
+      {
+        "id": 7,
+        "exerc": [24, 29, 34, 39, 42],
+        "totalDuration": "42m 0s",
+        "enfoque": "Entrenamiento cardiovascular",
+        "precio": 3500
+      },
+      {
+        "id": 8,
+        "exerc": [30, 35, 40, 45],
+        "totalDuration": "28m 0s",
+        "enfoque": "Entrenamiento de fuerza",
+        "precio": 2500
+      },
+      {
+        "id": 9,
+        "exerc": [36, 41, 43, 46],
+        "totalDuration": "36m 0s",
+        "enfoque": "Entrenamiento deportivo",
+        "precio": 3000
+      },
+      {
+        "id": 10,
+        "exerc": [38, 44, 47],
+        "totalDuration": "25m 0s",
+        "enfoque": "Entrenamiento funcional",
+        "precio": 2000
+      },
+      {
+        "id": 11,
+        "exerc": [3, 8, 13, 18, 23],
+        "totalDuration": "39m 0s",
+        "enfoque": "Entrenamiento cardiovascular",
+        "precio": 3000
+      },
+      {
+        "id": 12,
+        "exerc": [4, 9, 14, 19, 24],
+        "totalDuration": "41m 0s",
+        "enfoque": "Entrenamiento de fuerza",
+        "precio": 4000
+      },
+      {
+        "id": 13,
+        "exerc": [1, 6, 11, 16, 21],
+        "totalDuration": "37m 0s",
+        "enfoque": "Entrenamiento deportivo",
+        "precio": 3000
+      },
+      {
+        "id": 14,
+        "exerc": [5, 10, 15, 20, 25],
+        "totalDuration": "33m 0s",
+        "enfoque": "Entrenamiento funcional",
+        "precio": 3000
+      },
+      {
+        "id": 15,
+        "exerc": [2, 7, 12, 17, 22],
+        "totalDuration": "34m 0s",
+        "enfoque": "Entrenamiento cardiovascular",
+        "precio": 2500
+      },
+      {
+        "id": 16,
+        "exerc": [26, 31, 36, 41],
+        "totalDuration": "29m 0s",
+        "enfoque": "Entrenamiento de fuerza",
+        "precio": 4000
+      },
+      {
+        "id": 17,
+        "exerc": [28, 33, 38, 43],
+        "totalDuration": "30m 0s",
+        "enfoque": "Entrenamiento deportivo",
+        "precio": 4000
+      },
+      {
+        "id": 18,
+        "exerc": [30, 35, 40, 45],
+        "totalDuration": "28m 0s",
+        "enfoque": "Entrenamiento funcional",
+        "precio": 5000
+      },
+      {
+        "id": 19,
+        "exerc": [32, 37, 42, 46],
+        "totalDuration": "31m 0s",
+        "enfoque": "Entrenamiento cardiovascular",
+        "precio": 3000
+      },
+      {
+        "id": 20,
+        "exerc": [34, 39, 44, 47],
+        "totalDuration": "27m 0s",
+        "enfoque": "Entrenamiento de fuerza",
+        "precio": 3500
+      }
+    ]
+  }
+  
