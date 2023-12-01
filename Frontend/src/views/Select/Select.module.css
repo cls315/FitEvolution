@@ -1,0 +1,42 @@
+.conteinerSelect{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../images/fondoLanding.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    align-items: center;
+    justify-content: center;
+}
+
+.select{
+border-radius: 4px;
+background-color: rgba(252, 251, 251, 0.486);
+width: 600px;
+height: 250px;
+}
+
+.rolesSelect{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.selectRol{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 50%;
+height: 50%;
+}
+
+.selectRol h1{
+    font-size: 30px;
+}
+
+.buttonSelect{
+    width: 50%;
+
+}

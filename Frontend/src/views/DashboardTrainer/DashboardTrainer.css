@@ -1,0 +1,22 @@
+.bg-trainer-board {
+  background-color: #dad7d7;
+}
+
+.footerUser {
+  width: 100vw;
+  height: 84px;
+  background-color: white;
+  position: fixed;
+  bottom: 0;  /*para que el dashboard este siempre abajo*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.footerUser p{
+  display: flex;
+  text-align: center;
+}
+
+
