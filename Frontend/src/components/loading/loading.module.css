@@ -1,0 +1,43 @@
+@media only screen and (min-width: 200px) {
+    .containerLoading {
+        position:absolute;
+        width: 100vw;
+        height: 100vh;
+        z-index: 999;
+        background-color: rgb(8, 8, 8, 0.7);
+
+    }
+
+    .center {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .center img {
+        width: 300px;
+        height: auto;
+    }
+
+
+
+}
+
+@media only screen and (min-width: 600px) {
+
+
+}
+
+/*Extra large devices(large laptops and desktops, 1200px and up)*/
+@media only screen and (min-width: 1200px) {
+
+.containerLoading {
+    position:absolute;
+    max-height: 100%;
+    max-width: 100%;
+ 
+
+}
+}

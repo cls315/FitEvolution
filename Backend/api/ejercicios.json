@@ -1,0 +1,329 @@
+{
+    "ejercicios": [
+      {
+        "id": 1,
+        "name": "Sentadillas",
+        "image": "",
+        "description": "",
+        "category": "TI",
+        "muscle_trained": ["Cuádriceps", "Isquiotibiales", "Glúteos"],
+        "estimatedDuration": 5
+      },
+      {
+        "id": 2,
+        "name": "Prensa de piernas",
+        "image": "",
+        "description": "",
+        "category": "TI",
+        "muscle_trained": ["Cuádriceps", "Isquiotibiales", "Glúteos"],
+        "estimatedDuration": 6
+      },
+      {
+        "id": 3,
+        "name": "Peso muerto",
+        "image": "",
+        "description": "",
+        "category": "TI",
+        "muscle_trained": ["Glúteos", "Isquiotibiales", "Espalda Baja"],
+        "estimatedDuration": 8
+      },
+      {
+        "id": 4,
+        "name": "Extensiones de cuádriceps",
+        "image": "",
+        "description": "",
+        "category": "TI",
+        "muscle_trained": ["Cuádriceps"],
+        "estimatedDuration": 4
+      },
+      {
+        "id": 5,
+        "name": "Zancadas",
+        "image": "",
+        "description": "",
+        "category": "TI",
+        "muscle_trained": ["Piernas", "Glúteos"],
+        "estimatedDuration": 7
+      },
+      {
+        "id": 6,
+        "name": "Curl de piernas",
+        "image": "",
+        "description": "",
+        "category": "TI",
+        "muscle_trained": ["Isquiotibiales"],
+        "estimatedDuration": 5
+      },
+      {
+        "id": 7,
+        "name": "Hip Thrusts",
+        "image": "",
+        "description": "",
+        "category": "TI",
+        "muscle_trained": ["Glúteos", "Isquiotibiales"],
+        "estimatedDuration": 6
+      },
+      {
+        "id": 8,
+        "name": "Peso muerto sumo",
+        "image": "",
+        "description": "",
+        "category": "TI",
+        "muscle_trained": ["Glúteos", "Isquiotibiales"],
+        "estimatedDuration": 8
+      },
+      {
+        "id": 9,
+        "name": "Elevación de talones",
+        "image": "",
+        "description": "",
+        "category": "TI",
+        "muscle_trained": ["Gemelos"],
+        "estimatedDuration": 3
+      },
+      {
+        "id": 10,
+        "name": "Peso muerto con una pierna",
+        "image": "",
+        "description": "",
+        "category": "TI",
+        "muscle_trained": ["Equilibrio", "Cadena Posterior"],
+        "estimatedDuration": 7
+      },
+      {
+        "id": 11,
+        "name": "Press de banca",
+        "image": "",
+        "description": "",
+        "category": "TS",
+        "muscle_trained": ["Pectorales", "Tríceps"],
+        "estimatedDuration": 6
+      },
+      {
+        "id": 12,
+        "name": "Fondos en paralelas",
+        "image": "",
+        "description": "",
+        "category": "TS",
+        "muscle_trained": ["Tríceps", "Pecho"],
+        "estimatedDuration": 5
+      },
+      {
+        "id": 13,
+        "name": "Pull-ups",
+        "image": "",
+        "description": "",
+        "category": "TS",
+        "muscle_trained": ["Espalda", "Bíceps"],
+        "estimatedDuration": 7
+      },
+      {
+        "id": 14,
+        "name": "Press militar",
+        "image": "",
+        "description": "",
+        "category": "TS",
+        "muscle_trained": ["Hombros", "Tríceps"],
+        "estimatedDuration": 6
+      },
+      {
+        "id": 15,
+        "name": "Dominadas con agarre cerrado",
+        "image": "",
+        "description": "",
+        "category": "TS",
+        "muscle_trained": ["Bíceps", "Tríceps"],
+        "estimatedDuration": 7
+      },
+      {
+        "id": 16,
+        "name": "Curl de bíceps",
+        "image": "",
+        "description": "",
+        "category": "TS",
+        "muscle_trained": ["Bíceps"],
+        "estimatedDuration": 4
+      },
+      {
+        "id": 17,
+        "name": "Tríceps en polea alta",
+        "image": "",
+        "description": "",
+        "category": "TS",
+        "muscle_trained": ["Tríceps"],
+        "estimatedDuration": 5
+      },
+      {
+        "id": 18,
+        "name": "Pull-over con mancuerna",
+        "image": "",
+        "description": "",
+        "category": "TS",
+        "muscle_trained": ["Espalda", "Pecho"],
+        "estimatedDuration": 6
+      },
+      {
+        "id": 19,
+        "name": "Press inclinado con mancuernas",
+        "image": "",
+        "description": "",
+        "category": "TS",
+        "muscle_trained": ["Pecho"],
+        "estimatedDuration": 7
+      },
+      {
+        "id": 20,
+        "name": "Plancha",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Abdominales", "Lumbares"],
+        "estimatedDuration": 3
+      },
+      {
+        "id": 21,
+        "name": "Crunch",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Abdominales"],
+        "estimatedDuration": 4
+      },
+      {
+        "id": 22,
+        "name": "Mountain Climbers",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Abdominales", "Cardio"],
+        "estimatedDuration": 5
+      },
+      {
+        "id": 23,
+        "name": "Russian Twist",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Oblicuos"],
+        "estimatedDuration": 4
+      },
+      {
+        "id": 24,
+        "name": "Superman",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Espalda baja"],
+        "estimatedDuration": 3
+      },
+      {
+        "id": 25,
+        "name": "Elevación de piernas",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Abdominales", "Cadera"],
+        "estimatedDuration": 5
+      },
+      {
+        "id": 26,
+        "name": "Hollow Body",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Abdominales"],
+        "estimatedDuration": 4
+      },
+      {
+        "id": 27,
+        "name": "Leg Raises",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Abdominales", "Cadera"],
+        "estimatedDuration": 5
+      },
+      {
+        "id": 28,
+        "name": "Oblique Crunch",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Oblicuos"],
+        "estimatedDuration": 4
+      },
+      {
+        "id": 29,
+        "name": "Plank with Arm Raise",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Abdominales", "Hombros"],
+        "estimatedDuration": 6
+      },
+      {
+        "id": 30,
+        "name": "Tijeras",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Abdominales", "Cardio"],
+        "estimatedDuration": 5
+      },
+      {
+        "id": 31,
+        "name": "Push-up",
+        "image": "",
+        "description": "",
+        "category": "TS",
+        "muscle_trained": ["Pectorales", "Tríceps"],
+        "estimatedDuration": 4
+      },
+      {
+        "id": 32,
+        "name": "Tríceps Dips",
+        "image": "",
+        "description": "",
+        "category": "TS",
+        "muscle_trained": ["Tríceps"],
+        "estimatedDuration": 3
+      },
+      {
+        "id": 33,
+        "name": "Burpees",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Todo el cuerpo"],
+        "estimatedDuration": 7
+      },
+      {
+        "id": 34,
+        "name": "Jumping Jacks",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Piernas", "Cardio"],
+        "estimatedDuration": 5
+      },
+      {
+        "id": 35,
+        "name": "Sprints",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Piernas", "Cardio"],
+        "estimatedDuration": 8
+      },
+      {
+        "id": 36,
+        "name": "Box Jumps",
+        "image": "",
+        "description": "",
+        "category": "CORE",
+        "muscle_trained": ["Piernas", "Cardio"],
+        "estimatedDuration": 6
+      }
+    ]
+  }
+  

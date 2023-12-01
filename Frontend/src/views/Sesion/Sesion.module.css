@@ -1,0 +1,163 @@
+.FormSesion{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../../images/fondoLanding.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    justify-content: center;
+    align-items: center;
+
+}
+.btconteiner{
+display: flex;
+justify-content: start;
+align-items: start;
+}
+
+.btLogin{
+    background-color: transparent;
+    color: blue;
+    padding: 0px;
+    border: 0px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: auto;
+    margin-left: 130px;
+}
+
+.Form{
+    padding: 10px;
+    margin: 0 auto;
+    background-color: rgba(252, 248, 248, 0.733);
+    border: 2px solid rgba(143, 142, 142, 0.726);
+    border-radius: 10px;
+    width:700px ;
+    height: 500px;
+    align-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: center;
+    
+}
+
+.Form h1{
+font-size: 30px;
+margin-bottom: 0px;
+}
+
+.button{
+    background-color: rgba(255, 211, 0, 1);
+    margin-top: 4%;
+    width: 60%;
+}
+
+.formSession{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.labelform1 {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 50px;
+    margin: 15px;
+}
+
+.label1 {
+    margin: 3px;
+    font-size: 17px;
+
+}
+
+.inputNom {
+    height: 40px;
+    border-radius: 5px;
+    background: #D9D9D9;
+    border: 0px;
+    color: rgb(0, 0, 0)!important;
+    padding: 8px;
+    
+}
+
+.p1 {
+    /* margin: 0px; */
+    color: rgb(255, 4, 4);
+    font-size: 13px;
+    font-weight: 600
+}
+
+.faceGoole{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 60px;
+}
+
+.Face{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.678);
+    width:20%;
+    height: 100%;
+    font-size:12px ;
+    margin: 0 20px 0 20px
+ 
+}
+
+.pfg{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+}
+
+.google{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color:rgba(128, 128, 128, 0.678);
+    width: 20%;
+    height: 100%;
+    font-size:12px ;
+    margin: 0 20px 0 20px
+   
+
+}
+
+.spanGoole{
+   width: 20px;
+}
+.iconFace{
+  color: blue;
+ 
+}
+.parr{
+    margin-top:2% ;
+    margin-bottom: 3px;
+}
+
+.parr a{
+    color:blue
+}
+
+.btSessionInf{
+    background-color: transparent;
+    color: blue;
+    padding: 2px;
+    border:0px
+}
+
+.btSessionInf:hover{
+    color: rgb(98, 98, 243);
+}

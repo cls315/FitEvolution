@@ -1,0 +1,13 @@
+.conteiner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 89vh;
+    background-color: #EEE9E9;
+}
+
+.cardsconteiner{
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: cent
+}

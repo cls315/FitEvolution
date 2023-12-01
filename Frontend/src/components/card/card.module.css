@@ -1,0 +1,65 @@
+.cardconteiner {
+  margin-left: 15px;
+  margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 300px;
+    border-radius: 20px;
+    border: 1px solid var(--amarillo, #ffd300);
+    background: rgba(255, 255, 255, 0.75);
+  }
+  
+  .perfil {
+    width: 130px;
+    height: 130px;
+    flex-shrink: 0;
+    border: 2px solid #ffd300;
+    border-radius: 171px;
+    background: lightgray -115.976px -2.382px / 190.476% 100% no-repeat;
+  }
+  
+  .name {
+    width: auto;
+    height: auto;
+    text-align: center;
+    color: #000;
+    font-family: Raleway;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 2;
+  }
+  
+  .enfoque {
+    color: #000;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+
+  
+  .btnselect {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 170px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 13px;
+    background: var(--amarillo, #ffd300);
+    font-family: Raleway;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: #000;
+  }
+  

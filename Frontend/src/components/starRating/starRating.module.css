@@ -1,0 +1,6 @@
+.star-rating {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px; /* Puedes ajustar esto según tus necesidades */
+  }
+  
