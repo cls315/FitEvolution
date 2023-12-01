@@ -1,0 +1,63 @@
+
+
+.DIvcontenedor{
+position:absolute;
+width: 100%;
+height: auto;
+justify-content: center;
+z-index: 900;
+
+}
+
+.DivCard {
+    position: fixed;
+    left: 49.4%;
+    transform: translateX(-50%);
+    top:40%;
+    width: 210px;
+    height: 100px ;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin: 10px;
+    border-radius: 10px;
+    z-index: 999;
+    
+}
+
+.DivCard p{
+    color: white
+}
+
+.buttonAlert{
+display: flex;
+flex-direction: column;
+width: 100%;
+height: auto;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+
+.buttonAlert button{
+    background-image: linear-gradient(to top, #2f2f2f, #212121, #4a4c4a, #4c4c4c, #585858);
+    color: rgb(255, 255, 255);
+    width: 70px;
+    height: 25px;
+    border-radius: 0.5em;
+    font-size: 90%;
+    font-weight: 600;
+    padding: 0.5% 1.2%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid black;
+    box-shadow: 0 0 0 0 black;
+}
+
+.buttonAlert button:hover {
+    color:rgb(185, 182, 182)
+ }
+ 
+ .buttonAlert button:active {
+     transform: translateY(2px) translateX(1px);
+     box-shadow: 0 0 0 0 black;
+ }
