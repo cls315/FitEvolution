@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const getAllExerciseHndls = require("../handlers/ExerciseHndls/getAllExcerciseHndls");
+const getAllExerciseHndls = require("../handlers/ExerciseHndls/getAllExerciseHndls");
 const postExerciseHndls = require("../handlers/ExerciseHndls/postExerciseHndls");
 
 const exerciseRoutes = Router();
