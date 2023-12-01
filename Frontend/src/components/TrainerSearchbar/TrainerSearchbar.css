@@ -1,0 +1,11 @@
+.no-outline{
+  outline: none;
+}
+
+
+
+.text-right{
+  text-align: start;
+  text-indent: 1rem;
+  padding: 1rem;
+}

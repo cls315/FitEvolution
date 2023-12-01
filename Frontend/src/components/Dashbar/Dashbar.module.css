@@ -1,0 +1,101 @@
+.dashBar{
+    color: rgb(252, 252, 252);
+    background-color: white;
+    display: flex;
+    padding:5px ;
+    flex-direction: row-reverse;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.buttonPerfil{
+    background-color: rgb(255,193,7);
+    border-radius: 300px;
+    width: 60px;
+    height: 60px;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0px;
+    border:0px;
+    
+}
+
+
+
+.pagos{
+    width: auto;
+    margin: 0 15px 0 15px;
+    background-color: transparent;
+    color:black;
+    font-size: 20px;
+    border: 0px;
+    padding: 0px;
+}
+.entreno{
+    width: auto;
+    margin: 0 15px 0 15px;
+    background-color: transparent;
+    color:black;
+    font-size: 20px;
+    border: 0px;
+    padding: 0px;
+}
+.depor{
+    width: auto;
+    margin: 0 15px 0 15px;
+    background-color: transparent;
+    color:black;
+    font-size: 20px;
+    border: 0px;
+    padding: 0px;
+}
+
+.iconsDashbar{
+    margin: 0 10px 0 10px;
+    width: auto;
+    height:30px;
+    cursor: pointer
+}
+
+.logoTraineBar{
+    margin: 0 auto 0 7px;
+    width: 100px;
+    height: 60px;
+    cursor: pointer
+}
+
+/*LISTA DESPLEGABLE*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdowncontent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 130px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    left: -70px;
+    text-align: right;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  .dropdowncontent li {
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdowncontent a{
+    color:black
+  }
+
+  .dropdown:hover .dropdowncontent {
+    display: block;
+  }
