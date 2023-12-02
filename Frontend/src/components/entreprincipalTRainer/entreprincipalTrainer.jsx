@@ -30,6 +30,7 @@ const handlerChange=(event)=>{
    
    event.preventDefault()
    dispatch(search(input))
+   
 
 
   }
