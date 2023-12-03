@@ -24,7 +24,7 @@ const ClientsTable = () => {
     }
     fetchData();
   }, []);
-  // console.log(data[0]);
+  
   const columns = [
     {
       header: 'ID',
