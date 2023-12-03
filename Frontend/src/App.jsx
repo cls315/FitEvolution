@@ -11,6 +11,7 @@ import Detail from './views/TeacherDetail/detail';
 import ForgotPassword from './views/ForgotPassword/forgotPassword';
 import SessionAdmin from './views/SessionAdmin/SessionAdmin';
 import Admin from './views/Admin/Admin'
+import CreateExercise from './components/createExercise/CreateExercise';
 //Commons imports
 import { Route, Routes, useLocation } from 'react-router-dom';
 
@@ -72,6 +73,10 @@ function App() {
          <Route
         path='/adm'
         element={<Admin/>}
+        />
+           <Route
+        path='/createEj'
+        element={<CreateExercise/>}
         />
       </Routes>
     </>
