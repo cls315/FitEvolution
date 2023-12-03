@@ -1,16 +1,18 @@
-
-
+import ClientsTable from "../../components/clientsTable/ClientsTable"
 
 
 const Admin=()=>{
+   
     return (
-
-        
+     
+        <div>
             <div>
-        
-                <h1>admin</h1>
+                
+                <button>Crear ejercicios</button>
             </div>
-            
+        {<ClientsTable/>}
+        </div>
+      
     
     )
 }

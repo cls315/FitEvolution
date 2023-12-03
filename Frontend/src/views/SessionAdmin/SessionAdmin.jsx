@@ -9,7 +9,7 @@ const button=()=>{
 
 
     return (
-        <div  classname= {style.form}>
+        <div  className={style.form}>
             <form >
 
             <input type="password" placeholder= "Usuario"/>
