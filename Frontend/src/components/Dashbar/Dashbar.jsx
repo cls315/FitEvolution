@@ -18,7 +18,13 @@ const DashBar = (props) => {
         await logout()  //cierra la instancia de auth
        navigate('/')
     }
+   const userAdmin =()=>{
    
+    navigate("/sessionadm")
+
+   }
+
+
 
    
 
@@ -28,6 +34,7 @@ const DashBar = (props) => {
                 <button  className={style.buttonPerfil}>CH&#9660;</button>
                 <ul class={style.dropdowncontent}>
                     <li><a href="#">Mi cuenta</a></li>
+                    <li><button onClick={userAdmin}>Admin</button></li>
                     <li><a href="#">Ajustes</a></li>
                     <li><button onClick={exitSession} className={style.exitDashTRainer}>Salir</button></li>
                 </ul>
