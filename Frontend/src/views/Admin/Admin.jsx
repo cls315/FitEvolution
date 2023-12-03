@@ -10,6 +10,7 @@ const Admin=()=>{
                 
                 <button>Crear ejercicios</button>
             </div>
+            
         {<ClientsTable/>}
         </div>
       
