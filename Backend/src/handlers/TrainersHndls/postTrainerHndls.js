@@ -14,6 +14,7 @@ const postTrainerHdnls = async (req, res) => {
     focusTr,
     description,
     score,
+    subscribers,
   } = req.body;
 
   try {
@@ -32,13 +33,14 @@ const postTrainerHdnls = async (req, res) => {
       gender,
       focusTr,
       description,
-      score
+      score,
+      subscribers
     );
 
     res.status(200).json(newTrainer);
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
