@@ -16,6 +16,7 @@ const postClient = async (req, res) => {
     backup,
     blocks,
     role,
+    myTrainers,
   } = req.body;
 
   try {
@@ -39,6 +40,7 @@ const postClient = async (req, res) => {
         backup,
         blocks,
         role,
+        myTrainers,
       });
 
       // Envío el correo de bienvenida
