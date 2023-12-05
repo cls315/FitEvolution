@@ -16,6 +16,7 @@ const Carrito = ({setLoading}) => {
 
 
   const carrito = useSelector((state) => state.carrito);
+  const userstatus = useSelector((state) => state.userStatus)
 
   const handleClickOutsideForm = (event) => {
     // Verificar si el clic no ocurrió dentro del formulario
@@ -43,7 +44,12 @@ const Carrito = ({setLoading}) => {
   }
 
   const pagos = ()=>{
-    setVerPagos(!verpagos)
+    if(userstatus === "invitado"){
+      alert("Debes iniciar sesion");
+      return;
+    } else{
+      setVerPagos(!verpagos)
+    }
   }
 
   const vaciarCarrito = ()=>{

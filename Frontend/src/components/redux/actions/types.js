@@ -12,5 +12,6 @@ export const GET_ROUTINES = "GET_ROUTINES"
 export const DELETE_CART = "DELETE_CART"
 export const RUTINAS = "RUTINAS"
 export const SEARCH= "SEARCH"
+export const SET_USER = "SET_USER"
 
 
