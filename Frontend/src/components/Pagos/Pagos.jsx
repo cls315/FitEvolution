@@ -15,8 +15,8 @@ const stripePromise = loadStripe(
 
 
 
-const CheckoutForm = ({total}) => {
-
+const CheckoutForm = ({total,setShow,setVerPagos}) => {
+  
   const stripe = useStripe();
   const elements = useElements();
   //const [loading, setLoading] = useState(false);
@@ -42,8 +42,10 @@ const CheckoutForm = ({total}) => {
 
           }
         );
-        console.log(data);
-
+        console.log(data.message);
+        alert(data.message)
+        setShow(false)
+        setVerPagos(false)
         elements.getElement(CardElement).clear();
       } catch (error) {
         console.log(error);
@@ -65,13 +67,13 @@ const CheckoutForm = ({total}) => {
 };
 
 function Pagos(props) {
-  const{total}=props
+  const{total,setShow,setVerPagos}=props
   return (
     <Elements stripe={stripePromise}>
       <div className="container p-4 ">
         <div className="row w-100 ">
           <div className=" flex justify-center p-8">
-            <CheckoutForm  total={total}/>
+            <CheckoutForm setVerPagos={setVerPagos} setShow={setShow} total={total}/>
           </div>
         </div>
       </div>
