@@ -6,6 +6,7 @@ import { useState } from 'react';
 import validate from './validate'    //Styles
 import style from "./registerTrainer.module.css";
 import axios from "axios";
+import { URLSERVER } from '../../../configURL';
 
 //* Widget Cloudinary
 import UploadWidCloud from '../../components/Cloudinary/UploadWidCloud';
@@ -107,7 +108,7 @@ function RegisterTrainer() {
                     navigate('/login/Entrenadores')
                 } else { Swal.fire(`Error al registrar el usuario ${form.forename} `,'','error') }
 
-                await axios.post("http://localhost:3001/fitevolution/trainers", form)  
+                await axios.post(`${URLSERVER}/fitevolution/trainers`, form)  
             } catch (error) {
                 if (error.code === "auth/email-already-in-use") {
                     Swal.fire({
@@ -128,11 +129,11 @@ function RegisterTrainer() {
                         text: 'La contraseña debe tener un mínimo de 6 caracteres',
                     });
                 } else if (error.code) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error al enviar el formulario',
-                        text: `Error: ${error.message}`,
-                    });
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error al enviar el formulario',
+                            text: `Error: ${error.message}`,
+                        });
                 }
             }
         }

@@ -1,5 +1,4 @@
 import ClientsTable from "../../components/clientsTable/ClientsTable";
-import TrainersTable from "../../components/trainersTable/trainersTable.component";
 
 const Admin = () => {
   return (
@@ -9,9 +8,6 @@ const Admin = () => {
       </div>
 
       {<ClientsTable />}
-
-      <div>Tabla de Trainers</div>
-      {<TrainersTable />}
     </div>
   );
 };

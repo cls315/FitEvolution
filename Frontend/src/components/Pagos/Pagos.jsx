@@ -6,15 +6,12 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-// import {URLSERVER} from "../../../configURL"
+ import {URLSERVER} from "../../../configURL"
 import axios from "axios";
 
 const stripePromise = loadStripe(
-  "pk_test_51OFhTFEPwEDVOkZIc5g7SBFDDufIoqCMOUPZk9tye7BBDjxK1wO76eUPLurnxieWliXSClaW2eq8DJmbBuoP9rY500PekWUykm"
+  "pk_test_51OJh59EozKFdzJuVuFTShVCNgGjmaTewLi1dPffJwyt5UkYcxkHsuwZEyIGDLf5nMBzotOwCtymyc2AISKTcHCL3004qhvdKiA"
 );
-
-
-console.log(stripePromise);
 
 
 
@@ -26,17 +23,18 @@ const CheckoutForm = ({total}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
     });
     if (!error) {
       try {
+        console.log(paymentMethod)
         const { id } = paymentMethod;
 
         const { data } = await axios.post(
-          "https://pf-fit-evolution.vercel.app/api/checkout",
+          `${URLSERVER}/fitevolution/api/checkout`,
           {
             id,
 
@@ -54,25 +52,26 @@ const CheckoutForm = ({total}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="card card-body p-0 w-100">
+    <form onClick={handleSubmit} className="card card-body p-0 w-100">
       <h3 className="text-center my-2">Price: 100$</h3>
 
       <div className="form-group">
         <CardElement className="form-control" />
       </div>
 
-      <button className="btn btn-success">Buy</button>
+      <button type="submit" className="btn btn-success">Buy</button>
     </form>
   );
 };
 
-function Pagos() {
+function Pagos(props) {
+  const{total}=props
   return (
     <Elements stripe={stripePromise}>
       <div className="container p-4 ">
         <div className="row w-100 ">
           <div className=" flex justify-center p-8">
-            <CheckoutForm />
+            <CheckoutForm  total={total}/>
           </div>
         </div>
       </div>
