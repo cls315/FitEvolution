@@ -42,11 +42,9 @@ const Carrito = () => {
   return (
     <div
       className={styles.carritoConteiner}
-      onClick={() => {
-        seteo();
-      }}
-    >
-      <img src={carritoimg} className={styles.carrito} />
+     >
+      <img  onClick={()=>{show===true?setShow(false):setShow(true)}}
+     src={carritoimg} className={styles.carrito} />
       <span className={styles.count}>{carrito.length}</span>
       {show ? (
         <div className={styles.menu}>

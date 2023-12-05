@@ -34,14 +34,19 @@ const FormSesion = (props) => {
     const call_login_google = async (e) => {
         e.preventDefault();
         try {
-            const response=await callLoginGoogle();
+            const user=await callLoginGoogle();
             if (typeSession === "Deportistas") {
-                console.log(response)
-                await axios.post(`${URLSERVER}/fitevolution/clients`, {email:response})
+                await axios.post(`${URLSERVER}/fitevolution/clients`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
                 navigate('/homeusuario')}
-            if (typeSession === "Entrenadores") navigate('/dashboardtr')
+            if (typeSession === "Entrenadores") {
+                await axios.post(`${URLSERVER}/fitevolution/trainers`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
+                navigate('/dashboardtr')}
         } catch (error) {
-            console.log(error.message)
+            console.log(error)
+            if(error.code==="auth/account-exists-with-different-credential") alert("el email ya existe, prueba iniciar sesion con otro metodo")
+            if (error.response.data.error==="El usuario ya esta registrado" && typeSession === "Deportistas") navigate('/homeusuario')
+            else if(error.response.data.error==="El usuario ya esta registrado" && typeSession === "Entrenadores") navigate('/dashboardtr')
+            else if(error) alert(error.response.data)
         }
     }
 
@@ -50,11 +55,21 @@ const FormSesion = (props) => {
     const call_login_facebook = async (e) => {
         e.preventDefault();
         try {
-            await callLoginFacebook();
-            if (typeSession === "Deportistas") navigate('/homeusuario')
-            if (typeSession === "Entrenadores") navigate('/dashboardtr')
+            const user=await callLoginFacebook();
+            console.log(user)
+            if (typeSession === "Deportistas") {
+               await axios.post(`${URLSERVER}/fitevolution/clients`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
+                navigate('/homeusuario')}
+            if (typeSession === "Entrenadores") {
+                await axios.post(`${URLSERVER}/fitevolution/trainers`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
+                navigate('/dashboardtr')}
         } catch (error) {
-            console.log(error.message)
+            console.log(error.code)
+            if(error.code==="auth/account-exists-with-different-credential") alert("el email ya existe, prueba iniciar sesion con otro metodo")
+            if (error.response.data.error==="El usuario ya esta registrado" && typeSession === "Deportistas") navigate('/homeusuario')
+            else if (error.response.data.error==="El usuario ya esta registrado" && typeSession === "Entrenadores") navigate('/dashboardtr')
+            else if(error) alert(error.response.data)
+            
         }
     }
     //--------------------------------------------------------------
