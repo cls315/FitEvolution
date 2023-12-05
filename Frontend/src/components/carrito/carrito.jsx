@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Pagos from "../Pagos/Pagos";
 
 
-const Carrito = () => {
+const Carrito = ({setLoading}) => {
   const dispatch = useDispatch();
   const formRef=useRef()
   const [verpagos, setVerPagos] = useState(false);
@@ -89,7 +89,7 @@ const Carrito = () => {
         <button onClick={()=>{pagos()}} className={styles.btnvaciar}>Pagar</button>
         {verpagos ?
          (
-          <Pagos setVerPagos={setVerPagos} setShow={setShow} total={total}/> 
+          <Pagos setLoading={setLoading} vaciarCarrito={vaciarCarrito} setVerPagos={setVerPagos} setShow={setShow} total={total}/> 
          )
          : ""} 
             </div>
