@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 import imageLogo from "../../images/imageLogo.jpg"
 import styles from "./navUsuario.module.css"
 
-const NavUsuario = ({setCurrentPage})=>{
+const NavUsuario = ({setCurrentPage, setUserSession})=>{
 
     const dispatch = useDispatch();
     useEffect(()=>{
@@ -70,6 +70,10 @@ const NavUsuario = ({setCurrentPage})=>{
         select2.value = "todos"
     }
 
+    const setUser = ()=>{
+        dispatch(setusuario(""))
+        setUserSession(false)
+    }
 
     return(
         <div className={styles.nav}>
@@ -91,7 +95,7 @@ const NavUsuario = ({setCurrentPage})=>{
                 ))}
             </select>
             <Link to="/">
-            <button className={styles.btn2}>Cerrar sesion</button>
+            <button className={styles.btn2} onClick={()=>{setUser()}}>Cerrar sesion</button>
             </Link>
             </div>
         </div>
