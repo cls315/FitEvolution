@@ -1,6 +1,6 @@
 import carritoimg from "../SVG/carrito.svg";
 import styles from "./carrito.module.css";
-import { useState } from "react";
+import { useState,useRef,useEffect } from "react";
 
 import { clearCart, deleteCarrito } from "../redux/actions/actions";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,7 +9,7 @@ import Pagos from "../Pagos/Pagos";
 
 const Carrito = () => {
   const dispatch = useDispatch();
-
+  const formRef=useRef()
   const [verpagos, setVerPagos] = useState(false);
 
   const [show, setShow] = useState(false);
@@ -17,15 +17,30 @@ const Carrito = () => {
 
   const carrito = useSelector((state) => state.carrito);
 
+  const handleClickOutsideForm = (event) => {
+    // Verificar si el clic no ocurrió dentro del formulario
+    if (formRef.current && !formRef.current.contains(event.target)) {
+      // Hacer algo aquí, ya que el clic no ocurrió en el formulario
+      console.log('El clic no ocurrió en el formulario');
+      setShow(false);
+      setVerPagos(false)
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutsideForm);
+
+    // Limpiar el listener al desmontar el componente
+    return () => {
+      document.removeEventListener('click', handleClickOutsideForm);
+    };
+  }, []);
+
   let total = 0;
 
   for (let i = 0; i < carrito.length; i++) {
     total += carrito[i].precio;
   }
-
-  const seteo = () => {
-    setShow(!show);
-  };
 
   const pagos = ()=>{
     setVerPagos(!verpagos)
@@ -42,10 +57,12 @@ const Carrito = () => {
   return (
     <div
       className={styles.carritoConteiner}
+      ref={formRef}
      >
-      <img  onClick={()=>{show===true?setShow(false):setShow(true)}}
-     src={carritoimg} className={styles.carrito} />
+      <button className={styles.btnCarrito} onClick={()=>{show===true?setShow(false):setShow(true)}}>
+      <img src={carritoimg} className={styles.carrito} />
       <span className={styles.count}>{carrito.length}</span>
+      </button>
       {show ? (
         <div className={styles.menu}>
           {carrito.length > 0 ? (
