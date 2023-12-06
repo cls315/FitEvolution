@@ -21,7 +21,7 @@ app.post("/api/checkout", async (req, res) => {
       currency: "USD",
       payment_method: id,
       confirm: true,
-      return_url: "http://localhost:3000/success",
+      return_url: "http://localhost:3000/success", 
     });
     console.log(payment);
     res.send({ message: "Succesfull payment" });

@@ -47,7 +47,7 @@ const Homeusuario = () => {
   return (<>
     {userSession ?
       <div>
-        <NavUsuario setCurrentPage={setCurrentPage}/>
+        <NavUsuario setCurrentPage={setCurrentPage} setUserSession={setUserSession}/>
         <div className={styles.conteiner}>
           <div className={styles.cardsconteiner}>
             <Cards profes={profes} currentPage={currentPage} setCurrentPage={setCurrentPage}/>

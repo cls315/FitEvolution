@@ -33,11 +33,4 @@
 /*Extra large devices(large laptops and desktops, 1200px and up)*/
 @media only screen and (min-width: 1200px) {
 
-.containerLoading {
-    position:absolute;
-    max-height: 100%;
-    max-width: 100%;
- 
-
-}
 }
