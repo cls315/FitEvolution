@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { CiSearch } from "react-icons/ci";
 import { BsSortUpAlt, BsSortDown } from "react-icons/bs";
 import { RxUpdate } from "react-icons/rx";
@@ -12,72 +11,85 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import dayjs from "dayjs";
+import { useDispatch, useSelector } from "react-redux";
+import { getTrainers } from "../redux/actions/actions";
 
-const ClientsTable = () => {
-  // Esto tiene que venir del redux(store)
+const TrainersTable = () => {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    async function fetchData() {
-      const dataClients = await axios("http://localhost:5000/clientes");
-      setData(dataClients.data);
-    }
-    fetchData();
-  }, []);
+    dispatch(getTrainers());
+  }, [dispatch]);
 
+  const trainers = useSelector((state) => state.allTrainers);
+
+  useEffect(() => {
+    setData(trainers);
+  }, [trainers]);
   const columns = [
-    {
-      header: "ID",
-      accessorKey: "id",
-      footer: "Id del deportista",
-    },
     {
       header: "Nombre",
       accessorKey: "forename",
-      footer: "Nombre del deportista",
+      footer: "Nombre del Entrenador",
     },
     {
       header: "Apellido",
       accessorKey: "surname",
-      footer: "Apellido del deportista",
-    },
-    {
-      header: "Correo",
-      accessorKey: "email",
-      footer: "Correo del deportista",
-    },
-    {
-      header: "Teléfono",
-      accessorKey: "phoneN",
-      footer: "Teléfono del deportista",
-    },
-    {
-      header: "Nacionalidad",
-      accessorKey: "nationality",
-      footer: "Nacionalidad del deportista",
-    },
-    {
-      header: "Genero",
-      accessorKey: "gender",
-      footer: "Genero del deportista",
-    },
-    {
-      header: "DNI",
-      accessorKey: "dni",
-      footer: "Dni del deportista",
+      footer: "Apellido del Entrenador",
     },
     {
       header: "Fecha de nacimiento",
       accessorKey: "dateOfBirth",
-      footer: "Fecha de Nacimineto del deportista",
-      cell: (info) => dayjs(info.getValue()).format("DD/MM/YYYY"),
+      footer: "Fecha de Nacimineto del entrenador",
+      cell: (info) => dayjs(info.getValue()).format("YYYY/MM/DD"),
     },
+    {
+      header: "Correo",
+      accessorKey: "email",
+      footer: "Correo del entrenador",
+    },
+    {
+      header: "Teléfono",
+      accessorKey: "phoneN",
+      footer: "Teléfono del entrenador",
+    },
+    // {
+    //   header: "Descripcion",
+    //   accessorKey: "description",
+    //   footer: "Especialidad",
+    // },
+    {
+      header: "Enfoque",
+      accessorKey: "focusTr",
+      footer: "Enfoque de entrenamiento",
+    },
+    {
+      header: "Fecha de creacion",
+      accessorKey: "createdAt",
+      footer: "Inicio de cuenta",
+    },
+    {
+      header: "Cant. Suscriptores",
+      accessorKey: "subscribers",
+      footer: "Lista de suscriptores",
+    },
+    {
+      header: "Score",
+      accessorKey: "score",
+      footer: "Puntuacion promedio",
+    },
+    //FALTA AGREGAR ESTADO DE CUENTA {
+    //   header: "Score",
+    //   accessorKey: "score",
+    //   footer: "Puntuacion promedio",
+    // },
   ];
 
   const [sorting, setSorting] = useState([]);
   const [filtering, setFiltering] = useState("");
 
-  const table = useReactTable({
+  const tableTrainers = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
@@ -95,12 +107,12 @@ const ClientsTable = () => {
   return (
     <div>
       <div className=" input-group flex-nowrap my-2">
-        <span class="input-group-text" id="basic-addon1">
+        <span className="input-group-text" id="basic-addon1">
           {<CiSearch />}
         </span>
         <input
-          class="form-control"
-          placeholder="Buscar deportista"
+          className="form-control"
+          placeholder="Buscar entrenador"
           aria-label="Username"
           aria-describedby="basic-addon1"
           type="text"
@@ -110,7 +122,7 @@ const ClientsTable = () => {
       </div>
       <table className="table table-info">
         <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
+          {tableTrainers.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <th
@@ -133,7 +145,7 @@ const ClientsTable = () => {
           ))}
         </thead>
         <tbody>
-          {table.getRowModel().rows.map((row) => (
+          {tableTrainers.getRowModel().rows.map((row) => (
             <tr key={row.id}>
               {row.getVisibleCells().map((cell) => (
                 <td key={cell.id}>
@@ -144,7 +156,7 @@ const ClientsTable = () => {
           ))}
         </tbody>
         <tfoot>
-          {table.getFooterGroups().map((footerGroup) => (
+          {tableTrainers.getFooterGroups().map((footerGroup) => (
             <tr key={footerGroup.id}>
               {footerGroup.headers.map((footer) => (
                 <th key={footer.id} className="blockquote-footer">
@@ -161,25 +173,27 @@ const ClientsTable = () => {
       <div className="d-flex justify-content-between">
         <button
           className="btn btn-success btn-sm"
-          onClick={() => table.setPageIndex(0)}
+          onClick={() => tableTrainers.setPageIndex(0)}
         >
           Primer página
         </button>
         <button
           className="btn btn-success btn-sm"
-          onClick={() => table.previousPage()}
+          onClick={() => tableTrainers.previousPage()}
         >
           Página anterior
         </button>
         <button
           className="btn btn-success btn-sm"
-          onClick={() => table.nextPage()}
+          onClick={() => tableTrainers.nextPage()}
         >
           Página siguiente
         </button>
         <button
           className="btn btn-success btn-sm"
-          onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+          onClick={() =>
+            tableTrainers.setPageIndex(tableTrainers.getPageCount() - 1)
+          }
         >
           Última página
         </button>
@@ -188,4 +202,4 @@ const ClientsTable = () => {
   );
 };
 
-export default ClientsTable;
+export default TrainersTable;

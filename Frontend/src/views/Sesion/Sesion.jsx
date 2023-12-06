@@ -4,8 +4,8 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
-import { getTrainers } from "../../components/redux/actions/actions.js";
+import { useDispatch, useSelector } from "react-redux";
+import { getTrainers, setusuario } from "../../components/redux/actions/actions.js";
 import validate from "./validate.js";
 import { callLoginGoogle, callLoginFacebook } from "../../utils/authFunctions";
 import axios from "axios";
@@ -43,6 +43,7 @@ const FormSesion = (props) => {
                 navigate('/dashboardtr')}
         } catch (error) {
             console.log(error)
+            if(error.code==="auth/account-exists-with-different-credential") alert("el email ya existe, prueba iniciar sesion con otro metodo")
             if (error.response.data.error==="El usuario ya esta registrado" && typeSession === "Deportistas") navigate('/homeusuario')
             else if(error.response.data.error==="El usuario ya esta registrado" && typeSession === "Entrenadores") navigate('/dashboardtr')
             else if(error) alert(error.response.data)
@@ -63,10 +64,12 @@ const FormSesion = (props) => {
                 await axios.post(`${URLSERVER}/fitevolution/trainers`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
                 navigate('/dashboardtr')}
         } catch (error) {
-            console.log(error)
+            console.log(error.code)
+            if(error.code==="auth/account-exists-with-different-credential") alert("el email ya existe, prueba iniciar sesion con otro metodo")
             if (error.response.data.error==="El usuario ya esta registrado" && typeSession === "Deportistas") navigate('/homeusuario')
             else if (error.response.data.error==="El usuario ya esta registrado" && typeSession === "Entrenadores") navigate('/dashboardtr')
             else if(error) alert(error.response.data)
+            
         }
     }
     //--------------------------------------------------------------
@@ -76,27 +79,27 @@ const FormSesion = (props) => {
         e.preventDefault()
         //  navigate('/homeusuario')
         //  navigate('/dashboardtr')
-        const checkErr = validate(form)
-        if (Object.values(form).some(inp => inp === "")) {  //some comprueba si algun elemento del array es "", si hay un "" quiere decir que hay un input vacio
-            alert("DEBÉS COMPLETAR TODOS LOS CAMPOS!");
-            return;
-        }
-
-        if (Object.values(checkErr).some(error => error)) {
-            alert("LOS CAMPOS TIENEN ERRORES!");
-            return;
-        }
-
-        try {
-            const credentials = await signInWithEmailAndPassword(auth, form.email, form.password)
-            window.alert(`Bienvenido: ${credentials.user.email}`)
-            if (typeSession === "Deportistas") navigate('/homeusuario')
-            if (typeSession === "Entrenadores") navigate('/dashboardtr')
-            console.log(credentials.user.email)
-        } catch (error) {
-            //  window.alert(error.code)
-            if (error.code === "auth/invalid-login-credentials" || error.code === "auth/invalid-login-credentials") window.alert("Usuario y/o contraseña invalidos")
-        }
+            const checkErr = validate(form)
+            if (Object.values(form).some(inp => inp === "")) {  //some comprueba si algun elemento del array es "", si hay un "" quiere decir que hay un input vacio
+                alert("DEBÉS COMPLETAR TODOS LOS CAMPOS!");
+                return;
+            }
+    
+            if (Object.values(checkErr).some(error => error)) {
+                alert("LOS CAMPOS TIENEN ERRORES!");
+                return;
+            }
+    
+            try {
+                const credentials = await signInWithEmailAndPassword(auth, form.email, form.password)
+                window.alert(`Bienvenido: ${credentials.user.email}`)
+                if (typeSession === "Deportistas") navigate('/homeusuario')
+                if (typeSession === "Entrenadores") navigate('/dashboardtr')
+                console.log(credentials.user.email)
+            } catch (error) {
+                //  window.alert(error.code)
+                if (error.code === "auth/invalid-login-credentials" || error.code === "auth/invalid-login-credentials") window.alert("Usuario y/o contraseña invalidos")
+            }
     }
 
     //-------
@@ -118,9 +121,13 @@ const FormSesion = (props) => {
 
 
     const volverinicio = () => {
-        navigate('/')
+        navigate('/')       
     }
-
+    
+    const invitado = (option)=>{
+       dispatch(setusuario(option))
+       navigate("/homeusuario")
+    }
     const typeAccount = () => {
         if (typeSession === "Deportistas") navigate(`/registeruser/`)
         if (typeSession === "Entrenadores") navigate(`/registertrainer/`)
@@ -133,6 +140,7 @@ const FormSesion = (props) => {
             <form className={style.Form} onSubmit={handleSubmit}>
                 <div className={style.btconteiner}>
                     <button onClick={volverinicio} className={style.btLogin}>{'< volver al inicio'}</button>
+                    <button onClick={()=>invitado("invitado")} className={style.btLogin}>{'ingresar como invitado >'}</button>
                 </div>
                 <h1>{typeSession}</h1>
 

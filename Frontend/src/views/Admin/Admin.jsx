@@ -1,24 +1,25 @@
-import ClientsTable from "../../components/clientsTable/ClientsTable"
-import { useNavigate } from "react-router-dom"
+import ClientsTable from "../../components/clientsTable/ClientsTable";
+import TrainersTable from "../../components/trainersTable/trainersTable.component";
 
-const Admin=()=>{
-    const navigate = useNavigate()
-   const ejectButton =()=>{
-   navigate('/createEj')
-   }
-    return (
-     
-        <div>
-            <div>
-                
-                <button onClick={ejectButton}>Crear ejercicios</button>
-            </div>
+import { useNavigate } from "react-router-dom";
 
-        {<ClientsTable/>}
-        </div>
-      
-    
-    )
-}
+const Admin = () => {
+  const navigate = useNavigate();
+  const ejectButton = () => {
+    navigate("/createEj");
+  };
+  return (
+    <div>
+      <div>
+        <button onClick={ejectButton}>Crear ejercicios</button>
+      </div>
 
-export default Admin
+      {<ClientsTable />}
+
+      <div>Tabla de Entrenadores</div>
+      {<TrainersTable />}
+    </div>
+  );
+};
+
+export default Admin;
