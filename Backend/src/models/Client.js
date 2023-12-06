@@ -118,7 +118,7 @@ module.exports = (sequelize) => {
         defaultValue:"Off",
       },
       subscription:{
-        type: DataTypes.ENUM("Active, Disabled"),
+        type: DataTypes.ENUM("Active", "Disabled"),
         allowNull:true,
         defaultValue: "Disabled"
       },
