@@ -112,9 +112,15 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      blocks: {
-        type: DataTypes.TEXT,
+      banned: {
+        type: DataTypes.ENUM("On","Off"),
         allowNull: true,
+        defaultValue:"Off",
+      },
+      subscription:{
+        type: DataTypes.ENUM("Active, Disabled"),
+        allowNull:true,
+        defaultValue: "Disabled"
       },
       role: {
         type: DataTypes.ENUM("Usuario", "Admin"),
