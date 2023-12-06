@@ -7,7 +7,7 @@ import MuscleInput from './MuscleInput'
 import axios from "axios";
 import Swal from 'sweetalert2'
 import { URLSERVER } from '../../../configURL';
-
+import { Container } from '@mui/material';
 
 
 
@@ -101,7 +101,8 @@ const CreateExercise = () => {
       }
    };
     return (
-        <>
+      <Container>
+        <div className={style.container}>
         <form onSubmit={submitHandler}>
         <div className={style.labelform1}>
                         <label className={style.label1}> Nombre del ejercicio</label>
@@ -143,14 +144,14 @@ const CreateExercise = () => {
                         </div>
                         <div>
                         <MuscleInput onAdd={handleAddMuscle}/>
-                        <ul>
+                        
                            {exer.muscle_trained.map((muscle, index) => (
-                             <li key={index}>
+                             <span className={style.muscle} key={index}>
                                {muscle}
-                               <button onClick={() => handleDeleteMuscle(muscle)}>x</button>
-                             </li>
+                               <button className={style.buttonX} onClick={() => handleDeleteMuscle(muscle)}>x</button>
+                             </span>
                            ))}
-                         </ul>
+                         
                         </div>
                         <div className={style.labelform1}>
                         <label className={style.label1}> Duración Estimada </label>
@@ -166,7 +167,8 @@ const CreateExercise = () => {
                       <button type="submit" className={style.btCreateAccount} > Crear Ejercicio</button>
                     </div>
         </form>
-        </>  
+        </div> 
+        </Container> 
 )
 }
 

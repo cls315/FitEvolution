@@ -1,6 +1,6 @@
 // MuscleInput.js
-import React, { useState } from 'react';
-
+import { useState } from 'react';
+import style from './CreateExercise.module.css'
 const MuscleInput = ({ onAdd }) => {
   const [muscle, setMuscle] = useState('');
 
@@ -17,7 +17,7 @@ const MuscleInput = ({ onAdd }) => {
   };
 
   return (
-    <div>
+    <div className={style.labelform1}>
       <label htmlFor="muscleInput">Agregar músculo:{''} </label>
       <input
         type="text"

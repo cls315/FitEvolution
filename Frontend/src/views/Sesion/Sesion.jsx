@@ -10,6 +10,8 @@ import validate from "./validate.js";
 import { callLoginGoogle, callLoginFacebook } from "../../utils/authFunctions";
 import axios from "axios";
 import { URLSERVER } from "../../../configURL.js";
+import Swal from 'sweetalert2'
+
 //FIREBASE
 import { auth } from "../../components/firebase/firebase";
 
@@ -37,15 +39,25 @@ const FormSesion = (props) => {
             const user=await callLoginGoogle();
             if (typeSession === "Deportistas") {
                 await axios.post(`${URLSERVER}/fitevolution/clients`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
+                Swal.fire(`Bienvenido a FitRevolution ${user.displayName.split(" ")[0]}`)
+                  
                 navigate('/homeusuario')}
             if (typeSession === "Entrenadores") {
                 await axios.post(`${URLSERVER}/fitevolution/trainers`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
+                Swal.fire(`Bienvenido a FitRevolution ${user.displayName.split(" ")[0]}`)
                 navigate('/dashboardtr')}
         } catch (error) {
             console.log(error)
-            if(error.code==="auth/account-exists-with-different-credential") alert("el email ya existe, prueba iniciar sesion con otro metodo")
-            if (error.response.data.error==="El usuario ya esta registrado" && typeSession === "Deportistas") navigate('/homeusuario')
-            else if(error.response.data.error==="El usuario ya esta registrado" && typeSession === "Entrenadores") navigate('/dashboardtr')
+            if(error.code==="auth/account-exists-with-different-credential") {Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo")}
+            if (error.response.data.error==="El usuario ya esta registrado" && typeSession === "Deportistas"){
+                Swal.fire(`Bienvenido ${user.displayName.split(" ")[0]}`)
+                    
+                navigate('/homeusuario')
+            }
+         else if(error.response.data.error==="El usuario ya esta registrado" && typeSession === "Entrenadores"){
+            Swal.fire(`Bienvenido ${user.displayName.split(" ")[0]}`)
+             navigate('/dashboardtr')
+        }
             else if(error) alert(error.response.data)
         }
     }
