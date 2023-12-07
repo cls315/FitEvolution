@@ -8,7 +8,6 @@ export default function validate(state) {
     errors.email = 'Ingresa una dirección de correo electrónico válida';
 
   const passw = state.password
-  console.log(passw)
   if (!passw) {
     errors.password = 'La contraseña es obligatoria';
   } else if (passw.length < 6 || passw.search(/[A-Z]/) < 0 || passw.search(/[$&+,:;=?@#|'<>.^*()%!-]/) < 0) {

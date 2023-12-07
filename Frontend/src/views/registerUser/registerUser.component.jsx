@@ -50,11 +50,11 @@ function RegisterUser() {
         e.preventDefault();
         const checkErr = validate(form)
         if (Object.values(form).some(inp => inp==="")) {  //some comprueba si algun elemento del array es "", si hay un "" quiere decir que hay un input vacio
-            Swal.fire('DEBÉS COMPLETAR TODOS LOS CAMPOS!');
+            Swal.fire('DEBÉS COMPLETAR TODOS LOS CAMPOS!',"",'error');
             return;
         }
         if (Object.values(checkErr).some(error => error)) {
-            Swal.fire('EL FORMULARIO CONTIENE ERRORES!');
+            Swal.fire('EL FORMULARIO CONTIENE ERRORES!',"","error");
             return;
         }
         const result = await Swal.fire({
@@ -73,6 +73,9 @@ function RegisterUser() {
                 if (userCredentials.operationType) {
                     Swal.fire(`Usuario ${form.forename} registrado con éxito`, '', 'success');
                     navigate('/login/Deportistas')
+                    // await userCredentials.user.updateProfile({
+                    //     displayName: form.forename,
+                    // });
                 } else { Swal.fire(`Error al registrar el usuario ${form.forename} `,'','error') }
 
                 await axios.post(`${URLSERVER}/fitevolution/clients`, form)  
