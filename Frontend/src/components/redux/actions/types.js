@@ -1,5 +1,6 @@
 export const ejemplo="ejemplo";
 export const GET_TRAINERS = "GET_TRAINERS"
+export const GET_DEPORTISTAS = "GET_DEPORTISTAS"
 export const MENU_TRAINERS= "MENU_TRAINERS"
 export const FILTER_FOCUS = "FILTER_FOCUS"
 export const FILTER_SCORE = "FILTER_SCORE"
