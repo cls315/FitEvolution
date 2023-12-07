@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrainers, filterFocus, filterScore, quitarFiltros,sobreScore, sobreFocus } from "../../components/redux/actions/actions"
+import { getTrainers, filterFocus, filterScore, quitarFiltros,sobreScore, sobreFocus, setusuario } from "../../components/redux/actions/actions"
 import {Link} from "react-router-dom"
 import imageLogo from "../../images/imageLogo.jpg"
 import styles from "./navUsuario.module.css"

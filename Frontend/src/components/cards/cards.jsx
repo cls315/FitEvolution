@@ -7,7 +7,7 @@ const Cards = ({profes, currentPage, setCurrentPage})=>{
   
   const cardsPerPage = 5;
   const cardsPerRow = 5;
-  const totalPages = Math.round(profes.length / cardsPerPage);
+  const totalPages = Math.ceil(profes.length / cardsPerPage);
 
   const handleNext = () => {
     setCurrentPage((prevPage) => (prevPage + 1) % totalPages);
