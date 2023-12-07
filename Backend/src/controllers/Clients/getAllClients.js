@@ -2,10 +2,10 @@ const axios = require("axios");
 const { Client } = require("../../db");
 const { API_CLIENTES } = require("../urls");
 
-const allClient = async (req, res) => {
-  const clients = await Client.findAll();
-  if (clients.length === 0) {
-    try {
+const allClient = async () => {
+  try {
+    const clients = await Client.findAll();
+    if (clients.length === 0) {
       const api = (await axios.get(`${API_CLIENTES}`)).data;
       const dataApi = api.map((t) => ({
         forename: t.forename,
@@ -18,10 +18,11 @@ const allClient = async (req, res) => {
         dni: t.dni,
         gender: t.gender,
       }));
-      return await Client.bulkCreate(dataApi);
-    } catch (error) {
-      throw new Error(`Error al obtener datos de la API: ${error.message}`);
+      await Client.bulkCreate(dataApi);
     }
+    return await Client.findAll();
+  } catch (error) {
+    throw new Error(`Error al obtener datos de la API: ${error.message}`);
   }
 };
 
