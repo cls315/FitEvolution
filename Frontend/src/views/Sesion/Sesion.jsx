@@ -1,108 +1,3 @@
-// import style from "./Sesion.module.css"
-// import { IoLogoFacebook } from "react-icons/io";
-// import { FcGoogle } from "react-icons/fc";
-// import { Link, useParams } from "react-router-dom";
-// import { useEffect, useState } from "react";
-// import { useNavigate } from 'react-router-dom';
-// import { useDispatch, useSelector } from "react-redux";
-// import { getTrainers, setusuario } from "../../components/redux/actions/actions.js";
-// import validate from "./validate.js";
-// import { callLoginGoogle, callLoginFacebook } from "../../utils/authFunctions";
-// import axios from "axios";
-// import { URLSERVER } from "../../../configURL.js";
-// //FIREBASE
-// import { auth } from "../../components/firebase/firebase";
-
-// import { signInWithEmailAndPassword } from "firebase/auth";
-
-// //--------
-
-
-
-// const FormSesion = (props) => {
-
-//     const { typeSession } = useParams()
-//     const navigate = useNavigate()
-//     const [form, setForm] = useState({ email: "", password: "" })
-//     const [errors, setErrors] = useState({})
-//     const dispatch=useDispatch()
-
-
-
-//     //FIREBASE
-//     //Para acceder con una ventana emergente, llamada signInWithPopup,valida si existe el usuario y si no crea uno
-//     const call_login_google = async (e) => {
-//         e.preventDefault();
-//         try {
-//             const user=await callLoginGoogle();
-//             if (typeSession === "Deportistas") {
-//                 await axios.post(`${URLSERVER}/fitevolution/clients`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
-//                 navigate('/homeusuario')}
-//             if (typeSession === "Entrenadores") {
-//                 await axios.post(`${URLSERVER}/fitevolution/trainers`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
-//                 navigate('/dashboardtr')}
-//         } catch (error) {
-//             console.log(error.message)
-//             if(error.code==="auth/account-exists-with-different-credential") alert("el email ya existe, prueba iniciar sesion con otro metodo")
-//             if (error.response.data.error==="El usuario ya esta registrado" && typeSession === "Deportistas") navigate('/homeusuario')
-//             else if(error.response.data.error==="El usuario ya esta registrado" && typeSession === "Entrenadores") navigate('/dashboardtr')
-//             else if(error) alert(error.response.data)
-//         }
-//     }
-
-//     //--------------------------------------------------------------
-//     //Para acceder con una ventana emergente, llamada signInWithPopup,valida si existe el usuario y si no crea uno
-//     const call_login_facebook = async (e) => {
-//         e.preventDefault();
-//         try {
-//             const user=await callLoginFacebook();
-//             console.log(user)
-//             if (typeSession === "Deportistas") {
-//                await axios.post(`${URLSERVER}/fitevolution/clients`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
-//                 navigate('/homeusuario')}
-//             if (typeSession === "Entrenadores") {
-//                 await axios.post(`${URLSERVER}/fitevolution/trainers`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
-//                 navigate('/dashboardtr')}
-//         } catch (error) {
-//             console.log(error.code)
-//             if(error.code==="auth/account-exists-with-different-credential") alert("el email ya existe, prueba iniciar sesion con otro metodo")
-//             if (error.response.data.error==="El usuario ya esta registrado" && typeSession === "Deportistas") navigate('/homeusuario')
-//             else if (error.response.data.error==="El usuario ya esta registrado" && typeSession === "Entrenadores") navigate('/dashboardtr')
-//             else if(error) alert(error.response.data)
-            
-//         }
-//     }
-//     //--------------------------------------------------------------
-//     //inicio de sesion con email,valida si existe el usuario pero no crea ninguno
-
-//     const handleSubmit = async (e) => {
-//         e.preventDefault()
-//         //  navigate('/homeusuario')
-//         //  navigate('/dashboardtr')
-//             const checkErr = validate(form)
-//             if (Object.values(form).some(inp => inp === "")) {  //some comprueba si algun elemento del array es "", si hay un "" quiere decir que hay un input vacio
-//                 alert("DEBÉS COMPLETAR TODOS LOS CAMPOS!");
-//                 return;
-//             }
-    
-//             if (Object.values(checkErr).some(error => error)) {
-//                 alert("LOS CAMPOS TIENEN ERRORES!");
-//                 return;
-//             }
-    
-//             try {
-//                 const credentials = await signInWithEmailAndPassword(auth, form.email, form.password)
-//                 window.alert(`Bienvenido: ${credentials.user.email}`)
-//                 if (typeSession === "Deportistas") navigate('/homeusuario')
-//                 if (typeSession === "Entrenadores") navigate('/dashboardtr')
-//                 console.log(credentials.user.email)
-//             } catch (error) {
-//                 //  window.alert(error.code)
-//                 if (error.code === "auth/invalid-login-credentials" || error.code === "auth/invalid-login-credentials") window.alert("Usuario y/o contraseña invalidos")
-//             }
-//     }
-
-
 import style from "./Sesion.module.css"
 import { IoLogoFacebook } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
@@ -204,7 +99,6 @@ const FormSesion = (props) => {
     //inicio de sesion con email,valida si existe el usuario pero no crea ninguno
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
         //  navigate('/homeusuario')
         //  navigate('/dashboardtr')
             const checkErr = validate(form)
@@ -220,7 +114,7 @@ const FormSesion = (props) => {
     
             try {
                 const credentials = await signInWithEmailAndPassword(auth, form.email, form.password)
-                Swal.fire(`Bienvenido: ${credentials.user.displayName}`)
+                Swal.fire(`Bienvenido: ${credentials.user.email}`)
                 if (typeSession === "Deportistas") navigate('/homeusuario')
                 if (typeSession === "Entrenadores") navigate('/dashboardtr')
                 console.log(credentials.user.email)
