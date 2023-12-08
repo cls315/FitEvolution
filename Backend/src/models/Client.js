@@ -108,19 +108,13 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
       //?momentaneamente el campo backup y el campo bloqueos están armados con un type text cosa que se pueda escribir, se puede readaptar
-      backup: {
+      backups: {
+        type: DataTypes.JSONB,
+        defaultValue: [] ,
+      },
+      blocks: {
         type: DataTypes.TEXT,
         allowNull: true,
-      },
-      banned: {
-        type: DataTypes.ENUM("On","Off"),
-        allowNull: true,
-        defaultValue:"Off",
-      },
-      subscription:{
-        type: DataTypes.ENUM("Active", "Disabled"),
-        allowNull:true,
-        defaultValue: "Disabled"
       },
       role: {
         type: DataTypes.ENUM("Usuario", "Admin"),

@@ -1,9 +1,9 @@
 import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 import { auth, providerGoogle, providerFacebook} from "../components/firebase/firebase";
 
+
+
 const callLoginGoogle = async () => {
-  
-    
   const result = await signInWithPopup(auth, providerGoogle);
   // Extract necessary data from the result if needed
   const credential = GoogleAuthProvider.credentialFromResult(result);

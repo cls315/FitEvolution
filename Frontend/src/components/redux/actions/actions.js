@@ -1,4 +1,4 @@
-import { ejemplo, GET_TRAINERS,RUTINAS,SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE,GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER } from "./types";
+import { ejemplo, GET_DEPORTISTAS,GET_TRAINERS,RUTINAS,SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE,GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER } from "./types";
 import axios from 'axios';
 import { URLSERVER } from '../../../../configURL';
 import { MENU_TRAINERS } from '../actions/types'
@@ -11,6 +11,22 @@ export const getTrainers = () => {
       );
       dispatch({
         type: GET_TRAINERS,
+        payload: json.data,
+      });
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+};
+
+export const getDeportistas = () => {
+  return async function (dispatch) {
+    try {
+      let json = await axios(
+        `${URLSERVER}/fitevolution/clients`
+      );
+      dispatch({
+        type: GET_DEPORTISTAS,
         payload: json.data,
       });
     } catch (error) {
