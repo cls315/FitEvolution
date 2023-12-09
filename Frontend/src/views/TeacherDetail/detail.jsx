@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import StarRating from "../../components/starRating/starRating";
+import LoadingComponent from "../../components/loading/loading.component"
 
 import {agregarCarrito, getRoutines} from "../../components/redux/actions/actions"
 
@@ -12,7 +13,7 @@ import styles from "./detail.module.css"
 const Detail = ()=>{
 
     const dispatch = useDispatch()
-
+    const [loading, setLoading] = useState(false);
     const {id} = useParams();
 
     useEffect(()=>{
@@ -42,7 +43,8 @@ const Detail = ()=>{
 
     return(
         <div>
-            <Navdetail />
+            {loading && <LoadingComponent/>}     {/*CARGA DE GIF PARA CUANDO SE ENVIA EL PAGO DEL CARRITO*/}
+            <Navdetail setLoading={setLoading}/>
             {/* {!teacher.id ? (
                 <div>
                     <p>The teacher is not found</p>

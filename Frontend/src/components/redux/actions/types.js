@@ -1,5 +1,6 @@
 export const ejemplo="ejemplo";
 export const GET_TRAINERS = "GET_TRAINERS"
+export const GET_DEPORTISTAS = "GET_DEPORTISTAS"
 export const MENU_TRAINERS= "MENU_TRAINERS"
 export const FILTER_FOCUS = "FILTER_FOCUS"
 export const FILTER_SCORE = "FILTER_SCORE"
@@ -10,5 +11,9 @@ export const AGREGAR_CARRITO = "AGREGAR_CARRITO"
 export const CLEAR_CART = "CLEAR_CART"
 export const GET_ROUTINES = "GET_ROUTINES"
 export const DELETE_CART = "DELETE_CART"
+export const RUTINAS = "RUTINAS"
+export const SEARCH= "SEARCH"
+export const SET_USER = "SET_USER"
+export const USUARIO_LOGED="USUARIO_LOGED"
 
 

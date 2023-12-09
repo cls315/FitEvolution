@@ -6,6 +6,8 @@ import SliderLanding from '../../components/sliderLanding/sliderLanding.componen
 import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom';
 import iconos from '../../images/iconos.png'
+import { useDispatch } from 'react-redux';
+import { setusuario } from '../../components/redux/actions/actions';
 //Styles
 import style from "./landing.module.css"
 
@@ -13,9 +15,11 @@ import style from "./landing.module.css"
 function Landing(props) {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const dispatch=useDispatch()
+
 
   useEffect(() => {
-
+    dispatch(setusuario(""))
     return () =>{
       
     } 

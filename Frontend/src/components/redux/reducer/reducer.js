@@ -1,18 +1,28 @@
-import { ejemplo , GET_TRAINERS,MENU_TRAINERS, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, SOBRE_FOCUS,CLEAR_CART, AGREGAR_CARRITO, GET_ROUTINES, DELETE_CART} from "../actions/types"
+import { ejemplo , USUARIO_LOGED,GET_DEPORTISTAS,GET_TRAINERS,MENU_TRAINERS,RUTINAS, SEARCH,FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, SOBRE_FOCUS,CLEAR_CART, AGREGAR_CARRITO, GET_ROUTINES, DELETE_CART, SET_USER} from "../actions/types"
 
 const initialState = {
     allTrainers: [],
-    menusTrainer:[],
+    allDeportistas: [],
     filterTrainers: [],
     status: "",
     carrito: [],
-    routines: []
+    routines: [],
+    rutinas:[],
+    rutinas2:[],
+    userStatus: "",
+    usuario:[],
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
+        case USUARIO_LOGED:
+            const userloged="continuar..."
+            return {...state, usuario: userloged}
         case GET_TRAINERS:
+            console.log("trainerss")
             return {...state, allTrainers: payload}
+        case GET_DEPORTISTAS:
+            return {...state, allDeportistas: payload}
         case MENU_TRAINERS:
             return {
                 ...state,
@@ -63,6 +73,28 @@ const rootReducer = (state = initialState, { type, payload }) => {
             return {
                 ...state, carrito: newArr
             }
+            case RUTINAS:
+
+            console.log("reducer!")
+            return {
+            ...state,
+            rutinas: payload,
+            rutinas2: payload
+
+            }
+            case SEARCH:
+                const busqueda = state.rutinas2.filter(i=>i.enfoque.includes(payload))
+                console.log(state.rutinas2, "search")
+                return{
+                ...state,
+                rutinas:busqueda
+
+                }
+            case SET_USER:
+                return{
+                    ...state, userStatus: payload
+                }
+
         default:
             return { ...state }
     }

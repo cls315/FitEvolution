@@ -113,26 +113,58 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      score: {
-        type: DataTypes.ENUM(
-          "0",
-          "0.5",
-          "1",
-          "1.5",
-          "2",
-          "2.5",
-          "3",
-          "3.5",
-          "4",
-          "4.5",
-          "5"
+      puntuaciones: {
+        type: DataTypes.ARRAY(
+          DataTypes.ENUM(
+            "0",
+            "0.5",
+            "1.0",
+            "1.5",
+            "2.0",
+            "2.5",
+            "3.0",
+            "3.5",
+            "4.0",
+            "4.5",
+            "5.0"
+          )
         ),
         allowNull: true,
       },
+      score: {
+        type: DataTypes.VIRTUAL, // VIRTUAL significa que este campo no se almacenará en la base de datos
+        get() {
+          if (this.puntuaciones.length === 0) {
+            return 0; // Si no hay puntuaciones, el puntaje es 0
+          }
+
+          // Suma los valores convertidos a números
+          const sum = this.puntuaciones.reduce(
+            (acc, score) => acc + parseFloat(score),
+            0
+          );
+
+          // Calcula el promedio
+          const promedio = sum / this.puntuaciones.length;
+
+          return promedio;
+        },
+        set(value) {
+          throw new Error(
+            "No puedes establecer el valor directamente en 'score'. Actualiza 'puntuaciones' en su lugar."
+          );
+        },
+      },
+
       subscribers: {
         type: DataTypes.ARRAY(DataTypes.UUID), // Array de IDs de clientes
         allowNull: true,
         defaultValue: [], // Valor predeterminado: array vacío
+      },
+      status: {
+        type: DataTypes.ENUM("Active", "Suspended"),
+        allowNull: true,
+        defaultValue: "Active",
       },
     },
     {

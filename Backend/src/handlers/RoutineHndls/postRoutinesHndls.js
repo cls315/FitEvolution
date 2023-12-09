@@ -1,4 +1,4 @@
-const postRoutines = require("../../controllers/Routine/postRoutines");
+const postRoutines = require("../../controllers/Routine/postRotuines");
 
 const postRoutinesHndls = async (req, res) => {
   try {

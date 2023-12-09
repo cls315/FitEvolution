@@ -10,11 +10,12 @@ import axios from "axios";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../components/firebase/firebase';
 import { URLSERVER } from '../../../configURL';
+import Swal from 'sweetalert2'
+import UploadWidCloud from '../../components/Cloudinary/UploadWidCloud';
 
 
 function RegisterUser() {
     const navigate = useNavigate();
-
     const volverInicio = () => {
         navigate('/login/Deportistas');
     };
@@ -50,35 +51,86 @@ function RegisterUser() {
         e.preventDefault();
         const checkErr = validate(form)
         if (Object.values(form).some(inp => inp==="")) {  //some comprueba si algun elemento del array es "", si hay un "" quiere decir que hay un input vacio
-            alert("DEBÉS COMPLETAR TODOS LOS CAMPOS!");
+            Swal.fire('DEBÉS COMPLETAR TODOS LOS CAMPOS!',"",'error');
             return;
         }
         if (Object.values(checkErr).some(error => error)) {
-            alert("EL FORMULARIO CONTIENE ERRORES!");
+            Swal.fire('EL FORMULARIO CONTIENE ERRORES!',"","error");
             return;
         }
-        alert(`seguro quiere crear el usuario: ${form.forename} ${""}?`)
-        try {
-            //firebase registro de usuario 
-            const userCredentials = await createUserWithEmailAndPassword(auth, form.email, form.password) //esto se envia a firebase y puede llevar tiempo por ello usamos async y await
-            console.log(userCredentials)
-            if (userCredentials.operationType) {
-                window.alert("Usuario registrado con exito")
-                navigate('/login/Deportistas')
-            } else { throw Error("Error al registrar el usuario") }
-            //----------------------------
+        const result = await Swal.fire({
+            title: `¿Seguro que quiere crear el Usuario ${form.forename} ${""}?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, crearlo'
+        });
 
-            //envio de formulario al servidor
-            await axios.post(`${URLSERVER}/fitevolution/trainers`, form)
-            //-------------------------------
-        } catch (error) {
-            //window.alert(error.code)    //error.name "firebase error(tipo de error)", error.code "nombre del error", error.message "descripcion del error"
-            if (error.code === "auth/email-already-in-use") window.alert("Email ya esta registrado")
-            else if (error.code === "auth/invalid-email") window.alert("Email invalido")
-            else if (error.code === "auth/weak-password") window.alert("La contraseña debe tener un minimo de 6 caracteres")
-            else if (error.code) window.alert("Error al enviar el formulario:", error.message)
+        if(result.isConfirmed){
+            try {
+                const userCredentials = await createUserWithEmailAndPassword(auth, form.email, form.password) //esto se envia a firebase y puede llevar tiempo por ello usamos async y await
+                console.log(userCredentials)
+                if (userCredentials.operationType) {
+                    Swal.fire(`Usuario ${form.forename} registrado con éxito`, '', 'success');
+                    await axios.post(`${URLSERVER}/fitevolution/clients`, form) 
+                    navigate('/login/Deportistas')
+                    // await userCredentials.user.updateProfile({
+                    //     displayName: form.forename,
+                    // });
+                } else { Swal.fire(`Error al registrar el usuario ${form.forename} `,'','error') }
+ 
+            } catch (error) {
+                if (error.code === "auth/email-already-in-use") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al enviar el formulario',
+                        text: 'Email ya está registrado',
+                    });
+                } else if (error.code === "auth/invalid-email") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al enviar el formulario',
+                        text: 'Email inválido',
+                    });
+                } else if (error.code === "auth/weak-password") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al enviar el formulario',
+                        text: 'La contraseña debe tener un mínimo de 6 caracteres',
+                    });
+                } else if (error.code) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error al enviar el formulario',
+                            text: `Error: ${error.message}`,
+                        });
+                }
+            }
         }
     }
+
+    //     try {
+    //         //firebase registro de usuario 
+    //         const userCredentials = await createUserWithEmailAndPassword(auth, form.email, form.password) //esto se envia a firebase y puede llevar tiempo por ello usamos async y await
+    //         console.log(userCredentials)
+    //         if (userCredentials.operationType) {
+    //             window.alert("Usuario registrado con exito")
+    //             navigate('/login/Deportistas')
+    //         } else { throw Error("Error al registrar el usuario") }
+    //         //----------------------------
+
+    //         //envio de formulario al servidor
+    //         await axios.post(`${URLSERVER}/fitevolution/trainers`, form)
+    //         //-------------------------------
+    //     } catch (error) {
+    //         //window.alert(error.code)    //error.name "firebase error(tipo de error)", error.code "nombre del error", error.message "descripcion del error"
+    //         if (error.code === "auth/email-already-in-use") window.alert("Email ya esta registrado")
+    //         else if (error.code === "auth/invalid-email") window.alert("Email invalido")
+    //         else if (error.code === "auth/weak-password") window.alert("La contraseña debe tener un minimo de 6 caracteres")
+    //         else if (error.code) window.alert("Error al enviar el formulario:", error.message)
+    //     }
+    // }
 
 
     return (<div className={style.conteinerRegister}>

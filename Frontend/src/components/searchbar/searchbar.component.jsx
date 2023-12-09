@@ -22,7 +22,7 @@ function SearchBar(props) {
     <>
       <nav class='navbar navbar-expand-lg navbar-light bg-light '>
         <button
-          class='navbar-toggler'
+          className='navbar-toggler'
           type='button'
           data-toggle='collapse'
           data-target='#navbarTogglerDemo03'

@@ -1,4 +1,5 @@
 const { Trainer } = require("../../db");
+const { sendWelcomeEmail } = require("../../../configNodemailer/nodemailer");
 
 const postTrainer = async (
   forename,
@@ -12,16 +13,37 @@ const postTrainer = async (
   gender,
   focusTr,
   description,
-  score
+  // score,
+  subscribers
 ) => {
-  const newTrainer = await Trainer.create({
-    forename,
-    image,
-    email,
-    description,
+  const existingTrainer = await Trainer.findOne({
+    where: { email: email },
   });
 
-  return newTrainer;
+  if (existingTrainer) {
+    throw Error("El usuario ya esta registrado");
+  } else {
+    const newTrainer = await Trainer.create({
+      forename,
+      surname,
+      image,
+      email,
+      phoneN,
+      nationality,
+      dateOfBirth,
+      dni,
+      gender,
+      focusTr,
+      description,
+      // score,
+      subscribers,
+    });
+
+    // Envío el correo de bienvenida
+    await sendWelcomeEmail(email, forename, surname);
+
+    return newTrainer;
+  }
 };
 
 module.exports = postTrainer;

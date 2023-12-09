@@ -108,9 +108,9 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
       //?momentaneamente el campo backup y el campo bloqueos están armados con un type text cosa que se pueda escribir, se puede readaptar
-      backup: {
-        type: DataTypes.TEXT,
-        allowNull: true,
+      backups: {
+        type: DataTypes.JSONB,
+        defaultValue: [],
       },
       blocks: {
         type: DataTypes.TEXT,

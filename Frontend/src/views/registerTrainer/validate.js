@@ -82,7 +82,6 @@ export default function validate(state){
            } else if(passw.length < 6 || passw.search(/[A-Z]/) < 0 || passw.search(/[$&+,:;=?@#|'<>.^*()%!-]/) < 0) {
              errors.password = 'Debe tener al menos 6 caracteres, una mayúscula y un símbolo';
            }
-         console.log(errors.password)
            if (!state.repeatpassword) {
              errors.repeatpassword = 'Por favor confirma tu contraseña';  
            } else if (state.repeatpassword !== state.password) {

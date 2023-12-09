@@ -1,1276 +1,1281 @@
 {
-    "clientes": [
-      {
-        "id": 1,
-        "forename": "Juan",
-        "surname": "González",
-        "image": "https://c0.klipartz.com/pngpicture/171/975/gratis-png-ilustracion-de-retrato-de-hombre-hombre-mirando-hacia-arriba-pensando-thumbnail.png",
-        "email": "juan@example.com",
-        "phoneN": "+1234567890",
-        "nationality": "Mexicana",
-        "dateOfBirth": "1990-05-15",
-        "gender": "Masculino",
-        "dni": 123456789,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 2,
-        "forename": "Ana",
-        "surname": "Martínez",
-        "image": "",
-        "email": "ana@example.com",
-        "phoneN": "+9876543210",
-        "nationality": "Española",
-        "dateOfBirth": "1988-08-22",
-        "gender": "Femenino",
-        "dni": 987654321,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 3,
-        "forename": "Pedro",
-        "surname": "López",
-        "image": "https://static.vecteezy.com/system/resources/thumbnails/007/421/470/small/handsome-cheerful-bearded-man-smiles-gladfully-dressed-in-casual-white-t-shirt-being-in-good-mood-poses-against-blue-background-with-copy-space-glad-european-guy-with-stubble-stands-indoor-free-photo.jpg",
-        "email": "pedro@example.com",
-        "phoneN": "+1112223333",
-        "nationality": "Argentina",
-        "dateOfBirth": "1985-04-30",
-        "gender": "Masculino",
-        "dni": 555444333,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 4,
-        "forename": "María",
-        "surname": "Fernández",
-        "image": "",
-        "email": "maria@example.com",
-        "phoneN": "+9998887777",
-        "nationality": "Chilena",
-        "dateOfBirth": "1982-11-12",
-        "gender": "Femenino",
-        "dni": 777666555,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 5,
-        "forename": "Carlos",
-        "surname": "Ramírez",
-        "image": "",
-        "email": "carlos@example.com",
-        "phoneN": "+3332221111",
-        "nationality": "Peruana",
-        "dateOfBirth": "1987-09-18",
-        "gender": "Masculino",
-        "dni": 888777666,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 6,
-        "forename": "Laura",
-        "surname": "Díaz",
-        "image": "",
-        "email": "laura@example.com",
-        "phoneN": "+4445556666",
-        "nationality": "Uruguaya",
-        "dateOfBirth": "1984-06-25",
-        "gender": "Femenino",
-        "dni": 666555444,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 7,
-        "forename": "Alejandro",
-        "surname": "Hernández",
-        "image": "",
-        "email": "alejandro@example.com",
-        "phoneN": "+7778889999",
-        "nationality": "Venezolana",
-        "dateOfBirth": "1983-03-08",
-        "gender": "Masculino",
-        "dni": 999888777,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 8,
-        "forename": "Sofía",
-        "surname": "Luna",
-        "image": "",
-        "email": "sofia@example.com",
-        "phoneN": "+1119992222",
-        "nationality": "Paraguaya",
-        "dateOfBirth": "1986-12-01",
-        "gender": "Femenino",
-        "dni": 222111999,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 9,
-        "forename": "Javier",
-        "surname": "Gómez",
-        "image": "",
-        "email": "javier@example.com",
-        "phoneN": "+5554443333",
-        "nationality": "Ecuatoriana",
-        "dateOfBirth": "1981-10-14",
-        "gender": "Masculino",
-        "dni": 444333222,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 10,
-        "forename": "Valentina",
-        "surname": "Pérez",
-        "image": "",
-        "email": "valentina@example.com",
-        "phoneN": "+9991112222",
-        "nationality": "Boliviana",
-        "dateOfBirth": "1989-07-17",
-        "gender": "Femenino",
-        "dni": 111222999,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 11,
-        "forename": "Ricardo",
-        "surname": "Silva",
-        "image": "",
-        "email": "ricardo@example.com",
-        "phoneN": "+6667778888",
-        "nationality": "Costarricense",
-        "dateOfBirth": "1980-02-03",
-        "gender": "Masculino",
-        "dni": 777888666,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 12,
-        "forename": "Isabel",
-        "surname": "Olivares",
-        "image": "",
-        "email": "isabel@example.com",
-        "phoneN": "+3334445555",
-        "nationality": "Panameña",
-        "dateOfBirth": "1983-05-20",
-        "gender": "Femenino",
-        "dni": 444555333,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 13,
-        "forename": "Martín",
-        "surname": "Mendoza",
-        "image": "",
-        "email": "martin@example.com",
-        "phoneN": "+2223334444",
-        "nationality": "Nicaragüense",
-        "dateOfBirth": "1987-09-18",
-        "gender": "Masculino",
-        "dni": 333444222,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 14,
-        "forename": "Elena",
-        "surname": "Ortega",
-        "image": "",
-        "email": "elena@example.com",
-        "phoneN": "+4445556666",
-        "nationality": "Hondureña",
-        "dateOfBirth": "1984-06-25",
-        "gender": "Femenino",
-        "dni": 555666444,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 15,
-        "forename": "Gabriel",
-        "surname": "Santos",
-        "image": "",
-        "email": "gabriel@example.com",
-        "phoneN": "+5556667777",
-        "nationality": "Salvadoreña",
-        "dateOfBirth": "1982-11-12",
-        "gender": "Masculino",
-        "dni": 666777555,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 16,
-        "forename": "Camila",
-        "surname": "García",
-        "image": "",
-        "email": "camila@example.com",
-        "phoneN": "+8889990000",
-        "nationality": "Guatemalteca",
-        "dateOfBirth": "1985-04-30",
-        "gender": "Femenino",
-        "dni": 999000888,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 17,
-        "forename": "Luis",
-        "surname": "Rojas",
-        "image": "",
-        "email": "luis@example.com",
-        "phoneN": "+1112223333",
-        "nationality": "Puertorriqueña",
-        "dateOfBirth": "1988-08-22",
-        "gender": "Masculino",
-        "dni": 222333111,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 18,
-        "forename": "Carolina",
-        "surname": "Navarro",
-        "image": "",
-        "email": "carolina@example.com",
-        "phoneN": "+9998887777",
-        "nationality": "Dominicana",
-        "dateOfBirth": "1981-10-14",
-        "gender": "Femenino",
-        "dni": 888777999,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 19,
-        "forename": "Diego",
-        "surname": "Moreno",
-        "image": "",
-        "email": "diego@example.com",
-        "phoneN": "+3332221111",
-        "nationality": "Cubana",
-        "dateOfBirth": "1986-12-01",
-        "gender": "Masculino",
-        "dni": 111222333,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 20,
-        "forename": "Gabriela",
-        "surname": "Jiménez",
-        "image": "",
-        "email": "gabriela@example.com",
-        "phoneN": "+5554443333",
-        "nationality": "Estadounidense",
-        "dateOfBirth": "1989-07-17",
-        "gender": "Femenino",
-        "dni": 444333555,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 21,
-        "forename": "Oscar",
-        "surname": "Molina",
-        "image": "",
-        "email": "oscar@example.com",
-        "phoneN": "+6667778888",
-        "nationality": "Canadiense",
-        "dateOfBirth": "1980-02-03",
-        "gender": "Masculino",
-        "dni": 777888666,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 22,
-        "forename": "Adriana",
-        "surname": "Pinto",
-        "image": "",
-        "email": "adriana@example.com",
-        "phoneN": "+3334445555",
-        "nationality": "Brasileña",
-        "dateOfBirth": "1983-05-20",
-        "gender": "Femenino",
-        "dni": 444555333,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 23,
-        "forename": "Fernando",
-        "surname": "Ríos",
-        "image": "",
-        "email": "fernando@example.com",
-        "phoneN": "+2223334444",
-        "nationality": "Portuguesa",
-        "dateOfBirth": "1987-09-18",
-        "gender": "Masculino",
-        "dni": 333444222,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      },
-      {
-        "id": 24,
-        "forename": "Lucía",
-        "surname": "Castillo",
-        "image": "",
-        "email": "lucia@example.com",
-        "phoneN": "+4445556666",
-        "nationality": "Italiana",
-        "dateOfBirth": "1984-06-25",
-        "gender": "Femenino",
-        "dni": 555666444,
-        "backup": "",
-        "blocks": "",
-        "role": "Cliente"
-      }
-    ],
-  
-    "ejercicios": [
-      {
-        "id": 1,
-        "name": "Sentadillas",
-        "image": "",
-        "description": "",
-        "category": "TI",
-        "muscle_trained": ["Cuádriceps", "Isquiotibiales", "Glúteos"],
-        "estimatedDuration": 5
-      },
-      {
-        "id": 2,
-        "name": "Prensa de piernas",
-        "image": "",
-        "description": "",
-        "category": "TI",
-        "muscle_trained": ["Cuádriceps", "Isquiotibiales", "Glúteos"],
-        "estimatedDuration": 6
-      },
-      {
-        "id": 3,
-        "name": "Peso muerto",
-        "image": "",
-        "description": "",
-        "category": "TI",
-        "muscle_trained": ["Glúteos", "Isquiotibiales", "Espalda Baja"],
-        "estimatedDuration": 8
-      },
-      {
-        "id": 4,
-        "name": "Extensiones de cuádriceps",
-        "image": "",
-        "description": "",
-        "category": "TI",
-        "muscle_trained": ["Cuádriceps"],
-        "estimatedDuration": 4
-      },
-      {
-        "id": 5,
-        "name": "Zancadas",
-        "image": "",
-        "description": "",
-        "category": "TI",
-        "muscle_trained": ["Piernas", "Glúteos"],
-        "estimatedDuration": 7
-      },
-      {
-        "id": 6,
-        "name": "Curl de piernas",
-        "image": "",
-        "description": "",
-        "category": "TI",
-        "muscle_trained": ["Isquiotibiales"],
-        "estimatedDuration": 5
-      },
-      {
-        "id": 7,
-        "name": "Hip Thrusts",
-        "image": "",
-        "description": "",
-        "category": "TI",
-        "muscle_trained": ["Glúteos", "Isquiotibiales"],
-        "estimatedDuration": 6
-      },
-      {
-        "id": 8,
-        "name": "Peso muerto sumo",
-        "image": "",
-        "description": "",
-        "category": "TI",
-        "muscle_trained": ["Glúteos", "Isquiotibiales"],
-        "estimatedDuration": 8
-      },
-      {
-        "id": 9,
-        "name": "Elevación de talones",
-        "image": "",
-        "description": "",
-        "category": "TI",
-        "muscle_trained": ["Gemelos"],
-        "estimatedDuration": 3
-      },
-      {
-        "id": 10,
-        "name": "Peso muerto con una pierna",
-        "image": "",
-        "description": "",
-        "category": "TI",
-        "muscle_trained": ["Equilibrio", "Cadena Posterior"],
-        "estimatedDuration": 7
-      },
-      {
-        "id": 11,
-        "name": "Press de banca",
-        "image": "",
-        "description": "",
-        "category": "TS",
-        "muscle_trained": ["Pectorales", "Tríceps"],
-        "estimatedDuration": 6
-      },
-      {
-        "id": 12,
-        "name": "Fondos en paralelas",
-        "image": "",
-        "description": "",
-        "category": "TS",
-        "muscle_trained": ["Tríceps", "Pecho"],
-        "estimatedDuration": 5
-      },
-      {
-        "id": 13,
-        "name": "Pull-ups",
-        "image": "",
-        "description": "",
-        "category": "TS",
-        "muscle_trained": ["Espalda", "Bíceps"],
-        "estimatedDuration": 7
-      },
-      {
-        "id": 14,
-        "name": "Press militar",
-        "image": "",
-        "description": "",
-        "category": "TS",
-        "muscle_trained": ["Hombros", "Tríceps"],
-        "estimatedDuration": 6
-      },
-      {
-        "id": 15,
-        "name": "Dominadas con agarre cerrado",
-        "image": "",
-        "description": "",
-        "category": "TS",
-        "muscle_trained": ["Bíceps", "Tríceps"],
-        "estimatedDuration": 7
-      },
-      {
-        "id": 16,
-        "name": "Curl de bíceps",
-        "image": "",
-        "description": "",
-        "category": "TS",
-        "muscle_trained": ["Bíceps"],
-        "estimatedDuration": 4
-      },
-      {
-        "id": 17,
-        "name": "Tríceps en polea alta",
-        "image": "",
-        "description": "",
-        "category": "TS",
-        "muscle_trained": ["Tríceps"],
-        "estimatedDuration": 5
-      },
-      {
-        "id": 18,
-        "name": "Pull-over con mancuerna",
-        "image": "",
-        "description": "",
-        "category": "TS",
-        "muscle_trained": ["Espalda", "Pecho"],
-        "estimatedDuration": 6
-      },
-      {
-        "id": 19,
-        "name": "Press inclinado con mancuernas",
-        "image": "",
-        "description": "",
-        "category": "TS",
-        "muscle_trained": ["Pecho"],
-        "estimatedDuration": 7
-      },
-      {
-        "id": 20,
-        "name": "Plancha",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Abdominales", "Lumbares"],
-        "estimatedDuration": 3
-      },
-      {
-        "id": 21,
-        "name": "Crunch",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Abdominales"],
-        "estimatedDuration": 4
-      },
-      {
-        "id": 22,
-        "name": "Mountain Climbers",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Abdominales", "Cardio"],
-        "estimatedDuration": 5
-      },
-      {
-        "id": 23,
-        "name": "Russian Twist",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Oblicuos"],
-        "estimatedDuration": 4
-      },
-      {
-        "id": 24,
-        "name": "Superman",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Espalda baja"],
-        "estimatedDuration": 3
-      },
-      {
-        "id": 25,
-        "name": "Elevación de piernas",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Abdominales", "Cadera"],
-        "estimatedDuration": 5
-      },
-      {
-        "id": 26,
-        "name": "Hollow Body",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Abdominales"],
-        "estimatedDuration": 4
-      },
-      {
-        "id": 27,
-        "name": "Leg Raises",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Abdominales", "Cadera"],
-        "estimatedDuration": 5
-      },
-      {
-        "id": 28,
-        "name": "Oblique Crunch",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Oblicuos"],
-        "estimatedDuration": 4
-      },
-      {
-        "id": 29,
-        "name": "Plank with Arm Raise",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Abdominales", "Hombros"],
-        "estimatedDuration": 6
-      },
-      {
-        "id": 30,
-        "name": "Tijeras",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Abdominales", "Cardio"],
-        "estimatedDuration": 5
-      },
-      {
-        "id": 31,
-        "name": "Push-up",
-        "image": "",
-        "description": "",
-        "category": "TS",
-        "muscle_trained": ["Pectorales", "Tríceps"],
-        "estimatedDuration": 4
-      },
-      {
-        "id": 32,
-        "name": "Tríceps Dips",
-        "image": "",
-        "description": "",
-        "category": "TS",
-        "muscle_trained": ["Tríceps"],
-        "estimatedDuration": 3
-      },
-      {
-        "id": 33,
-        "name": "Burpees",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Todo el cuerpo"],
-        "estimatedDuration": 7
-      },
-      {
-        "id": 34,
-        "name": "Jumping Jacks",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Piernas", "Cardio"],
-        "estimatedDuration": 5
-      },
-      {
-        "id": 35,
-        "name": "Sprints",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Piernas", "Cardio"],
-        "estimatedDuration": 8
-      },
-      {
-        "id": 36,
-        "name": "Box Jumps",
-        "image": "",
-        "description": "",
-        "category": "CORE",
-        "muscle_trained": ["Piernas", "Cardio"],
-        "estimatedDuration": 6
-      }
-    ],
-  
-    "entrenadores": [
-      {
-        "id": "d9d4f047-8d75-4e87-9bcc-8d397c8a4ee2",
-        "forename": "Arnold",
-        "surname": "schwarzenegger",
-        "image": "https://e7.pngegg.com/pngimages/254/256/png-clipart-grayscale-graphy-of-arnold-schwarzenegger-arnold-movies-action-movies-thumbnail.png",
-        "email": "arnold@schwarze.com",
-        "phoneN": "+1234567890",
-        "nationality": "Australiano",
-        "dateOfBirth": "1965-07-20",
-        "dni": 24567890,
-        "gender": "Masculino",
-        "focusTr": "Entrenamiento de fuerza",
-        "description": "Especialista en entrenamiento de fuerza y acondicionamiento físico.",
-        "score": "4.5"
-      },
-      {
-        "id": "6de9a16d-61b0-46d4-9b5e-1db70a4a256a",
-        "forename": "Roberto",
-        "surname": "López",
-        "image": "https://img.freepik.com/fotos-premium/halterofilista-profissional-posando-no-ginasio-culturismo-classico_392761-1676.jpg",
-        "email": "roberto@example.com",
-        "phoneN": "+9876543210",
-        "nationality": "Mexicana",
-        "dateOfBirth": "1980-04-15",
-        "dni": 97654321,
-        "gender": "Masculino",
-        "focusTr": "Entrenamiento cardiovascular",
-        "description": "Especialista en entrenamiento cardiovascular y pérdida de peso.",
-        "score": "3.5"
-      },
-      {
-        "id": "4b5352b8-6209-42a4-91dd-03e62aaf7d79",
-        "forename": "María",
-        "surname": "García",
-        "image": "https://cdn2.salud180.com/sites/default/files/styles/4x3_medium/public/field/image/2015/04/entrenador_personal.jpg",
-        "email": "maria@example.com",
-        "phoneN": "+1122334455",
-        "nationality": "Española",
-        "dateOfBirth": "1983-11-28",
-        "dni": 12233445,
-        "gender": "Femenino",
-        "focusTr": "Entrenamiento funcional",
-        "description": "Especialista en entrenamiento funcional para mejorar la movilidad y la resistencia.",
-        "score": "3.5"
-      },
-      {
-        "id": "8e4628b7-c622-4f66-b40c-d9631b7e27cd",
-        "forename": "Javier",
-        "surname": "Martínez",
-        "image": "https://png.pngtree.com/thumb_back/fw800/background/20221130/pngtree-athletic-weightlifter-seated-on-a-gym-bench-lifting-dumbbells-with-sculpted-muscles-photo-image_42531402.jpg",
-        "email": "javier@example.com",
-        "phoneN": "+3344556677",
-        "nationality": "Chilena",
-        "dateOfBirth": "1978-09-10",
-        "dni": 34455667,
-        "gender": "Masculino",
-        "focusTr": "Entrenamiento deportivo",
-        "description": "Especialista en entrenamiento para atletas y deportistas de alto rendimiento.",
-        "score": "4.5"
-      },
-      {
-        "id": "24395d36-4001-45c0-89b8-79f1ccf2840f",
-        "forename": "Laura",
-        "surname": "Fernández",
-        "image": "https://hardcoretraining.com.br/img/files/ProductsImages/5f7e4ff86f3d8.jpg",
-        "email": "laura@example.com",
-        "phoneN": "+4455667788",
-        "nationality": "Colombiana",
-        "dateOfBirth": "1987-03-25",
-        "dni": 45566778,
-        "gender": "Femenino",
-        "focusTr": "Entrenamiento deportivo",
-        "description": "Especialista en entrenamiento funcional y desarrollo muscular.",
-        "score": "2.5"
-      },
-      {
-        "id": "06e3fcdc-79a7-47f8-9db1-6a0a1b78667c",
-        "forename": "Alejandro",
-        "surname": "Hernández",
-        "image": "https://hips.hearstapps.com/hmg-prod/images/man-doing-cross-training-workout-royalty-free-image-485112411-1543680552.jpg",
-        "email": "alejandro@example.com",
-        "phoneN": "+9988776655",
-        "nationality": "Peruano",
-        "dateOfBirth": "1982-12-08",
-        "dni": 98877665,
-        "gender": "Masculino",
-        "focusTr": "Entrenamiento de fuerza",
-        "description": "Especialista en desarrollo físico integral y acondicionamiento.",
-        "score": "3.5"
-      },
-      {
-        "id": "af8de69e-96ec-4147-84f2-6f43c5c87d7a",
-        "forename": "Isabel",
-        "surname": "Díaz",
-        "image": "https://blogscdn.thehut.net/app/uploads/sites/450/2021/03/shutterstock_426338140opt_hero_1614335863_1614778619.jpg",
-        "email": "isabel@example.com",
-        "phoneN": "+1122112233",
-        "nationality": "Uruguaya",
-        "dateOfBirth": "1986-06-15",
-        "dni": 12211223,
-        "gender": "Femenino",
-        "focusTr": "Entrenamiento cardiovascular",
-        "description": "Especialista en entrenamiento para mejorar resistencia y salud cardiovascular.",
-        "score": "4"
-      },
-      {
-        "id": "a0d099c0-76d5-4d2d-8745-b284c180f37c",
-        "forename": "Fernando",
-        "surname": "Rojas",
-        "image": "https://example.com/fernando.jpg",
-        "email": "fernando@example.com",
-        "phoneN": "+3344333222",
-        "nationality": "Ecuatoriano",
-        "dateOfBirth": "1984-02-18",
-        "dni": 34433322,
-        "gender": "Masculino",
-        "focusTr": "Entrenamiento funcional",
-        "description": "Especialista en mejorar la movilidad y resistencia funcional.",
-        "score": "0"
-      },
-      {
-        "id": "3f64cf3b-7403-4f89-9122-3eb97ad1444c",
-        "forename": "Julia",
-        "surname": "Soto",
-        "image": "https://example.com/julia.jpg",
-        "email": "julia@example.com",
-        "phoneN": "+5544332211",
-        "nationality": "Paraguaya",
-        "dateOfBirth": "1989-09-30",
-        "dni": 54433221,
-        "gender": "Femenino",
-        "focusTr": "Entrenamiento deportivo",
-        "description": "Especialista en entrenamiento para atletas de alto rendimiento.",
-        "score": "0"
-      },
-      {
-        "id": "c6c1e301-9156-4e4c-a3b3-7c8a5d4d4eae",
-        "forename": "Andrés",
-        "surname": "Mendoza",
-        "image": "https://example.com/andres.jpg",
-        "email": "andres@example.com",
-        "phoneN": "+6655443322",
-        "nationality": "Boliviano",
-        "dateOfBirth": "1981-11-12",
-        "dni": 65544332,
-        "gender": "Masculino",
-        "focusTr": "Entrenamiento de fuerza",
-        "description": "Especialista en desarrollo muscular y entrenamiento de resistencia.",
-        "score": "0"
-      },
-      {
-        "id": "09bc460b-8377-4d16-bc04-5e6a7a0fe6e5",
-        "forename": "Ana",
-        "surname": "Gutiérrez",
-        "image": "https://example.com/ana.jpg",
-        "email": "ana@example.com",
-        "phoneN": "+7788990011",
-        "nationality": "Venezolana",
-        "dateOfBirth": "1987-08-22",
-        "dni": 78899001,
-        "gender": "Femenino",
-        "focusTr": "Entrenamiento cardiovascular",
-        "description": "Especialista en entrenamiento para mejorar la salud cardiovascular.",
-        "score": "0"
-      },
-      {
-        "id": "3a6f8a22-2de3-4c7b-85d0-32c9bf946e0a",
-        "forename": "Ricardo",
-        "surname": "Silva",
-        "image": "https://example.com/ricardo.jpg",
-        "email": "ricardo@example.com",
-        "phoneN": "+2233445566",
-        "nationality": "Dominicano",
-        "dateOfBirth": "1983-05-14",
-        "dni": 23344556,
-        "gender": "Masculino",
-        "focusTr": "Entrenamiento funcional",
-        "description": "Especialista en entrenamiento funcional y resistencia muscular.",
-        "score": "0"
-      },
-      {
-        "id": "a3dfe995-2ce6-4c57-a90e-067a6b485a2c",
-        "forename": "Elena",
-        "surname": "Ramírez",
-        "image": "https://example.com/elena.jpg",
-        "email": "elena@example.com",
-        "phoneN": "+1122334455",
-        "nationality": "Costarricense",
-        "dateOfBirth": "1984-01-08",
-        "dni": 12233445,
-        "gender": "Femenino",
-        "focusTr": "Entrenamiento deportivo",
-        "description": "Especialista en entrenamiento para mejorar el rendimiento deportivo.",
-        "score": "0"
-      },
-      {
-        "id": "5a6e67c9-23a5-4fb5-a1da-9e97ad3d3a88",
-        "forename": "Gabriel",
-        "surname": "Ortega",
-        "image": "https://example.com/gabriel.jpg",
-        "email": "gabriel@example.com",
-        "phoneN": "+3344556677",
-        "nationality": "Panameño",
-        "dateOfBirth": "1982-06-20",
-        "dni": 34455667,
-        "gender": "Masculino",
-        "focusTr": "Entrenamiento de fuerza",
-        "description": "Especialista en desarrollo muscular y acondicionamiento físico.",
-        "score": "0"
-      }
-    ],
-  
-    "rutinas": [
-      {
-        "id": 1,
-        "exerc": [
-          {
-            "id": 5,
-            "name": "Zancadas",
-            "image": "",
-            "description": "",
-            "category": "TI",
-            "muscle_trained": ["Piernas", "Glúteos"],
-            "estimatedDuration": 7
-          },
-          {
-            "id": 7,
-            "name": "Hip Thrusts",
-            "image": "",
-            "description": "",
-            "category": "TI",
-            "muscle_trained": ["Glúteos", "Isquiotibiales"],
-            "estimatedDuration": 6
-          },
-          {
-            "id": 12,
-            "name": "Extensiones de cuádriceps",
-            "image": "",
-            "description": "",
-            "category": "TI",
-            "muscle_trained": ["Cuádriceps"],
-            "estimatedDuration": 4
-          },
-          {
-            "id": 20,
-            "name": "Plancha",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Abdominales", "Lumbares"],
-            "estimatedDuration": 3
-          }
-        ],
-        "totalDuration": "30m 0s",
-        "enfoque": "Entrenamiento deportivo",
-        "trainerId":4,
-        "precio":4500
-      },
-      {
-        "id": 2,
-        "exerc": [
-          {
-            "id": 1,
-            "name": "Sentadillas",
-            "image": "",
-            "description": "",
-            "category": "TI",
-            "muscle_trained": ["Cuádriceps", "Isquiotibiales", "Glúteos"],
-            "estimatedDuration": 5
-          },
-          {
-            "id": 4,
-            "name": "Extensiones de cuádriceps",
-            "image": "",
-            "description": "",
-            "category": "TI",
-            "muscle_trained": ["Cuádriceps"],
-            "estimatedDuration": 4
-          },
-          {
-            "id": 9,
-            "name": "Elevación de talones",
-            "image": "",
-            "description": "",
-            "category": "TI",
-            "muscle_trained": ["Gemelos"],
-            "estimatedDuration": 3
-          },
-          {
-            "id": 15,
-            "name": "Dominadas con agarre cerrado",
-            "image": "",
-            "description": "",
-            "category": "TS",
-            "muscle_trained": ["Bíceps", "Tríceps"],
-            "estimatedDuration": 7
-          }
-        ],
-        "totalDuration": "35m 0s",
-        "enfoque": "Entrenamiento funcional",
-        "trainerId":3,
-        "precio":3500
-  
-  
-      },
-      {
-        "id": 3,
-        "exerc": [
-          {
-            "id": 3,
-            "name": "Peso muerto",
-            "image": "",
-            "description": "",
-            "category": "TI",
-            "muscle_trained": ["Glúteos", "Isquiotibiales", "Espalda Baja"],
-            "estimatedDuration": 8
-          },
-          {
-            "id": 6,
-            "name": "Curl de piernas",
-            "image": "",
-            "description": "",
-            "category": "TI",
-            "muscle_trained": ["Isquiotibiales"],
-            "estimatedDuration": 5
-          },
-          {
-            "id": 10,
-            "name": "Peso muerto con una pierna",
-            "image": "",
-            "description": "",
-            "category": "TI",
-            "muscle_trained": ["Equilibrio", "Cadena Posterior"],
-            "estimatedDuration": 7
-          },
-          {
-            "id": 16,
-            "name": "Curl de bíceps",
-            "image": "",
-            "description": "",
-            "category": "TS",
-            "muscle_trained": ["Bíceps"],
-            "estimatedDuration": 4
-          }
-        ],
-        "totalDuration": "40m 0s",
-        "enfoque": "Entrenamiento cardiovascular",
-        "trainerId":5,
-        "precio":4400
-  
-      },
-      {
-        "id": 4,
-        "exerc": [
-          {
-            "id": 8,
-            "name": "Peso muerto sumo",
-            "image": "",
-            "description": "",
-            "category": "TI",
-            "muscle_trained": ["Glúteos", "Isquiotibiales"],
-            "estimatedDuration": 8
-          },
-          {
-            "id": 11,
-            "name": "Press de banca",
-            "image": "",
-            "description": "",
-            "category": "TS",
-            "muscle_trained": ["Pectorales", "Tríceps"],
-            "estimatedDuration": 6
-          },
-          {
-            "id": 14,
-            "name": "Press militar",
-            "image": "",
-            "description": "",
-            "category": "TS",
-            "muscle_trained": ["Hombros", "Tríceps"],
-            "estimatedDuration": 6
-          },
-          {
-            "id": 19,
-            "name": "Press inclinado con mancuernas",
-            "image": "",
-            "description": "",
-            "category": "TS",
-            "muscle_trained": ["Pecho"],
-            "estimatedDuration": 7
-          }
-        ],
-        "totalDuration": "45m 0s",
-        "enfoque": "Entrenamiento de fuerza",
-        "trainerId":1,
-        "precio":5000
-  
-      },
-      {
-        "id": 5,
-        "exerc": [
-          {
-            "id": 13,
-            "name": "Pull-ups",
-            "image": "",
-            "description": "",
-            "category": "TS",
-            "muscle_trained": ["Espalda", "Bíceps"],
-            "estimatedDuration": 7
-          },
-          {
-            "id": 17,
-            "name": "Tríceps en polea alta",
-            "image": "",
-            "description": "",
-            "category": "TS",
-            "muscle_trained": ["Tríceps"],
-            "estimatedDuration": 5
-          },
-          {
-            "id": 21,
-            "name": "Crunch",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Abdominales"],
-            "estimatedDuration": 4
-          },
-          {
-            "id": 26,
-            "name": "Hollow Body",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Abdominales"],
-            "estimatedDuration": 4
-          }
-        ],
-        "totalDuration": "32m 0s",
-        "enfoque": "Entrenamiento deportivo",
-        "trainerId":2,
-        "precio":2000
-  
-      },
-      {
-        "id": 6,
-        "exerc": [
-          {
-            "id": 18,
-            "name": "Pull-over con mancuerna",
-            "image": "",
-            "description": "",
-            "category": "TS",
-            "muscle_trained": ["Espalda", "Pecho"],
-            "estimatedDuration": 6
-          },
-          {
-            "id": 23,
-            "name": "Russian Twist",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Oblicuos"],
-            "estimatedDuration": 4
-          },
-          {
-            "id": 28,
-            "name": "Oblique Crunch",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Oblicuos"],
-            "estimatedDuration": 4
-          },
-          {
-            "id": 30,
-            "name": "Tijeras",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Abdominales", "Cardio"],
-            "estimatedDuration": 5
-          }
-        ],
-        "totalDuration": "38m 0s",
-        "enfoque": "Entrenamiento funcional",
-        "trainerId":7,
-        "precio":5000
-  
-      },
-      {
-        "id": 7,
-        "exerc": [
-          {
-            "id": 24,
-            "name": "Superman",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Espalda baja"],
-            "estimatedDuration": 3
-          },
-          {
-            "id": 29,
-            "name": "Plank with Arm Raise",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Abdominales", "Hombros"],
-            "estimatedDuration": 6
-          },
-          {
-            "id": 34,
-            "name": "Jumping Jacks",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Piernas", "Cardio"],
-            "estimatedDuration": 5
-          },
-          {
-            "id": 36,
-            "name": "Box Jumps",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Piernas", "Cardio"],
-            "estimatedDuration": 6
-          }
-        ],
-        "totalDuration": "42m 0s",
-        "enfoque": "Entrenamiento cardiovascular",
-        "trainerId":4,
-        "precio":2500
-  
-      },
-      {
-        "id": 8,
-        "exerc": [
-          {
-            "id": 30,
-            "name": "Tijeras",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Abdominales", "Cardio"],
-            "estimatedDuration": 5
-          },
-          {
-            "id": 35,
-            "name": "Sprints",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Piernas", "Cardio"],
-            "estimatedDuration": 8
-          },
-          {
-            "id": 40,
-            "name": "Burpees",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Todo el cuerpo"],
-            "estimatedDuration": 7
-          },
-          {
-            "id": 45,
-            "name": "Leg Raises",
-            "image": "",
-            "description": "",
-            "category": "CORE",
-            "muscle_trained": ["Abdominales", "Cadera"],
-            "estimatedDuration": 5
-          }
-        ],
-        "totalDuration": "28m 0s",
-        "enfoque": "Entrenamiento de fuerza",
-        "trainerId":2,
-        "precio":5100
-  
-      }
-    ]
-  }
-  
+  "clientes": [
+    {
+      "id": 1,
+      "forename": "Juan",
+      "surname": "González",
+      "image": "https://c0.klipartz.com/pngpicture/171/975/gratis-png-ilustracion-de-retrato-de-hombre-hombre-mirando-hacia-arriba-pensando-thumbnail.png",
+      "email": "juan@example.com",
+      "phoneN": "+1234567890",
+      "nationality": "Mexicana",
+      "dateOfBirth": "1990-05-15",
+      "gender": "Masculino",
+      "dni": 123456789,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 2,
+      "forename": "Ana",
+      "surname": "Martínez",
+      "image": "",
+      "email": "ana@example.com",
+      "phoneN": "+9876543210",
+      "nationality": "Española",
+      "dateOfBirth": "1988-08-22",
+      "gender": "Femenino",
+      "dni": 987654321,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 3,
+      "forename": "Pedro",
+      "surname": "López",
+      "image": "https://static.vecteezy.com/system/resources/thumbnails/007/421/470/small/handsome-cheerful-bearded-man-smiles-gladfully-dressed-in-casual-white-t-shirt-being-in-good-mood-poses-against-blue-background-with-copy-space-glad-european-guy-with-stubble-stands-indoor-free-photo.jpg",
+      "email": "pedro@example.com",
+      "phoneN": "+1112223333",
+      "nationality": "Argentina",
+      "dateOfBirth": "1985-04-30",
+      "gender": "Masculino",
+      "dni": 555444333,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 4,
+      "forename": "María",
+      "surname": "Fernández",
+      "image": "",
+      "email": "maria@example.com",
+      "phoneN": "+9998887777",
+      "nationality": "Chilena",
+      "dateOfBirth": "1982-11-12",
+      "gender": "Femenino",
+      "dni": 777666555,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 5,
+      "forename": "Carlos",
+      "surname": "Ramírez",
+      "image": "",
+      "email": "carlos@example.com",
+      "phoneN": "+3332221111",
+      "nationality": "Peruana",
+      "dateOfBirth": "1987-09-18",
+      "gender": "Masculino",
+      "dni": 888777666,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 6,
+      "forename": "Laura",
+      "surname": "Díaz",
+      "image": "",
+      "email": "laura@example.com",
+      "phoneN": "+4445556666",
+      "nationality": "Uruguaya",
+      "dateOfBirth": "1984-06-25",
+      "gender": "Femenino",
+      "dni": 666555444,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 7,
+      "forename": "Alejandro",
+      "surname": "Hernández",
+      "image": "",
+      "email": "alejandro@example.com",
+      "phoneN": "+7778889999",
+      "nationality": "Venezolana",
+      "dateOfBirth": "1983-03-08",
+      "gender": "Masculino",
+      "dni": 999888777,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 8,
+      "forename": "Sofía",
+      "surname": "Luna",
+      "image": "",
+      "email": "sofia@example.com",
+      "phoneN": "+1119992222",
+      "nationality": "Paraguaya",
+      "dateOfBirth": "1986-12-01",
+      "gender": "Femenino",
+      "dni": 222111999,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 9,
+      "forename": "Javier",
+      "surname": "Gómez",
+      "image": "",
+      "email": "javier@example.com",
+      "phoneN": "+5554443333",
+      "nationality": "Ecuatoriana",
+      "dateOfBirth": "1981-10-14",
+      "gender": "Masculino",
+      "dni": 444333222,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 10,
+      "forename": "Valentina",
+      "surname": "Pérez",
+      "image": "",
+      "email": "valentina@example.com",
+      "phoneN": "+9991112222",
+      "nationality": "Boliviana",
+      "dateOfBirth": "1989-07-17",
+      "gender": "Femenino",
+      "dni": 111222999,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 11,
+      "forename": "Ricardo",
+      "surname": "Silva",
+      "image": "",
+      "email": "ricardo@example.com",
+      "phoneN": "+6667778888",
+      "nationality": "Costarricense",
+      "dateOfBirth": "1980-02-03",
+      "gender": "Masculino",
+      "dni": 777888666,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 12,
+      "forename": "Isabel",
+      "surname": "Olivares",
+      "image": "",
+      "email": "isabel@example.com",
+      "phoneN": "+3334445555",
+      "nationality": "Panameña",
+      "dateOfBirth": "1983-05-20",
+      "gender": "Femenino",
+      "dni": 444555333,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 13,
+      "forename": "Martín",
+      "surname": "Mendoza",
+      "image": "",
+      "email": "martin@example.com",
+      "phoneN": "+2223334444",
+      "nationality": "Nicaragüense",
+      "dateOfBirth": "1987-09-18",
+      "gender": "Masculino",
+      "dni": 333444222,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 14,
+      "forename": "Elena",
+      "surname": "Ortega",
+      "image": "",
+      "email": "elena@example.com",
+      "phoneN": "+4445556666",
+      "nationality": "Hondureña",
+      "dateOfBirth": "1984-06-25",
+      "gender": "Femenino",
+      "dni": 555666444,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 15,
+      "forename": "Gabriel",
+      "surname": "Santos",
+      "image": "",
+      "email": "gabriel@example.com",
+      "phoneN": "+5556667777",
+      "nationality": "Salvadoreña",
+      "dateOfBirth": "1982-11-12",
+      "gender": "Masculino",
+      "dni": 666777555,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 16,
+      "forename": "Camila",
+      "surname": "García",
+      "image": "",
+      "email": "camila@example.com",
+      "phoneN": "+8889990000",
+      "nationality": "Guatemalteca",
+      "dateOfBirth": "1985-04-30",
+      "gender": "Femenino",
+      "dni": 999000888,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 17,
+      "forename": "Luis",
+      "surname": "Rojas",
+      "image": "",
+      "email": "luis@example.com",
+      "phoneN": "+1112223333",
+      "nationality": "Puertorriqueña",
+      "dateOfBirth": "1988-08-22",
+      "gender": "Masculino",
+      "dni": 222333111,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 18,
+      "forename": "Carolina",
+      "surname": "Navarro",
+      "image": "",
+      "email": "carolina@example.com",
+      "phoneN": "+9998887777",
+      "nationality": "Dominicana",
+      "dateOfBirth": "1981-10-14",
+      "gender": "Femenino",
+      "dni": 888777999,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 19,
+      "forename": "Diego",
+      "surname": "Moreno",
+      "image": "",
+      "email": "diego@example.com",
+      "phoneN": "+3332221111",
+      "nationality": "Cubana",
+      "dateOfBirth": "1986-12-01",
+      "gender": "Masculino",
+      "dni": 111222333,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 20,
+      "forename": "Gabriela",
+      "surname": "Jiménez",
+      "image": "",
+      "email": "gabriela@example.com",
+      "phoneN": "+5554443333",
+      "nationality": "Estadounidense",
+      "dateOfBirth": "1989-07-17",
+      "gender": "Femenino",
+      "dni": 444333555,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 21,
+      "forename": "Oscar",
+      "surname": "Molina",
+      "image": "",
+      "email": "oscar@example.com",
+      "phoneN": "+6667778888",
+      "nationality": "Canadiense",
+      "dateOfBirth": "1980-02-03",
+      "gender": "Masculino",
+      "dni": 777888666,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 22,
+      "forename": "Adriana",
+      "surname": "Pinto",
+      "image": "",
+      "email": "adriana@example.com",
+      "phoneN": "+3334445555",
+      "nationality": "Brasileña",
+      "dateOfBirth": "1983-05-20",
+      "gender": "Femenino",
+      "dni": 444555333,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 23,
+      "forename": "Fernando",
+      "surname": "Ríos",
+      "image": "",
+      "email": "fernando@example.com",
+      "phoneN": "+2223334444",
+      "nationality": "Portuguesa",
+      "dateOfBirth": "1987-09-18",
+      "gender": "Masculino",
+      "dni": 333444222,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    },
+    {
+      "id": 24,
+      "forename": "Lucía",
+      "surname": "Castillo",
+      "image": "",
+      "email": "lucia@example.com",
+      "phoneN": "+4445556666",
+      "nationality": "Italiana",
+      "dateOfBirth": "1984-06-25",
+      "gender": "Femenino",
+      "dni": 555666444,
+      "backup": "",
+      "blocks": "",
+      "role": "Cliente"
+    }
+  ],
+
+  "ejercicios": [
+    {
+      "id": 1,
+      "name": "Sentadillas",
+      "image": "",
+      "description": "",
+      "category": "TI",
+      "muscle_trained": ["Cuádriceps", "Isquiotibiales", "Glúteos"],
+      "estimatedDuration": 5
+    },
+    {
+      "id": 2,
+      "name": "Prensa de piernas",
+      "image": "",
+      "description": "",
+      "category": "TI",
+      "muscle_trained": ["Cuádriceps", "Isquiotibiales", "Glúteos"],
+      "estimatedDuration": 6
+    },
+    {
+      "id": 3,
+      "name": "Peso muerto",
+      "image": "",
+      "description": "",
+      "category": "TI",
+      "muscle_trained": ["Glúteos", "Isquiotibiales", "Espalda Baja"],
+      "estimatedDuration": 8
+    },
+    {
+      "id": 4,
+      "name": "Extensiones de cuádriceps",
+      "image": "",
+      "description": "",
+      "category": "TI",
+      "muscle_trained": ["Cuádriceps"],
+      "estimatedDuration": 4
+    },
+    {
+      "id": 5,
+      "name": "Zancadas",
+      "image": "",
+      "description": "",
+      "category": "TI",
+      "muscle_trained": ["Piernas", "Glúteos"],
+      "estimatedDuration": 7
+    },
+    {
+      "id": 6,
+      "name": "Curl de piernas",
+      "image": "",
+      "description": "",
+      "category": "TI",
+      "muscle_trained": ["Isquiotibiales"],
+      "estimatedDuration": 5
+    },
+    {
+      "id": 7,
+      "name": "Hip Thrusts",
+      "image": "",
+      "description": "",
+      "category": "TI",
+      "muscle_trained": ["Glúteos", "Isquiotibiales"],
+      "estimatedDuration": 6
+    },
+    {
+      "id": 8,
+      "name": "Peso muerto sumo",
+      "image": "",
+      "description": "",
+      "category": "TI",
+      "muscle_trained": ["Glúteos", "Isquiotibiales"],
+      "estimatedDuration": 8
+    },
+    {
+      "id": 9,
+      "name": "Elevación de talones",
+      "image": "",
+      "description": "",
+      "category": "TI",
+      "muscle_trained": ["Gemelos"],
+      "estimatedDuration": 3
+    },
+    {
+      "id": 10,
+      "name": "Peso muerto con una pierna",
+      "image": "",
+      "description": "",
+      "category": "TI",
+      "muscle_trained": ["Equilibrio", "Cadena Posterior"],
+      "estimatedDuration": 7
+    },
+    {
+      "id": 11,
+      "name": "Press de banca",
+      "image": "",
+      "description": "",
+      "category": "TS",
+      "muscle_trained": ["Pectorales", "Tríceps"],
+      "estimatedDuration": 6
+    },
+    {
+      "id": 12,
+      "name": "Fondos en paralelas",
+      "image": "",
+      "description": "",
+      "category": "TS",
+      "muscle_trained": ["Tríceps", "Pecho"],
+      "estimatedDuration": 5
+    },
+    {
+      "id": 13,
+      "name": "Pull-ups",
+      "image": "",
+      "description": "",
+      "category": "TS",
+      "muscle_trained": ["Espalda", "Bíceps"],
+      "estimatedDuration": 7
+    },
+    {
+      "id": 14,
+      "name": "Press militar",
+      "image": "",
+      "description": "",
+      "category": "TS",
+      "muscle_trained": ["Hombros", "Tríceps"],
+      "estimatedDuration": 6
+    },
+    {
+      "id": 15,
+      "name": "Dominadas con agarre cerrado",
+      "image": "",
+      "description": "",
+      "category": "TS",
+      "muscle_trained": ["Bíceps", "Tríceps"],
+      "estimatedDuration": 7
+    },
+    {
+      "id": 16,
+      "name": "Curl de bíceps",
+      "image": "",
+      "description": "",
+      "category": "TS",
+      "muscle_trained": ["Bíceps"],
+      "estimatedDuration": 4
+    },
+    {
+      "id": 17,
+      "name": "Tríceps en polea alta",
+      "image": "",
+      "description": "",
+      "category": "TS",
+      "muscle_trained": ["Tríceps"],
+      "estimatedDuration": 5
+    },
+    {
+      "id": 18,
+      "name": "Pull-over con mancuerna",
+      "image": "",
+      "description": "",
+      "category": "TS",
+      "muscle_trained": ["Espalda", "Pecho"],
+      "estimatedDuration": 6
+    },
+    {
+      "id": 19,
+      "name": "Press inclinado con mancuernas",
+      "image": "",
+      "description": "",
+      "category": "TS",
+      "muscle_trained": ["Pecho"],
+      "estimatedDuration": 7
+    },
+    {
+      "id": 20,
+      "name": "Plancha",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Abdominales", "Lumbares"],
+      "estimatedDuration": 3
+    },
+    {
+      "id": 21,
+      "name": "Crunch",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Abdominales"],
+      "estimatedDuration": 4
+    },
+    {
+      "id": 22,
+      "name": "Mountain Climbers",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Abdominales", "Cardio"],
+      "estimatedDuration": 5
+    },
+    {
+      "id": 23,
+      "name": "Russian Twist",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Oblicuos"],
+      "estimatedDuration": 4
+    },
+    {
+      "id": 24,
+      "name": "Superman",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Espalda baja"],
+      "estimatedDuration": 3
+    },
+    {
+      "id": 25,
+      "name": "Elevación de piernas",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Abdominales", "Cadera"],
+      "estimatedDuration": 5
+    },
+    {
+      "id": 26,
+      "name": "Hollow Body",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Abdominales"],
+      "estimatedDuration": 4
+    },
+    {
+      "id": 27,
+      "name": "Leg Raises",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Abdominales", "Cadera"],
+      "estimatedDuration": 5
+    },
+    {
+      "id": 28,
+      "name": "Oblique Crunch",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Oblicuos"],
+      "estimatedDuration": 4
+    },
+    {
+      "id": 29,
+      "name": "Plank with Arm Raise",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Abdominales", "Hombros"],
+      "estimatedDuration": 6
+    },
+    {
+      "id": 30,
+      "name": "Tijeras",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Abdominales", "Cardio"],
+      "estimatedDuration": 5
+    },
+    {
+      "id": 31,
+      "name": "Push-up",
+      "image": "",
+      "description": "",
+      "category": "TS",
+      "muscle_trained": ["Pectorales", "Tríceps"],
+      "estimatedDuration": 4
+    },
+    {
+      "id": 32,
+      "name": "Tríceps Dips",
+      "image": "",
+      "description": "",
+      "category": "TS",
+      "muscle_trained": ["Tríceps"],
+      "estimatedDuration": 3
+    },
+    {
+      "id": 33,
+      "name": "Burpees",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Todo el cuerpo"],
+      "estimatedDuration": 7
+    },
+    {
+      "id": 34,
+      "name": "Jumping Jacks",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Piernas", "Cardio"],
+      "estimatedDuration": 5
+    },
+    {
+      "id": 35,
+      "name": "Sprints",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Piernas", "Cardio"],
+      "estimatedDuration": 8
+    },
+    {
+      "id": 36,
+      "name": "Box Jumps",
+      "image": "",
+      "description": "",
+      "category": "CORE",
+      "muscle_trained": ["Piernas", "Cardio"],
+      "estimatedDuration": 6
+    }
+  ],
+
+  "entrenadores": [
+    {
+      "id": "d9d4f047-8d75-4e87-9bcc-8d397c8a4ee2",
+      "forename": "Arnold",
+      "surname": "Schwarzenegger",
+      "image": "https://e7.pngegg.com/pngimages/254/256/png-clipart-grayscale-graphy-of-arnold-schwarzenegger-arnold-movies-action-movies-thumbnail.png",
+      "email": "arnold@schwarze.com",
+      "phoneN": "+1234567890",
+      "nationality": "Australiano",
+      "dateOfBirth": "1965-07-20",
+      "dni": 24567890,
+      "gender": "Masculino",
+      "focusTr": "Entrenamiento de fuerza",
+      "description": "Especialista en entrenamiento de fuerza y acondicionamiento físico.",
+
+      "puntuaciones": ["4.5", "4.0", "5.0", "4.5"]
+    },
+    {
+      "id": "6de9a16d-61b0-46d4-9b5e-1db70a4a256a",
+      "forename": "Roberto",
+      "surname": "López",
+      "image": "https://img.freepik.com/fotos-premium/halterofilista-profissional-posando-no-ginasio-culturismo-classico_392761-1676.jpg",
+      "email": "roberto@example.com",
+      "phoneN": "+9876543210",
+      "nationality": "Mexicana",
+      "dateOfBirth": "1980-04-15",
+      "dni": 97654321,
+      "gender": "Masculino",
+      "focusTr": "Entrenamiento cardiovascular",
+      "description": "Especialista en entrenamiento cardiovascular y pérdida de peso.",
+      "puntuaciones": ["3.5", "3.0", "4.0", "3.5"]
+    },
+    {
+      "id": "4b5352b8-6209-42a4-91dd-03e62aaf7d79",
+      "forename": "María",
+      "surname": "García",
+      "image": "https://cdn2.salud180.com/sites/default/files/styles/4x3_medium/public/field/image/2015/04/entrenador_personal.jpg",
+      "email": "maria@example.com",
+      "phoneN": "+1122334455",
+      "nationality": "Española",
+      "dateOfBirth": "1983-11-28",
+      "dni": 12233445,
+      "gender": "Femenino",
+      "focusTr": "Entrenamiento funcional",
+      "description": "Especialista en entrenamiento funcional para mejorar la movilidad y la resistencia.",
+      "puntuaciones": ["3.5", "3.0", "4.0", "3.5"]
+    },
+    {
+      "id": "8e4628b7-c622-4f66-b40c-d9631b7e27cd",
+      "forename": "Javier",
+      "surname": "Martínez",
+      "image": "https://png.pngtree.com/thumb_back/fw800/background/20221130/pngtree-athletic-weightlifter-seated-on-a-gym-bench-lifting-dumbbells-with-sculpted-muscles-photo-image_42531402.jpg",
+      "email": "javier@example.com",
+      "phoneN": "+3344556677",
+      "nationality": "Chilena",
+      "dateOfBirth": "1978-09-10",
+      "dni": 34455667,
+      "gender": "Masculino",
+      "focusTr": "Entrenamiento deportivo",
+      "description": "Especialista en entrenamiento para atletas y deportistas de alto rendimiento.",
+      "puntuaciones": ["4.5", "4.0", "5.0", "4.5"]
+    },
+    {
+      "id": "24395d36-4001-45c0-89b8-79f1ccf2840f",
+      "forename": "Laura",
+      "surname": "Fernández",
+      "image": "https://hardcoretraining.com.br/img/files/ProductsImages/5f7e4ff86f3d8.jpg",
+      "email": "laura@example.com",
+      "phoneN": "+4455667788",
+      "nationality": "Colombiana",
+      "dateOfBirth": "1987-03-25",
+      "dni": 45566778,
+      "gender": "Femenino",
+      "focusTr": "Entrenamiento deportivo",
+      "description": "Especialista en entrenamiento funcional y desarrollo muscular.",
+      "puntuaciones": ["2.5", "2.0", "3.0", "2.5"]
+    },
+    {
+      "id": "06e3fcdc-79a7-47f8-9db1-6a0a1b78667c",
+      "forename": "Alejandro",
+      "surname": "Hernández",
+      "image": "https://hips.hearstapps.com/hmg-prod/images/man-doing-cross-training-workout-royalty-free-image-485112411-1543680552.jpg",
+      "email": "alejandro@example.com",
+      "phoneN": "+9988776655",
+      "nationality": "Peruano",
+      "dateOfBirth": "1982-12-08",
+      "dni": 98877665,
+      "gender": "Masculino",
+      "focusTr": "Entrenamiento de fuerza",
+      "description": "Especialista en desarrollo físico integral y acondicionamiento.",
+      "puntuaciones": ["3.5", "3.0", "4.0", "3.5"]
+    },
+    {
+      "id": "af8de69e-96ec-4147-84f2-6f43c5c87d7a",
+      "forename": "Isabel",
+      "surname": "Díaz",
+      "image": "https://blogscdn.thehut.net/app/uploads/sites/450/2021/03/shutterstock_426338140opt_hero_1614335863_1614778619.jpg",
+      "email": "isabel@example.com",
+      "phoneN": "+1122112233",
+      "nationality": "Uruguaya",
+      "dateOfBirth": "1986-06-15",
+      "dni": 12211223,
+      "gender": "Femenino",
+      "focusTr": "Entrenamiento cardiovascular",
+      "description": "Especialista en entrenamiento para mejorar resistencia y salud cardiovascular.",
+      "puntuaciones": ["4.0", "4.0", "4.0", "4.0"]
+    },
+    {
+      "id": "a0d099c0-76d5-4d2d-8745-b284c180f37c",
+      "forename": "Fernando",
+      "surname": "Rojas",
+      "image": "https://example.com/fernando.jpg",
+      "email": "fernando@example.com",
+      "phoneN": "+3344333222",
+      "nationality": "Ecuatoriano",
+      "dateOfBirth": "1984-02-18",
+      "dni": 34433322,
+      "gender": "Masculino",
+      "focusTr": "Entrenamiento funcional",
+      "description": "Especialista en mejorar la movilidad y resistencia funcional.",
+      "puntuaciones": ["0", "0", "0", "0"]
+    },
+    {
+      "id": "3f64cf3b-7403-4f89-9122-3eb97ad1444c",
+      "forename": "Julia",
+      "surname": "Soto",
+      "image": "https://example.com/julia.jpg",
+      "email": "julia@example.com",
+      "phoneN": "+5544332211",
+      "nationality": "Paraguaya",
+      "dateOfBirth": "1989-09-30",
+      "dni": 54433221,
+      "gender": "Femenino",
+      "focusTr": "Entrenamiento deportivo",
+      "description": "Especialista en entrenamiento para atletas de alto rendimiento.",
+      "puntuaciones": ["0", "0", "0", "0"]
+    },
+    {
+      "id": "c6c1e301-9156-4e4c-a3b3-7c8a5d4d4eae",
+      "forename": "Andrés",
+      "surname": "Mendoza",
+      "image": "https://example.com/andres.jpg",
+      "email": "andres@example.com",
+      "phoneN": "+6655443322",
+      "nationality": "Boliviano",
+      "dateOfBirth": "1981-11-12",
+      "dni": 65544332,
+      "gender": "Masculino",
+      "focusTr": "Entrenamiento de fuerza",
+      "description": "Especialista en desarrollo muscular y entrenamiento de resistencia.",
+      "puntuaciones": ["0", "0", "0", "0"]
+    },
+    {
+      "id": "09bc460b-8377-4d16-bc04-5e6a7a0fe6e5",
+      "forename": "Ana",
+      "surname": "Gutiérrez",
+      "image": "https://example.com/ana.jpg",
+      "email": "ana@example.com",
+      "phoneN": "+7788990011",
+      "nationality": "Venezolana",
+      "dateOfBirth": "1987-08-22",
+      "dni": 78899001,
+      "gender": "Femenino",
+      "focusTr": "Entrenamiento cardiovascular",
+      "description": "Especialista en entrenamiento para mejorar la salud cardiovascular.",
+      "puntuaciones": ["0", "0", "0", "0"]
+    },
+    {
+      "id": "3a6f8a22-2de3-4c7b-85d0-32c9bf946e0a",
+      "forename": "Ricardo",
+      "surname": "Silva",
+      "image": "https://example.com/ricardo.jpg",
+      "email": "ricardo@example.com",
+      "phoneN": "+2233445566",
+      "nationality": "Dominicano",
+      "dateOfBirth": "1983-05-14",
+      "dni": 23344556,
+      "gender": "Masculino",
+      "focusTr": "Entrenamiento funcional",
+      "description": "Especialista en entrenamiento funcional y resistencia muscular.",
+
+      "puntuaciones": ["0", "0", "0", "0"]
+    },
+    {
+      "id": "a3dfe995-2ce6-4c57-a90e-067a6b485a2c",
+      "forename": "Elena",
+      "surname": "Ramírez",
+      "image": "https://example.com/elena.jpg",
+      "email": "elena@example.com",
+      "phoneN": "+1122334455",
+      "nationality": "Costarricense",
+      "dateOfBirth": "1984-01-08",
+      "dni": 12233445,
+      "gender": "Femenino",
+      "focusTr": "Entrenamiento deportivo",
+      "description": "Especialista en entrenamiento para mejorar el rendimiento deportivo.",
+
+      "puntuaciones": ["0", "0", "0", "0"]
+    },
+    {
+      "id": "5a6e67c9-23a5-4fb5-a1da-9e97ad3d3a88",
+      "forename": "Gabriel",
+      "surname": "Ortega",
+      "image": "https://example.com/gabriel.jpg",
+      "email": "gabriel@example.com",
+      "phoneN": "+3344556677",
+      "nationality": "Panameño",
+      "dateOfBirth": "1982-06-20",
+      "dni": 34455667,
+      "gender": "Masculino",
+      "focusTr": "Entrenamiento de fuerza",
+      "description": "Especialista en desarrollo muscular y acondicionamiento físico.",
+
+      "puntuaciones": ["0", "0", "0", "0"]
+    }
+  ],
+
+  "rutinas": [
+    {
+      "id": 1,
+      "exerc": [
+        {
+          "id": 5,
+          "name": "Zancadas",
+          "image": "",
+          "description": "",
+          "category": "TI",
+          "muscle_trained": ["Piernas", "Glúteos"],
+          "estimatedDuration": 7
+        },
+        {
+          "id": 7,
+          "name": "Hip Thrusts",
+          "image": "",
+          "description": "",
+          "category": "TI",
+          "muscle_trained": ["Glúteos", "Isquiotibiales"],
+          "estimatedDuration": 6
+        },
+        {
+          "id": 12,
+          "name": "Extensiones de cuádriceps",
+          "image": "",
+          "description": "",
+          "category": "TI",
+          "muscle_trained": ["Cuádriceps"],
+          "estimatedDuration": 4
+        },
+        {
+          "id": 20,
+          "name": "Plancha",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Abdominales", "Lumbares"],
+          "estimatedDuration": 3
+        }
+      ],
+      "totalDuration": "30m 0s",
+      "enfoque": "Entrenamiento deportivo",
+      "image": "https://i.blogs.es/ef31bb/istock-1008357886/450_1000.webp",
+      "trainerId": 4,
+      "precio": 4500
+    },
+    {
+      "id": 2,
+      "exerc": [
+        {
+          "id": 1,
+          "name": "Sentadillas",
+          "image": "",
+          "description": "",
+          "category": "TI",
+          "muscle_trained": ["Cuádriceps", "Isquiotibiales", "Glúteos"],
+          "estimatedDuration": 5
+        },
+        {
+          "id": 4,
+          "name": "Extensiones de cuádriceps",
+          "image": "",
+          "description": "",
+          "category": "TI",
+          "muscle_trained": ["Cuádriceps"],
+          "estimatedDuration": 4
+        },
+        {
+          "id": 9,
+          "name": "Elevación de talones",
+          "image": "",
+          "description": "",
+          "category": "TI",
+          "muscle_trained": ["Gemelos"],
+          "estimatedDuration": 3
+        },
+        {
+          "id": 15,
+          "name": "Dominadas con agarre cerrado",
+          "image": "",
+          "description": "",
+          "category": "TS",
+          "muscle_trained": ["Bíceps", "Tríceps"],
+          "estimatedDuration": 7
+        }
+      ],
+      "totalDuration": "35m 0s",
+      "enfoque": "Entrenamiento funcional",
+      "image": "https://media.istockphoto.com/id/1320143958/photo/shot-of-a-young-man-working-out-with-battle-ropes-at-the-gym.webp?b=1&s=170667a&w=0&k=20&c=mSt-FxA6664D-oI_Pqsto3ONJYEvbpzRm29UUY0CDIA=",
+      "trainerId": 3,
+      "precio": 3500
+    },
+    {
+      "id": 3,
+      "exerc": [
+        {
+          "id": 3,
+          "name": "Peso muerto",
+          "image": "",
+          "description": "",
+          "category": "TI",
+          "muscle_trained": ["Glúteos", "Isquiotibiales", "Espalda Baja"],
+          "estimatedDuration": 8
+        },
+        {
+          "id": 6,
+          "name": "Curl de piernas",
+          "image": "",
+          "description": "",
+          "category": "TI",
+          "muscle_trained": ["Isquiotibiales"],
+          "estimatedDuration": 5
+        },
+        {
+          "id": 10,
+          "name": "Peso muerto con una pierna",
+          "image": "",
+          "description": "",
+          "category": "TI",
+          "muscle_trained": ["Equilibrio", "Cadena Posterior"],
+          "estimatedDuration": 7
+        },
+        {
+          "id": 16,
+          "name": "Curl de bíceps",
+          "image": "",
+          "description": "",
+          "category": "TS",
+          "muscle_trained": ["Bíceps"],
+          "estimatedDuration": 4
+        }
+      ],
+      "totalDuration": "40m 0s",
+      "enfoque": "Entrenamiento cardiovascular",
+      "image": "https://www.eluniverso.com/resizer/IpJHfUCkLlQOp1PNoyZ52kRd1nU=/arc-anglerfish-arc2-prod-eluniverso/public/SERD5BO3YZHD3NWXADAV24MEN4.jpeg",
+
+      "trainerId": 5,
+      "precio": 4400
+    },
+    {
+      "id": 4,
+      "exerc": [
+        {
+          "id": 8,
+          "name": "Peso muerto sumo",
+          "image": "",
+          "description": "",
+          "category": "TI",
+          "muscle_trained": ["Glúteos", "Isquiotibiales"],
+          "estimatedDuration": 8
+        },
+        {
+          "id": 11,
+          "name": "Press de banca",
+          "image": "",
+          "description": "",
+          "category": "TS",
+          "muscle_trained": ["Pectorales", "Tríceps"],
+          "estimatedDuration": 6
+        },
+        {
+          "id": 14,
+          "name": "Press militar",
+          "image": "",
+          "description": "",
+          "category": "TS",
+          "muscle_trained": ["Hombros", "Tríceps"],
+          "estimatedDuration": 6
+        },
+        {
+          "id": 19,
+          "name": "Press inclinado con mancuernas",
+          "image": "",
+          "description": "",
+          "category": "TS",
+          "muscle_trained": ["Pecho"],
+          "estimatedDuration": 7
+        }
+      ],
+      "totalDuration": "45m 0s",
+      "enfoque": "Entrenamiento de fuerza",
+      "image": "https://www.centuryfitness.es/wp-content/uploads/2021/09/muscle-g418ad20c7_1920-1030x687.jpg",
+      "trainerId": 1,
+      "precio": 5000
+    },
+    {
+      "id": 5,
+      "exerc": [
+        {
+          "id": 13,
+          "name": "Pull-ups",
+          "image": "",
+          "description": "",
+          "category": "TS",
+          "muscle_trained": ["Espalda", "Bíceps"],
+          "estimatedDuration": 7
+        },
+        {
+          "id": 17,
+          "name": "Tríceps en polea alta",
+          "image": "",
+          "description": "",
+          "category": "TS",
+          "muscle_trained": ["Tríceps"],
+          "estimatedDuration": 5
+        },
+        {
+          "id": 21,
+          "name": "Crunch",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Abdominales"],
+          "estimatedDuration": 4
+        },
+        {
+          "id": 26,
+          "name": "Hollow Body",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Abdominales"],
+          "estimatedDuration": 4
+        }
+      ],
+      "totalDuration": "32m 0s",
+      "enfoque": "Entrenamiento deportivo",
+      "image": "https://i.blogs.es/ef31bb/istock-1008357886/450_1000.webp",
+      "trainerId": 2,
+      "precio": 2000
+    },
+    {
+      "id": 6,
+      "exerc": [
+        {
+          "id": 18,
+          "name": "Pull-over con mancuerna",
+          "image": "",
+          "description": "",
+          "category": "TS",
+          "muscle_trained": ["Espalda", "Pecho"],
+          "estimatedDuration": 6
+        },
+        {
+          "id": 23,
+          "name": "Russian Twist",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Oblicuos"],
+          "estimatedDuration": 4
+        },
+        {
+          "id": 28,
+          "name": "Oblique Crunch",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Oblicuos"],
+          "estimatedDuration": 4
+        },
+        {
+          "id": 30,
+          "name": "Tijeras",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Abdominales", "Cardio"],
+          "estimatedDuration": 5
+        }
+      ],
+      "totalDuration": "38m 0s",
+      "enfoque": "Entrenamiento funcional",
+      "image": "https://media.istockphoto.com/id/1320143958/photo/shot-of-a-young-man-working-out-with-battle-ropes-at-the-gym.webp?b=1&s=170667a&w=0&k=20&c=mSt-FxA6664D-oI_Pqsto3ONJYEvbpzRm29UUY0CDIA=",
+      "trainerId": 7,
+      "precio": 5000
+    },
+    {
+      "id": 7,
+      "exerc": [
+        {
+          "id": 24,
+          "name": "Superman",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Espalda baja"],
+          "estimatedDuration": 3
+        },
+        {
+          "id": 29,
+          "name": "Plank with Arm Raise",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Abdominales", "Hombros"],
+          "estimatedDuration": 6
+        },
+        {
+          "id": 34,
+          "name": "Jumping Jacks",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Piernas", "Cardio"],
+          "estimatedDuration": 5
+        },
+        {
+          "id": 36,
+          "name": "Box Jumps",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Piernas", "Cardio"],
+          "estimatedDuration": 6
+        }
+      ],
+      "totalDuration": "42m 0s",
+      "enfoque": "Entrenamiento cardiovascular",
+      "image": "https://www.eluniverso.com/resizer/IpJHfUCkLlQOp1PNoyZ52kRd1nU=/arc-anglerfish-arc2-prod-eluniverso/public/SERD5BO3YZHD3NWXADAV24MEN4.jpeg",
+      "trainerId": 4,
+      "precio": 2500
+    },
+    {
+      "id": 8,
+      "exerc": [
+        {
+          "id": 30,
+          "name": "Tijeras",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Abdominales", "Cardio"],
+          "estimatedDuration": 5
+        },
+        {
+          "id": 35,
+          "name": "Sprints",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Piernas", "Cardio"],
+          "estimatedDuration": 8
+        },
+        {
+          "id": 40,
+          "name": "Burpees",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Todo el cuerpo"],
+          "estimatedDuration": 7
+        },
+        {
+          "id": 45,
+          "name": "Leg Raises",
+          "image": "",
+          "description": "",
+          "category": "CORE",
+          "muscle_trained": ["Abdominales", "Cadera"],
+          "estimatedDuration": 5
+        }
+      ],
+      "totalDuration": "28m 0s",
+      "enfoque": "Entrenamiento de fuerza",
+      "image": "https://www.centuryfitness.es/wp-content/uploads/2021/09/muscle-g418ad20c7_1920-1030x687.jpg",
+
+      "trainerId": 2,
+      "precio": 5100
+    }
+  ]
+}

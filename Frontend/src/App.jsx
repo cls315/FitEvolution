@@ -9,11 +9,15 @@ import DashboardTrainer from './views/DashboardTrainer/DashboardTrainer';
 import Homeusuario from './views/HomeUsuario/homeusuario';
 import Detail from './views/TeacherDetail/detail';
 import ForgotPassword from './views/ForgotPassword/forgotPassword';
+import SessionAdmin from './views/SessionAdmin/SessionAdmin';
+import Admin from './views/Admin/Admin'
+import CreateExercise from './components/createExercise/CreateExercise';
 //Commons imports
 import { Route, Routes, useLocation } from 'react-router-dom';
 
 //Styles
 import './App.css'
+
 
 
 function App() {
@@ -61,6 +65,18 @@ function App() {
         <Route
         path='/forgot_Password'
         element={<ForgotPassword/>}
+        />
+         <Route
+        path='/sessionadm'
+        element={<SessionAdmin/>}
+        />
+         <Route
+        path='/adm'
+        element={<Admin/>}
+        />
+           <Route
+        path='/createEj'
+        element={<CreateExercise/>}
         />
       </Routes>
     </>
