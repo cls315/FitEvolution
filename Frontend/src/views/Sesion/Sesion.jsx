@@ -99,6 +99,7 @@ const FormSesion = (props) => {
     //inicio de sesion con email,valida si existe el usuario pero no crea ninguno
 
     const handleSubmit = async (e) => {
+        e.preventDefault()
         //  navigate('/homeusuario')
         //  navigate('/dashboardtr')
             const checkErr = validate(form)

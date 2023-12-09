@@ -33,7 +33,7 @@ function SearchBar(props) {
         </button>
 
         <Link
-          class='navbar-brand'
+          className='navbar-brand'
           to={'/'}>
           <img
             src={imagelogo}
@@ -42,10 +42,10 @@ function SearchBar(props) {
         </Link>
 
         <div
-          class='collapse navbar-collapse'
+          className='collapse navbar-collapse'
           id='navbarTogglerDemo03'>
-          <ul class='navbar-nav mr-auto mt-2 mt-lg-0'>
-            <li class='nav-item'>
+          <ul className='navbar-nav mr-auto mt-2 mt-lg-0'>
+            <li className='nav-item'>
               <button className='bt-nav-landing'>
                 <Link
                   className={`nav-link  ${isActive ? 'text-warning' : ''}`}
@@ -55,7 +55,7 @@ function SearchBar(props) {
               </button>
             </li>
 
-            <li class='nav-item'>
+            <li className='nav-item'>
               <button className='bt-nav-landing'>
                 <Link
                   className={`nav-link  ${isActiveAbout ? 'text-warning' : ''}`}
@@ -65,7 +65,7 @@ function SearchBar(props) {
               </button>
             </li>
 
-            <li class='nav-item active'>
+            <li className='nav-item active'>
               <button className='bt-nav-landing'>
               <Link
                   className={`nav-link  ${isActiveLogin ? 'text-warning' : ''}`}
@@ -75,7 +75,7 @@ function SearchBar(props) {
               </button>
             </li>
 
-            <li class='nav-item'>
+            <li className='nav-item'>
               <button className='bt-nav-landing-register'>
               <Link
                   className={`nav-link  ${isActiveRegister ? 'text-warning' : ''}`}
