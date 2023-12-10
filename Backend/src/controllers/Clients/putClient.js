@@ -1,6 +1,5 @@
 const { Client } = require("../../db");
-const axios = require("axios");
-const { API_CLIENTES } = require("../urls");
+
 
 const putClients = async (req, res) => {
   const { id } = req.params;
