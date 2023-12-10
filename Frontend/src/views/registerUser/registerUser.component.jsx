@@ -12,9 +12,10 @@ import { auth } from '../../components/firebase/firebase';
 import { URLSERVER } from '../../../configURL';
 import Swal from 'sweetalert2'
 import UploadWidCloud from '../../components/Cloudinary/UploadWidCloud';
+
+
 function RegisterUser() {
     const navigate = useNavigate();
-
     const volverInicio = () => {
         navigate('/login/Deportistas');
     };
@@ -72,13 +73,13 @@ function RegisterUser() {
                 console.log(userCredentials)
                 if (userCredentials.operationType) {
                     Swal.fire(`Usuario ${form.forename} registrado con éxito`, '', 'success');
+                    await axios.post(`${URLSERVER}/fitevolution/clients`, form) 
                     navigate('/login/Deportistas')
                     // await userCredentials.user.updateProfile({
                     //     displayName: form.forename,
                     // });
                 } else { Swal.fire(`Error al registrar el usuario ${form.forename} `,'','error') }
-
-                await axios.post(`${URLSERVER}/fitevolution/clients`, form)  
+ 
             } catch (error) {
                 if (error.code === "auth/email-already-in-use") {
                     Swal.fire({

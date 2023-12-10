@@ -1,9 +1,25 @@
-import { ejemplo, GET_DEPORTISTAS,GET_TRAINERS,RUTINAS,SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE,GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER } from "./types";
+import { ejemplo, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER } from "./types";
 import axios from 'axios';
 import { URLSERVER } from '../../../../configURL';
 import { MENU_TRAINERS } from '../actions/types'
 
-export const getTrainers = () => {
+export const usuariologed = (data) => {
+  console.log(data)
+    return{
+      type: USUARIO_LOGED,
+      payload: data,
+    }
+  }
+
+export const getTrainers = (data) => {
+
+  if (data && data.length > 0) {
+    return {
+      type: GET_TRAINERS,
+      payload: data,
+    }
+  }
+
   return async function (dispatch) {
     try {
       let json = await axios(
@@ -19,7 +35,13 @@ export const getTrainers = () => {
   };
 };
 
-export const getDeportistas = () => {
+export const getDeportistas = (data) => {
+  if (data && data.length > 0) {
+    return {
+      type: GET_DEPORTISTAS,
+      payload: data,
+    }
+  }
   return async function (dispatch) {
     try {
       let json = await axios(
@@ -35,34 +57,36 @@ export const getDeportistas = () => {
   };
 };
 
+
+
 //cambiar menus en el panel del entrenador
 export const cambiarMenuTrainer = (data) => {
-    return function (dispatch) {
-        return dispatch(
-            {
-                type: MENU_TRAINERS,
-                payload: [data]
-            }
-        )
-    }
+  return function (dispatch) {
+    return dispatch(
+      {
+        type: MENU_TRAINERS,
+        payload: [data]
+      }
+    )
+  }
 }
 
-export const filterFocus = (option)=>{
+export const filterFocus = (option) => {
   return async function (dispatch) {
     try {
       const json = await axios(`${URLSERVER}/fitevolution/trainers/filter?focus=${option}`)
       return dispatch(
         {
-        type: FILTER_FOCUS,
-        payload: json.data
+          type: FILTER_FOCUS,
+          payload: json.data
         });
     } catch (error) {
       throw new Error(error.message)
-    }  
+    }
   }
 }
 
-export const filterScore = (option)=>{
+export const filterScore = (option) => {
   return async function (dispatch) {
     try {
       const json = await axios(`${URLSERVER}/fitevolution/trainers/filter?score=${option}`)
@@ -76,8 +100,8 @@ export const filterScore = (option)=>{
   }
 }
 
-export const sobreScore = (option)=>{
-  return function (dispatch){
+export const sobreScore = (option) => {
+  return function (dispatch) {
     return dispatch({
       type: SOBRE_SCORE,
       payload: option
@@ -85,8 +109,8 @@ export const sobreScore = (option)=>{
   }
 }
 
-export const sobreFocus = (option)=>{
-  return function (dispatch){
+export const sobreFocus = (option) => {
+  return function (dispatch) {
     return dispatch({
       type: SOBRE_FOCUS,
       payload: option
@@ -94,17 +118,17 @@ export const sobreFocus = (option)=>{
   }
 }
 
-export const quitarFiltros = ()=>{
- return function (dispatch) {
-   return dispatch({
-     type: QUITAR_FILTROS,
-     payload: []
-   })
- }
+export const quitarFiltros = () => {
+  return function (dispatch) {
+    return dispatch({
+      type: QUITAR_FILTROS,
+      payload: []
+    })
+  }
 }
 
-export const agregarCarrito = (option)=>{
-  return function(dispatch) {
+export const agregarCarrito = (option) => {
+  return function (dispatch) {
     return dispatch({
       type: AGREGAR_CARRITO,
       payload: option
@@ -112,16 +136,16 @@ export const agregarCarrito = (option)=>{
   }
 }
 
-export const clearCart = ()=>{
-  return function (dispatch){
+export const clearCart = () => {
+  return function (dispatch) {
     return dispatch({
       type: CLEAR_CART
     })
   }
 }
 
-export const getRoutines = ()=>{
-  return async function (dispatch){
+export const getRoutines = () => {
+  return async function (dispatch) {
     try {
       const json = await axios(`${URLSERVER}/fitevolution/routines/allRoutines`)
       return dispatch({
@@ -133,29 +157,29 @@ export const getRoutines = ()=>{
     }
   }
 }
-export const getEntreno =()=>{
-  return async function (dispatch){
-    const entreno= await axios("http://localhost:3001/fitevolution/routines/allRoutines")
-    console.log(entreno,"actions")
+export const getEntreno = () => {
+  return async function (dispatch) {
+    const entreno = await axios("http://localhost:3001/fitevolution/routines/allRoutines")
+    console.log(entreno, "actions")
     const rutinas = entreno.data;
-     dispatch({
+    dispatch({
 
-       type: RUTINAS,
-       payload: rutinas
-     }
-     )
+      type: RUTINAS,
+      payload: rutinas
+    }
+    )
   }
 }
 
-export const search =(input)=>{
+export const search = (input) => {
   return {
-    type:SEARCH,
+    type: SEARCH,
     payload: input
   }
 }
 
-export const deleteCarrito = (option)=>{
-  return function(dispatch){
+export const deleteCarrito = (option) => {
+  return function (dispatch) {
     return dispatch({
       type: DELETE_CART,
       payload: option
@@ -163,8 +187,8 @@ export const deleteCarrito = (option)=>{
   }
 }
 
-export const setusuario = (option)=>{
-  return function(dispatch){
+export const setusuario = (option) => {
+  return function (dispatch) {
     return dispatch({
       type: SET_USER,
       payload: option
