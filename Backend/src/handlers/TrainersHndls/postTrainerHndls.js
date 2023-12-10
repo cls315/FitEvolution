@@ -13,13 +13,15 @@ const postTrainerHdnls = async (req, res) => {
     gender,
     focusTr,
     description,
+    puntuaciones,
     score,
     subscribers,
   } = req.body;
-
   try {
-    if (forename === "" || email === "" || image === "" || description === "")
-      throw Error("Faltan rellenar campos");
+   // if (forename === "" || email === "" || image === "" || description === "")
+     // throw Error("Faltan rellenar campos");
+
+     console.log()
 
     const newTrainer = await postTrainer(
       forename,
@@ -33,6 +35,7 @@ const postTrainerHdnls = async (req, res) => {
       gender,
       focusTr,
       description,
+      puntuaciones,
       score,
       subscribers
     );
