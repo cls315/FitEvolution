@@ -113,49 +113,22 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      puntuaciones: {
-        type: DataTypes.ARRAY(
-          DataTypes.ENUM(
-            "0",
-            "0.5",
-            "1.0",
-            "1.5",
-            "2.0",
-            "2.5",
-            "3.0",
-            "3.5",
-            "4.0",
-            "4.5",
-            "5.0"
-          )
+      score: {
+        type: DataTypes.ENUM(
+          "0",
+          "0.5",
+          "1",
+          "1.5",
+          "2",
+          "2.5",
+          "3",
+          "3.5",
+          "4",
+          "4.5",
+          "5"
         ),
         allowNull: true,
       },
-      score: {
-        type: DataTypes.VIRTUAL, // VIRTUAL significa que este campo no se almacenará en la base de datos
-        get() {
-          if (this.puntuaciones.length === 0) {
-            return 0; // Si no hay puntuaciones, el puntaje es 0
-          }
-
-          // Suma los valores convertidos a números
-          const sum = this.puntuaciones.reduce(
-            (acc, score) => acc + parseFloat(score),
-            0
-          );
-
-          // Calcula el promedio
-          const promedio = sum / this.puntuaciones.length;
-
-          return promedio;
-        },
-        set(value) {
-          throw new Error(
-            "No puedes establecer el valor directamente en 'score'. Actualiza 'puntuaciones' en su lugar."
-          );
-        },
-      },
-
       subscribers: {
         type: DataTypes.ARRAY(DataTypes.UUID), // Array de IDs de clientes
         allowNull: true,
@@ -165,6 +138,11 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("Active", "Suspended"),
         allowNull: true,
         defaultValue: "Active",
+      },
+      rutinaPredeterminada: {
+        type: DataTypes.ARRAY(DataTypes.JSONB),
+        allowNull: false,
+        defaultValue: [], // Valor predeterminado: array vacío
       },
     },
     {
