@@ -704,7 +704,54 @@
       "focusTr": "Entrenamiento de fuerza",
       "description": "Especialista en entrenamiento de fuerza y acondicionamiento físico.",
       "puntuaciones": ["4.5", "4.0", "5.0", "4.5"],
-      "rutinaPredeterminada": []
+      "rutinaPredeterminada": [
+        {
+          "id": 1,
+          "exerc": [
+            {
+              "id": 8,
+              "name": "Peso muerto sumo",
+              "image": "",
+              "description": "",
+              "category": "TI",
+              "muscle_trained": ["Glúteos", "Isquiotibiales"],
+              "estimatedDuration": 8
+            },
+            {
+              "id": 11,
+              "name": "Press de banca",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Pectorales", "Tríceps"],
+              "estimatedDuration": 6
+            },
+            {
+              "id": 14,
+              "name": "Press militar",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Hombros", "Tríceps"],
+              "estimatedDuration": 6
+            },
+            {
+              "id": 19,
+              "name": "Press inclinado con mancuernas",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Pecho"],
+              "estimatedDuration": 7
+            }
+          ],
+          "totalDuration": "45m 0s",
+          "enfoque": "Entrenamiento de fuerza",
+          "image": "https://www.centuryfitness.es/wp-content/uploads/2021/09/muscle-g418ad20c7_1920-1030x687.jpg",
+          "trainerId": 1,
+          "precio": 5000
+        }
+      ]
     },
     {
       "id": "06e3fcdc-79a7-47f8-9db1-6a0a1b78667c",
@@ -720,7 +767,54 @@
       "focusTr": "Entrenamiento de fuerza",
       "description": "Especialista en desarrollo físico integral y acondicionamiento.",
       "puntuaciones": ["3.5", "3.0", "4.0", "3.5"],
-      "rutinaPredeterminada": []
+      "rutinaPredeterminada": [
+        {
+          "id": 1,
+          "exerc": [
+            {
+              "id": 8,
+              "name": "Peso muerto sumo",
+              "image": "",
+              "description": "",
+              "category": "TI",
+              "muscle_trained": ["Glúteos", "Isquiotibiales"],
+              "estimatedDuration": 8
+            },
+            {
+              "id": 11,
+              "name": "Press de banca",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Pectorales", "Tríceps"],
+              "estimatedDuration": 6
+            },
+            {
+              "id": 14,
+              "name": "Press militar",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Hombros", "Tríceps"],
+              "estimatedDuration": 6
+            },
+            {
+              "id": 19,
+              "name": "Press inclinado con mancuernas",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Pecho"],
+              "estimatedDuration": 7
+            }
+          ],
+          "totalDuration": "45m 0s",
+          "enfoque": "Entrenamiento de fuerza",
+          "image": "https://www.centuryfitness.es/wp-content/uploads/2021/09/muscle-g418ad20c7_1920-1030x687.jpg",
+          "trainerId": 1,
+          "precio": 5000
+        }
+      ]
     },
     {
       "id": "8e4628b7-c622-4f66-b40c-d9631b7e27cd",
@@ -736,7 +830,54 @@
       "focusTr": "Entrenamiento deportivo",
       "description": "Especialista en entrenamiento para atletas y deportistas de alto rendimiento.",
       "puntuaciones": ["4.5", "4.0", "5.0", "4.5"],
-      "rutinaPredeterminada": []
+      "rutinaPredeterminada": [
+        {
+          "id": 5,
+          "exerc": [
+            {
+              "id": 13,
+              "name": "Pull-ups",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Espalda", "Bíceps"],
+              "estimatedDuration": 7
+            },
+            {
+              "id": 17,
+              "name": "Tríceps en polea alta",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Tríceps"],
+              "estimatedDuration": 5
+            },
+            {
+              "id": 21,
+              "name": "Crunch",
+              "image": "",
+              "description": "",
+              "category": "CORE",
+              "muscle_trained": ["Abdominales"],
+              "estimatedDuration": 4
+            },
+            {
+              "id": 26,
+              "name": "Hollow Body",
+              "image": "",
+              "description": "",
+              "category": "CORE",
+              "muscle_trained": ["Abdominales"],
+              "estimatedDuration": 4
+            }
+          ],
+          "totalDuration": "32m 0s",
+          "enfoque": "Entrenamiento deportivo",
+          "image": "https://i.blogs.es/ef31bb/istock-1008357886/450_1000.webp",
+          "trainerId": 2,
+          "precio": 2000
+        }
+      ]
     },
     {
       "id": "3a6f8a22-2de3-4c7b-85d0-32c9bf946e0a",
@@ -752,7 +893,54 @@
       "focusTr": "Entrenamiento deportivo",
       "description": "Especialista en entrenamiento funcional y resistencia muscular.",
       "puntuaciones": ["0", "0", "0", "0"],
-      "rutinaPredeterminada": []
+      "rutinaPredeterminada": [
+        {
+          "id": 5,
+          "exerc": [
+            {
+              "id": 13,
+              "name": "Pull-ups",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Espalda", "Bíceps"],
+              "estimatedDuration": 7
+            },
+            {
+              "id": 17,
+              "name": "Tríceps en polea alta",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Tríceps"],
+              "estimatedDuration": 5
+            },
+            {
+              "id": 21,
+              "name": "Crunch",
+              "image": "",
+              "description": "",
+              "category": "CORE",
+              "muscle_trained": ["Abdominales"],
+              "estimatedDuration": 4
+            },
+            {
+              "id": 26,
+              "name": "Hollow Body",
+              "image": "",
+              "description": "",
+              "category": "CORE",
+              "muscle_trained": ["Abdominales"],
+              "estimatedDuration": 4
+            }
+          ],
+          "totalDuration": "32m 0s",
+          "enfoque": "Entrenamiento deportivo",
+          "image": "https://i.blogs.es/ef31bb/istock-1008357886/450_1000.webp",
+          "trainerId": 2,
+          "precio": 2000
+        }
+      ]
     },
     {
       "id": "af8de69e-96ec-4147-84f2-6f43c5c87d7a",
@@ -768,7 +956,54 @@
       "focusTr": "Entrenamiento cardiovascular",
       "description": "Especialista en entrenamiento para mejorar resistencia y salud cardiovascular.",
       "puntuaciones": ["4.0", "4.0", "4.0", "4.0"],
-      "rutinaPredeterminada": []
+      "rutinaPredeterminada": [
+        {
+          "id": 3,
+          "exerc": [
+            {
+              "id": 3,
+              "name": "Peso muerto",
+              "image": "",
+              "description": "",
+              "category": "TI",
+              "muscle_trained": ["Glúteos", "Isquiotibiales", "Espalda Baja"],
+              "estimatedDuration": 8
+            },
+            {
+              "id": 6,
+              "name": "Curl de piernas",
+              "image": "",
+              "description": "",
+              "category": "TI",
+              "muscle_trained": ["Isquiotibiales"],
+              "estimatedDuration": 5
+            },
+            {
+              "id": 10,
+              "name": "Peso muerto con una pierna",
+              "image": "",
+              "description": "",
+              "category": "TI",
+              "muscle_trained": ["Equilibrio", "Cadena Posterior"],
+              "estimatedDuration": 7
+            },
+            {
+              "id": 16,
+              "name": "Curl de bíceps",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Bíceps"],
+              "estimatedDuration": 4
+            }
+          ],
+          "totalDuration": "40m 0s",
+          "enfoque": "Entrenamiento cardiovascular",
+          "image": "https://www.eluniverso.com/resizer/IpJHfUCkLlQOp1PNoyZ52kRd1nU=/arc-anglerfish-arc2-prod-eluniverso/public/SERD5BO3YZHD3NWXADAV24MEN4.jpeg",
+          "trainerId": 5,
+          "precio": 4400
+        }
+      ]
     },
     {
       "id": "09bc460b-8377-4d16-bc04-5e6a7a0fe6e5",
@@ -784,7 +1019,54 @@
       "focusTr": "Entrenamiento cardiovascular",
       "description": "Especialista en entrenamiento para mejorar la salud cardiovascular.",
       "puntuaciones": ["0", "0", "0", "0"],
-      "rutinaPredeterminada": []
+      "rutinaPredeterminada": [
+        {
+          "id": 3,
+          "exerc": [
+            {
+              "id": 3,
+              "name": "Peso muerto",
+              "image": "",
+              "description": "",
+              "category": "TI",
+              "muscle_trained": ["Glúteos", "Isquiotibiales", "Espalda Baja"],
+              "estimatedDuration": 8
+            },
+            {
+              "id": 6,
+              "name": "Curl de piernas",
+              "image": "",
+              "description": "",
+              "category": "TI",
+              "muscle_trained": ["Isquiotibiales"],
+              "estimatedDuration": 5
+            },
+            {
+              "id": 10,
+              "name": "Peso muerto con una pierna",
+              "image": "",
+              "description": "",
+              "category": "TI",
+              "muscle_trained": ["Equilibrio", "Cadena Posterior"],
+              "estimatedDuration": 7
+            },
+            {
+              "id": 16,
+              "name": "Curl de bíceps",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Bíceps"],
+              "estimatedDuration": 4
+            }
+          ],
+          "totalDuration": "40m 0s",
+          "enfoque": "Entrenamiento cardiovascular",
+          "image": "https://www.eluniverso.com/resizer/IpJHfUCkLlQOp1PNoyZ52kRd1nU=/arc-anglerfish-arc2-prod-eluniverso/public/SERD5BO3YZHD3NWXADAV24MEN4.jpeg",
+          "trainerId": 5,
+          "precio": 4400
+        }
+      ]
     },
     {
       "id": "4b5352b8-6209-42a4-91dd-03e62aaf7d79",
@@ -800,7 +1082,54 @@
       "focusTr": "Entrenamiento funcional",
       "description": "Especialista en entrenamiento funcional para mejorar la movilidad y la resistencia.",
       "puntuaciones": ["3.5", "3.0", "4.0", "3.5"],
-      "rutinaPredeterminada": []
+      "rutinaPredeterminada": [
+        {
+          "id": 6,
+          "exerc": [
+            {
+              "id": 18,
+              "name": "Pull-over con mancuerna",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Espalda", "Pecho"],
+              "estimatedDuration": 6
+            },
+            {
+              "id": 23,
+              "name": "Russian Twist",
+              "image": "",
+              "description": "",
+              "category": "CORE",
+              "muscle_trained": ["Oblicuos"],
+              "estimatedDuration": 4
+            },
+            {
+              "id": 28,
+              "name": "Oblique Crunch",
+              "image": "",
+              "description": "",
+              "category": "CORE",
+              "muscle_trained": ["Oblicuos"],
+              "estimatedDuration": 4
+            },
+            {
+              "id": 30,
+              "name": "Tijeras",
+              "image": "",
+              "description": "",
+              "category": "CORE",
+              "muscle_trained": ["Abdominales", "Cardio"],
+              "estimatedDuration": 5
+            }
+          ],
+          "totalDuration": "38m 0s",
+          "enfoque": "Entrenamiento funcional",
+          "image": "https://media.istockphoto.com/id/1320143958/photo/shot-of-a-young-man-working-out-with-battle-ropes-at-the-gym.webp?b=1&s=170667a&w=0&k=20&c=mSt-FxA6664D-oI_Pqsto3ONJYEvbpzRm29UUY0CDIA=",
+          "trainerId": 7,
+          "precio": 5000
+        }
+      ]
     },
     {
       "id": "a0d099c0-76d5-4d2d-8745-b284c180f37c",
@@ -816,7 +1145,54 @@
       "focusTr": "Entrenamiento funcional",
       "description": "Especialista en mejorar la movilidad y resistencia funcional.",
       "puntuaciones": ["0", "0", "0", "0"],
-      "rutinaPredeterminada": []
+      "rutinaPredeterminada": [
+        {
+          "id": 6,
+          "exerc": [
+            {
+              "id": 18,
+              "name": "Pull-over con mancuerna",
+              "image": "",
+              "description": "",
+              "category": "TS",
+              "muscle_trained": ["Espalda", "Pecho"],
+              "estimatedDuration": 6
+            },
+            {
+              "id": 23,
+              "name": "Russian Twist",
+              "image": "",
+              "description": "",
+              "category": "CORE",
+              "muscle_trained": ["Oblicuos"],
+              "estimatedDuration": 4
+            },
+            {
+              "id": 28,
+              "name": "Oblique Crunch",
+              "image": "",
+              "description": "",
+              "category": "CORE",
+              "muscle_trained": ["Oblicuos"],
+              "estimatedDuration": 4
+            },
+            {
+              "id": 30,
+              "name": "Tijeras",
+              "image": "",
+              "description": "",
+              "category": "CORE",
+              "muscle_trained": ["Abdominales", "Cardio"],
+              "estimatedDuration": 5
+            }
+          ],
+          "totalDuration": "38m 0s",
+          "enfoque": "Entrenamiento funcional",
+          "image": "https://media.istockphoto.com/id/1320143958/photo/shot-of-a-young-man-working-out-with-battle-ropes-at-the-gym.webp?b=1&s=170667a&w=0&k=20&c=mSt-FxA6664D-oI_Pqsto3ONJYEvbpzRm29UUY0CDIA=",
+          "trainerId": 7,
+          "precio": 5000
+        }
+      ]
     }
   ],
 
