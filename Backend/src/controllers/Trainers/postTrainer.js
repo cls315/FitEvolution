@@ -13,37 +13,39 @@ const postTrainer = async (
   gender,
   focusTr,
   description,
-  score,
-  subscribers,
+  puntuaciones,
+  // score,
+  subscribers
 ) => {
-
-    const existingTrainer = await Trainer.findOne({
-      where: { email: email },
-    });
-
-    if (existingTrainer) {
-      throw Error("El usuario ya esta registrado");
-    } else {
-  const newTrainer = await Trainer.create({
-    forename,
-    surname,
-    image,
-    email,
-    phoneN,
-    nationality,
-    dateOfBirth,
-    dni,
-    gender,
-    focusTr,
-    description,
-    score,
-    subscribers,
+  const existingTrainer = await Trainer.findOne({
+    where: { email: email },
   });
 
-   // Envío el correo de bienvenida
-   await sendWelcomeEmail(email, forename, surname);
+  if (existingTrainer) {
+    throw Error("El usuario ya esta registrado");
+  } else {
+    const newTrainer = await Trainer.create({
+      forename,
+      surname,
+      image,
+      email,
+      phoneN,
+      nationality,
+      dateOfBirth,
+      dni,
+      gender,
+      focusTr,
+      description,
+      puntuaciones,
+      // score,
+      subscribers,
+    });
 
-  return newTrainer;
-}};
+    // Envío el correo de bienvenida
+    await sendWelcomeEmail(email, forename, surname);
+
+    return newTrainer;
+  }
+};
 
 module.exports = postTrainer;

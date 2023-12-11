@@ -19,7 +19,7 @@ const allTrainer = async () => {
       gender: t.gender,
       focusTr: t.focusTr,
       description: t.description,
-      score: t.score,
+      puntuaciones: t.puntuaciones,
     }));
     return await Trainer.bulkCreate(apiTrain);
   }
