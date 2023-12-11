@@ -109,11 +109,11 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      description: {
+      description:{
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      puntuaciones: {
+      puntuaciones:{
         type: DataTypes.ARRAY(
           DataTypes.ENUM(
             "0",
@@ -155,7 +155,6 @@ module.exports = (sequelize) => {
           );
         },
       },
-
       subscribers: {
         type: DataTypes.ARRAY(DataTypes.UUID), // Array de IDs de clientes
         allowNull: true,
@@ -165,6 +164,11 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("Active", "Suspended"),
         allowNull: true,
         defaultValue: "Active",
+      },
+      rutinaPredeterminada: {
+        type: DataTypes.ARRAY(DataTypes.JSONB),
+        allowNull: false,
+        defaultValue: [], // Valor predeterminado: array vacío
       },
     },
     {
