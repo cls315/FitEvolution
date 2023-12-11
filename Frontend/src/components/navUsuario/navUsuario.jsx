@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 import imageLogo from "../../images/imageLogo.jpg"
 import styles from "./navUsuario.module.css"
 
-const NavUsuario = ({setCurrentPage, setUserSession})=>{
+const NavUsuario = ({setCurrentPage, setUserSession })=>{
 
     const dispatch = useDispatch();
     useEffect(()=>{

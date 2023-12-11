@@ -12,6 +12,7 @@ import ForgotPassword from './views/ForgotPassword/forgotPassword';
 import SessionAdmin from './views/SessionAdmin/SessionAdmin';
 import Admin from './views/Admin/Admin'
 import CreateExercise from './components/createExercise/CreateExercise';
+import SuperAdmin from './views/SuperAdmin/SuperAdmin';
 import DetailUsuario from './views/DetailUsuario/DetailUsuario';
 //Commons imports
 import { Route, Routes, useLocation } from 'react-router-dom';
@@ -79,8 +80,16 @@ function App() {
         path='/createEj'
         element={<CreateExercise/>}
         />
-        <Route path='/detailusuario'
-        element={<DetailUsuario/>}/>
+
+        <Route
+        path='/owner'
+        element={<SuperAdmin/>}
+        />
+
+        <Route
+        path='/detailusuario'
+        element={<DetailUsuario/>}
+        />
       </Routes>
     </>
   );

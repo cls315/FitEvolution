@@ -4,6 +4,7 @@ const postTrainerHdnls = require("../handlers/TrainersHndls/postTrainerHndls");
 const postTrainerPuntuacionHdnls = require("../handlers/TrainersHndls/postTrainerPuntuacionHdnls");
 const postTrainerStatusHdnls = require("../handlers/TrainersHndls/postTrainerStatusHdnls");
 const getFilterFocusScoreHndls = require("../handlers/TrainersHndls/getFilterFocusScoreHndls");
+const { updateTrainer } = require("../handlers/TrainersHndls/updateTrainerhndl");
 
 const trainersRoutes = Router();
 
@@ -12,5 +13,6 @@ trainersRoutes.get("/filter", getFilterFocusScoreHndls);
 trainersRoutes.post("/", postTrainerHdnls);
 trainersRoutes.post("/:id/puntuacion", postTrainerPuntuacionHdnls);
 trainersRoutes.post("/:id/status", postTrainerStatusHdnls);
+trainersRoutes.put("/:id", updateTrainer)
 
 module.exports = trainersRoutes;

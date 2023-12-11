@@ -39,6 +39,7 @@ function SearchBar(props) {
         <Link to={'/'}>
           <img className="imagelogo" src={imagelogo} alt="logo" />
         </Link>
+
         <div className="navbar-links" >
           <Button className={`nav-link ${isActive ? 'text-dark' : ''}`} component={Link} to={'/'}>
             Inicio

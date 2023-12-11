@@ -26,6 +26,7 @@ const Detail = ()=>{
 
     const trainer = allTrainers.find((teacher) => teacher.id == id)
     const routines = allroutines.filter((routine) => routine.trainerId == id)
+    console.log(routines);
 
     const sumPack = (option)=>{
         dispatch(agregarCarrito(option))
@@ -70,6 +71,7 @@ const Detail = ()=>{
                         <h2>PACK {routine.exerc.length} EJERCICIOS</h2>
                         <h3>${routine.precio}</h3>
                         <h4>{routine.enfoque}</h4>
+                        <h4>Rutina de adaptacion para principiante y rutina adaptada al cliente</h4>
                         <h5>Duracion: {routine.totalDuration} dias</h5>
                         <button className={styles.packbtn} onClick={()=>{sumPack(routine)}}>Sumar al carrito</button>
                 </div>

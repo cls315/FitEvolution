@@ -1,9 +1,12 @@
 import NavPerfil from "./NavPerfil";
 import styles from "./DetailUsuario.module.css"
 import { useNavigate } from 'react-router-dom';
-import Coach from "../../images/coach.png"
+import { useSelector } from "react-redux";
 
 const DetailUsuario = ()=>{
+
+    const user = useSelector((state) => state.usuario)
+    console.log("detail",user);
 
     const navigate = useNavigate();
 
@@ -16,11 +19,10 @@ const DetailUsuario = ()=>{
             <NavPerfil />
             <div className={styles.allConteiner}>
                 <div className={styles.infoConteiner}>
-                    <img src={Coach} className={styles.perfil}/>
-                    <h2 className={styles.nombre}>Nombre Apellido</h2>
-                    <h3 className={styles.email}>ejemplo@email.com</h3>
-                    <h3 className={styles.nacionalidad}>Argentino</h3>
-                    <h4 className={styles.antiguedad}>Antiguedad</h4>
+                    <img src={user.photoURL} className={styles.perfil}/>
+                    <h2 className={styles.nombre}>{user.displayName}</h2>
+                    <h3 className={styles.email}>{user.email}</h3>
+                    <h3 className={styles.nacionalidad}>Argentina</h3>
                     <button className={styles.btnCerrarSesion} onClick={()=>{closeSesion()}}>Cerrar Sesion</button>
                 </div>
                 <div className={styles.packsConteiner}>
