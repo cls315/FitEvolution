@@ -13,6 +13,7 @@ const postTrainer = async (
   gender,
   focusTr,
   description,
+  puntuaciones,
   // score,
   subscribers
 ) => {
@@ -35,6 +36,7 @@ const postTrainer = async (
       gender,
       focusTr,
       description,
+      puntuaciones,
       // score,
       subscribers,
     });

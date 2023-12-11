@@ -10,6 +10,10 @@ import { useDispatch } from 'react-redux';
 import { setusuario } from '../../components/redux/actions/actions';
 //Styles
 import style from "./landing.module.css"
+//Material UI
+import * as React from 'react';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 
 function Landing(props) {
@@ -36,9 +40,9 @@ function Landing(props) {
         <h1 className={style.title1Landing}>COMIENZA AHORA GRATIS!</h1>
         <h2 className={style.subTitle1Landing}>Disfruta de todos los beneficios de FitRevolution</h2>
         <img className={style.iconosLanding} src={iconos} alt="iconos"></img>
-        <button className={style.buttonConteinerForm} onClick={() => {
+        <Button onClick={() => {
           navigate('/select/')
-        }}>Comenzar</button>
+        }}variant="contained">Comenzar</Button>
       </div>
     </div>
 
