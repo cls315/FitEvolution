@@ -126,6 +126,11 @@ module.exports = (sequelize) => {
         allowNull: true,
         defaultValue: [], // Valor predeterminado: array vacío
       },
+      banned: {
+        type:DataTypes.ENUM("on", "off"),
+        allownull: true,
+        defaultValue: "off"
+      },
     },
     {
       timestamps: true, //* en el momento de creacion del usuario, podemos usar esa fecha que se genera para calcular el tiempo de periodo de prueba, y lo mismo con el tiempo de periodo de suscripcion, desde el momento de modificacion.
