@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+
+
+import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
+import { useDispatch, useSelector } from "react-redux";
+import { getTrainers } from "../../components/redux/actions/actions";
 import { BsSortUpAlt, BsSortDown } from "react-icons/bs";
 import { RxUpdate } from "react-icons/rx";
+
 import {
   flexRender,
   getCoreRowModel,
@@ -13,65 +17,99 @@ import {
 } from "@tanstack/react-table";
 import dayjs from "dayjs";
 
-const ClientsTable = () => {
-  // Esto tiene que venir del redux(store)
-  const [data, setData] = useState([]);
-console.log(data)
-  useEffect(() => {
-    async function fetchData() {
-      const dataClients = await axios("http://localhost:5000/clientes");
-      setData(dataClients.data);
-    }
-    fetchData();
-  }, []);
+const SuperAdmin = () => {
+//!manejo de los checkbox
+    const [selectedRows, setSelectedRows] = useState([]);
+console.log(selectedRows)
+    function toggleRowSelected(row) {
 
-  const columns = [
+        const selectedIndex = selectedRows.findIndex(r => r.id === row.id);
+      
+        let newSelected = [];
+      
+        if(selectedIndex === -1) {
+          // agregar la fila al array
+          newSelected = [...selectedRows, row]; 
+        } else {
+         // sacar la fila del array
+          newSelected = selectedRows.filter(r => r.id !== row.id);
+        }
+      
+        setSelectedRows(newSelected); 
+      }
+  
+const dispatch = useDispatch();
+    
+  useEffect(() => {
+    dispatch(getTrainers())
+  }, [dispatch]);
+
+  const trainers = useSelector(state => state.allTrainers);
+
+  
+console.log(trainers)
+
+//!toda la información que utiliza ReactTable para presentarla
+const [data,setData]=useState([]);
+useEffect(()=>{
+    setData(trainers)
+},[])
+const columns = [
     {
       header: "ID",
       accessorKey: "id",
-      footer: "Id del deportista",
+      footer: "Id del entrenador",
     },
     {
       header: "Nombre",
       accessorKey: "forename",
-      footer: "Nombre del deportista",
+      footer: "Nombre del entrenador",
     },
     {
       header: "Apellido",
       accessorKey: "surname",
-      footer: "Apellido del deportista",
+      footer: "Apellido del entrenador",
     },
     {
       header: "Correo",
       accessorKey: "email",
-      footer: "Correo del deportista",
+      footer: "Correo del entrenador",
     },
     {
       header: "Teléfono",
       accessorKey: "phoneN",
-      footer: "Teléfono del deportista",
+      footer: "Teléfono del entrenador",
     },
+    // {
+    //   header: "Nacionalidad",
+    //   accessorKey: "nationality",
+    //   footer: "Nacionalidad del entrenador",
+    // },
+    // {
+    //   header: "Genero",
+    //   accessorKey: "gender",
+    //   footer: "Genero del entrenador",
+    // },
+    // {
+    //   header: "DNI",
+    //   accessorKey: "dni",
+    //   footer: "Dni del entrenador",
+    // },
     {
-      header: "Nacionalidad",
-      accessorKey: "nationality",
-      footer: "Nacionalidad del deportista",
-    },
-    {
-      header: "Genero",
-      accessorKey: "gender",
-      footer: "Genero del deportista",
-    },
-    {
-      header: "DNI",
-      accessorKey: "dni",
-      footer: "Dni del deportista",
-    },
-    {
-      header: "Fecha de nacimiento",
-      accessorKey: "dateOfBirth",
-      footer: "Fecha de Nacimineto del deportista",
-      cell: (info) => dayjs(info.getValue()).format("DD/MM/YYYY"),
-    },
+        header: "Seleccionar administrador",
+        footer: "Seleccionar administrador",
+        id: "selection", 
+        cell: ({ row }) => {
+          return (
+            <input 
+              type="checkbox"
+              checked={selectedRows.includes(row)}
+              onChange={() => toggleRowSelected(row)}  
+            />
+          )
+        }
+      },
+   
   ];
 
   const [sorting, setSorting] = useState([]);
@@ -100,7 +138,7 @@ console.log(data)
         </span>
         <input
           class="form-control"
-          placeholder="Buscar deportista"
+          placeholder="Buscar Entrenador"
           aria-label="Username"
           aria-describedby="basic-addon1"
           type="text"
@@ -188,4 +226,4 @@ console.log(data)
   );
 };
 
-export default ClientsTable;
+export default SuperAdmin
