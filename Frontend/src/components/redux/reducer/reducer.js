@@ -1,4 +1,4 @@
-import { ejemplo , USUARIO_LOGED,GET_DEPORTISTAS,GET_TRAINERS,MENU_TRAINERS,RUTINAS, SEARCH,FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, SOBRE_FOCUS,CLEAR_CART, AGREGAR_CARRITO, GET_ROUTINES, DELETE_CART, SET_USER} from "../actions/types"
+import { ejemplo , BANER_FAILURE,BANER_USER,USUARIO_LOGED,GET_DEPORTISTAS,GET_TRAINERS,MENU_TRAINERS,RUTINAS, SEARCH,FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, SOBRE_FOCUS,CLEAR_CART, AGREGAR_CARRITO, GET_ROUTINES, DELETE_CART, SET_USER} from "../actions/types"
 
 const initialState = {
     allTrainers: [],
@@ -11,6 +11,9 @@ const initialState = {
     rutinas2:[],
     userStatus: "",
     usuario:[],
+    banerExit:null,
+    banerError:null,
+
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -93,6 +96,19 @@ const rootReducer = (state = initialState, { type, payload }) => {
             case SET_USER:
                 return{
                     ...state, userStatus: payload
+                }
+            case BANER_USER:
+                console.log( "reducer baner")
+                return{
+                    ...state, 
+                    banerExit: payload,
+                    banerError:null
+                }
+            case BANER_FAILURE:
+                return {
+                    ...state,
+                    banerExit:null,
+                    banerError: payload
                 }
 
         default:

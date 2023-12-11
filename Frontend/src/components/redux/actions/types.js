@@ -15,5 +15,7 @@ export const RUTINAS = "RUTINAS"
 export const SEARCH= "SEARCH"
 export const SET_USER = "SET_USER"
 export const USUARIO_LOGED="USUARIO_LOGED"
+export const BANER_USER= "BANER_USER"
+export const BANER_FAILURE= "BANER_FAILURE"
 
 

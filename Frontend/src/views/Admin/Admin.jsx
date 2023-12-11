@@ -13,6 +13,9 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import dayjs from "dayjs";
+import style from './Admin.module.css'
+import { baner } from "../../components/redux/actions/actions";
+import { useDispatch } from "react-redux";
 
 const Admin=()=>{
     const navigate = useNavigate()
@@ -21,7 +24,9 @@ const Admin=()=>{
    }
    const [data, setData] = useState([]);
    const [selectedRow, setSelectedRow] = useState(null);
- 
+ const backButton =()=>{
+    navigate('/dashboardtr')
+ }
    
    useEffect(() => {
     async function fetchData() {
@@ -30,6 +35,17 @@ const Admin=()=>{
     }
     fetchData();
   }, []);
+ 
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(baner())
+  },[])
+
+  const handleBaner = ()=>{
+    dispatch(baner(id))
+  }
+
   const columns = [
     {
       header: "ID",
@@ -110,27 +126,18 @@ const Admin=()=>{
     return (
      
         <div>
-            <div>
+            <div className={style.botones}>
                 
-                <button onClick={ejectButton}>Crear ejercicios</button>
-                <button>Baner</button>
+                <button className={style.boton1} onClick={ejectButton}>Crear ejercicios</button>
+                <button className={style.boton2}onClick={handleBaner}>Baner</button>
+                <button className={style.boton3}onClick={backButton}>Salir</button>
             </div>
             <div>
+                <hr></hr>
       
          <table className='table table-info'>
         
-            <tbody>
-            {table.getRowModel().rows.map((row) => (
-                <tr key={row.id}style={{ backgroundColor: row.original === selectedRow ? 'green' : 'red' }}>
-                {row.getVisibleCells().map((cell) => {
-                  return <td key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                })}
-                </tr>
-            ))}
-            </tbody>
-        
+     
         </table>
      
     </div>
@@ -228,9 +235,12 @@ const Admin=()=>{
     </div>
        
         </div>
-      
-    
-    )
-}
 
-export default Admin
+    )}
+
+
+      
+
+
+
+export default Admin; 

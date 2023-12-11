@@ -1,7 +1,8 @@
-import { ejemplo, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER } from "./types";
+import { ejemplo,BANER_USER,BANER_FAILURE, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER } from "./types";
 import axios from 'axios';
 import { URLSERVER } from '../../../../configURL';
 import { MENU_TRAINERS } from '../actions/types'
+import { get } from "react-hook-form";
 
 export const usuariologed = (data) => {
   console.log(data)
@@ -194,4 +195,22 @@ export const setusuario = (option) => {
       payload: option
     })
   }
+}
+
+export const baner =(id)=>{
+  console.log("actionesBaner")
+  return async function(dispatch){
+
+    const getBaner = await axios.put(`http://localhost:5000/fitevolution/clients/banned/${id}`)
+console.log(getBaner)
+    const banerId= getBaner.data
+    
+    return dispatch({
+      type: BANER_USER,
+      payload: banerId
+    })
+
+  }
+
+
 }
