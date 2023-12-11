@@ -102,6 +102,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 return {
                     ...state, usuario: payload
                 }
+                
 
         default:
             return { ...state }

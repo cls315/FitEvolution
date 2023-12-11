@@ -1,4 +1,4 @@
-import { ejemplo, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER, USER } from "./types";
+import { ejemplo, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER, USER, BANER } from "./types";
 
 import axios from 'axios';
 import { URLSERVER } from '../../../../configURL';
@@ -206,4 +206,11 @@ export const userPerfil = (option)=>{
     })
   }
 
+}
+export const getBaner =(id)=>{
+    return async function(dispatch){
+      const {data} = await axios.put(`http://localhost:3001/fitevolution/clients/banned`, id)
+       console.log(data)
+       dispatch({type:BANER, payload:data})
+    }
 }

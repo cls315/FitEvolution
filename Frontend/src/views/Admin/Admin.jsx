@@ -14,8 +14,11 @@ import {
 } from "@tanstack/react-table";
 import dayjs from "dayjs";
 import style from './Admin.module.css'
-import { baner } from "../../components/redux/actions/actions";
 import { useDispatch } from "react-redux";
+import { getBaner } from "../../components/redux/actions/actions";
+import { IdealBankElement } from "@stripe/react-stripe-js";
+
+
 
 const Admin=()=>{
     const navigate = useNavigate()
@@ -40,9 +43,12 @@ const Admin=()=>{
 
 
 
-  const handleBaner = ()=>{
-    console.log("banercomponent")
-    dispatch(baner(id))
+  const handleBaner = (id)=>{
+    dispatch(getBaner(id))
+   
+
+
+  
   }
 
   const columns = [
