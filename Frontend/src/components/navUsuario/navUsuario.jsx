@@ -94,6 +94,9 @@ const NavUsuario = ({setCurrentPage, setUserSession})=>{
                     <option key={index} value={score}>Solo con {score} estrellas</option>
                 ))}
             </select>
+            <Link to="/detailusuario">
+            <button className={styles.btn1}>Perfil</button>
+            </Link>
             <Link to="/">
             <button className={styles.btn2} onClick={()=>{setUser()}}>Cerrar sesion</button>
             </Link>
