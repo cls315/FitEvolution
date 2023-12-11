@@ -134,7 +134,7 @@ module.exports = (sequelize) => {
       score: {
         type: DataTypes.VIRTUAL, // VIRTUAL significa que este campo no se almacenará en la base de datos
         get() {
-          if (this.puntuaciones.length === 0) {
+          if (!this.puntuaciones || this.puntuaciones.length === 0) {
             return 0; // Si no hay puntuaciones, el puntaje es 0
           }
 

@@ -7,6 +7,9 @@ import { getTrainers } from "../../components/redux/actions/actions";
 import { BsSortUpAlt, BsSortDown } from "react-icons/bs";
 import { RxUpdate } from "react-icons/rx";
 
+import Button from '@mui/material/Button';
+import { Table, TableBody, TableContainer, TableFooter, TableHead,Paper, TableRow, TableCell } from "@mui/material";
+
 import {
   flexRender,
   getCoreRowModel,
@@ -16,45 +19,30 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import dayjs from "dayjs";
-
+import  handleCheckboxChange from "./handlecheckbox";
 const SuperAdmin = () => {
-//!manejo de los checkbox
-    const [selectedRows, setSelectedRows] = useState([]);
-console.log(selectedRows)
-    function toggleRowSelected(row) {
-
-        const selectedIndex = selectedRows.findIndex(r => r.id === row.id);
-      
-        let newSelected = [];
-      
-        if(selectedIndex === -1) {
-          // agregar la fila al array
-          newSelected = [...selectedRows, row]; 
-        } else {
-         // sacar la fila del array
-          newSelected = selectedRows.filter(r => r.id !== row.id);
-        }
-      
-        setSelectedRows(newSelected); 
-      }
+  //!manejo de los checkbox
   
-const dispatch = useDispatch();
-    
+
+  
+  const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(getTrainers())
   }, [dispatch]);
-
-  const trainers = useSelector(state => state.allTrainers);
-
   
-console.log(trainers)
-
-//!toda la información que utiliza ReactTable para presentarla
-const [data,setData]=useState([]);
-useEffect(()=>{
+  const trainers = useSelector(state => state.allTrainers);
+  
+  
+  console.log(trainers)
+  
+  //!toda la información que utiliza ReactTable para presentarla
+  const [data,setData]=useState([]);
+  useEffect(()=>{
     setData(trainers)
-},[])
-const columns = [
+  },[trainers])
+
+  const columns = [
     {
       header: "ID",
       accessorKey: "id",
@@ -80,15 +68,15 @@ const columns = [
       accessorKey: "phoneN",
       footer: "Teléfono del entrenador",
     },
+    {
+      header: "Rol",
+      accessorKey: "role",
+      footer: "Rol",
+    },
     // {
-    //   header: "Nacionalidad",
-    //   accessorKey: "nationality",
-    //   footer: "Nacionalidad del entrenador",
-    // },
-    // {
-    //   header: "Genero",
-    //   accessorKey: "gender",
-    //   footer: "Genero del entrenador",
+      //   header: "Genero",
+      //   accessorKey: "gender",
+      //   footer: "Genero del entrenador",
     // },
     // {
     //   header: "DNI",
@@ -96,18 +84,26 @@ const columns = [
     //   footer: "Dni del entrenador",
     // },
     {
-        header: "Seleccionar administrador",
-        footer: "Seleccionar administrador",
-        id: "selection", 
-        cell: ({ row }) => {
-          return (
-            <input 
-              type="checkbox"
-              checked={selectedRows.includes(row)}
-              onChange={() => toggleRowSelected(row)}  
-            />
-          )
-        }
+      header: "Seleccione rol",
+      footer: "Seleccione rol",
+      id: "selection", 
+      cell: ({ row }) => 
+      //   <input
+      // //   type="checkbox"
+      //   checked={row.isSelected}
+      //   onChange={() => {
+        //     handleCheckboxChange(row.original.id);
+        //   }}
+      // /> 
+      <Button
+      variant="contained"
+      color="primary"
+      size="small"
+      onClick={() => {handleCheckboxChange(row.original.id)
+      }}
+    >
+      Cambiar Rol
+    </Button>
       },
    
   ];
@@ -144,14 +140,15 @@ const columns = [
           type="text"
           value={filtering}
           onChange={(e) => setFiltering(e.target.value)}
-        />
+          />
       </div>
-      <table className="table table-info">
-        <thead>
+<TableContainer component={Paper}> 
+       <Table >
+        <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
+            <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th
+                <TableCell
                   className="bg-info bg-opacity-50"
                   role="button"
                   scope="col"
@@ -165,62 +162,63 @@ const columns = [
                   {{ asc: <BsSortUpAlt />, desc: <BsSortDown /> }[
                     header.column.getIsSorted() ?? null
                   ] ?? <RxUpdate />}
-                </th>
+                </TableCell>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </thead>
-        <tbody>
+        </TableHead>
+        <TableBody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+            <TableRow key={row.id}>
               {row.getVisibleCells().map((cell) => (
                 <td key={cell.id}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </tbody>
-        <tfoot>
+        </TableBody>
+        <TableFooter>
           {table.getFooterGroups().map((footerGroup) => (
-            <tr key={footerGroup.id}>
+            <TableRow key={footerGroup.id}>
               {footerGroup.headers.map((footer) => (
-                <th key={footer.id} className="blockquote-footer">
+                <TableCell key={footer.id} className="blockquote-footer">
                   {flexRender(
                     footer.column.columnDef.footer,
                     footer.getContext()
                   )}
-                </th>
+                </TableCell>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </tfoot>
-      </table>
+        </TableFooter>
+      </Table>
+      </TableContainer>
       <div className="d-flex justify-content-between">
-        <button
+        <Button
           className="btn btn-success btn-sm"
           onClick={() => table.setPageIndex(0)}
         >
           Primer página
-        </button>
-        <button
+        </Button>
+        <Button
           className="btn btn-success btn-sm"
           onClick={() => table.previousPage()}
         >
           Página anterior
-        </button>
-        <button
+        </Button>
+        <Button
           className="btn btn-success btn-sm"
           onClick={() => table.nextPage()}
         >
           Página siguiente
-        </button>
-        <button
+        </Button>
+        <Button
           className="btn btn-success btn-sm"
           onClick={() => table.setPageIndex(table.getPageCount() - 1)}
         >
           Última página
-        </button>
+        </Button>
       </div>
     </div>
   );
