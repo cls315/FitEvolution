@@ -17,6 +17,7 @@ const allClient = async () => {
         dateOfBirth: t.dateOfBirth,
         dni: t.dni,
         gender: t.gender,
+        banned:t.banned
       }));
       await Client.bulkCreate(dataApi);
     }

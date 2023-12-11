@@ -1,4 +1,4 @@
-import { ejemplo , GET_DEPORTISTAS,GET_TRAINERS,MENU_TRAINERS,RUTINAS, SEARCH,FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, SOBRE_FOCUS,CLEAR_CART, AGREGAR_CARRITO, GET_ROUTINES, DELETE_CART, SET_USER} from "../actions/types"
+import { ejemplo , USUARIO_LOGED,GET_DEPORTISTAS,GET_TRAINERS,MENU_TRAINERS,RUTINAS, SEARCH,FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, SOBRE_FOCUS,CLEAR_CART, AGREGAR_CARRITO, GET_ROUTINES, DELETE_CART, SET_USER} from "../actions/types"
 
 const initialState = {
     allTrainers: [],
@@ -10,11 +10,16 @@ const initialState = {
     rutinas:[],
     rutinas2:[],
     userStatus: "",
+    usuario:[],
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
+        case USUARIO_LOGED:
+            const userloged="continuar..."
+            return {...state, usuario: userloged}
         case GET_TRAINERS:
+            console.log("trainerss")
             return {...state, allTrainers: payload}
         case GET_DEPORTISTAS:
             return {...state, allDeportistas: payload}

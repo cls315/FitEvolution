@@ -21,7 +21,6 @@ import { auth } from '../../components/firebase/firebase';
 
 function RegisterTrainer() {
     const navigate = useNavigate();
-
     const volverInicio = () => {
         navigate('/login/Entrenadores');
     };
@@ -47,6 +46,7 @@ function RegisterTrainer() {
         gender:null,
         focusTr:null,
         score:null,
+        puntuaciones:[],
     })
 //!esta logica es para mostrar u ocultar el password ingresado
 //     const [showPassword, setShowPassword] = useState(false);
@@ -105,10 +105,10 @@ function RegisterTrainer() {
                 console.log(userCredentials)
                 if (userCredentials.operationType) {
                     Swal.fire(`Entrenador ${form.forename} registrado con éxito`, '', 'success');
+                    await axios.post(`${URLSERVER}/fitevolution/trainers`, form) 
                     navigate('/login/Entrenadores')
                 } else { Swal.fire(`Error al registrar el usuario ${form.forename} `,'','error') }
-
-                await axios.post(`${URLSERVER}/fitevolution/trainers`, form)  
+ 
             } catch (error) {
                 if (error.code === "auth/email-already-in-use") {
                     Swal.fire({
