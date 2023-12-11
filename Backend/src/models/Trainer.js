@@ -109,11 +109,11 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      description: {
+      description:{
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      puntuaciones: {
+      puntuaciones:{
         type: DataTypes.ARRAY(
           DataTypes.ENUM(
             "0",
