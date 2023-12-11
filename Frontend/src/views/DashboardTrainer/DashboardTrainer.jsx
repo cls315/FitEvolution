@@ -24,8 +24,10 @@ const DashboardTrainer = (props) => {
   const [menu, setmenu] = useState('deportes')
   const [trainer,setTrainer] =useState({})
   const allTrainers=useSelector((state) => state.allTrainers)
+  console.log(allTrainers)
   const usuario=useSelector((state)=>state.usuario)
-  
+  const [uMail,setUmail] = useState("")
+  console.log(uMail)
   
   //firebase
   const [userSession, setUserSession] = useState(false)
@@ -37,24 +39,29 @@ const DashboardTrainer = (props) => {
       console.log(usuario)
       usuariologed(user.email)
       setUserSession(true)
+      setUmail(user.email)
     } else{
       setUserSession(false)
+      setUmail("")
       console.log(user)
     }
     })
 
+    const isAdmin = allTrainers.find((trainer)=>trainer.email === uMail)
+    console.log(isAdmin)
     return () => {
-     
     };
+     
 
-  },[allTrainers,usuario])
+  },[allTrainers,usuario,uMail])
+
   //-------------------------*/
-
   const handleMenu = (e) => {
     const nom = e.target.name
     console.log(e.target.name)
     setmenu(nom)
   }
+//*manejo de renderizado condicional del boton de admin
 
   return (<>
     {
