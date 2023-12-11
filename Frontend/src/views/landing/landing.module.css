@@ -37,7 +37,7 @@
     }
 
     .Title h1 {
-        color: white;
+        color: rgb(255, 255, 255);
     }
 
     .Title h2 {
@@ -54,7 +54,7 @@
     }
 
     .title1Landing {
-        color: #FFF;
+        color: #ffffff;
         font-family: var(--raleway-font-700), sans-serif;
         font-size: 45px;
         font-style: normal;
@@ -68,6 +68,7 @@
         font-style: normal;
         font-weight: 500;
         line-height: normal;
+        color: #ffffff;
     }
 
     .buttonConteinerForm{

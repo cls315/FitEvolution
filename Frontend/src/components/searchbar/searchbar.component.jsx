@@ -3,49 +3,48 @@ import Alert from '../alert/alert.component'
 //Common imports
 import { URLSERVER } from '../../../configURL.js';
 import imagelogo from '../../images/imageLogo.jpg'
+import React from 'react';
+import { Link, useMatch,useLocation,useNavigate } from 'react-router-dom';
 //Styles
 import './searchbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
+//Material UI
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
-import { Link, useMatch } from 'react-router-dom';
+
 
 function SearchBar(props) {
-  const isActive = useMatch('/');
-
-  const isActiveAbout = useMatch('/about');
-
-  const isActiveRegister = useMatch('/register');
-
-  const isActiveLogin = useMatch('/login');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isActive = location.pathname === '/';
+  const isActiveAbout = location.pathname === '/about';
+  const isActiveLogin = location.pathname === '/login';
+  const isActiveRegister = location.pathname === '/login/Deportistas';
 
   return (
-    <>
-      <nav class='navbar navbar-expand-lg navbar-light bg-light '>
-        <button
-          className='navbar-toggler'
-          type='button'
-          data-toggle='collapse'
-          data-target='#navbarTogglerDemo03'
-          aria-controls='navbarTogglerDemo03'
-          aria-expanded='false'
-          aria-label='Toggle navigation'>
-          <span class='navbar-toggler-icon'></span>
-        </button>
-
-        <Link
-          className='navbar-brand'
-          to={'/'}>
-          <img
-            src={imagelogo}
-            alt='logo'
-          />
+    <AppBar position="static" className="navbar">
+      <Toolbar className='navbarLanding'>
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+        >
+          <MenuIcon />
+        </IconButton>
+        <Link to={'/'}>
+          <img className="imagelogo" src={imagelogo} alt="logo" />
         </Link>
 
         <div
-          className='collapse navbar-collapse'
+          class='collapse navbar-collapse'
           id='navbarTogglerDemo03'>
-          <ul className='navbar-nav mr-auto mt-2 mt-lg-0'>
-            <li className='nav-item'>
+          <ul class='navbar-nav mr-auto mt-2 mt-lg-0'>
+            <li class='nav-item'>
               <button className='bt-nav-landing'>
                 <Link
                   className={`nav-link  ${isActive ? 'text-warning' : ''}`}
@@ -55,7 +54,7 @@ function SearchBar(props) {
               </button>
             </li>
 
-            <li className='nav-item'>
+            <li class='nav-item'>
               <button className='bt-nav-landing'>
                 <Link
                   className={`nav-link  ${isActiveAbout ? 'text-warning' : ''}`}
@@ -65,7 +64,7 @@ function SearchBar(props) {
               </button>
             </li>
 
-            <li className='nav-item active'>
+            <li class='nav-item active'>
               <button className='bt-nav-landing'>
               <Link
                   className={`nav-link  ${isActiveLogin ? 'text-warning' : ''}`}
@@ -75,7 +74,7 @@ function SearchBar(props) {
               </button>
             </li>
 
-            <li className='nav-item'>
+            <li class='nav-item'>
               <button className='bt-nav-landing-register'>
               <Link
                   className={`nav-link  ${isActiveRegister ? 'text-warning' : ''}`}
@@ -86,8 +85,8 @@ function SearchBar(props) {
             </li>
           </ul>
         </div>
-      </nav>
-    </>
+      </Toolbar>
+    </AppBar>
   );
 }
 
