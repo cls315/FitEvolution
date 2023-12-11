@@ -201,7 +201,7 @@ export const baner =(id)=>{
   console.log("actionesBaner")
   return async function(dispatch){
 
-    const getBaner = await axios.put(`http://localhost:5000/fitevolution/clients/banned/${id}`)
+    const {getBaner }= await axios.put(`http://localhost:3001/fitevolution/clients/banned`, id)
 console.log(getBaner)
     const banerId= getBaner.data
     

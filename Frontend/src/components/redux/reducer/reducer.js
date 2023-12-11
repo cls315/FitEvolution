@@ -101,15 +101,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 console.log( "reducer baner")
                 return{
                     ...state, 
-                    banerExit: payload,
-                    banerError:null
                 }
-            case BANER_FAILURE:
-                return {
-                    ...state,
-                    banerExit:null,
-                    banerError: payload
-                }
+      
 
         default:
             return { ...state }

@@ -38,11 +38,10 @@ const Admin=()=>{
  
   const dispatch = useDispatch()
 
-  useEffect(()=>{
-    dispatch(baner())
-  },[])
+
 
   const handleBaner = ()=>{
+    console.log("banercomponent")
     dispatch(baner(id))
   }
 
