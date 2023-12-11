@@ -17,6 +17,7 @@ const Homeusuario = () => {
   const allTrainers = useSelector((state) => state.allTrainers);
   const filterTrainer = useSelector((state) => state.filterTrainers)
   const userstatus = useSelector((state)=> state.userStatus)
+  const clientSave = useSelector((state)=> state.usuario)
 
   //firebase
   const [userSession, setUserSession] = useState(false)
@@ -27,23 +28,24 @@ const Homeusuario = () => {
     if(userstatus === "invitado"){
       setUserSession(true)
     } else if (user) {
-      console.log(user)
-      setUsuario(user)
-    setUserSession(true)
-  } else {
-    setUserSession(false)
-    console.log(user)
-  }
-})
+      const email = user.email
+      setUsuario(email)
+      setUserSession(true)
+    } else {
+      setUserSession(false)
+    }
+  })
 },[])
-  //-------------------------
-  //--------
+//-------------------------
+//--------
 
-  useEffect(() => {
-    dispatch(userPerfil(usuario))
-    dispatch(getTrainers());
-  }, [dispatch])
+useEffect(() => {
+  dispatch(getTrainers());
+}, [dispatch])
 
+if(!clientSave || clientSave.email !== usuario){
+  dispatch(userPerfil(usuario))
+}
 
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -53,7 +55,7 @@ const Homeusuario = () => {
   return (<>
     {userSession ?
       <div>
-        <NavUsuario setCurrentPage={setCurrentPage} setUserSession={setUserSession} usuario={usuario}/>
+        <NavUsuario setCurrentPage={setCurrentPage} setUserSession={setUserSession} userstatus={userstatus}/>
         <div className={styles.conteiner}>
           <div className={styles.cardsconteiner}>
             <Cards profes={profes} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
