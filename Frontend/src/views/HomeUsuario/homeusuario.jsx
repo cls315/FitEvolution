@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrainers } from "../../components/redux/actions/actions"
+import { getTrainers, userPerfil } from "../../components/redux/actions/actions"
 import NavUsuario from "../../components/navUsuario/navUsuario";
 import Cards from "../../components/cards/cards"
 import styles from "./homeusuario.module.css"
@@ -21,12 +21,14 @@ const Homeusuario = () => {
   //firebase
   const [userSession, setUserSession] = useState(false)
   //modo escucha de firebase
-  useEffect(()=>{
+  const [usuario, setUsuario] = useState()
+ useEffect(()=>{
   onAuthStateChanged(auth, async (user) => {    //esta funcion es de firebase se queda en modo escucha cada vez que se carga la aplicacion, user contiene la informacion del usuario.
     if(userstatus === "invitado"){
       setUserSession(true)
     } else if (user) {
       console.log(user)
+      setUsuario(user)
     setUserSession(true)
   } else {
     setUserSession(false)
@@ -38,6 +40,7 @@ const Homeusuario = () => {
   //--------
 
   useEffect(() => {
+    dispatch(userPerfil(usuario))
     dispatch(getTrainers());
   }, [dispatch])
 
@@ -50,7 +53,7 @@ const Homeusuario = () => {
   return (<>
     {userSession ?
       <div>
-        <NavUsuario setCurrentPage={setCurrentPage} setUserSession={setUserSession}/>
+        <NavUsuario setCurrentPage={setCurrentPage} setUserSession={setUserSession} usuario={usuario}/>
         <div className={styles.conteiner}>
           <div className={styles.cardsconteiner}>
             <Cards profes={profes} currentPage={currentPage} setCurrentPage={setCurrentPage}/>

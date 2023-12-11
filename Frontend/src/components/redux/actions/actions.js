@@ -1,4 +1,4 @@
-import { ejemplo, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER } from "./types";
+import { ejemplo, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER, USER } from "./types";
 import axios from 'axios';
 import { URLSERVER } from '../../../../configURL';
 import { MENU_TRAINERS } from '../actions/types'
@@ -191,6 +191,15 @@ export const setusuario = (option) => {
   return function (dispatch) {
     return dispatch({
       type: SET_USER,
+      payload: option
+    })
+  }
+}
+
+export const userPerfil = (option)=>{
+  return function(dispatch){
+    return dispatch({
+      type: USER,
       payload: option
     })
   }

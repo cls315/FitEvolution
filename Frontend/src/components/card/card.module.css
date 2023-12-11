@@ -20,6 +20,7 @@
     border: 2px solid #ffd300;
     border-radius: 171px;
     background: lightgray -115.976px -2.382px / 190.476% 100% no-repeat;
+    object-fit: cover;
   }
   
   .name {
