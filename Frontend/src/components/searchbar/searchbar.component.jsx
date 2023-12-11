@@ -40,50 +40,19 @@ function SearchBar(props) {
           <img className="imagelogo" src={imagelogo} alt="logo" />
         </Link>
 
-        <div
-          class='collapse navbar-collapse'
-          id='navbarTogglerDemo03'>
-          <ul class='navbar-nav mr-auto mt-2 mt-lg-0'>
-            <li class='nav-item'>
-              <button className='bt-nav-landing'>
-                <Link
-                  className={`nav-link  ${isActive ? 'text-warning' : ''}`}
-                  to={'/'}>
-                  Inicio
-                </Link>
-              </button>
-            </li>
-
-            <li class='nav-item'>
-              <button className='bt-nav-landing'>
-                <Link
-                  className={`nav-link  ${isActiveAbout ? 'text-warning' : ''}`}
-                  to={'/about'}>
-                  Sobre Nosotros
-                </Link>
-              </button>
-            </li>
-
-            <li class='nav-item active'>
-              <button className='bt-nav-landing'>
-              <Link
-                  className={`nav-link  ${isActiveLogin ? 'text-warning' : ''}`}
-                  to={'/login/Entrenadores'}>
-                  Sos entrenador?
-                </Link>
-              </button>
-            </li>
-
-            <li class='nav-item'>
-              <button className='bt-nav-landing-register'>
-              <Link
-                  className={`nav-link  ${isActiveRegister ? 'text-warning' : ''}`}
-                  to={'/login/Deportistas'}>
-                  Iniciar sesion
-                </Link>
-              </button>
-            </li>
-          </ul>
+        <div className="navbar-links" >
+          <Button className={`nav-link ${isActive ? 'text-dark' : ''}`} component={Link} to={'/'}>
+            Inicio
+          </Button>
+          <Button className={`nav-link ${isActiveAbout ? 'text-dark' : ''}`} component={Link} to={'/about'}>
+            Sobre Nosotros
+          </Button>
+          <Button className={`nav-link ${isActiveLogin ? 'text-dark' : ''}`} component={Link} to={'/login/Entrenadores'}>
+            Sos entrenador?
+          </Button>
+          <Button variant="contained" onClick={() => navigate('/login/Deportistas')}>
+            Iniciar sesión
+          </Button>
         </div>
       </Toolbar>
     </AppBar>
