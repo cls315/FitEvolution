@@ -199,10 +199,14 @@ export const setusuario = (option) => {
 }
 
 export const userPerfil = (option)=>{
-  return function(dispatch){
+  return async function(dispatch){
+    const json = await axios(`${URLSERVER}/fitevolution/clients`)
+    const allClients = json.data
+    const client = allClients.find((client) => client.email == option)
+    console.log("action client",client);
     return dispatch({
       type: USER,
-      payload: option
+      payload: client
     })
   }
 

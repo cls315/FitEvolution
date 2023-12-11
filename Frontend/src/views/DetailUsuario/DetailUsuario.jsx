@@ -2,6 +2,7 @@ import NavPerfil from "./NavPerfil";
 import styles from "./DetailUsuario.module.css"
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import profileUser from "../../components/SVG/profileUser.png"
 
 const DetailUsuario = ()=>{
 
@@ -19,8 +20,8 @@ const DetailUsuario = ()=>{
             <NavPerfil />
             <div className={styles.allConteiner}>
                 <div className={styles.infoConteiner}>
-                    <img src={user.photoURL} className={styles.perfil}/>
-                    <h2 className={styles.nombre}>{user.displayName}</h2>
+                    <img src={user.image ? user.image : profileUser} className={styles.perfil}/>
+                    <h2 className={styles.nombre}>{user.forename} {user.surname ? user.surname : ""}</h2>
                     <h3 className={styles.email}>{user.email}</h3>
                     <h3 className={styles.nacionalidad}>Argentina</h3>
                     <button className={styles.btnCerrarSesion} onClick={()=>{closeSesion()}}>Cerrar Sesion</button>
