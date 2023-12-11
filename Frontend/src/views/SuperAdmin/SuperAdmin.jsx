@@ -1,8 +1,15 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+
+
+import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
+import { useDispatch, useSelector } from "react-redux";
+import { getTrainers } from "../../components/redux/actions/actions";
 import { BsSortUpAlt, BsSortDown } from "react-icons/bs";
 import { RxUpdate } from "react-icons/rx";
+
+import Button from '@mui/material/Button';
+import { Table, TableBody, TableContainer, TableFooter, TableHead,Paper, TableRow, TableCell } from "@mui/material";
+
 import {
   flexRender,
   getCoreRowModel,
@@ -12,66 +19,93 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import dayjs from "dayjs";
+import  handleCheckboxChange from "./handlecheckbox";
+const SuperAdmin = () => {
+  //!manejo de los checkbox
+  
 
-const ClientsTable = () => {
-  // Esto tiene que venir del redux(store)
-  const [data, setData] = useState([]);
-console.log(data)
+  
+  const dispatch = useDispatch();
+  
   useEffect(() => {
-    async function fetchData() {
-      const dataClients = await axios("http://localhost:5000/clientes");
-      setData(dataClients.data);
-    }
-    fetchData();
-  }, []);
+    dispatch(getTrainers())
+  }, [dispatch]);
+  
+  const trainers = useSelector(state => state.allTrainers);
+  
+  
+  console.log(trainers)
+  
+  //!toda la información que utiliza ReactTable para presentarla
+  const [data,setData]=useState([]);
+  useEffect(()=>{
+    setData(trainers)
+  },[trainers])
 
   const columns = [
     {
       header: "ID",
       accessorKey: "id",
-      footer: "Id del deportista",
+      footer: "Id del entrenador",
     },
     {
       header: "Nombre",
       accessorKey: "forename",
-      footer: "Nombre del deportista",
+      footer: "Nombre del entrenador",
     },
     {
       header: "Apellido",
       accessorKey: "surname",
-      footer: "Apellido del deportista",
+      footer: "Apellido del entrenador",
     },
     {
       header: "Correo",
       accessorKey: "email",
-      footer: "Correo del deportista",
+      footer: "Correo del entrenador",
     },
     {
       header: "Teléfono",
       accessorKey: "phoneN",
-      footer: "Teléfono del deportista",
+      footer: "Teléfono del entrenador",
     },
     {
-      header: "Nacionalidad",
-      accessorKey: "nationality",
-      footer: "Nacionalidad del deportista",
+      header: "Rol",
+      accessorKey: "role",
+      footer: "Rol",
     },
+    // {
+      //   header: "Genero",
+      //   accessorKey: "gender",
+      //   footer: "Genero del entrenador",
+    // },
+    // {
+    //   header: "DNI",
+    //   accessorKey: "dni",
+    //   footer: "Dni del entrenador",
+    // },
     {
-      header: "Genero",
-      accessorKey: "gender",
-      footer: "Genero del deportista",
-    },
-    {
-      header: "DNI",
-      accessorKey: "dni",
-      footer: "Dni del deportista",
-    },
-    {
-      header: "Fecha de nacimiento",
-      accessorKey: "dateOfBirth",
-      footer: "Fecha de Nacimineto del deportista",
-      cell: (info) => dayjs(info.getValue()).format("DD/MM/YYYY"),
-    },
+      header: "Seleccione rol",
+      footer: "Seleccione rol",
+      id: "selection", 
+      cell: ({ row }) => 
+      //   <input
+      // //   type="checkbox"
+      //   checked={row.isSelected}
+      //   onChange={() => {
+        //     handleCheckboxChange(row.original.id);
+        //   }}
+      // /> 
+      <Button
+      variant="contained"
+      color="primary"
+      size="small"
+      onClick={() => {handleCheckboxChange(row.original.id)
+      }}
+    >
+      Cambiar Rol
+    </Button>
+      },
+   
   ];
 
   const [sorting, setSorting] = useState([]);
@@ -100,20 +134,21 @@ console.log(data)
         </span>
         <input
           class="form-control"
-          placeholder="Buscar deportista"
+          placeholder="Buscar Entrenador"
           aria-label="Username"
           aria-describedby="basic-addon1"
           type="text"
           value={filtering}
           onChange={(e) => setFiltering(e.target.value)}
-        />
+          />
       </div>
-      <table className="table table-info">
-        <thead>
+<TableContainer component={Paper}> 
+       <Table >
+        <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
+            <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th
+                <TableCell
                   className="bg-info bg-opacity-50"
                   role="button"
                   scope="col"
@@ -127,65 +162,66 @@ console.log(data)
                   {{ asc: <BsSortUpAlt />, desc: <BsSortDown /> }[
                     header.column.getIsSorted() ?? null
                   ] ?? <RxUpdate />}
-                </th>
+                </TableCell>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </thead>
-        <tbody>
+        </TableHead>
+        <TableBody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+            <TableRow key={row.id}>
               {row.getVisibleCells().map((cell) => (
                 <td key={cell.id}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </tbody>
-        <tfoot>
+        </TableBody>
+        <TableFooter>
           {table.getFooterGroups().map((footerGroup) => (
-            <tr key={footerGroup.id}>
+            <TableRow key={footerGroup.id}>
               {footerGroup.headers.map((footer) => (
-                <th key={footer.id} className="blockquote-footer">
+                <TableCell key={footer.id} className="blockquote-footer">
                   {flexRender(
                     footer.column.columnDef.footer,
                     footer.getContext()
                   )}
-                </th>
+                </TableCell>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </tfoot>
-      </table>
+        </TableFooter>
+      </Table>
+      </TableContainer>
       <div className="d-flex justify-content-between">
-        <button
+        <Button
           className="btn btn-success btn-sm"
           onClick={() => table.setPageIndex(0)}
         >
           Primer página
-        </button>
-        <button
+        </Button>
+        <Button
           className="btn btn-success btn-sm"
           onClick={() => table.previousPage()}
         >
           Página anterior
-        </button>
-        <button
+        </Button>
+        <Button
           className="btn btn-success btn-sm"
           onClick={() => table.nextPage()}
         >
           Página siguiente
-        </button>
-        <button
+        </Button>
+        <Button
           className="btn btn-success btn-sm"
           onClick={() => table.setPageIndex(table.getPageCount() - 1)}
         >
           Última página
-        </button>
+        </Button>
       </div>
     </div>
   );
 };
 
-export default ClientsTable;
+export default SuperAdmin
