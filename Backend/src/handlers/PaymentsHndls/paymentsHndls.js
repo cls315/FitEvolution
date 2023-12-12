@@ -51,6 +51,7 @@ const paymentsHndls = async (req, res) => {
         trainerName: trainer.forename + " " + trainer.surname,
         focusTr: trainer.focusTr,
         defaultRoutine: trainer.rutinaPredeterminada,
+        score: trainer.score,
         // Agrega otras propiedades del objeto trainer que quieras incluir
       });
 
