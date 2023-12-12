@@ -1,4 +1,5 @@
 import { useState,useEffect } from "react";
+import { useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
@@ -15,7 +16,10 @@ const stripePromise = loadStripe(
 
 
 
-const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading }) => {
+const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading, idTrainer }) => {
+
+  const user = useSelector((state)=> state.usuario)
+  const email = user.email
 
   const stripe = useStripe();
   const elements = useElements();
@@ -43,9 +47,14 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading }
 
             amount: { total },
 
+            idTrainer: {idTrainer},
+
+            userEmail: {email}
+
           }
         );
-        console.log(data.message);
+        console.log(idTrainer, email);
+        console.log(data);
         setLoading(false)  //detiene la carga del gif
         alert(data.message)
         setShow(false)
@@ -75,13 +84,13 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading }
 };
 
 function Pagos(props) {
-  const { total, setShow, setVerPagos, vaciarCarrito, setLoading } = props
+  const { total, setShow, setVerPagos, vaciarCarrito, setLoading, idTrainer } = props
   return (<>
     <Elements stripe={stripePromise}>
       <div className="container p-4 ">
         <div className="row w-100 ">
           <div className=" flex justify-center p-8">
-            <CheckoutForm setLoading={setLoading} vaciarCarrito={vaciarCarrito} setVerPagos={setVerPagos} setShow={setShow} total={total} />
+            <CheckoutForm setLoading={setLoading} vaciarCarrito={vaciarCarrito} setVerPagos={setVerPagos} setShow={setShow} total={total} idTrainer={idTrainer} />
           </div>
         </div>
       </div>

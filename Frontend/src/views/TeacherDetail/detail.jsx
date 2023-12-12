@@ -45,7 +45,7 @@ const Detail = ()=>{
     return(
         <div>
             {loading && <LoadingComponent/>}     {/*CARGA DE GIF PARA CUANDO SE ENVIA EL PAGO DEL CARRITO*/}
-            <Navdetail setLoading={setLoading}/>
+            <Navdetail setLoading={setLoading} idTrainer={id}/>
             {/* {!teacher.id ? (
                 <div>
                     <p>The teacher is not found</p>
