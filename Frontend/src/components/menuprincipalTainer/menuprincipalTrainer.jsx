@@ -8,7 +8,7 @@ export default function menuprincipalTrainer(props) {
       <div className='d-flex flex-column text-right'>
         <h3>Deportistas activos{' (1)'}</h3>
         <span>
-          {`Bienvenido ${trainer.email} a tu cuenta de entrenador, aqui puedes ver todos los
+          {`Bienvenido ${trainer.forename} a tu cuenta de entrenador, aqui puedes ver todos los
           deportistas`}
         </span>
       </div>

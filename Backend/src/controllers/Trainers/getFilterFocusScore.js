@@ -11,7 +11,7 @@ const filterFocusScore = async (req, res) => {
     }
 
     if (score) {
-      trainers = trainers.filter((trainer) => trainer.score === score);
+      trainers = trainers.filter((trainer) => trainer.score.toString() === score.toString());
     }
 
     // ordenamiento asc y desc por focus y score
