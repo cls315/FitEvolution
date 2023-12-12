@@ -12,7 +12,7 @@
 }
 .btconteiner{
 display: flex;
-justify-content: start;
+justify-content: space-between;
 align-items: start;
 }
 
@@ -30,11 +30,11 @@ align-items: start;
 .Form{
     padding: 10px;
     margin: 0 auto;
-    background-color: rgba(252, 248, 248, 0.733);
+    background-color: rgba(255, 255, 255, 0.853);
     border: 2px solid rgba(143, 142, 142, 0.726);
     border-radius: 10px;
     width:700px ;
-    height: 500px;
+    height: auto;
     align-content: center;
     margin-left: 10%;
     margin-right: 10%;
@@ -101,16 +101,10 @@ height: 60px;
 }
 
 .Face{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(128, 128, 128, 0.678);
-    width:20%;
-    height: 100%;
-    font-size:12px ;
-    margin: 0 20px 0 20px
- 
+    margin: 10px!important;
+    width: 80%!important;
+    height: 70%;
+    font-size:11px!important ;
 }
 
 .pfg{
@@ -122,17 +116,10 @@ height: 60px;
 }
 
 .google{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color:rgba(128, 128, 128, 0.678);
-    width: 20%;
-    height: 100%;
-    font-size:12px ;
-    margin: 0 20px 0 20px
-   
-
+    margin: 10px!important;
+    width: 80%!important;
+    height: 70%;
+    font-size:11px!important ;
 }
 
 .spanGoole{
