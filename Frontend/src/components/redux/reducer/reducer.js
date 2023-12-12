@@ -1,4 +1,4 @@
-import { ejemplo , USUARIO_LOGED,GET_DEPORTISTAS,GET_TRAINERS,MENU_TRAINERS,RUTINAS, SEARCH,FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, SOBRE_FOCUS,CLEAR_CART, AGREGAR_CARRITO, GET_ROUTINES, DELETE_CART, SET_USER, USER} from "../actions/types"
+import { ejemplo , TRAINER,USUARIO_LOGED,GET_DEPORTISTAS,GET_TRAINERS,MENU_TRAINERS,RUTINAS, SEARCH,FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, SOBRE_FOCUS,CLEAR_CART, AGREGAR_CARRITO, GET_ROUTINES, DELETE_CART, SET_USER, USER} from "../actions/types"
 
 const initialState = {
     allTrainers: [],
@@ -11,6 +11,7 @@ const initialState = {
     rutinas2:[],
     userStatus: "",
     usuario:[],
+    trainer:[],
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -43,7 +44,9 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 status: "focus"
             }
         case SOBRE_FOCUS:
-            const byStars = state.filterTrainers.filter((trainer) => trainer.score === payload)
+            console.log(payload);
+            const byStars = state.filterTrainers.filter((trainer) => trainer.score.toString() === payload.toString())
+            console.log("stars",byStars);
             return{
                 ...state,
                 filterTrainers: byStars,
@@ -94,6 +97,10 @@ const rootReducer = (state = initialState, { type, payload }) => {
             case USER:
                 return {
                     ...state, usuario: payload
+                }
+            case TRAINER:
+                return {
+                    ...state, trainer: payload
                 }
         default:
             return { ...state }

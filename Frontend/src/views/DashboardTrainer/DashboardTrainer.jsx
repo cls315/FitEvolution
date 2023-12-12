@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { URLfrontend } from '../../../configURL';
 import { auth  } from '../../components/firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-import { usuariologed } from '../../components/redux/actions/actions';
+import { trainerPerfil } from '../../components/redux/actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
 //components imports
 import MenuprincipalTrainer from '../../components/menuprincipalTainer/menuprincipalTrainer';
@@ -22,10 +22,10 @@ import './DashboardTrainer.css';
 const DashboardTrainer = (props) => {
 
   const [menu, setmenu] = useState('deportes')
-  const [trainer,setTrainer] =useState({})
   const allTrainers=useSelector((state) => state.allTrainers)
-  console.log(allTrainers)
-  const usuario=useSelector((state)=>state.usuario)
+  
+  const trainer=useSelector((state)=>state.trainer)
+  const dispatch=useDispatch()
   const [uMail,setUmail] = useState("")
   console.log(uMail)
   
@@ -36,9 +36,9 @@ const DashboardTrainer = (props) => {
   onAuthStateChanged(auth, (user)=>{    //esta funcion es de firebase se queda en modo escucha cada vez que se carga la aplicacion.
     if(user){
       console.log(user.email)
-      console.log(usuario)
-      usuariologed(user.email)
       setUserSession(true)
+      dispatch(trainerPerfil(user.email))
+      console.log(trainer)
       setUmail(user.email)
     } else{
       setUserSession(false)
@@ -53,7 +53,7 @@ const DashboardTrainer = (props) => {
     };
      
 
-  },[allTrainers,usuario,uMail])
+  },[allTrainers,uMail])
 
   //-------------------------*/
   const handleMenu = (e) => {

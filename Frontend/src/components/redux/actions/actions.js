@@ -1,4 +1,4 @@
-import { ejemplo, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER, USER } from "./types";
+import { ejemplo,TRAINER, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER, USER } from "./types";
 import axios from 'axios';
 import { URLSERVER } from '../../../../configURL';
 import { MENU_TRAINERS } from '../actions/types'
@@ -90,6 +90,7 @@ export const filterScore = (option) => {
   return async function (dispatch) {
     try {
       const json = await axios(`${URLSERVER}/fitevolution/trainers/filter?score=${option}`)
+      console.log("data", json.data);
       return dispatch({
         type: FILTER_SCORE,
         payload: json.data
@@ -110,6 +111,7 @@ export const sobreScore = (option) => {
 }
 
 export const sobreFocus = (option) => {
+  console.log("sobre focus", option);
   return function (dispatch) {
     return dispatch({
       type: SOBRE_FOCUS,
@@ -205,6 +207,19 @@ export const userPerfil = (option)=>{
     return dispatch({
       type: USER,
       payload: client
+    })
+  }
+}
+
+export const trainerPerfil = (option)=>{
+  return async function(dispatch){
+    const json = await axios(`${URLSERVER}/fitevolution/trainers/allTrainer`)
+    const allTrainers = json.data
+    const trainer = allTrainers.find((trainer) => trainer.email == option)
+    console.log("action trainer",trainer);
+    return dispatch({
+      type: TRAINER,
+      payload: trainer
     })
   }
 }
