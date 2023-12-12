@@ -190,7 +190,7 @@ const FormSesion = (props) => {
     return (<div className={style.FormSesion}>
         <Container className={style.Form} component="main" maxWidth="xs">
             <div>
-                <div className={style.btconteiner}>
+                <div className={style.btconteiner} >
                     <IconButton onClick={volverinicio}>
                         <ArrowBackIcon />
                         <Typography component="h6" >
