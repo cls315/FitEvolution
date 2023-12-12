@@ -193,7 +193,7 @@ const FormSesion = (props) => {
                 <div className={style.btconteiner}>
                     <IconButton onClick={volverinicio}>
                         <ArrowBackIcon />
-                        <Typography component="h6" >
+                        <Typography component="h6">
                             Volver al inicio
                         </Typography>
                     </IconButton>
