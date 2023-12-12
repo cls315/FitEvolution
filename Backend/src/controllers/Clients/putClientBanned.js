@@ -13,7 +13,7 @@ const putClients = async (req, res) => {
     }
 
     // comprobacion si se setea un valor distinto de on o off
-    if(banned.toLowerCase() !== "On" && banned.toLowerCase() !== "Off"){
+    if(banned.toLowerCase() !== "on" && banned.toLowerCase() !== "off"){
       throw new Error("El estado 'banned' debe ser 'On' o 'Off'");
     }
 
