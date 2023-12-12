@@ -44,7 +44,9 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 status: "focus"
             }
         case SOBRE_FOCUS:
-            const byStars = state.filterTrainers.filter((trainer) => trainer.score === payload)
+            console.log(payload);
+            const byStars = state.filterTrainers.filter((trainer) => trainer.score.toString() === payload.toString())
+            console.log("stars",byStars);
             return{
                 ...state,
                 filterTrainers: byStars,
