@@ -1,30 +1,47 @@
-import { ejemplo,TRAINER, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER, USER } from "./types";
-import axios from 'axios';
-import { URLSERVER } from '../../../../configURL';
-import { MENU_TRAINERS } from '../actions/types'
+import {
+  ejemplo,
+  TRAINER,
+  USUARIO_LOGED,
+  GET_DEPORTISTAS,
+  GET_TRAINERS,
+  RUTINAS,
+  SEARCH,
+  FILTER_FOCUS,
+  FILTER_SCORE,
+  QUITAR_FILTROS,
+  SOBRE_SCORE,
+  GET_ROUTINES,
+  SOBRE_FOCUS,
+  AGREGAR_CARRITO,
+  CLEAR_CART,
+  DELETE_CART,
+  SET_USER,
+  USER,
+  POST_RUTINES,
+} from "./types";
+import axios from "axios";
+import { URLSERVER } from "../../../../configURL";
+import { MENU_TRAINERS } from "../actions/types";
 
 export const usuariologed = (data) => {
-  console.log(data)
-    return{
-      type: USUARIO_LOGED,
-      payload: data,
-    }
-  }
+  console.log(data);
+  return {
+    type: USUARIO_LOGED,
+    payload: data,
+  };
+};
 
 export const getTrainers = (data) => {
-
   if (data && data.length > 0) {
     return {
       type: GET_TRAINERS,
       payload: data,
-    }
+    };
   }
 
   return async function (dispatch) {
     try {
-      let json = await axios(
-        `${URLSERVER}/fitevolution/trainers/allTrainer`
-      );
+      let json = await axios(`${URLSERVER}/fitevolution/trainers/allTrainer`);
       dispatch({
         type: GET_TRAINERS,
         payload: json.data,
@@ -40,13 +57,11 @@ export const getDeportistas = (data) => {
     return {
       type: GET_DEPORTISTAS,
       payload: data,
-    }
+    };
   }
   return async function (dispatch) {
     try {
-      let json = await axios(
-        `${URLSERVER}/fitevolution/clients`
-      );
+      let json = await axios(`${URLSERVER}/fitevolution/clients`);
       dispatch({
         type: GET_DEPORTISTAS,
         payload: json.data,
@@ -57,169 +72,184 @@ export const getDeportistas = (data) => {
   };
 };
 
-
-
 //cambiar menus en el panel del entrenador
 export const cambiarMenuTrainer = (data) => {
   return function (dispatch) {
-    return dispatch(
-      {
-        type: MENU_TRAINERS,
-        payload: [data]
-      }
-    )
-  }
-}
+    return dispatch({
+      type: MENU_TRAINERS,
+      payload: [data],
+    });
+  };
+};
 
 export const filterFocus = (option) => {
   return async function (dispatch) {
     try {
-      const json = await axios(`${URLSERVER}/fitevolution/trainers/filter?focus=${option}`)
-      return dispatch(
-        {
-          type: FILTER_FOCUS,
-          payload: json.data
-        });
+      const json = await axios(
+        `${URLSERVER}/fitevolution/trainers/filter?focus=${option}`
+      );
+      return dispatch({
+        type: FILTER_FOCUS,
+        payload: json.data,
+      });
     } catch (error) {
-      throw new Error(error.message)
+      throw new Error(error.message);
     }
-  }
-}
+  };
+};
 
 export const filterScore = (option) => {
   return async function (dispatch) {
     try {
-      const json = await axios(`${URLSERVER}/fitevolution/trainers/filter?score=${option}`)
+      const json = await axios(
+        `${URLSERVER}/fitevolution/trainers/filter?score=${option}`
+      );
       console.log("data", json.data);
       return dispatch({
         type: FILTER_SCORE,
-        payload: json.data
-      })
+        payload: json.data,
+      });
     } catch (error) {
-      throw new Error(error.message)
+      throw new Error(error.message);
     }
-  }
-}
+  };
+};
 
 export const sobreScore = (option) => {
   return function (dispatch) {
     return dispatch({
       type: SOBRE_SCORE,
-      payload: option
-    })
-  }
-}
+      payload: option,
+    });
+  };
+};
 
 export const sobreFocus = (option) => {
   console.log("sobre focus", option);
   return function (dispatch) {
     return dispatch({
       type: SOBRE_FOCUS,
-      payload: option
-    })
-  }
-}
+      payload: option,
+    });
+  };
+};
 
 export const quitarFiltros = () => {
   return function (dispatch) {
     return dispatch({
       type: QUITAR_FILTROS,
-      payload: []
-    })
-  }
-}
+      payload: [],
+    });
+  };
+};
 
 export const agregarCarrito = (option) => {
   return function (dispatch) {
     return dispatch({
       type: AGREGAR_CARRITO,
-      payload: option
-    })
-  }
-}
+      payload: option,
+    });
+  };
+};
 
 export const clearCart = () => {
   return function (dispatch) {
     return dispatch({
-      type: CLEAR_CART
-    })
-  }
-}
+      type: CLEAR_CART,
+    });
+  };
+};
 
 export const getRoutines = () => {
   return async function (dispatch) {
     try {
-      const json = await axios(`${URLSERVER}/fitevolution/routines/allRoutines`)
+      const json = await axios(
+        `${URLSERVER}/fitevolution/routines/allRoutines`
+      );
       return dispatch({
         type: GET_ROUTINES,
-        payload: json.data
-      })
+        payload: json.data,
+      });
     } catch (error) {
-      throw new Error(error.message)
+      throw new Error(error.message);
     }
-  }
-}
+  };
+};
 export const getEntreno = () => {
   return async function (dispatch) {
-    const entreno = await axios("http://localhost:3001/fitevolution/routines/allRoutines")
-    console.log(entreno, "actions")
+    const entreno = await axios(
+      "http://localhost:3001/fitevolution/routines/allRoutines"
+    );
+    console.log(entreno, "actions");
     const rutinas = entreno.data;
     dispatch({
-
       type: RUTINAS,
-      payload: rutinas
-    }
-    )
-  }
-}
+      payload: rutinas,
+    });
+  };
+};
 
 export const search = (input) => {
   return {
     type: SEARCH,
-    payload: input
-  }
-}
+    payload: input,
+  };
+};
 
 export const deleteCarrito = (option) => {
   return function (dispatch) {
     return dispatch({
       type: DELETE_CART,
-      payload: option
-    })
-  }
-}
+      payload: option,
+    });
+  };
+};
 
 export const setusuario = (option) => {
   return function (dispatch) {
     return dispatch({
       type: SET_USER,
-      payload: option
-    })
-  }
-}
+      payload: option,
+    });
+  };
+};
 
-export const userPerfil = (option)=>{
-  return async function(dispatch){
-    const json = await axios(`${URLSERVER}/fitevolution/clients`)
-    const allClients = json.data
-    const client = allClients.find((client) => client.email == option)
-    console.log("action client",client);
+export const userPerfil = (option) => {
+  return async function (dispatch) {
+    const json = await axios(`${URLSERVER}/fitevolution/clients`);
+    const allClients = json.data;
+    const client = allClients.find((client) => client.email == option);
+    console.log("action client", client);
     return dispatch({
       type: USER,
-      payload: client
-    })
-  }
-}
+      payload: client,
+    });
+  };
+};
 
-export const trainerPerfil = (option)=>{
-  return async function(dispatch){
-    const json = await axios(`${URLSERVER}/fitevolution/trainers/allTrainer`)
-    const allTrainers = json.data
-    const trainer = allTrainers.find((trainer) => trainer.email == option)
-    console.log("action trainer",trainer);
+export const trainerPerfil = (option) => {
+  return async function (dispatch) {
+    const json = await axios(`${URLSERVER}/fitevolution/trainers/allTrainer`);
+    const allTrainers = json.data;
+    const trainer = allTrainers.find((trainer) => trainer.email == option);
+    console.log("action trainer", trainer);
     return dispatch({
       type: TRAINER,
-      payload: trainer
-    })
-  }
-}
+      payload: trainer,
+    });
+  };
+};
+
+export const postRutines = () => {
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${URLSERVER}/fitevolution/routines/`);
+      return dispatch({
+        type: POST_RUTINES,
+        payload: json.data,
+      });
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+};
