@@ -27,20 +27,25 @@ const SuperAdmin = () => {
   
   const dispatch = useDispatch();
   
-  useEffect(() => {
-    dispatch(getTrainers())
-  }, [dispatch]);
+  
   
   const trainers = useSelector(state => state.allTrainers);
   
-  
-  console.log(trainers)
-  
+  const handleStorageChange = () => {
+    setData(JSON.parse(localStorage.getItem("selectedAdmins")));
+  };
+  useEffect(() => {
+    window.addEventListener('storage', handleStorageChange);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
   //!toda la información que utiliza ReactTable para presentarla
   const [data,setData]=useState([]);
   useEffect(()=>{
     setData(trainers)
-  },[trainers])
+    dispatch(getTrainers())
+  },[dispatch,handleCheckboxChange])
 
   const columns = [
     {
