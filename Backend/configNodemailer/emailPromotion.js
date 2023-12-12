@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer")
-
+const path = require('path');
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -13,6 +13,8 @@ const transporter = nodemailer.createTransport({
 
   async function emailPromotion(email, forename, surname) {
     try {
+      const imagePath = 'C:\\Users\\Carlos\\OneDrive\\Escritorio\\FitEvolution\\Backend\\configNodemailer\\imagesPromo\\imagenPromo.png';
+
       await transporter.sendMail({
         from: "fitevolution77@gmail.com",
         to: `${email}`,
@@ -24,7 +26,7 @@ const transporter = nodemailer.createTransport({
         <p>¡Gracias por ser parte de nuestra comunidad en FitEvolution!</p>
         <p>¡No queremos que te pierdas nuestra última promoción exclusiva!</p>
         <a href="[Aqui iria un enlace del supuesto descuento]">
-        <img src="[URL de la imagen del flyer]" alt="Promoción" />
+        <img src="cid:imagen_promocion" alt="Promoción" />
         <p>¡Esperamos que disfrutes de esta oferta especial!</p>
         <p>Atentamente, El Equipo de FitEvolution</p>
         </a>
@@ -32,6 +34,14 @@ const transporter = nodemailer.createTransport({
 
         </div>
         `,
+        attachments:[
+          {
+            filename:'imagenPromo.png',
+            path: imagePath,
+            cid: 'imagen_promocion'
+
+          }
+        ]
       });
   
       console.log("Correo de promocion enviado con éxito.");

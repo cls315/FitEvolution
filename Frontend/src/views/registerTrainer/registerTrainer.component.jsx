@@ -46,6 +46,7 @@ function RegisterTrainer() {
         gender:null,
         focusTr:null,
         score:null,
+        puntuaciones:[],
     })
 //!esta logica es para mostrar u ocultar el password ingresado
 //     const [showPassword, setShowPassword] = useState(false);

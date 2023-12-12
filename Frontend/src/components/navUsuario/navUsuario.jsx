@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 import imageLogo from "../../images/imageLogo.jpg"
 import styles from "./navUsuario.module.css"
 
-const NavUsuario = ({setCurrentPage, setUserSession})=>{
+const NavUsuario = ({setCurrentPage, setUserSession, userstatus })=>{
 
     const dispatch = useDispatch();
     useEffect(()=>{
@@ -94,6 +94,11 @@ const NavUsuario = ({setCurrentPage, setUserSession})=>{
                     <option key={index} value={score}>Solo con {score} estrellas</option>
                 ))}
             </select>
+            {userstatus === "invitado" ? "" : 
+            <Link to="/detailusuario">
+            <button className={styles.btn1}>Perfil</button>
+            </Link>
+            }
             <Link to="/">
             <button className={styles.btn2} onClick={()=>{setUser()}}>Cerrar sesion</button>
             </Link>

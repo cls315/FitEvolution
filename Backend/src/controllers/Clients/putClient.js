@@ -1,6 +1,5 @@
 const { Client } = require("../../db");
-const axios = require("axios");
-const { API_CLIENTES } = require("../urls");
+
 
 const putClients = async (req, res) => {
   const { id } = req.params;
@@ -12,8 +11,19 @@ const putClients = async (req, res) => {
     if (!clientDb) {
       throw new Error("cliente no encontrado");
     }
+
+    // comprobacion si se setea un valor distinto de on o off
+    if(banned.toLowerCase() !== "On" && banned.toLowerCase() !== "Off"){
+      throw new Error("El estado 'banned' debe ser 'On' o 'Off'");
+    }
+
+       // Comprobación si se intenta poner el mismo estado, lanzar un error
+    if (banned.toLowerCase() === clientDb.banned.toLowerCase()) {
+      throw new Error(`El cliente ya está en estado '${banned}'`);
+    }
+    
     // actualizo el estado del cliente
-    clientDb.banned = banned || clientDb.banned;
+    clientDb.banned = banned.toLowerCase() ;
 
     return await clientDb.save();
   } catch (error) {

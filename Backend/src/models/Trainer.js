@@ -109,11 +109,11 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      description: {
+      description:{
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      puntuaciones: {
+      puntuaciones:{
         type: DataTypes.ARRAY(
           DataTypes.ENUM(
             "0",
@@ -134,7 +134,7 @@ module.exports = (sequelize) => {
       score: {
         type: DataTypes.VIRTUAL, // VIRTUAL significa que este campo no se almacenará en la base de datos
         get() {
-          if (this.puntuaciones.length === 0) {
+          if (!this.puntuaciones || this.puntuaciones.length === 0) {
             return 0; // Si no hay puntuaciones, el puntaje es 0
           }
 
@@ -155,7 +155,6 @@ module.exports = (sequelize) => {
           );
         },
       },
-
       subscribers: {
         type: DataTypes.ARRAY(DataTypes.UUID), // Array de IDs de clientes
         allowNull: true,
@@ -165,6 +164,16 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("Active", "Suspended"),
         allowNull: true,
         defaultValue: "Active",
+      },
+      rutinaPredeterminada: {
+        type: DataTypes.ARRAY(DataTypes.JSONB),
+        allowNull: false,
+        defaultValue: [], // Valor predeterminado: array vacío
+      },
+      role: {
+        type: DataTypes.ENUM("Trainer", "Admin"),
+        allowNull: true,
+        defaultValue: "Trainer",
       },
     },
     {

@@ -55,17 +55,17 @@ const FormSesion = (props) => {
         try {
             const user=await callLoginGoogle();
             if (typeSession === "Deportistas") {
-                //primero buscamos si el email existe en nustra base de datos 
+                //primero buscamos si el email existe en nuestra base de datos 
                 verificationEmailAccount(allTrainers,"Deportistas",user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/clients`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
                 Swal.fire(`Bienvenido a FitRevolution ${user.displayName.split(" ")[0]}`)
                 navigate('/homeusuario')}
             if (typeSession === "Entrenadores") {
-                //primero buscamos si el email existe en nustra base de datos 
+                //primero buscamos si el email existe en nuestra base de datos 
                 verificationEmailAccount(allDeportistas,"Entrenadores",user)
                 //----------------------------------------------------------
-                await axios.post(`${URLSERVER}/fitevolution/trainers`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
+                await axios.post(`${URLSERVER}/fitevolution/trainers`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0],puntuaciones:[]})
                 Swal.fire(`Bienvenido a FitRevolution ${user.displayName.split(" ")[0]}`)
                 navigate('/dashboardtr')}
         } catch (error) {
@@ -105,7 +105,7 @@ const FormSesion = (props) => {
                 //primero buscamos si el email existe en nustra base de datos 
                 verificationEmailAccount(allDeportistas,"Entrenadores",user)
                 //----------------------------------------------------------
-                await axios.post(`${URLSERVER}/fitevolution/trainers`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
+                await axios.post(`${URLSERVER}/fitevolution/trainers`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0],puntuaciones:[]})
                 Swal.fire(`Bienvenido a FitRevolution ${user.displayName.split(" ")[0]}`,"",'success')
                 navigate('/dashboardtr')}
         } catch (error) {
