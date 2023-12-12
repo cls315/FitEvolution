@@ -49,36 +49,37 @@ const FormSesion = (props) => {
     const call_login_google = async (e) => {
         e.preventDefault();
         try {
-            const user=await callLoginGoogle();
+            const user = await callLoginGoogle();
             if (typeSession === "Deportistas") {
                 //primero buscamos si el email existe en nuestra base de datos 
-                verificationEmailAccount(allTrainers,"Deportistas",user)
+                verificationEmailAccount(allTrainers, "Deportistas", user)
                 //----------------------------------------------------------
-                await axios.post(`${URLSERVER}/fitevolution/clients`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
+                await axios.post(`${URLSERVER}/fitevolution/clients`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0] })
                 Swal.fire(`Bienvenido a FitRevolution ${user.displayName.split(" ")[0]}`)
-                navigate('/homeusuario')}
+                navigate('/homeusuario')
+            }
             if (typeSession === "Entrenadores") {
                 //primero buscamos si el email existe en nuestra base de datos 
-                verificationEmailAccount(allDeportistas,"Entrenadores",user)
+                verificationEmailAccount(allDeportistas, "Entrenadores", user)
                 //----------------------------------------------------------
-                await axios.post(`${URLSERVER}/fitevolution/trainers`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0],puntuaciones:[]})
+                await axios.post(`${URLSERVER}/fitevolution/trainers`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0], puntuaciones: [] })
                 Swal.fire(`Bienvenido a FitRevolution ${user.displayName.split(" ")[0]}`)
-                navigate('/dashboardtr')}
+                navigate('/dashboardtr')
+            }
         } catch (error) {
-            const requestData = error.config?JSON.parse(error.config.data):null;
-            const forename = requestData?requestData.forename:null;
-            
-            if(error.code && error.code==="auth/account-exists-with-different-credential") Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo",'','error')
-            if (error.response && error.response.data.error==="El usuario ya esta registrado" && typeSession === "Deportistas"){
-             Swal.fire(`Bienvenido nuevamente ${forename} `)
+            const requestData = error.config ? JSON.parse(error.config.data) : null;
+            const forename = requestData ? requestData.forename : null;
+
+            if (error.code && error.code === "auth/account-exists-with-different-credential") Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo", '', 'error')
+            if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Deportistas") {
+                Swal.fire(`Bienvenido nuevamente ${forename} `)
                 navigate('/homeusuario')
-            }    
-            else if(error.response && error.response.data.error==="El usuario ya esta registrado" && typeSession === "Entrenadores")
-            {   
+            }
+            else if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Entrenadores") {
                 Swal.fire(`Bienvenido nuevamente ${forename} `)
                 navigate('/dashboardtr')
-            }    
-            else if(error) Swal.fire(error.message,'','error')
+            }
+            else if (error) Swal.fire(error.message, '', 'error')
         }
     }
 
@@ -86,38 +87,39 @@ const FormSesion = (props) => {
     const call_login_facebook = async (e) => {
         e.preventDefault();
         try {
-            const user=await callLoginFacebook();
+            const user = await callLoginFacebook();
             console.log(user)
             if (typeSession === "Deportistas") {
                 //primero buscamos si el email existe en nustra base de datos 
-                verificationEmailAccount(allTrainers,"Deportistas",user)
+                verificationEmailAccount(allTrainers, "Deportistas", user)
                 console.log(user)
                 //----------------------------------------------------------
-               await axios.post(`${URLSERVER}/fitevolution/clients`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0]})
-               Swal.fire(`Bienvenido a FitRevolution ${user.displayName.split(" ")[0]}`,'','success')
-                navigate('/homeusuario')}
+                await axios.post(`${URLSERVER}/fitevolution/clients`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0] })
+                Swal.fire(`Bienvenido a FitRevolution ${user.displayName.split(" ")[0]}`, '', 'success')
+                navigate('/homeusuario')
+            }
             if (typeSession === "Entrenadores") {
                 //primero buscamos si el email existe en nustra base de datos 
-                verificationEmailAccount(allDeportistas,"Entrenadores",user)
+                verificationEmailAccount(allDeportistas, "Entrenadores", user)
                 //----------------------------------------------------------
-                await axios.post(`${URLSERVER}/fitevolution/trainers`, {email:user.email,surname:user.displayName.split(" ")[1],forename:user.displayName.split(" ")[0],puntuaciones:[]})
-                Swal.fire(`Bienvenido a FitRevolution ${user.displayName.split(" ")[0]}`,"",'success')
-                navigate('/dashboardtr')}
+                await axios.post(`${URLSERVER}/fitevolution/trainers`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0], puntuaciones: [] })
+                Swal.fire(`Bienvenido a FitRevolution ${user.displayName.split(" ")[0]}`, "", 'success')
+                navigate('/dashboardtr')
+            }
         } catch (error) {
-            const requestData = error.config?JSON.parse(error.config.data):null;
-            const forename = requestData?requestData.forename:null; 
+            const requestData = error.config ? JSON.parse(error.config.data) : null;
+            const forename = requestData ? requestData.forename : null;
 
-            if(error.code && error.code==="auth/account-exists-with-different-credential") Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo",'','error')
-            if (error.response && error.response.data.error==="El usuario ya esta registrado" && typeSession === "Deportistas"){
+            if (error.code && error.code === "auth/account-exists-with-different-credential") Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo", '', 'error')
+            if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Deportistas") {
                 Swal.fire(`Bienvenido nuevamente ${forename} `)
                 navigate('/homeusuario')
-            }    
-            else if(error.response && error.response.data.error==="El usuario ya esta registrado" && typeSession === "Entrenadores")
-            {   
+            }
+            else if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Entrenadores") {
                 Swal.fire(`Bienvenido nuevamente ${forename} `)
                 navigate('/dashboardtr')
-            }    
-            else if(error) Swal.fire(error.message,'','error')
+            }
+            else if (error) Swal.fire(error.message, '', 'error')
         }
     }
 
@@ -125,32 +127,33 @@ const FormSesion = (props) => {
         e.preventDefault()
         //  navigate('/homeusuario')
         //  navigate('/dashboardtr')
-            const checkErr = validate(form)
-            if (Object.values(form).some(inp => inp === "")) {  //some comprueba si algun elemento del array es "", si hay un "" quiere decir que hay un input vacio
-                Swal.fire('DEBÉS COMPLETAR TODOS LOS CAMPOS!',"",'error');
-                return;
+        const checkErr = validate(form)
+        if (Object.values(form).some(inp => inp === "")) {  //some comprueba si algun elemento del array es "", si hay un "" quiere decir que hay un input vacio
+            Swal.fire('DEBÉS COMPLETAR TODOS LOS CAMPOS!', "", 'error');
+            return;
+        }
+
+        if (Object.values(checkErr).some(error => error)) {
+            Swal.fire('EL FORMULARIO CONTIENE ERRORES!', "", "error");
+            return;
+        }
+
+        try {
+
+            verificationEmail(form.email, allTrainers, allDeportistas, typeSession)
+            const credentials = await signInWithEmailAndPassword(auth, form.email, form.password)
+            Swal.fire(`Bienvenido: ${credentials.user.email}`)
+            if (typeSession === "Deportistas") {
+                navigate('/homeusuario')
             }
-    
-            if (Object.values(checkErr).some(error => error)) {
-                Swal.fire('EL FORMULARIO CONTIENE ERRORES!',"","error");
-                return;
-            }
-    
-            try {
-               
-               verificationEmail(form.email,allTrainers,allDeportistas,typeSession)
-                const credentials = await signInWithEmailAndPassword(auth, form.email, form.password)
-                Swal.fire(`Bienvenido: ${credentials.user.email}`)
-                if (typeSession === "Deportistas") {
-                    navigate('/homeusuario')}
-                if (typeSession === "Entrenadores") navigate('/dashboardtr')
-                console.log(credentials.user.email)
-            } catch (error) {
-                
-                //  window.alert(error.code)
-                if (error.code === "auth/invalid-login-credentials" || error.code === "auth/invalid-login-credentials") Swal.fire("Usuario y/o contraseña invalidos",'','error')
-                if(error) Swal.fire(error.message,'','error')
-            }
+            if (typeSession === "Entrenadores") navigate('/dashboardtr')
+            console.log(credentials.user.email)
+        } catch (error) {
+
+            //  window.alert(error.code)
+            if (error.code === "auth/invalid-login-credentials" || error.code === "auth/invalid-login-credentials") Swal.fire("Usuario y/o contraseña invalidos", '', 'error')
+            if (error) Swal.fire(error.message, '', 'error')
+        }
     }
 
     //-------
@@ -191,15 +194,15 @@ const FormSesion = (props) => {
                     <IconButton onClick={volverinicio}>
                         <ArrowBackIcon />
                         <Typography component="h6" >
-                        Volver al inicio
+                            Volver al inicio
                         </Typography>
                     </IconButton>
-                    <IconButton onClick={()=>invitado("invitado")}>
+                    {typeSession && typeSession === "Deportistas" && <IconButton onClick={() => invitado("invitado")}>
                         <Typography component="h6">
-                        Ingresar como invitado
+                            Ingresar como invitado
                         </Typography>
                         <ArrowBackIcon style={{ transform: "rotate(180deg)" }} />
-                    </IconButton>
+                    </IconButton>}
                 </div>
                 <Typography component="h1" variant="h5">
                     {typeSession}
@@ -262,7 +265,7 @@ const FormSesion = (props) => {
                             color="primary"
                             onClick={call_login_google}
                         >
-                            <FcGoogle  size={40} />
+                            <FcGoogle size={40} />
                             Continuar con Google
                         </Button>
                     </Grid>
