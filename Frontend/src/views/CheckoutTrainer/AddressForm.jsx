@@ -4,12 +4,32 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { useSelector } from 'react-redux';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 export default function AddressForm() {
+  const trainer = useSelector((state) => state.trainer)
+  console.log(trainer)
+
+  const [form, setForm] = React.useState({
+    enfoque:"",
+    nacionalidad:"",
+  });
+
+  const handleChange = (event) => {
+    const value=event.target.value
+    const property=event.target.name
+    setForm({...form,[property]: value});
+  };
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Shipping address
+        Por favor completar el formulario
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
@@ -21,6 +41,7 @@ export default function AddressForm() {
             fullWidth
             autoComplete="given-name"
             variant="standard"
+            value={trainer.forename ? trainer.forename : null}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -32,68 +53,110 @@ export default function AddressForm() {
             fullWidth
             autoComplete="family-name"
             variant="standard"
+            value={trainer.surname ? trainer.surname : null}
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
-            required
-            id="address1"
-            name="address1"
-            label="Address line 1"
+            id="email"
+            name="email"
+            label="Correo electronico"
             fullWidth
-            autoComplete="shipping address-line1"
+            autoComplete="email"
             variant="standard"
+            value={trainer.email ? trainer.email : null}
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
-            id="address2"
-            name="address2"
-            label="Address line 2"
+            id="descripcion"
+            name="descripcion"
+            label="Descripcion(antecendentes, matriculas, etc)"
             fullWidth
             autoComplete="shipping address-line2"
             variant="standard"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
+        
+            <FormControl variant="standard" fullWidth>
+              <InputLabel id="demo-simple-select-standard-label">Enfoque</InputLabel>
+              <Select
+                labelId="demo-simple-select-standard-label"
+                id="demo-simple-select-standard"
+                value={form.enfoque}
+                onChange={handleChange}
+                label="Enfoque"
+              >
+                <MenuItem value={"Entrenamiento de fuerza"}>Entrenamiento de fuerza</MenuItem>
+                <MenuItem value={"Entrenamiento funcional"}>Entrenamiento funcional</MenuItem>
+                <MenuItem value={"Entrenamiento cardiovascular"}>Entrenamiento cardiovascular</MenuItem>
+                <MenuItem value={"Entrenamiento deportivo"}>Entrenamiento deportivo</MenuItem>
+              </Select>
+            </FormControl>
+          
+        </Grid>
+        <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="city"
-            name="city"
-            label="City"
+            id="DNI"
+            name="DNI"
+            label="DNI"
             fullWidth
-            autoComplete="shipping address-level2"
+            autoComplete="DNI"
             variant="standard"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="state"
-            name="state"
-            label="State/Province/Region"
+            required
+            id="Telefono"
+            name="Telefono"
+            label="Telefono"
             fullWidth
+            autoComplete="Telefono"
+            variant="standard"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+        
+        <FormControl variant="standard" fullWidth>
+          <InputLabel id="demo-simple-select-standard-label">Nacionalidad</InputLabel>
+          <Select
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-standard"
+            value={form.nacionalidad}
+            onChange={handleChange}
+            label="Nacionalidad"
+          >
+            <MenuItem value={"Argentina"}>Argentina</MenuItem>
+            <MenuItem value={"Brasil"}>Brasil</MenuItem>
+            <MenuItem value={"Chile"}>Chile</MenuItem>
+            <MenuItem value={"Bolivia"}>Bolivia</MenuItem>
+            <MenuItem value={"Otro"}>Otro</MenuItem>
+          </Select>
+        </FormControl>
+      
+    </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="Genero"
+            name="Genero"
+            label="Genero"
+            fullWidth
+            autoComplete="Genero"
             variant="standard"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="zip"
-            name="zip"
-            label="Zip / Postal code"
+            id="dateOfBirth"
+            name="dateOfBirth"
+            label="Fecha de nacimiento"
             fullWidth
-            autoComplete="shipping postal-code"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="country"
-            name="country"
-            label="Country"
-            fullWidth
-            autoComplete="shipping country"
+            autoComplete="dateOfBirth"
             variant="standard"
           />
         </Grid>
