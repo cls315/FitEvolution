@@ -15,7 +15,7 @@ const paymentsHndls = async (req, res) => {
       description: "plan de entrenamiento",
       payment_method: id,
       confirm: true,
-      receipt_email: userEmail,
+      receipt_email: userEmail.email,
       return_url: "https://www.example.com",
     });
 
@@ -30,7 +30,7 @@ const paymentsHndls = async (req, res) => {
     } = payment;
 
     // Guardar recibo de pago en la propiedad backups del modelo cliente
-    const client = await Client.findOne({ email: userEmail });
+    const client = await Client.findOne({ where:{email: userEmail.email }});
     if (client) {
       client.backups.push({
         receipt_email,
@@ -44,7 +44,7 @@ const paymentsHndls = async (req, res) => {
     }
 
     // Guardar objeto trainer en la propiedad mytrainers del modelo cliente
-    const trainer = await Trainer.findById(idTrainer);
+    const trainer = await Trainer.findByPk(idTrainer.idTrainer);
     if (trainer) {
       client.mytrainers.push({
         trainerId: trainer.id,
