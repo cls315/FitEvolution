@@ -20,6 +20,7 @@ const postCompleteClientsHndls = async (req, res) => {
   } = req.body;
 
   try {
+    const existingClient = await Client.findById(clientId);
     const updatedClient = await postCompleteClient(
       forename,
       surname,
