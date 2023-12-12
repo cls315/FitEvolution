@@ -90,6 +90,8 @@ function App() {
         path='/detailusuario'
         element={<DetailUsuario/>}
         />
+
+       
       </Routes>
     </>
   );
