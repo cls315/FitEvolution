@@ -104,32 +104,28 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("Masculino", "Femenino", "Otro"),
         allowNull: true,
       },
-
       focusTr: {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      description:{
+      description: {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      puntuaciones:{
-        type: DataTypes.ARRAY(
-          DataTypes.ENUM(
-            "0",
-            "0.5",
-            "1.0",
-            "1.5",
-            "2.0",
-            "2.5",
-            "3.0",
-            "3.5",
-            "4.0",
-            "4.5",
-            "5.0"
-          )
-        ),
+      puntuaciones: {
+        type: DataTypes.ARRAY(DataTypes.FLOAT), // Utiliza FLOAT para permitir números decimales
         allowNull: true,
+        defaultValue: [], // Puedes establecer un valor por defecto si es necesario
+        validate: {
+          isDecimalArray(value) {
+            const valoresPermitidos = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
+
+            value.forEach(num => {
+              const cumpleValorPermitido = valoresPermitidos.includes(num);
+              if (cumpleValorPermitido===false) throw new Error('valores permitidos: [0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5]');
+            });
+          },
+        },
       },
       score: {
         type: DataTypes.VIRTUAL, // VIRTUAL significa que este campo no se almacenará en la base de datos
@@ -140,7 +136,7 @@ module.exports = (sequelize) => {
 
           // Suma los valores convertidos a números
           const sum = this.puntuaciones.reduce(
-            (acc, score) => acc + parseFloat(score),
+            (acc, score) => acc + score,
             0
           );
 
@@ -161,13 +157,13 @@ module.exports = (sequelize) => {
         defaultValue: [], // Valor predeterminado: array vacío
       },
       status: {
-        type: DataTypes.ENUM("Active", "Suspended"),
+        type: DataTypes.ENUM("Active", "Suspended", "Confirmed"),
         allowNull: true,
-        defaultValue: "Active",
+        defaultValue: "Confirmed",
       },
       rutinaPredeterminada: {
         type: DataTypes.ARRAY(DataTypes.JSONB),
-        allowNull: false,
+        allowNull: true,
         defaultValue: [], // Valor predeterminado: array vacío
       },
       role: {
