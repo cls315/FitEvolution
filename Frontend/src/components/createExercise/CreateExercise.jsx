@@ -7,7 +7,7 @@ import MuscleInput from './MuscleInput'
 import axios from "axios";
 import Swal from 'sweetalert2'
 import { URLSERVER } from '../../../configURL';
-import { Container } from '@mui/material';
+import { Container, Button } from '@mui/material';
 
 
 
@@ -164,7 +164,7 @@ const CreateExercise = () => {
                         {errors.duration && <p className={style.p1}>{errors.duration}</p>}
                     </div>
                     <div>
-                      <button type="submit" className={style.btCreateAccount} > Crear Ejercicio</button>
+                      <Button type="submit" className={style.btCreateAccount} > Crear Ejercicio</Button>
                     </div>
         </form>
         </div> 
