@@ -27,12 +27,14 @@ const DashboardTrainer = (props) => {
   console.log(allTrainers)
   const usuario=useSelector((state)=>state.usuario)
   const [uMail,setUmail] = useState("")
-  console.log(uMail)
-  
+  const [admin,setAdmin] = useState({})
+  console.log(admin)
+  const dispatch = useDispatch()
   //firebase
   const [userSession, setUserSession] = useState(false)
   //modo escucha de firebase
  useEffect(()=>{
+  dispatch(usuariologed)
   onAuthStateChanged(auth, (user)=>{    //esta funcion es de firebase se queda en modo escucha cada vez que se carga la aplicacion.
     if(user){
       console.log(user.email)
@@ -47,14 +49,16 @@ const DashboardTrainer = (props) => {
     }
     })
 
-    const isAdmin = allTrainers.find((trainer)=>trainer.email === uMail)
-    console.log(isAdmin)
+    
+    const isAdmin = setAdmin(allTrainers.find((trainer)=>trainer.email === uMail) )
+    
+  console.log(isAdmin)
     return () => {
     };
-     
-
+    
+    
   },[allTrainers,usuario,uMail])
-
+  
   //-------------------------*/
   const handleMenu = (e) => {
     const nom = e.target.name

@@ -33,13 +33,13 @@ const handleCheckboxChange = async (trainerId) => {
 
     const newRole = isCurrentlyAdmin ? "Trainer" : "Admin";
     const response = await axios.put(`${URLSERVER}/fitevolution/trainers/${trainerId}`, { role: newRole });
+    Swal.fire(`Cambió el Rol de ${newRole === 'Admin' ? 'Trainer' : 'Admin'} con ID ${trainerId}`);
 
     localStorage.setItem(
       "selectedAdmins",
       JSON.stringify(isCurrentlyAdmin ? selectedAdmins.filter((id) => id !== trainerId) : [...selectedAdmins, trainerId])
     );
 
-    Swal.fire(`Cambió el Rol de ${newRole === 'Admin' ? 'Trainer' : 'Admin'} con ID ${trainerId}`);
   } catch (error) {
     console.error("Error al cambiar el rol del entrenador:", error);
     Swal.fire("Ocurrió un error al cambiar el rol del entrenador. Por favor, inténtelo de nuevo.");

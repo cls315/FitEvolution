@@ -16,5 +16,6 @@ export const SEARCH= "SEARCH"
 export const SET_USER = "SET_USER"
 export const USUARIO_LOGED="USUARIO_LOGED"
 export const USER = "USER"
+export const UPDATE_TRAINER_ROLE = "UPDATE_TRAINER_ROLE"
 
 

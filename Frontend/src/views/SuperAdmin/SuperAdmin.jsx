@@ -30,22 +30,33 @@ const SuperAdmin = () => {
   
   
   const trainers = useSelector(state => state.allTrainers);
-  
-  const handleStorageChange = () => {
-    setData(JSON.parse(localStorage.getItem("selectedAdmins")));
-  };
+  const [storLocal,setStorLocal]=useState(() => JSON.parse(localStorage.getItem("selectedAdmins")) || []);
+ 
   useEffect(() => {
+    const handleStorageChange = () => {
+      setStorLocal(JSON.parse(localStorage.getItem("selectedAdmins")));
+    };
+  
+    handleStorageChange(); 
+
     window.addEventListener('storage', handleStorageChange);
+  
     return () => {
       window.removeEventListener('storage', handleStorageChange);
     };
   }, []);
+  function refreshPage() {
+    window.location.reload(false);
+  }
   //!toda la información que utiliza ReactTable para presentarla
-  const [data,setData]=useState([]);
-  useEffect(()=>{
-    setData(trainers)
-    dispatch(getTrainers())
-  },[dispatch,handleCheckboxChange])
+  const data = trainers; 
+  console.log(data)
+useEffect(()=>
+{
+  dispatch(getTrainers());
+},[storLocal])  
+  
+
 
   const columns = [
     {
@@ -104,7 +115,8 @@ const SuperAdmin = () => {
       variant="contained"
       color="primary"
       size="small"
-      onClick={() => {handleCheckboxChange(row.original.id)
+      disabled={false}
+      onClick={() => {handleCheckboxChange(row.original.id),refreshPage()
       }}
     >
       Cambiar Rol
