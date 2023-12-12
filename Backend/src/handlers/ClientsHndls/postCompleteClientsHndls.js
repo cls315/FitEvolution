@@ -1,5 +1,5 @@
 const { Client } = require("../../db");
-const postCompleteClient = require("../../controllers/Trainers/postCompleteClient");
+const postCompleteClient = require("../../controllers/Clients/postCompleteClient");
 
 const { sendWelcomeEmail } = require("../../../configNodemailer/nodemailer");
 

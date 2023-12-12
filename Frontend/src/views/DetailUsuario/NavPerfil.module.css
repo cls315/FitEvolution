@@ -1,4 +1,6 @@
 .nav{
+    position: relative;
+    z-index: 100;
     flex-direction: row;
     display: flex;
     align-items: center;

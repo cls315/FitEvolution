@@ -90,6 +90,7 @@ export const filterScore = (option) => {
   return async function (dispatch) {
     try {
       const json = await axios(`${URLSERVER}/fitevolution/trainers/filter?score=${option}`)
+      console.log("data", json.data);
       return dispatch({
         type: FILTER_SCORE,
         payload: json.data
@@ -110,6 +111,7 @@ export const sobreScore = (option) => {
 }
 
 export const sobreFocus = (option) => {
+  console.log("sobre focus", option);
   return function (dispatch) {
     return dispatch({
       type: SOBRE_FOCUS,
