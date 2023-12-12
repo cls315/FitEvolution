@@ -27,27 +27,28 @@ const Admin=()=>{
    }
    const [data, setData] = useState([]);
    const [selectedRow, setSelectedRow] = useState(null);
+
  const backButton =()=>{
     navigate('/dashboardtr')
  }
+ const [refresh,setRefresh]= useState(0)
    
    useEffect(() => {
     async function fetchData() {
-      const dataClients = await axios("http://localhost:5000/clientes");
+      const dataClients = await axios("http://localhost:3001/fitevolution/clients");//Cambiar a ruta deploy
       setData(dataClients.data);
     }
     fetchData();
-  }, []);
+  }, [refresh]);
  
   const dispatch = useDispatch()
 
 
-
-  const handleBaner = (id)=>{
-    dispatch(getBaner(id))
+  const handleBaner = (e,id)=>{
+    e.preventDefault()
+   const result = getBaner(id,{banned:e.target.value})
    
-
-
+    setRefresh(refresh+1)
   
   }
 
@@ -98,11 +99,14 @@ const Admin=()=>{
       footer: "Fecha de Nacimineto del deportista",
       cell: (info) => dayjs(info.getValue()).format("DD/MM/YYYY"),
     },
-    {
-        header: "Select",
-        accessorKey: "Select",
-        footer: "Select",
-        cell:(info)=>  <button style={selectedRow==info.row.original.id ?{backgroundColor: "red"}:{backgroundColor:"green"}} onClick={(e)=>handleSelect(e,info)}value={info.row.original.id}>Seleccionar</button>,
+
+      {
+        header: "BANNED",
+        accessorKey: "banned",
+        footer: "banned",
+        cell:(info)=> info.row.original.banned==="off"?<button style={{color:"red"}} onClick={(e)=>handleBaner(e,info.row.original.id)} value={"on"}>desbanear</button>:
+        <button style={{color: "green"}} onClick={(e)=>handleBaner(e,info.row.original.id)} value={"off"}>banear</button>
+        
       },
   ];
   const [sorting, setSorting] = useState([]);
@@ -122,11 +126,7 @@ const Admin=()=>{
     onSortingChange: setSorting,
     onGlobalFilterChange: setFiltering,
   });
-  const handleSelect = (e, info) => {
-    setSelectedRow(info.row.original.id);
-   
 
-    }
 
     return (
      
@@ -134,7 +134,6 @@ const Admin=()=>{
             <div className={style.botones}>
                 
                 <button className={style.boton1} onClick={ejectButton}>Crear ejercicios</button>
-                <button className={style.boton2}onClick={handleBaner}>Baner</button>
                 <button className={style.boton3}onClick={backButton}>Salir</button>
             </div>
             <div>

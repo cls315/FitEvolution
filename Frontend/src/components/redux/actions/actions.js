@@ -211,10 +211,14 @@ export const userPerfil = (option)=>{
   }
 
 }
-export const getBaner =(id)=>{
-    return async function(dispatch){
-      const {data} = await axios.put(`http://localhost:3001/fitevolution/clients/banned`, id)
-       console.log(data)
-       dispatch({type:BANER, payload:data})
+export const getBaner =async(id,data)=>{
+  console.log(data,id)
+ try {
+   const {data:info} = await axios.put(`http://localhost:3001/fitevolution/clients/${id}/banned`, data)
+    console.log(info)
+  
+ } catch (error) {
+  console.log(error)
+ }
+      
     }
-}
