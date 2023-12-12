@@ -370,6 +370,8 @@
       "description": "",
       "category": "TI",
       "muscle_trained": ["Cuádriceps", "Isquiotibiales", "Glúteos"],
+      "series": 4,
+      "repetitions_per_set": 15,
       "estimatedDuration": 5
     },
     {
@@ -379,6 +381,8 @@
       "description": "",
       "category": "TI",
       "muscle_trained": ["Cuádriceps", "Isquiotibiales", "Glúteos"],
+      "series": 4,
+      "repetitions_per_set": 12,
       "estimatedDuration": 6
     },
     {
@@ -388,6 +392,8 @@
       "description": "",
       "category": "TI",
       "muscle_trained": ["Glúteos", "Isquiotibiales", "Espalda Baja"],
+      "series": 4,
+      "repetitions_per_set": 15,
       "estimatedDuration": 8
     },
     {
@@ -397,6 +403,8 @@
       "description": "",
       "category": "TI",
       "muscle_trained": ["Cuádriceps"],
+      "series": 4,
+      "repetitions_per_set": 12,
       "estimatedDuration": 4
     },
     {
@@ -406,6 +414,8 @@
       "description": "",
       "category": "TI",
       "muscle_trained": ["Piernas", "Glúteos"],
+      "series": 4,
+      "repetitions_per_set": 20,
       "estimatedDuration": 7
     },
     {
@@ -415,6 +425,8 @@
       "description": "",
       "category": "TI",
       "muscle_trained": ["Isquiotibiales"],
+      "series": 5,
+      "repetitions_per_set": 8,
       "estimatedDuration": 5
     },
     {
@@ -424,6 +436,8 @@
       "description": "",
       "category": "TI",
       "muscle_trained": ["Glúteos", "Isquiotibiales"],
+      "series": 4,
+      "repetitions_per_set": 15,
       "estimatedDuration": 6
     },
     {
@@ -433,6 +447,8 @@
       "description": "",
       "category": "TI",
       "muscle_trained": ["Glúteos", "Isquiotibiales"],
+      "series": 5,
+      "repetitions_per_set": 12,
       "estimatedDuration": 8
     },
     {
@@ -442,6 +458,8 @@
       "description": "",
       "category": "TI",
       "muscle_trained": ["Gemelos"],
+      "series": 4,
+      "repetitions_per_set": 15,
       "estimatedDuration": 3
     },
     {
@@ -451,6 +469,8 @@
       "description": "",
       "category": "TI",
       "muscle_trained": ["Equilibrio", "Cadena Posterior"],
+      "series": 4,
+      "repetitions_per_set": 20,
       "estimatedDuration": 7
     },
     {
@@ -460,6 +480,8 @@
       "description": "",
       "category": "TS",
       "muscle_trained": ["Pectorales", "Tríceps"],
+      "series": 4,
+      "repetitions_per_set": 12,
       "estimatedDuration": 6
     },
     {
@@ -469,6 +491,8 @@
       "description": "",
       "category": "TS",
       "muscle_trained": ["Tríceps", "Pecho"],
+      "series": 4,
+      "repetitions_per_set": 20,
       "estimatedDuration": 5
     },
     {
@@ -478,6 +502,8 @@
       "description": "",
       "category": "TS",
       "muscle_trained": ["Espalda", "Bíceps"],
+      "series": 4,
+      "repetitions_per_set": 10,
       "estimatedDuration": 7
     },
     {
@@ -487,6 +513,8 @@
       "description": "",
       "category": "TS",
       "muscle_trained": ["Hombros", "Tríceps"],
+      "series": 4,
+      "repetitions_per_set": 10,
       "estimatedDuration": 6
     },
     {
@@ -496,6 +524,8 @@
       "description": "",
       "category": "TS",
       "muscle_trained": ["Bíceps", "Tríceps"],
+      "series": 4,
+      "repetitions_per_set": 8,
       "estimatedDuration": 7
     },
     {
@@ -505,6 +535,8 @@
       "description": "",
       "category": "TS",
       "muscle_trained": ["Bíceps"],
+      "series": 4,
+      "repetitions_per_set": 12,
       "estimatedDuration": 4
     },
     {
@@ -514,6 +546,8 @@
       "description": "",
       "category": "TS",
       "muscle_trained": ["Tríceps"],
+      "series": 4,
+      "repetitions_per_set": 12,
       "estimatedDuration": 5
     },
     {
@@ -523,6 +557,8 @@
       "description": "",
       "category": "TS",
       "muscle_trained": ["Espalda", "Pecho"],
+      "series": 5,
+      "repetitions_per_set": 15,
       "estimatedDuration": 6
     },
     {
@@ -532,6 +568,8 @@
       "description": "",
       "category": "TS",
       "muscle_trained": ["Pecho"],
+      "series": 4,
+      "repetitions_per_set": 15,
       "estimatedDuration": 7
     },
     {
@@ -541,6 +579,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Abdominales", "Lumbares"],
+      "series": 4,
+      "repetitions_per_set": 30,
       "estimatedDuration": 3
     },
     {
@@ -550,6 +590,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Abdominales"],
+      "series": 4,
+      "repetitions_per_set": 30,
       "estimatedDuration": 4
     },
     {
@@ -559,6 +601,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Abdominales", "Cardio"],
+      "series": 4,
+      "repetitions_per_set": 15,
       "estimatedDuration": 5
     },
     {
@@ -568,6 +612,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Oblicuos"],
+      "series": 4,
+      "repetitions_per_set": 30,
       "estimatedDuration": 4
     },
     {
@@ -577,6 +623,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Espalda baja"],
+      "series": 4,
+      "repetitions_per_set": 10,
       "estimatedDuration": 3
     },
     {
@@ -586,6 +634,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Abdominales", "Cadera"],
+      "series": 4,
+      "repetitions_per_set": 15,
       "estimatedDuration": 5
     },
     {
@@ -595,6 +645,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Abdominales"],
+      "series": 4,
+      "repetitions_per_set": 20,
       "estimatedDuration": 4
     },
     {
@@ -604,6 +656,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Abdominales", "Cadera"],
+      "series": 4,
+      "repetitions_per_set": 25,
       "estimatedDuration": 5
     },
     {
@@ -613,6 +667,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Oblicuos"],
+      "series": 4,
+      "repetitions_per_set": 20,
       "estimatedDuration": 4
     },
     {
@@ -622,6 +678,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Abdominales", "Hombros"],
+      "series": 4,
+      "repetitions_per_set": 20,
       "estimatedDuration": 6
     },
     {
@@ -631,6 +689,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Abdominales", "Cardio"],
+      "series": 4,
+      "repetitions_per_set": 20,
       "estimatedDuration": 5
     },
     {
@@ -640,6 +700,8 @@
       "description": "",
       "category": "TS",
       "muscle_trained": ["Pectorales", "Tríceps"],
+      "series": 4,
+      "repetitions_per_set": 10,
       "estimatedDuration": 4
     },
     {
@@ -649,6 +711,8 @@
       "description": "",
       "category": "TS",
       "muscle_trained": ["Tríceps"],
+      "series": 4,
+      "repetitions_per_set": 12,
       "estimatedDuration": 3
     },
     {
@@ -658,6 +722,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Todo el cuerpo"],
+      "series": 4,
+      "repetitions_per_set": 15,
       "estimatedDuration": 7
     },
     {
@@ -667,6 +733,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Piernas", "Cardio"],
+      "series": 4,
+      "repetitions_per_set": 20,
       "estimatedDuration": 5
     },
     {
@@ -676,6 +744,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Piernas", "Cardio"],
+      "series": 4,
+      "repetitions_per_set": 15,
       "estimatedDuration": 8
     },
     {
@@ -685,6 +755,8 @@
       "description": "",
       "category": "CORE",
       "muscle_trained": ["Piernas", "Cardio"],
+      "series": 4,
+      "repetitions_per_set": 20,
       "estimatedDuration": 6
     }
   ],
