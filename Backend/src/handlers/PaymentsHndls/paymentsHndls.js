@@ -30,7 +30,7 @@ const paymentsHndls = async (req, res) => {
     } = payment;
 
     // Guardar recibo de pago en la propiedad backups del modelo cliente
-    const client = await Client.findOne({ where:{email: userEmail.email }});
+    const client = await Client.findOne({ where: { email: userEmail.email } });
     if (client) {
       client.backups.push({
         receipt_email,
@@ -46,14 +46,7 @@ const paymentsHndls = async (req, res) => {
     // Guardar objeto trainer en la propiedad mytrainers del modelo cliente
     const trainer = await Trainer.findByPk(idTrainer.idTrainer);
     if (trainer) {
-      client.mytrainers.push({
-        trainerId: trainer.id,
-        trainerName: trainer.forename + " " + trainer.surname,
-        focusTr: trainer.focusTr,
-        defaultRoutine: trainer.rutinaPredeterminada,
-        score: trainer.score,
-        // Agrega otras propiedades del objeto trainer que quieras incluir
-      });
+      client.myTrainers.push(trainer.id);
 
       // Agregar todas las propiedades del cliente al array subscribers del entrenador
       trainer.subscribers.push({
