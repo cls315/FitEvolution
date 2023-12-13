@@ -13,6 +13,12 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import dayjs from "dayjs";
+import style from './Admin.module.css'
+import { useDispatch } from "react-redux";
+import { getBaner } from "../../components/redux/actions/actions";
+import { IdealBankElement } from "@stripe/react-stripe-js";
+
+
 
 const Admin=()=>{
     const navigate = useNavigate()
@@ -21,15 +27,31 @@ const Admin=()=>{
    }
    const [data, setData] = useState([]);
    const [selectedRow, setSelectedRow] = useState(null);
- 
+
+ const backButton =()=>{
+    navigate('/dashboardtr')
+ }
+ const [refresh,setRefresh]= useState(0)
    
    useEffect(() => {
     async function fetchData() {
-      const dataClients = await axios("http://localhost:5000/clientes");
+      const dataClients = await axios("http://localhost:3001/fitevolution/clients");//Cambiar a ruta deploy
       setData(dataClients.data);
     }
     fetchData();
-  }, []);
+  }, [refresh]);
+ 
+  const dispatch = useDispatch()
+
+
+  const handleBaner = (e,id)=>{
+    e.preventDefault()
+   const result = getBaner(id,{banned:e.target.value})
+   
+    setRefresh(refresh+1)
+  
+  }
+
   const columns = [
     {
       header: "ID",
@@ -77,11 +99,14 @@ const Admin=()=>{
       footer: "Fecha de Nacimineto del deportista",
       cell: (info) => dayjs(info.getValue()).format("DD/MM/YYYY"),
     },
-    {
-        header: "Select",
-        accessorKey: "Select",
-        footer: "Select",
-        cell:(info)=>  <button style={selectedRow==info.row.original.id ?{backgroundColor: "red"}:{backgroundColor:"green"}} onClick={(e)=>handleSelect(e,info)}value={info.row.original.id}>Seleccionar</button>,
+
+      {
+        header: "BANNED",
+        accessorKey: "banned",
+        footer: "banned",
+        cell:(info)=> info.row.original.banned==="off"?<button style={{color:"red"}} onClick={(e)=>handleBaner(e,info.row.original.id)} value={"on"}>desbanear</button>:
+        <button style={{color: "green"}} onClick={(e)=>handleBaner(e,info.row.original.id)} value={"off"}>banear</button>
+        
       },
   ];
   const [sorting, setSorting] = useState([]);
@@ -101,36 +126,22 @@ const Admin=()=>{
     onSortingChange: setSorting,
     onGlobalFilterChange: setFiltering,
   });
-  const handleSelect = (e, info) => {
-    setSelectedRow(info.row.original.id);
-   
 
-    }
 
     return (
      
         <div>
-            <div>
+            <div className={style.botones}>
                 
-                <button onClick={ejectButton}>Crear ejercicios</button>
-                <button>Baner</button>
+                <button className={style.boton1} onClick={ejectButton}>Crear ejercicios</button>
+                <button className={style.boton3}onClick={backButton}>Salir</button>
             </div>
             <div>
+                <hr></hr>
       
          <table className='table table-info'>
         
-            <tbody>
-            {table.getRowModel().rows.map((row) => (
-                <tr key={row.id}style={{ backgroundColor: row.original === selectedRow ? 'green' : 'red' }}>
-                {row.getVisibleCells().map((cell) => {
-                  return <td key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                })}
-                </tr>
-            ))}
-            </tbody>
-        
+     
         </table>
      
     </div>
@@ -228,9 +239,12 @@ const Admin=()=>{
     </div>
        
         </div>
-      
-    
-    )
-}
 
-export default Admin
+    )}
+
+
+      
+
+
+
+export default Admin; 

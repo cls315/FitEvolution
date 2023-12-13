@@ -14,13 +14,16 @@ import Typography from '@mui/material/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
+import logout from '../../utils/logout'
+import { useNavigate } from 'react-router-dom';
+
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        FitRevolution
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -28,7 +31,7 @@ function Copyright() {
   );
 }
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['Datos del entrenador', 'Detalles de pago', 'Verificar y enviar'];
 
 function getStepContent(step) {
   switch (step) {
@@ -45,6 +48,7 @@ function getStepContent(step) {
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const navigate=useNavigate()
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -53,6 +57,11 @@ export default function Checkout() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  const exitSession=async()=>{
+    await logout()
+    navigate('/')
+  }
 
   return (
     <React.Fragment>
@@ -68,14 +77,22 @@ export default function Checkout() {
       >
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            Company name
+            FitRevolution
           </Typography>
+          <Button
+            variant="contained"
+            onClick={exitSession}
+            style={{ marginLeft:'auto', marginRight:'0px' }}
+          >
+          Cerrar sesion
+          </Button>
+
         </Toolbar>
       </AppBar>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
-            Checkout
+            Solicitud de entrenadores
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
             {steps.map((label) => (
@@ -87,12 +104,11 @@ export default function Checkout() {
           {activeStep === steps.length ? (
             <React.Fragment>
               <Typography variant="h5" gutterBottom>
-                Thank you for your order.
+                Gracias por elegirnos
               </Typography>
               <Typography variant="subtitle1">
-                Your order number is #2001539. We have emailed your order
-                confirmation, and will send you an update when your order has
-                shipped.
+                Tu numero de seguimiento es #2001539. Te confirmaremos por email cuando este
+                la cuenta aprobada, suele demorar menos de 24 horas.
               </Typography>
             </React.Fragment>
           ) : (

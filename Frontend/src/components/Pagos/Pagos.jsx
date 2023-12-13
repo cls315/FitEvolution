@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
+import { userPerfil } from "../redux/actions/actions";
 import {
   Elements,
   CardElement,
@@ -17,6 +18,8 @@ const stripePromise = loadStripe(
 
 
 const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading, idTrainer }) => {
+
+  const dispatch = useDispatch()
 
   const user = useSelector((state)=> state.usuario)
   const email = user.email
@@ -36,7 +39,7 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading, 
       });
 
       if (!error) {
-
+        dispatch(userPerfil(email))
         console.log(paymentMethod)
         const { id } = paymentMethod;
 

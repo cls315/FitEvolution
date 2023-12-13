@@ -1,0 +1,26 @@
+.botones{
+
+    height:15%;
+  
+}
+
+.boton1{
+    background-color: rgba(0, 195, 255, 0.637);
+ 
+    margin-right: 10px;
+    height:5%;
+    border-radius: 30px;
+    margin-top: 8px;
+}
+.boton2{
+    background-color: rgba(0, 195, 255, 0.637);
+    margin-left: 20%;
+   
+    border-radius: 30px;
+}
+.boton3{
+    background-color: rgba(0, 195, 255, 0.637);
+    margin-right: 10px;
+    margin-left: 20%;
+    border-radius: 30px;
+}
