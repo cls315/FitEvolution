@@ -1,4 +1,4 @@
-import { ejemplo ,POST_RUTINES, USUARIO_LOGED,GET_DEPORTISTAS,GET_TRAINERS,MENU_TRAINERS,RUTINAS, SEARCH,FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, SOBRE_FOCUS,CLEAR_CART, AGREGAR_CARRITO, GET_ROUTINES, DELETE_CART, SET_USER, USER,TRAINER} from "../actions/types"
+import { ejemplo ,POST_RUTINES,GUARDAR_IDTRAINERS, USUARIO_LOGED,GET_DEPORTISTAS,GET_TRAINERS,MENU_TRAINERS,RUTINAS, SEARCH,FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, SOBRE_FOCUS,CLEAR_CART, AGREGAR_CARRITO, GET_ROUTINES, DELETE_CART, SET_USER, USER,TRAINER} from "../actions/types"
 
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
     trainer:[],
     banerExit:null,
     banerError:null,
-
+    idsTrainers: [],
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -77,6 +77,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         carrito: [],
+        idsTrainers: [],
       };
     case GET_ROUTINES:
       return {
@@ -125,6 +126,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         postRutines: payload,
       };
+    case GUARDAR_IDTRAINERS:
+      const anterior = state.idsTrainers
+      return{
+        ...state, idsTrainers: [...anterior, payload]
+      }
     default:
       return { ...state };
   }

@@ -17,15 +17,18 @@ const stripePromise = loadStripe(
 
 
 
-const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading, idTrainer }) => {
+const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading}) => {
 
   const dispatch = useDispatch()
 
   const user = useSelector((state)=> state.usuario)
+  const idState = useSelector((state)=> state.idsTrainers)
   const email = user.email
-
   const stripe = useStripe();
   const elements = useElements();
+
+  const idTrainer = idState.filter(Boolean).filter((valor, índice, self) => self.indexOf(valor) === índice);
+
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,7 +53,7 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading, 
 
             amount: { total },
 
-            idTrainer: {idTrainer},
+            idTrainer: idTrainer,
 
             userEmail: {email}
 
@@ -87,13 +90,13 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading, 
 };
 
 function Pagos(props) {
-  const { total, setShow, setVerPagos, vaciarCarrito, setLoading, idTrainer } = props
+  const { total, setShow, setVerPagos, vaciarCarrito, setLoading } = props
   return (<>
     <Elements stripe={stripePromise}>
       <div className="container p-4 ">
         <div className="row w-100 ">
           <div className=" flex justify-center p-8">
-            <CheckoutForm setLoading={setLoading} vaciarCarrito={vaciarCarrito} setVerPagos={setVerPagos} setShow={setShow} total={total} idTrainer={idTrainer} />
+            <CheckoutForm setLoading={setLoading} vaciarCarrito={vaciarCarrito} setVerPagos={setVerPagos} setShow={setShow} total={total} />
           </div>
         </div>
       </div>

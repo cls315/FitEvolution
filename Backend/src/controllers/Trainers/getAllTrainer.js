@@ -20,6 +20,7 @@ const allTrainer = async () => {
       focusTr: t.focusTr,
       description: t.description,
       puntuaciones: t.puntuaciones,
+      rutinaPredeterminada: t.rutinaPredeterminada,
     }));
     return await Trainer.bulkCreate(apiTrain);
   }
