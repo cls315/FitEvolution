@@ -45,12 +45,12 @@ const Detail = ()=>{
     return(
         <div>
             {loading && <LoadingComponent/>}     {/*CARGA DE GIF PARA CUANDO SE ENVIA EL PAGO DEL CARRITO*/}
-            <Navdetail setLoading={setLoading}/>
-            {/* {!teacher.id ? (
+            <Navdetail setLoading={setLoading} idTrainer={id}/>
+            {!trainer ? (
                 <div>
-                    <p>The teacher is not found</p>
+                    <p>El entrenador no fue encontrado</p>
                 </div>
-            ) : ( */}
+            ) : (
         <div className={styles.allconteiner}>
             {page == 1 ? (
             <div className={styles.info}>
@@ -89,7 +89,7 @@ const Detail = ()=>{
                 <StarRating rating={trainer.score} className={styles.stars}/>
             </div>
         </div>
-            {/* )} */}
+             )} 
         </div>
     )
 }

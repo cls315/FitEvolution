@@ -14,6 +14,8 @@ import Admin from './views/Admin/Admin'
 import CreateExercise from './components/createExercise/CreateExercise';
 import SuperAdmin from './views/SuperAdmin/SuperAdmin';
 import DetailUsuario from './views/DetailUsuario/DetailUsuario';
+import Checkout from './views/CheckoutTrainer/Checkout'
+import FormRutines from './views/FormRutines/FormRutines'
 //Commons imports
 import { Route, Routes, useLocation } from 'react-router-dom';
 
@@ -54,6 +56,10 @@ function App() {
           path='/login/:typeSession'
           element={<FormSesion />}
         />
+        <Route
+          path='/checkoutTrainer'
+          element={<Checkout />}
+        />
          <Route
           path='/dashboardtr'
           element={<DashboardTrainer />}
@@ -90,6 +96,13 @@ function App() {
         path='/detailusuario'
         element={<DetailUsuario/>}
         />
+        
+        <Route
+        path='/createRutine'
+        element={<FormRutines/>}
+        
+        />
+       
       </Routes>
     </>
   );
