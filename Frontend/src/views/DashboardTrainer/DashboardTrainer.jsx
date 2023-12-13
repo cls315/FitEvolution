@@ -26,34 +26,33 @@ const DashboardTrainer = (props) => {
   
   const trainer=useSelector((state)=>state.trainer)
   const dispatch=useDispatch()
-  const [uMail,setUmail] = useState("")
-  console.log(uMail)
+ 
+  
   
   //firebase
   const [userSession, setUserSession] = useState(false)
   //modo escucha de firebase
  useEffect(()=>{
-  onAuthStateChanged(auth, (user)=>{    //esta funcion es de firebase se queda en modo escucha cada vez que se carga la aplicacion.
+    onAuthStateChanged(auth, (user)=>{    //esta funcion es de firebase se queda en modo escucha cada vez que se carga la aplicacion.
     if(user){
       console.log(user.email)
       setUserSession(true)
       dispatch(trainerPerfil(user.email))
       console.log(trainer)
-      setUmail(user.email)
+      
     } else{
       setUserSession(false)
-      setUmail("")
+      
       console.log(user)
     }
     })
 
-    const isAdmin = allTrainers.find((trainer)=>trainer.email === uMail)
-    console.log(isAdmin)
+    
     return () => {
     };
      
 
-  },[allTrainers,uMail])
+  },[allTrainers])
 
   //-------------------------*/
   const handleMenu = (e) => {
@@ -67,13 +66,13 @@ const DashboardTrainer = (props) => {
     {
       userSession ?
         <div className='bg-trainer-board'>
-          <DashBar handleMenu={handleMenu} />
+          <DashBar handleMenu={handleMenu}/>
           {menu === "deportes" && <MenuprincipalTrainer trainer={trainer}/>}
           {menu === "pagos" && <PagosprincipalTrainer />}
           {menu === "entrenamientos" && <EntrePrincipalTrainer />}
           <footer className='footerUser'><p>© 2023 FitRevolution </p></footer>
         </div> :
-       <a href={`${URLfrontend}`}>Su sesion finalzo, haz click aqui.</a>
+       <a href={`${URLfrontend}`}>Su sesion finalizó, haga click aqui.</a>
     }
   </>);
 };
