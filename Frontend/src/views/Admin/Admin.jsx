@@ -17,6 +17,16 @@ import style from './Admin.module.css'
 import { useDispatch } from "react-redux";
 import { getBaner } from "../../components/redux/actions/actions";
 import { IdealBankElement } from "@stripe/react-stripe-js";
+import{
+  TextField,
+  Typography,
+  AppBar,
+  InputAdornment,
+  Toolbar,TableBody, TableContainer, TableFooter, 
+  TableHead,Paper, TableRow, TableCell,Table,Input,
+  Grid,
+  Button,
+} from "@mui/material";
 
 
 
@@ -104,8 +114,8 @@ const Admin=()=>{
         header: "BANNED",
         accessorKey: "banned",
         footer: "banned",
-        cell:(info)=> info.row.original.banned==="off"?<button style={{color:"red"}} onClick={(e)=>handleBaner(e,info.row.original.id)} value={"on"}>desbanear</button>:
-        <button style={{color: "green"}} onClick={(e)=>handleBaner(e,info.row.original.id)} value={"off"}>banear</button>
+        cell:(info)=> info.row.original.banned==="off"?<Button style={{color:"red"}} onClick={(e)=>handleBaner(e,info.row.original.id)} value={"on"}>desbanear</Button>:
+        <Button style={{color: "green"}} onClick={(e)=>handleBaner(e,info.row.original.id)} value={"off"}>banear</Button>
         
       },
   ];
@@ -131,110 +141,128 @@ const Admin=()=>{
     return (
      
         <div>
-            <div className={style.botones}>
-                
-                <button className={style.boton1} onClick={ejectButton}>Crear ejercicios</button>
-                <button className={style.boton3}onClick={backButton}>Salir</button>
-            </div>
+          <AppBar position="static">
+
+            <Toolbar>
+            <div style={{ display: 'flex', alignItems: 'center', marginRight: 'auto' }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Super Admin
+          </Typography>
+        </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', marginRight: 'auto' }}>
+                <Grid container spacing={2} justifyContent="center">
+                  <Grid item>
+                    <Button variant="contained" color="primary" onClick={ejectButton}>
+                      Crear ejercicios
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button variant="contained" color="secondary" onClick={backButton}>
+                      Salir
+                    </Button>
+                  </Grid>
+                </Grid>
+               </div>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <TextField
+              fullWidth
+              variant="outlined"
+              margin="normal"
+              placeholder="Buscar Deportista"
+              value={filtering}
+              onChange={(e) => setFiltering(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                  <CiSearch/>
+                  </InputAdornment>
+                ),
+              }}
+              sx={{ width: '400px' }}
+              />
+              </div>
+              </Toolbar>
+              </AppBar>
+              
             <div>
-                <hr></hr>
+               
       
-         <table className='table table-info'>
+         <Table className='table table-info'>
         
      
-        </table>
+        </Table>
      
     </div>
             <div>
       <div className=" input-group flex-nowrap my-2">
-        <span class="input-group-text" id="basic-addon1">
-          {<CiSearch />}
-        </span>
-        <input
-          class="form-control"
-          placeholder="Buscar deportista"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-          type="text"
-          value={filtering}
-          onChange={(e) => setFiltering(e.target.value)}
-        />
+       
       </div>
-      <table className="table table-info">
-        <thead>
+      <TableContainer component={Paper}>
+
+      <Table className="table table-info">
+        <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
+            <TableRow TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th
-                  className="bg-info bg-opacity-50"
-                  role="button"
-                  scope="col"
-                  key={header.id}
-                  onClick={header.column.getToggleSortingHandler()}
+                <TableCell
+                className="bg-info bg-opacity-50"
+                role="button"
+                scope="col"
+                key={header.id}
+                onClick={header.column.getToggleSortingHandler()}
                 >
                   {flexRender(
                     header.column.columnDef.header,
                     header.getContext()
-                  )}{" "}
+                    )}{" "}
                   {{ asc: <BsSortUpAlt />, desc: <BsSortDown /> }[
                     header.column.getIsSorted() ?? null
                   ] ?? <RxUpdate />}
-                </th>
+                </TableCell>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </thead>
-        <tbody>
+        </TableHead>
+        <TableBody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+            <TableRow key={row.id}>
               {row.getVisibleCells().map((cell) => (
                 <td key={cell.id}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </tbody>
-        <tfoot>
-          {table.getFooterGroups().map((footerGroup) => (
-            <tr key={footerGroup.id}>
-              {footerGroup.headers.map((footer) => (
-                <th key={footer.id} className="blockquote-footer">
-                  {flexRender(
-                    footer.column.columnDef.footer,
-                    footer.getContext()
-                  )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </tfoot>
-      </table>
+        </TableBody>
+       
+      </Table>
+    </TableContainer>
       <div className="d-flex justify-content-between">
-        <button
+        <Button
           className="btn btn-success btn-sm"
           onClick={() => table.setPageIndex(0)}
-        >
+          >
           Primer página
-        </button>
-        <button
+        </Button>
+        <Button
           className="btn btn-success btn-sm"
           onClick={() => table.previousPage()}
         >
           Página anterior
-        </button>
-        <button
+        </Button>
+        <Button
           className="btn btn-success btn-sm"
           onClick={() => table.nextPage()}
         >
           Página siguiente
-        </button>
-        <button
+        </Button>
+        <Button
           className="btn btn-success btn-sm"
           onClick={() => table.setPageIndex(table.getPageCount() - 1)}
         >
           Última página
-        </button>
+        </Button>
       </div>
     </div>
        
