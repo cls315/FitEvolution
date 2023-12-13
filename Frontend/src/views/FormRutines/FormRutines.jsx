@@ -8,3 +8,5 @@ const FormRoutines = () => {
     </div>
   );
 };
+
+export default FormRoutines;
