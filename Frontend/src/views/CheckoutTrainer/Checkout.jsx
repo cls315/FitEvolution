@@ -100,8 +100,8 @@ export default function Checkout() {
     console.log(activeStep)
     if(activeStep===2){
       try{
-      await axios.post(`${URLSERVER}/trainers/${trainer.id}/complete`)
-      Swal.fire('FORMULARIO ENVIADO!', "", "error");
+      await axios.post(`${URLSERVER}/fitevolution/trainers/${trainer.id}/complete`,form)
+      Swal.fire('FORMULARIO ENVIADO!');
       }catch(error){
         if (error) Swal.fire(error.message, '', 'error')
       }

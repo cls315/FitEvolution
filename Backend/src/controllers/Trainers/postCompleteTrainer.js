@@ -17,8 +17,9 @@ const postCompleteTrainer = async (
   description
 ) => {
   try {
+    
     const existingTrainer = await Trainer.findByPk(trainerId);
-
+    console.log(existingTrainer)
     if (!existingTrainer) {
       throw Error("Entrenador no encontrado");
     }
@@ -46,9 +47,11 @@ const postCompleteTrainer = async (
       ].includes(existingTrainer.focusTr)
     ) {
       // Buscar la rutina correspondiente al focusTr
-      const rutinaCorrespondiente = Routine.find(
-        (rutina) => rutina.enfoque === existingTrainer.focusTr
-      );
+
+      const rutinaCorrespondiente = Routine.findAll({
+          where: { enfoque: existingTrainer.focusTr },
+      });
+      console.log(rutinaCorrespondiente)
 
       // Actualizar rutinaPredeterminada
       existingTrainer.rutinaPredeterminada = rutinaCorrespondiente

@@ -33,7 +33,7 @@ const postCompleteTrainerHdnls = async (req, res) => {
     );
 
     // Guardar los cambios
-    await existingTrainer.save();
+    await updatedTrainer.save();
     res.status(200).json(updatedTrainer);
   } catch (error) {
     console.log(error.message);
