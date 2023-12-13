@@ -36,7 +36,7 @@ const postCompleteTrainerHdnls = async (req, res) => {
     await existingTrainer.save();
     res.status(200).json(updatedTrainer);
   } catch (error) {
-    console.error(error.message);
+    console.log(error.message);
     res.status(500).json({ error: error.message });
   }
 };
