@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import StarRating from "../../components/starRating/starRating";
 import LoadingComponent from "../../components/loading/loading.component"
 
-import {agregarCarrito, getRoutines} from "../../components/redux/actions/actions"
+import {agregarCarrito, getRoutines, saveIdTrainer} from "../../components/redux/actions/actions"
 
 import Navdetail from "./navdetail";
 
@@ -26,10 +26,11 @@ const Detail = ()=>{
 
     const trainer = allTrainers.find((teacher) => teacher.id == id)
     const routines = allroutines.filter((routine) => routine.trainerId == id)
-    console.log(routines);
+
 
     const sumPack = (option)=>{
-        dispatch(agregarCarrito(option))
+        dispatch(agregarCarrito(option));
+        dispatch(saveIdTrainer(id));
     }
 
     let [page, setPage] = useState(1);
@@ -45,7 +46,7 @@ const Detail = ()=>{
     return(
         <div>
             {loading && <LoadingComponent/>}     {/*CARGA DE GIF PARA CUANDO SE ENVIA EL PAGO DEL CARRITO*/}
-            <Navdetail setLoading={setLoading} idTrainer={id}/>
+            <Navdetail setLoading={setLoading}/>
             {!trainer ? (
                 <div>
                     <p>El entrenador no fue encontrado</p>
