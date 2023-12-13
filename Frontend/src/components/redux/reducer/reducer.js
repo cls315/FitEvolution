@@ -12,6 +12,7 @@ const initialState = {
     rutinas2:[],
     userStatus: "",
     usuario:[],
+    trainer:[],
     banerExit:null,
     banerError:null,
 
