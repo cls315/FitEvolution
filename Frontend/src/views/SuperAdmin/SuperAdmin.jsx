@@ -45,9 +45,7 @@ const SuperAdmin = () => {
       window.removeEventListener('storage', handleStorageChange);
     };
   }, []);
-  function refreshPage() {
-    window.location.reload(false);
-  }
+ 
   //!toda la información que utiliza ReactTable para presentarla
   const data = trainers; 
   console.log(data)
@@ -115,8 +113,7 @@ useEffect(()=>
       variant="contained"
       color="primary"
       size="small"
-      disabled={false}
-      onClick={() => {handleCheckboxChange(row.original.id),refreshPage()
+      onClick={() => {handleCheckboxChange(row.original.id)
       }}
     >
       Cambiar Rol

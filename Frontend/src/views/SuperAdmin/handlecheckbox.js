@@ -32,13 +32,20 @@ const handleCheckboxChange = async (trainerId) => {
     const isCurrentlyAdmin = selectedAdmins.includes(trainerId);
 
     const newRole = isCurrentlyAdmin ? "Trainer" : "Admin";
-    const response = await axios.put(`${URLSERVER}/fitevolution/trainers/${trainerId}`, { role: newRole });
-    Swal.fire(`Cambió el Rol de ${newRole === 'Admin' ? 'Trainer' : 'Admin'} con ID ${trainerId}`);
-
-    localStorage.setItem(
-      "selectedAdmins",
-      JSON.stringify(isCurrentlyAdmin ? selectedAdmins.filter((id) => id !== trainerId) : [...selectedAdmins, trainerId])
-    );
+    await axios.put(`${URLSERVER}/fitevolution/trainers/${trainerId}`, { role: newRole });
+    Swal.fire({
+      icon: 'success',
+      title: '¡Éxito!',
+      text: `Se cambió el rol de ${newRole === 'Admin' ? 'Trainer' : 'Admin'} con ID ${trainerId}`,
+      timer: 3000,
+    }).then(() => {
+      // Se ejecuta después de que el SweetAlert se haya cerrado automáticamente
+      localStorage.setItem(
+        "selectedAdmins",
+        JSON.stringify(isCurrentlyAdmin ? selectedAdmins.filter((id) => id !== trainerId) : [...selectedAdmins, trainerId])
+      );
+      window.location.reload(false);
+    });
 
   } catch (error) {
     console.error("Error al cambiar el rol del entrenador:", error);
