@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { URLfrontend } from '../../../configURL';
 import { auth  } from '../../components/firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-import { trainerPerfil } from '../../components/redux/actions/actions';
+// import { trainerPerfil } from '../../components/redux/actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
 //components imports
 import MenuprincipalTrainer from '../../components/menuprincipalTainer/menuprincipalTrainer';

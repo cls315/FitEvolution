@@ -102,18 +102,18 @@ const CreateExercise = () => {
    };
     return (
       <Container>
-        <div className={style.container}>
+        <div>
         <form onSubmit={submitHandler}>
-        <div className={style.labelform1}>
-                        <label className={style.label1}> Nombre del ejercicio</label>
+                <div >
+                        <label> Nombre del ejercicio</label>
                         <input 
                         placeholder=" Nombre" 
                         className={style.inputNom} 
                         name="name" 
                         onChange={changeHandler} />
-                        {errors.name && <p className={style.p1}>{errors.name}</p>}
+                        {errors.name && <p>{errors.name}</p>}
                     </div>
-                    <div className={style.labelform1}>
+                    <div >
                         <label className={style.label1}> Imagen, Gif, Video del ejercicio</label>
                      <UploadWidCloud uploadImage={uploadImage}/>
                       
