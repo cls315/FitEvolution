@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { TextField, Button, Typography, Paper, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-const SessionAdmin= () => {
+const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate()
 
   const handleLogin = () => {
-    navigate('/adm')
+    navigate('/owner')
   
   };
 
@@ -18,7 +18,7 @@ const SessionAdmin= () => {
       <Grid item xs={12} sm={8} md={5}>
         <Paper elevation={6} square sx={{ p: 4, textAlign: 'center' }}>
           <Typography component="h1" variant="h5" sx={{ mb: 4 }}>
-            Iniciar sesión Admin
+            Iniciar sesión Super Admin
           </Typography>
           <TextField
             fullWidth
@@ -52,9 +52,4 @@ const SessionAdmin= () => {
   );
 };
 
-export default SessionAdmin
-
-
-
-
-
+export default LoginForm;

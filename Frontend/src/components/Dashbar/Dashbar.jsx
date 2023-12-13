@@ -57,7 +57,7 @@ console.log(admin)
                 <Button  className={style.buttonPerfil}>CH&#9660;</Button>
                 <List class={style.dropdowncontent}>
                     <ListItem><a href="#">Mi cuenta</a></ListItem>
-                    {admin && <ListItem><Button onClick={userAdmin}>Admin</Button></ListItem>}
+                    <ListItem><Button onClick={userAdmin}>Admin</Button></ListItem>
                     <ListItem><a href="#">Ajustes</a></ListItem>
                     <ListItem><Button onClick={exitSession} className={style.exitDashTRainer}>Salir</Button></ListItem>
                 </List>
