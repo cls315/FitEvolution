@@ -101,7 +101,7 @@ export default function Checkout() {
     if(activeStep===2){
       try{
       await axios.post(`${URLSERVER}/trainers/${trainer.id}/complete`)
-      Swal.fire('FORMULARIO ENVIADO!', "", "error");
+      Swal.fire('FORMULARIO ENVIADO!', "", "success");
       }catch(error){
         if (error) Swal.fire(error.message, '', 'error')
       }

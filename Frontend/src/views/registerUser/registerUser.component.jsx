@@ -12,6 +12,7 @@ import { auth } from '../../components/firebase/firebase';
 import { URLSERVER } from '../../../configURL';
 import Swal from 'sweetalert2'
 import UploadWidCloud from '../../components/Cloudinary/UploadWidCloud';
+import { Button } from '@mui/material';
 
 
 function RegisterUser() {
@@ -163,7 +164,7 @@ function RegisterUser() {
                     </div>
 
                     <div className={style.titleInfUser}>
-                        <button type="submit" className={style.btCreateAccount}>Crear cuenta</button>
+                        <Button variant="contained" color="primary" size="small"type="submit" className={style.btCreateAccount}>Crear cuenta</Button>
                         <span className={style.btspanUser}>¿Ya tienes cuenta?  <button onClick={volverInicio} className={style.spanButton}> inicio de sesion</button></span>
                     </div>
                 </form >
