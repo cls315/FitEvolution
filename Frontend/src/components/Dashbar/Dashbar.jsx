@@ -9,9 +9,31 @@ import iconMessage from '../SVG/iconMessage.svg'
 import logout from "../../utils/logout";
 import { useNavigate } from "react-router-dom";
 import { Button, List, ListItem } from "@mui/material";
-
+import { useEffect,useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTrainers, trainerPerfil } from "../redux/actions/actions";
 
 const DashBar = (props) => {
+    
+   const [admin,setAdmin]=useState(false) 
+   const trainer = useSelector(state=>state.trainer)
+   const trainers =useSelector(state=>state.allTrainers)
+   console.log(trainers)
+   const dispatch = useDispatch()
+   console.log(trainer.role)
+   useEffect(() => {
+    
+    const searchAdm = trainers.find(tr => tr.email === trainer.email);
+    if (searchAdm && searchAdm.role === "Admin") {
+      setAdmin(true);
+    } else {
+      setAdmin(false);
+    }
+  }, [trainers, trainer]);
+
+
+console.log(admin)
+
     const {handleMenu}=props
     const navigate=useNavigate()
 
@@ -35,7 +57,7 @@ const DashBar = (props) => {
                 <Button  className={style.buttonPerfil}>CH&#9660;</Button>
                 <List class={style.dropdowncontent}>
                     <ListItem><a href="#">Mi cuenta</a></ListItem>
-                    <ListItem><Button onClick={userAdmin}>Admin</Button></ListItem>
+                    {admin && <ListItem><Button onClick={userAdmin}>Admin</Button></ListItem>}
                     <ListItem><a href="#">Ajustes</a></ListItem>
                     <ListItem><Button onClick={exitSession} className={style.exitDashTRainer}>Salir</Button></ListItem>
                 </List>
