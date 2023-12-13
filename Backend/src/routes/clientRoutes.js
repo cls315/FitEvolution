@@ -5,7 +5,7 @@ const postCompleteClientsHndls = require("../handlers/ClientsHndls/postCompleteC
 
 const allClientHndls = require("../handlers/ClientsHndls/getAllClientsHndls");
 
-const putClientHndls =require ("../handlers/ClientsHndls/putClientBannedHndls")
+const putClientHndls =require ("../handlers/ClientsHndls/putClientHndls")
 
 const clientRoutes = Router();
 
@@ -14,6 +14,6 @@ clientRoutes.post("/:id/complete", postCompleteClientsHndls);
 
 clientRoutes.get("/", allClientHndls);
 
-clientRoutes.put("/:id/banned", putClientHndls)
+clientRoutes.put("/:id/banned", putClientBanned)
 
 module.exports = clientRoutes;

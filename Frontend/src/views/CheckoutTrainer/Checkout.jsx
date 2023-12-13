@@ -14,6 +14,8 @@ import Typography from '@mui/material/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
+import logout from '../../utils/logout'
+import { useNavigate } from 'react-router-dom';
 
 
 function Copyright() {
@@ -46,6 +48,7 @@ function getStepContent(step) {
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const navigate=useNavigate()
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -54,6 +57,11 @@ export default function Checkout() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  const exitSession=async()=>{
+    await logout()
+    navigate('/')
+  }
 
   return (
     <React.Fragment>
@@ -71,6 +79,14 @@ export default function Checkout() {
           <Typography variant="h6" color="inherit" noWrap>
             FitRevolution
           </Typography>
+          <Button
+            variant="contained"
+            onClick={exitSession}
+            style={{ marginLeft:'auto', marginRight:'0px' }}
+          >
+          Cerrar sesion
+          </Button>
+
         </Toolbar>
       </AppBar>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>

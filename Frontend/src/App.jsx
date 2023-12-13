@@ -15,7 +15,8 @@ import CreateExercise from './components/createExercise/CreateExercise';
 import SuperAdmin from './views/SuperAdmin/SuperAdmin';
 import DetailUsuario from './views/DetailUsuario/DetailUsuario';
 import Checkout from './views/CheckoutTrainer/Checkout'
-import FormRutines from './views/FormRutines/FormRutines'
+import FormRutines from './views/FormRutines/FormRutines';
+import LoginForm from './views/LogSuper/LogSuper';
 //Commons imports
 import { Route, Routes, useLocation } from 'react-router-dom';
 
@@ -100,6 +101,11 @@ function App() {
         <Route
         path='/createRutine'
         element={<FormRutines/>}
+        
+        />
+        <Route
+        path='/LoguinSuperAdmin'
+        element={<LoginForm/>}
         
         />
        
