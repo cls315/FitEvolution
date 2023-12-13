@@ -1,4 +1,4 @@
-import { ejemplo, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER, USER, BANER } from "./types";
+import { ejemplo, TRAINER, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER, USER, BANER } from "./types";
 
 import axios from 'axios';
 import { URLSERVER } from '../../../../configURL';
@@ -209,10 +209,38 @@ export const userPerfil = (option) => {
   }
 
 }
+
+export const trainerPerfil = (option)=>{
+  return async function(dispatch){
+    const json = await axios(`${URLSERVER}/fitevolution/trainers/allTrainer`)
+    const allTrainers = json.data
+    const trainer = allTrainers.find((trainer) => trainer.email == option)
+    console.log("action trainer",trainer);
+    return dispatch({
+      type: TRAINER,
+      payload: trainer
+    })
+  }
+}
+
+export const postRutines = () => {
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${URLSERVER}/fitevolution/routines/`);
+      return dispatch({
+        type: POST_RUTINES,
+        payload: json.data,
+      });
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+};
+
 export const getBaner =async(id,data)=>{
   console.log(data,id)
  try {
-   const {data:info} = await axios.put(`http://localhost:3001/fitevolution/clients/${id}/banned`, data)
+   const {data:info} = await axios.put(`${URLSERVER}/fitevolution/clients/${id}/banned`, data)
     console.log(info)
   
  } catch (error) {

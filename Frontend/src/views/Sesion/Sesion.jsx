@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrainers, getDeportistas, setusuario } from "../../components/redux/actions/actions.js";
+import { getTrainers, getDeportistas, setusuario,trainerPerfil,userPerfil } from "../../components/redux/actions/actions.js";
 import validate from "./validate.js";
 import { callLoginGoogle, callLoginFacebook } from "../../utils/authFunctions";
 import axios from "axios";
@@ -46,7 +46,7 @@ const FormSesion = (props) => {
         axios(`${URLSERVER}/fitevolution/clients`).then(({ data }) => {
             dispatch(getDeportistas(data));
         });
-    }, []);
+    }, [usuario,trainer]);
 
     const call_login_google = async (e) => {
         e.preventDefault();
@@ -57,6 +57,7 @@ const FormSesion = (props) => {
                 verificationEmailAccount(allTrainers, "Deportistas", user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/clients`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0] })
+                dispatch(userPerfil(user.email))
                 Swal.fire(`Bienvenido ${usuario.forename} a FitRevolution`)
                 navigate('/homeusuario')
             }
@@ -65,6 +66,7 @@ const FormSesion = (props) => {
                 verificationEmailAccount(allDeportistas, "Entrenadores", user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/trainers`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0], puntuaciones: [] })
+                dispatch(trainerPerfil(user.email))
                 Swal.fire(`Bienvenido ${trainer.forename} a FitRevolution`)
                 navigate('/checkoutTrainer')
             }
@@ -97,6 +99,7 @@ const FormSesion = (props) => {
                 console.log(user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/clients`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0] })
+                dispatch(userPerfil(user.email))
                 Swal.fire(`Bienvenido ${usuario.forename} a FitRevolution `, '', 'success')
                 navigate('/homeusuario')
             }
@@ -105,6 +108,7 @@ const FormSesion = (props) => {
                 verificationEmailAccount(allDeportistas, "Entrenadores", user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/trainers`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0], puntuaciones: [] })
+                dispatch(trainerPerfil(user.email))
                 Swal.fire(`Bienvenido ${trainer.forename} a FitRevolution`, "", 'success')
                 navigate('/checkoutTrainer')
             }
