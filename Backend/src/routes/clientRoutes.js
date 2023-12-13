@@ -5,7 +5,7 @@ const postCompleteClientsHndls = require("../handlers/ClientsHndls/postCompleteC
 
 const allClientHndls = require("../handlers/ClientsHndls/getAllClientsHndls");
 
-const putClientBanned =require ("../handlers/ClientsHndls/putClientBannedHndls")
+const putClientHndls =require ("../handlers/ClientsHndls/putClientHndls")
 
 const clientRoutes = Router();
 

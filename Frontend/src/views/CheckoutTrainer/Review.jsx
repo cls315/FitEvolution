@@ -4,30 +4,10 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
+import './checkout.css'
 
-const products = [
-  {
-    name: 'Product 1',
-    desc: 'A nice thing',
-    price: '$9.99',
-  },
-  {
-    name: 'Product 2',
-    desc: 'Another thing',
-    price: '$3.45',
-  },
-  {
-    name: 'Product 3',
-    desc: 'Something else',
-    price: '$6.51',
-  },
-  {
-    name: 'Product 4',
-    desc: 'Best thing of all',
-    price: '$14.11',
-  },
-  { name: 'Shipping', desc: '', price: 'Free' },
-];
+
+
 
 const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
 const payments = [
@@ -37,28 +17,65 @@ const payments = [
   { name: 'Expiry date', detail: '04/2024' },
 ];
 
-export default function Review() {
-  return (
+export default function Review(props) {
+  const {form}=props
+  const products = [
+    {
+      name: "Nombre",
+      price: form.forename,
+    },
+    {
+      name: 'Apellido',
+      price: form.surname,
+    },
+    {
+      name: 'Correo',
+      price: form.email,
+    },
+    {
+      name: 'DNI',
+      price: form.dni,
+    },
+    { name: 'Fecha de nacimiento',
+    price: form.dateOfBirth,
+    },
+    { name: 'Enfoque',
+    price: form.focusTr,
+    },
+    { name: 'Telefono',
+    price: form.phoneN,
+    },
+    { name: 'Nacionalidad',
+    price: form.nationality,
+    },
+    { name: 'Genero',
+    price: form.gender,
+    },
+    { name: 'Descripcion',
+    price: form.description,
+    },
+  ];
+  return (<div className='conteiner'>
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Order summary
+        Verificar datos
       </Typography>
       <List disablePadding>
         {products.map((product) => (
           <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
+            <ListItemText primary={product.name} />
             <Typography variant="body2">{product.price}</Typography>
           </ListItem>
         ))}
-        <ListItem sx={{ py: 1, px: 0 }}>
-          <ListItemText primary="Total" />
+        {/* <ListItem sx={{ py: 1, px: 0 }}>
+         <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
             $34.06
           </Typography>
-        </ListItem>
+        </ListItem>*/}
       </List>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
+      { /* <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Shipping
           </Typography>
@@ -69,7 +86,7 @@ export default function Review() {
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Payment details
           </Typography>
-          <Grid container>
+         <Grid container>
             {payments.map((payment) => (
               <React.Fragment key={payment.name}>
                 <Grid item xs={6}>
@@ -81,8 +98,8 @@ export default function Review() {
               </React.Fragment>
             ))}
           </Grid>
-        </Grid>
+        </Grid>*/}
       </Grid>
     </React.Fragment>
-  );
+    </div>);
 }

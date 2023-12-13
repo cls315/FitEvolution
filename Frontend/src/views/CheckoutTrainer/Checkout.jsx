@@ -14,9 +14,15 @@ import Typography from '@mui/material/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
-import logout from '../../utils/logout'
+import logout from '../../utils/logout';
+import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import './checkout.css'
+import validate from "./validate.js";
+import axios from 'axios';
+import { URLSERVER } from '../../../configURL.js';
 
 function Copyright() {
   return (
@@ -33,14 +39,14 @@ function Copyright() {
 
 const steps = ['Datos del entrenador', 'Detalles de pago', 'Verificar y enviar'];
 
-function getStepContent(step) {
+function getStepContent(step,errors,form,handleDateofbirth,handleChange) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <AddressForm form={form} errors={errors} handleDateofbirth={handleDateofbirth} handleChange={handleChange}/>;
     case 1:
       return <PaymentForm />;
     case 2:
-      return <Review />;
+      return <Review form={form}/>;
     default:
       throw new Error('Unknown step');
   }
@@ -49,9 +55,58 @@ function getStepContent(step) {
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
   const navigate=useNavigate()
+  const trainer = useSelector((state) => state.trainer)
+  const [errors, setErrors] = useState({});
+  const [form, setForm] = React.useState({
+    forename: trainer.forename ? trainer.forename : "",
+    surname: trainer.surname ? trainer.surname : "",
+    email: trainer.email ? trainer.email : "",
+    description: trainer.description ? trainer.description : "",
+    focusTr: "",
+    dni: "",
+    phoneN: "",
+    nationality: "",
+    gender: "",
+    dateOfBirth: "",
+  });
+  console.log(form)
+  console.log(trainer.id)
 
-  const handleNext = () => {
+  const handleChange = (event) => {
+    const value = event.target.value
+    const property = event.target.name
+    setForm({ ...form, [property]: value });
+    setErrors(validate({ ...form, [property]: value }));
+  };
+
+  const handleDateofbirth=(newValue)=>{
+    console.log(newValue)
+    let newValueformat=`${newValue.$D},${newValue.$M},${newValue.$y}`
+    setForm({ ...form, dateOfBirth: newValueformat })
+   
+  }
+
+  const handleNext = async() => {
+    if (Object.values(form).some(inp => inp === "")) {  //some comprueba si algun elemento del array es "", si hay un "" quiere decir que hay un input vacio
+      Swal.fire('DEBÉS COMPLETAR TODOS LOS CAMPOS!', "", 'error');
+      return;
+  }
+
+  if (Object.values(errors).some(error => error)) {
+    Swal.fire('EL FORMULARIO CONTIENE ERRORES!', "", "error");
+    return;
+  }
     setActiveStep(activeStep + 1);
+    console.log(activeStep)
+    if(activeStep===2){
+      try{
+      await axios.post(`${URLSERVER}/trainers/${trainer.id}/complete`)
+      Swal.fire('FORMULARIO ENVIADO!', "", "error");
+      }catch(error){
+        if (error) Swal.fire(error.message, '', 'error')
+      }
+    return;
+    }
   };
 
   const handleBack = () => {
@@ -63,8 +118,8 @@ export default function Checkout() {
     navigate('/')
   }
 
-  return (
-    <React.Fragment>
+  return (<div className='conteiner'>
+    <React.Fragment >
       <CssBaseline />
       <AppBar
         position="absolute"
@@ -113,7 +168,7 @@ export default function Checkout() {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              {getStepContent(activeStep)}
+              {getStepContent(activeStep,errors,form,handleDateofbirth,handleChange)}
               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 {activeStep !== 0 && (
                   <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
@@ -126,7 +181,7 @@ export default function Checkout() {
                   onClick={handleNext}
                   sx={{ mt: 3, ml: 1 }}
                 >
-                  {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                  {activeStep === steps.length - 1 ? 'Enviar' : 'Next'}
                 </Button>
               </Box>
             </React.Fragment>
@@ -135,5 +190,5 @@ export default function Checkout() {
         <Copyright />
       </Container>
     </React.Fragment>
-  );
+    </div>);
 }
