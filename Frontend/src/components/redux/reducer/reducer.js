@@ -1,40 +1,21 @@
-import {
-  ejemplo,
-  TRAINER,
-  USUARIO_LOGED,
-  GET_DEPORTISTAS,
-  GET_TRAINERS,
-  MENU_TRAINERS,
-  RUTINAS,
-  SEARCH,
-  FILTER_FOCUS,
-  FILTER_SCORE,
-  QUITAR_FILTROS,
-  SOBRE_SCORE,
-  SOBRE_FOCUS,
-  CLEAR_CART,
-  AGREGAR_CARRITO,
-  GET_ROUTINES,
-  DELETE_CART,
-  SET_USER,
-  USER,
-  POST_RUTINES,
-} from "../actions/types";
+import { ejemplo ,POST_RUTINES, USUARIO_LOGED,GET_DEPORTISTAS,GET_TRAINERS,MENU_TRAINERS,RUTINAS, SEARCH,FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, SOBRE_FOCUS,CLEAR_CART, AGREGAR_CARRITO, GET_ROUTINES, DELETE_CART, SET_USER, USER,TRAINER} from "../actions/types"
+
 
 const initialState = {
-  allTrainers: [],
-  allDeportistas: [],
-  filterTrainers: [],
-  status: "",
-  carrito: [],
-  routines: [],
-  rutinas: [],
-  rutinas2: [],
-  userStatus: "",
-  usuario: [],
-  trainer: [],
-  postRutines: [],
-};
+    allTrainers: [],
+    allDeportistas: [],
+    filterTrainers: [],
+    status: "",
+    carrito: [],
+    routines: [],
+    rutinas:[],
+    rutinas2:[],
+    userStatus: "",
+    usuario:[],
+    banerExit:null,
+    banerError:null,
+
+}
 
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -148,4 +129,4 @@ const rootReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export default rootReducer;
+export default rootReducer  

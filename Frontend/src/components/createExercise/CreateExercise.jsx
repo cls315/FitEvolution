@@ -7,8 +7,8 @@ import MuscleInput from './MuscleInput'
 import axios from "axios";
 import Swal from 'sweetalert2'
 import { URLSERVER } from '../../../configURL';
-import { Container } from '@mui/material';
-
+import { Container, Button,MenuItem, FormControl, Input,InputLabel,FormHelperText, Grid, Typography ,TextField,Select } from '@mui/material';
+import { CloudUpload as CloudUploadIcon, Grid3x3 } from '@mui/icons-material'
 
 
 const CreateExercise = () => {
@@ -101,75 +101,70 @@ const CreateExercise = () => {
       }
    };
     return (
-      <Container>
-        <div className={style.container}>
-        <form onSubmit={submitHandler}>
-        <div className={style.labelform1}>
-                        <label className={style.label1}> Nombre del ejercicio</label>
-                        <input 
-                        placeholder=" Nombre" 
-                        className={style.inputNom} 
-                        name="name" 
-                        onChange={changeHandler} />
-                        {errors.name && <p className={style.p1}>{errors.name}</p>}
-                    </div>
-                    <div className={style.labelform1}>
-                        <label className={style.label1}> Imagen, Gif, Video del ejercicio</label>
-                     <UploadWidCloud uploadImage={uploadImage}/>
-                      
-                    </div>
-                    <div className={style.labelDescription}>
-                        <label className={style.label1}> Descripción</label>
-                        <textarea 
+      <Container className={style.Container}>
+        <br />
+        
+                <FormControl >
+                        <InputLabel htmlFor="name"> Nombre del ejercicio</InputLabel>
+                        <Input id="name" type="name" aria-describedby="my-helper-text" />
+                        <FormHelperText id="my-helper-text">Completar campo</FormHelperText>
+                    </FormControl>
+                    <Grid >
+                    <Grid>
+                      <Typography variant="subtitle1">
+                        Imagen, Gif, Video del ejercicio
+                      </Typography>
+                      <Button>Agregar</Button>
+                   </Grid>
+                   </Grid>
+                   <br></br>
+                    <Grid>
+                        <InputLabel htmlFor="descripcion" > Descripción</InputLabel>
+                        <TextField
                         placeholder=" Agrega una descripcion del ejercicio" 
                         type='string' 
                         className={style.inputDescription} 
                         name="description" 
                         onChange={changeHandler} />
                         {errors.description && <p className={style.p1}>{errors.description}</p>}
-                    </div>
-                    <div className={style.labelform1}>
-                            <label className={style.label1}> Categoria de ejercicio</label>
-                          <select 
-                          placeholder="Categoria" 
-                          className={style.inputNom} 
-                          name="category" 
+                    </Grid>
+                    <br></br>
+                    <Grid>
+                          <InputLabel id= "Categoria">Categoria de ejercicio</InputLabel>
+                          <Select
+                          labelId="Categoria" 
+                          id="categ" 
+                          label="Seleccionar Tipo"
                           onChange={changeHandler}>
-                            <option value="">Selecciona</option>
-                        <option value="TS">Tren Superior</option>
-                        <option value="TI">Tren Inferior</option>
-                        <option value="CORE">Zona Media</option>
-                            </select>
-                        {errors.category && <p className={style.p1}>{errors.category}</p>}
-                        </div>
-                        <div>
-                        <MuscleInput onAdd={handleAddMuscle}/>
-                        
-                           {exer.muscle_trained.map((muscle, index) => (
-                             <span className={style.muscle} key={index}>
-                               {muscle}
-                               <button className={style.buttonX} onClick={() => handleDeleteMuscle(muscle)}>x</button>
-                             </span>
-                           ))}
-                         
-                        </div>
-                        <div className={style.labelform1}>
-                        <label className={style.label1}> Duración Estimada </label>
-                        <input 
-                        type="number"
-                        placeholder=" Duracion en segundos" 
-                        className={style.inputNom} 
-                        name="estimatedDuration" 
-                        onChange={changeHandler} />
-                        {errors.duration && <p className={style.p1}>{errors.duration}</p>}
-                    </div>
-                    <div>
-                      <button type="submit" className={style.btCreateAccount} > Crear Ejercicio</button>
-                    </div>
-        </form>
-        </div> 
-        </Container> 
-)
-}
+                          
+                            <MenuItem value="">Selecciona</MenuItem>
+                            <MenuItem value="TS">Tren Superior</MenuItem>
+                            <MenuItem value="TI">Tren Inferior</MenuItem>
+                            <MenuItem value="CORE">Zona Media</MenuItem>
+                            </Select>
+                        </Grid>
+                        <br></br>
+                            
+                        <Grid>
+                          
+                          <FormControl >
+                                <InputLabel htmlFor="muscle"> Agregar Musculo</InputLabel>
+                                <Input id="muscle" type="muscle" aria-describedby="my-helper-text" />
+                                <FormHelperText id="my-helper-text">Completar campo</FormHelperText>
+                            </FormControl>
+                        </Grid>
+                        <br></br>
+                        <Grid>
+
+                        <FormControl >
+                                <InputLabel htmlFor="duration">Duracion estimada</InputLabel>
+                                <Input id="duration" type="muscle" aria-describedby="my-helper-text" />
+                                <FormHelperText id="my-helper-text">Duracion en segundos</FormHelperText>
+                        </FormControl>
+                    </Grid>
+                  
+                      <Button type="submit" className={style.btCreateAccount} > Crear Ejercicio</Button>
+                      </Container>
+    )}
 
 export default CreateExercise

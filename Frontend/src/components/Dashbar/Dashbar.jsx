@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, List, ListItem } from "@mui/material";
 import { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrainers, trainerPerfil } from "../redux/actions/actions";
+// import { getTrainers, trainerPerfil } from "../redux/actions/actions";
 
 const DashBar = (props) => {
     
