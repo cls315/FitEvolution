@@ -1,4 +1,4 @@
-const putClients = require("../../controllers/Clients/putClient");
+const putClients = require("../../controllers/Clients/putClientBanned");
 
 const putClientHndls = async (req, res) => {
   try {
