@@ -8,9 +8,18 @@ const LoginForm = () => {
 
   const navigate = useNavigate()
 
-  const handleLogin = () => {
+
+  const LogSuper =( username, password)=>{
+
+    if( username="SuperAdmin@admin" && password==="Nohayplata")
+    alert ("loguin correcto")
+else alert("loguin incorrecto")
+  }
+
+  const handleLogin = (event) => {
     navigate('/owner')
-  
+    event.preventDefaul(LogSuper(username,password))
+    
   };
 
   return (

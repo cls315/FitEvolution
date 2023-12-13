@@ -8,8 +8,15 @@ const SessionAdmin= () => {
 
   const navigate = useNavigate()
 
-  const handleLogin = () => {
-    navigate('/adm')
+  const Loguin = (username, password)=>{
+    if(username=== "Admin@admin.com" && password=== "postal")
+    alert("login correcto")
+else alert("login incorrecto")
+  };
+  const handleLogin = (event) => {
+
+      navigate('/adm')
+      event.preventDefaul(Loguin(username,password))
   
   };
 

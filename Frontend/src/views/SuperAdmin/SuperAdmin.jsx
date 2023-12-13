@@ -9,7 +9,7 @@ import { RxUpdate } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import { Table,TextField,Typography,AppBar,InputAdornment,Toolbar,TableBody, TableContainer, TableFooter, TableHead,Paper, TableRow, TableCell } from "@mui/material";
-
+import Admin from "../Admin/Admin"
 import {
   flexRender,
   getCoreRowModel,
@@ -257,7 +257,10 @@ useEffect(()=>
         >
           Última página
         </Button>
+        <br></br>
+        
       </div>
+      <Admin></Admin>
     </div>
   );
 };
