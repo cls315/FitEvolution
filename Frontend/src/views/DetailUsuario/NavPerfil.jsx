@@ -2,7 +2,7 @@ import styles from "./NavPerfil.module.css"
 import imageLogo from "../../images/imageLogo.jpg"
 import { useNavigate } from 'react-router-dom';
 
-const NavPerfil = ()=>{
+const NavPerfil = ({setPageView})=>{
 
     const navigate = useNavigate()
 
@@ -14,6 +14,7 @@ const NavPerfil = ()=>{
         <div className={styles.nav}>
             <img src={imageLogo} className={styles.logo}/>
             <div className={styles.btnconteiner}>
+                <button onClick={()=>{setPageView(1)}}>Mis rutinas</button>
                 <button onClick={()=>{nuevosPaquetes()}}>Nuevos paquetes</button>
             </div>
         </div>
