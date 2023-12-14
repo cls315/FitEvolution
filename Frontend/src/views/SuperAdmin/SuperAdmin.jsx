@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTrainers } from "../../components/redux/actions/actions";
 import { BsSortUpAlt, BsSortDown } from "react-icons/bs";
 import { RxUpdate } from "react-icons/rx";
-
+import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
-import { Table, TableBody, TableContainer, TableFooter, TableHead,Paper, TableRow, TableCell } from "@mui/material";
-
+import { Table,TextField,Typography,AppBar,InputAdornment,Toolbar,TableBody, TableContainer, TableFooter, TableHead,Paper, TableRow, TableCell } from "@mui/material";
+import Admin from "../Admin/Admin"
 import {
   flexRender,
   getCoreRowModel,
@@ -27,20 +27,34 @@ const SuperAdmin = () => {
   
   const dispatch = useDispatch();
   
-  useEffect(() => {
-    dispatch(getTrainers())
-  }, [dispatch]);
+  
   
   const trainers = useSelector(state => state.allTrainers);
+  const [storLocal,setStorLocal]=useState(() => JSON.parse(localStorage.getItem("selectedAdmins")) || []);
+ 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setStorLocal(JSON.parse(localStorage.getItem("selectedAdmins")));
+    };
   
+    handleStorageChange(); 
+
+    window.addEventListener('storage', handleStorageChange);
   
-  console.log(trainers)
-  
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+ 
   //!toda la información que utiliza ReactTable para presentarla
-  const [data,setData]=useState([]);
-  useEffect(()=>{
-    setData(trainers)
-  },[trainers])
+  const data = trainers; 
+  console.log(data)
+useEffect(()=>
+{
+  dispatch(getTrainers());
+},[storLocal])  
+  
+
 
   const columns = [
     {
@@ -127,21 +141,45 @@ const SuperAdmin = () => {
   });
 
   return (
+   
     <div>
-      <div className=" input-group flex-nowrap my-2">
-        <span class="input-group-text" id="basic-addon1">
-          {<CiSearch />}
-        </span>
-        <input
-          class="form-control"
-          placeholder="Buscar Entrenador"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-          type="text"
-          value={filtering}
-          onChange={(e) => setFiltering(e.target.value)}
-          />
-      </div>
+
+      <AppBar position="static">
+        <Toolbar>
+        <div style={{ display: 'flex', alignItems: 'center', marginRight: 'auto' }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Super Admin
+          </Typography>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <TextField
+        fullWidth
+        variant="outlined"
+        margin="normal"
+        placeholder="Buscar Entrenador"
+        value={filtering}
+        onChange={(e) => setFiltering(e.target.value)}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+            <CiSearch/>
+            </InputAdornment>
+          ),
+        }}
+        sx={{ width: '400px' }}
+        />
+        </div>
+
+        <Button color="inherit" component={Link} to="/">
+          Exit
+        </Button>
+        </Toolbar>
+
+
+
+
+      </AppBar>
+      
 <TableContainer component={Paper}> 
        <Table >
         <TableHead>
@@ -219,7 +257,10 @@ const SuperAdmin = () => {
         >
           Última página
         </Button>
+        <br></br>
+        
       </div>
+      <Admin></Admin>
     </div>
   );
 };

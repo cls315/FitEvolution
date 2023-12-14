@@ -7,6 +7,8 @@ import validate from './validate'    //Styles
 import style from "./registerTrainer.module.css";
 import axios from "axios";
 import { URLSERVER } from '../../../configURL';
+import Button from '@mui/material/Button';
+
 
 //* Widget Cloudinary
 import UploadWidCloud from '../../components/Cloudinary/UploadWidCloud';
@@ -214,7 +216,7 @@ function RegisterTrainer() {
                     </div>
 
                     <div className={style.titleInf}>
-                        <button type="submit" className={style.btCreateAccount}>Crear cuenta</button>
+                        <Button variant="contained" color="primary" size="small"type="submit" className={style.btCreateAccount}>Crear cuenta</Button>
                         <span >¿Ya tienes cuenta?  <button onClick={volverInicio} className={style.spanButton}> inicio de sesion</button></span>
                     </div>
                 </form >

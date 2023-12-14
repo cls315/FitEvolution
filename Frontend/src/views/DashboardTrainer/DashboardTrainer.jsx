@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { URLfrontend } from '../../../configURL';
 import { auth  } from '../../components/firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-import { usuariologed } from '../../components/redux/actions/actions';
+// import { trainerPerfil } from '../../components/redux/actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
 //components imports
 import MenuprincipalTrainer from '../../components/menuprincipalTainer/menuprincipalTrainer';
@@ -22,51 +22,57 @@ import './DashboardTrainer.css';
 const DashboardTrainer = (props) => {
 
   const [menu, setmenu] = useState('deportes')
-  const [trainer,setTrainer] =useState({})
   const allTrainers=useSelector((state) => state.allTrainers)
-  const usuario=useSelector((state)=>state.usuario)
+  
+  const trainer=useSelector((state)=>state.trainer)
+  const dispatch=useDispatch()
+ 
   
   
   //firebase
   const [userSession, setUserSession] = useState(false)
   //modo escucha de firebase
  useEffect(()=>{
-  onAuthStateChanged(auth, (user)=>{    //esta funcion es de firebase se queda en modo escucha cada vez que se carga la aplicacion.
+    onAuthStateChanged(auth, (user)=>{    //esta funcion es de firebase se queda en modo escucha cada vez que se carga la aplicacion.
     if(user){
       console.log(user.email)
-      console.log(usuario)
-      usuariologed(user.email)
       setUserSession(true)
+      dispatch(trainerPerfil(user.email))
+      console.log(trainer)
+      
     } else{
       setUserSession(false)
+      
       console.log(user)
     }
     })
 
+    
     return () => {
-     
     };
+     
 
-  },[allTrainers,usuario])
+  },[allTrainers])
+
   //-------------------------*/
-
   const handleMenu = (e) => {
     const nom = e.target.name
     console.log(e.target.name)
     setmenu(nom)
   }
+//*manejo de renderizado condicional del boton de admin
 
   return (<>
     {
       userSession ?
         <div className='bg-trainer-board'>
-          <DashBar handleMenu={handleMenu} />
+          <DashBar handleMenu={handleMenu}/>
           {menu === "deportes" && <MenuprincipalTrainer trainer={trainer}/>}
           {menu === "pagos" && <PagosprincipalTrainer />}
           {menu === "entrenamientos" && <EntrePrincipalTrainer />}
           <footer className='footerUser'><p>© 2023 FitRevolution </p></footer>
         </div> :
-       <a href={`${URLfrontend}`}>Su sesion finalzo, haz click aqui.</a>
+       <a href={`${URLfrontend}`}>Su sesion finalizó, haga click aqui.</a>
     }
   </>);
 };

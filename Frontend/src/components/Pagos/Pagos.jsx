@@ -1,5 +1,7 @@
 import { useState,useEffect } from "react";
+import {useDispatch, useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
+import { userPerfil } from "../redux/actions/actions";
 import {
   Elements,
   CardElement,
@@ -15,10 +17,18 @@ const stripePromise = loadStripe(
 
 
 
-const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading }) => {
+const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading}) => {
 
+  const dispatch = useDispatch()
+
+  const user = useSelector((state)=> state.usuario)
+  const idState = useSelector((state)=> state.idsTrainers)
+  const email = user.email
   const stripe = useStripe();
   const elements = useElements();
+
+  const idTrainer = idState.filter(Boolean).filter((valor, índice, self) => self.indexOf(valor) === índice);
+
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +42,7 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading }
       });
 
       if (!error) {
-
+        dispatch(userPerfil(email))
         console.log(paymentMethod)
         const { id } = paymentMethod;
 
@@ -43,9 +53,14 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading }
 
             amount: { total },
 
+            idTrainer: idTrainer,
+
+            userEmail: {email}
+
           }
         );
-        console.log(data.message);
+        console.log(idTrainer, email);
+        console.log(data);
         setLoading(false)  //detiene la carga del gif
         alert(data.message)
         setShow(false)

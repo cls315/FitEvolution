@@ -1,3 +1,17 @@
+.Container{
+    margin-top: 10px;
+    background-image: url("../../images/imageLogo.jpg");
+    background-position: left top;
+    background-repeat: no-repeat;
+    border: 3px solid black;
+    border-radius: 15px;
+    
+}
+
+
+
+
+
 /* .container {
     max-width: 500px;
     margin: 0 auto;

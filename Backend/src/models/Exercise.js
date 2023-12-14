@@ -31,6 +31,14 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
+    series:{
+      type:DataTypes.INTEGER,
+      allowNull:false
+    },
+    repetitions_per_set: {
+      type:DataTypes.INTEGER,
+      allowNull:false
+    },
     estimatedDuration: {
       type: DataTypes.INTEGER, // en segundos
       allowNull: false,

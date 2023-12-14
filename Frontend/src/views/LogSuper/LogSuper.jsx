@@ -2,22 +2,24 @@ import React, { useState } from 'react';
 import { TextField, Button, Typography, Paper, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-const SessionAdmin= () => {
+const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate()
 
-  const Loguin = (username, password)=>{
-    if(username=== "Admin@admin.com" && password=== "postal")
-    alert("login correcto")
-else alert("login incorrecto")
-  };
-  const handleLogin = (event) => {
 
-      navigate('/adm')
-      event.preventDefaul(Loguin(username,password))
-  
+  const LogSuper =( username, password)=>{
+
+    if( username="superadmin" && password==="Nohayplata")
+    alert ("loguin correcto")
+else alert("loguin incorrecto")
+  }
+
+  const handleLogin = (event) => {
+    navigate('/owner')
+    event.preventDefaul(LogSuper(username,password))
+    
   };
 
   return (
@@ -25,7 +27,7 @@ else alert("login incorrecto")
       <Grid item xs={12} sm={8} md={5}>
         <Paper elevation={6} square sx={{ p: 4, textAlign: 'center' }}>
           <Typography component="h1" variant="h5" sx={{ mb: 4 }}>
-            Iniciar sesión Admin
+            Iniciar sesión Super Admin
           </Typography>
           <TextField
             fullWidth
@@ -59,9 +61,4 @@ else alert("login incorrecto")
   );
 };
 
-export default SessionAdmin
-
-
-
-
-
+export default LoginForm;
