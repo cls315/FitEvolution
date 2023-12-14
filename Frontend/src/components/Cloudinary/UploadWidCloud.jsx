@@ -29,9 +29,7 @@ const UploadWidCloud = ({uploadImage}) => {
     widgetRef.current.open()
   } 
   return (
-    <Button variant="contained"
-    color="primary"
-    size="small"
+    <Button variant="contained" color="primary" size="small"
     disabled={imageUploaded} className={style.buttonWid}onClick={handleClick}> {imageUploaded ? "Imagen cargada" : "Cargar"}</Button>
   )
 }

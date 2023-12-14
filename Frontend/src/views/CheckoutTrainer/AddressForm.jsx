@@ -193,7 +193,7 @@ export default function AddressForm(props) {
     control={<Checkbox color="secondary" name="saveAddress" checked={form.saveAddress} onChange={handleChange} />}
     label="Usar esta dirección para comunicarse con FitRevolution"
   />
-  {errors.saveAddress && <FormHelperText error>{errors.saveAddress}</FormHelperText>}
+  {errors.saveAddress && <FormHelperText fullWidth sx={{textAlign:'center'}}>{errors.saveAddress}</FormHelperText>}
 </Grid>
 
       </Grid>
