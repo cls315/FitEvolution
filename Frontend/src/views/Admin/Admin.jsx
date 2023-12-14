@@ -4,6 +4,10 @@ import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { BsSortUpAlt, BsSortDown } from "react-icons/bs";
 import { RxUpdate } from "react-icons/rx";
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Grids from '@mui/material/Grid';
 import {
   flexRender,
   getCoreRowModel,
@@ -17,42 +21,61 @@ import style from './Admin.module.css'
 import { useDispatch } from "react-redux";
 import { getBaner } from "../../components/redux/actions/actions";
 import { IdealBankElement } from "@stripe/react-stripe-js";
+import { URLSERVER } from "../../../configURL";
+import {
+  TextField,
+  Typography,
+  AppBar,
+  InputAdornment,
+  Toolbar, TableBody, TableContainer, TableFooter,
+  TableHead, Paper, TableRow, TableCell, Table, Input,
+  Grid,
+  Button,
+} from "@mui/material";
 
 
 
-const Admin=()=>{
-    const navigate = useNavigate()
-   const ejectButton =()=>{
-   navigate('/createEj')
-   }
-   const [data, setData] = useState([]);
-   const [selectedRow, setSelectedRow] = useState(null);
+const Admin = () => {
+  const navigate = useNavigate()
+  const ejectButton = () => {
+    navigate('/createEj')
+  }
+  const [data, setData] = useState([]);
+  const [selectedRow, setSelectedRow] = useState(null);
 
- const backButton =()=>{
+  const backButton = () => {
     navigate('/dashboardtr')
- }
- const [refresh,setRefresh]= useState(0)
-   
-   useEffect(() => {
+  }
+  const [refresh, setRefresh] = useState(0)
+
+  useEffect(() => {
     async function fetchData() {
-      const dataClients = await axios("http://localhost:3001/fitevolution/clients");//Cambiar a ruta deploy
-      setData(dataClients.data);
+      const dataClients = await axios(`${URLSERVER}/fitevolution/clients`);//Cambiar a ruta deploy
+      const dataTrainers = await axios(`${URLSERVER}/fitevolution/trainers/alltrainer`)
+      const allusers = [...dataClients.data, ...dataTrainers.data]
+      setData(allusers);
+      console.log(allusers)
     }
     fetchData();
   }, [refresh]);
- 
+
   const dispatch = useDispatch()
 
 
-  const handleBaner = (e,id)=>{
+  const handleBaner = (e, id) => {
     e.preventDefault()
-   const result = getBaner(id,{banned:e.target.value})
-   
-    setRefresh(refresh+1)
-  
+    const result = getBaner(id, { banned: e.target.value })
+
+    setRefresh(refresh + 1)
+
   }
 
   const columns = [
+    {
+      header: "Rol",
+      accessorKey: "role",
+      footer: "Rol",
+    },
     {
       header: "ID",
       accessorKey: "id",
@@ -99,19 +122,38 @@ const Admin=()=>{
       footer: "Fecha de Nacimineto del deportista",
       cell: (info) => dayjs(info.getValue()).format("DD/MM/YYYY"),
     },
+    {
+      header: "Cuenta",
+      accessorKey: "status",
+      footer: "Estado de cuenta",
+      cell:<Grids item xs={12} sm={6}>
+      <FormControl variant="standard" fullWidth>
+      <Select
+      labelId="demo-simple-select-standard-label"
+      id="demo-simple-select-standard"
+      onChange={()=>{}}
+      label="Enfoque"
+      name="focusTr"
+    >
+      <MenuItem value={"Active"}>Activo</MenuItem>
+      <MenuItem value={"Suspended"}>Suspendido</MenuItem>
+      <MenuItem value={"Confirmed"}>A confirmar</MenuItem>
+    </Select>
+    </FormControl>
+    </Grids>
+    },
+    {
+      header: "BANNED",
+      accessorKey: "banned",
+      footer: "banned",
+      cell: (info) => info.row.original.banned === "off" ? <Button style={{ color: "red" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"on"}>desbanear</Button> :
+        <Button style={{ color: "green" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"off"}>banear</Button>
 
-      {
-        header: "BANNED",
-        accessorKey: "banned",
-        footer: "banned",
-        cell:(info)=> info.row.original.banned==="off"?<button style={{color:"red"}} onClick={(e)=>handleBaner(e,info.row.original.id)} value={"on"}>desbanear</button>:
-        <button style={{color: "green"}} onClick={(e)=>handleBaner(e,info.row.original.id)} value={"off"}>banear</button>
-        
-      },
+    },
   ];
   const [sorting, setSorting] = useState([]);
   const [filtering, setFiltering] = useState("");
-  
+
   const table = useReactTable({
     data,
     columns,
@@ -128,122 +170,141 @@ const Admin=()=>{
   });
 
 
-    return (
-     
-        <div>
-            <div className={style.botones}>
-                
-                <button className={style.boton1} onClick={ejectButton}>Crear ejercicios</button>
-                <button className={style.boton3}onClick={backButton}>Salir</button>
-            </div>
-            <div>
-                <hr></hr>
-      
-         <table className='table table-info'>
-        
-     
-        </table>
-     
-    </div>
-            <div>
-      <div className=" input-group flex-nowrap my-2">
-        <span class="input-group-text" id="basic-addon1">
-          {<CiSearch />}
-        </span>
-        <input
-          class="form-control"
-          placeholder="Buscar deportista"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-          type="text"
-          value={filtering}
-          onChange={(e) => setFiltering(e.target.value)}
-        />
+  return (
+
+    <div>
+      <AppBar position="static">
+
+        <Toolbar>
+          <div style={{ display: 'flex', alignItems: 'center', marginRight: 'auto' }}>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Admin
+            </Typography>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', marginRight: 'auto' }}>
+            <Grid container spacing={2} justifyContent="center">
+              <Grid item>
+                <Button variant="contained" color="primary" onClick={ejectButton}>
+                  Crear ejercicios
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button variant="contained" color="secondary" onClick={backButton}>
+                  Salir
+                </Button>
+              </Grid>
+            </Grid>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <TextField
+              fullWidth
+              variant="outlined"
+              margin="normal"
+              placeholder="Buscar Deportista"
+              value={filtering}
+              onChange={(e) => setFiltering(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <CiSearch />
+                  </InputAdornment>
+                ),
+              }}
+              sx={{ width: '400px' }}
+            />
+          </div>
+        </Toolbar>
+      </AppBar>
+
+      <div>
+
+
+        <Table className='table table-info'>
+
+
+        </Table>
+
       </div>
-      <table className="table table-info">
-        <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th
-                  className="bg-info bg-opacity-50"
-                  role="button"
-                  scope="col"
-                  key={header.id}
-                  onClick={header.column.getToggleSortingHandler()}
-                >
-                  {flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}{" "}
-                  {{ asc: <BsSortUpAlt />, desc: <BsSortDown /> }[
-                    header.column.getIsSorted() ?? null
-                  ] ?? <RxUpdate />}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-        <tfoot>
-          {table.getFooterGroups().map((footerGroup) => (
-            <tr key={footerGroup.id}>
-              {footerGroup.headers.map((footer) => (
-                <th key={footer.id} className="blockquote-footer">
-                  {flexRender(
-                    footer.column.columnDef.footer,
-                    footer.getContext()
-                  )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </tfoot>
-      </table>
-      <div className="d-flex justify-content-between">
-        <button
-          className="btn btn-success btn-sm"
-          onClick={() => table.setPageIndex(0)}
-        >
-          Primer página
-        </button>
-        <button
-          className="btn btn-success btn-sm"
-          onClick={() => table.previousPage()}
-        >
-          Página anterior
-        </button>
-        <button
-          className="btn btn-success btn-sm"
-          onClick={() => table.nextPage()}
-        >
-          Página siguiente
-        </button>
-        <button
-          className="btn btn-success btn-sm"
-          onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-        >
-          Última página
-        </button>
-      </div>
-    </div>
-       
+      <div>
+        <div className=" input-group flex-nowrap my-2">
+
         </div>
+        <TableContainer component={Paper}>
 
-    )}
+          <Table className="table table-info">
+            <TableHead>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <TableCell
+                      className="bg-info bg-opacity-50"
+                      role="button"
+                      scope="col"
+                      key={header.id}
+                      onClick={header.column.getToggleSortingHandler()}
+                    >
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}{" "}
+                      {{ asc: <BsSortUpAlt />, desc: <BsSortDown /> }[
+                        header.column.getIsSorted() ?? null
+                      ] ?? <RxUpdate />}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableHead>
+            <TableBody>
+              {table.getRowModel().rows.map((row) => (
+                <TableRow key={row.id}>
+                  {row.getVisibleCells().map((cell) => (
+                    <td key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+
+          </Table>
+        </TableContainer>
+        <div className="d-flex justify-content-between">
+          <Button
+            className="btn btn-success btn-sm"
+            onClick={() => table.setPageIndex(0)}
+          >
+            Primer página
+          </Button>
+          <Button
+            className="btn btn-success btn-sm"
+            onClick={() => table.previousPage()}
+          >
+            Página anterior
+          </Button>
+          <Button
+            className="btn btn-success btn-sm"
+            onClick={() => table.nextPage()}
+          >
+            Página siguiente
+          </Button>
+          <Button
+            className="btn btn-success btn-sm"
+            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+          >
+            Última página
+          </Button>
+        </div>
+      </div>
+
+    </div>
+
+  )
+}
 
 
-      
+
 
 
 

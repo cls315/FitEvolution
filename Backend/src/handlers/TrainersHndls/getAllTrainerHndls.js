@@ -11,4 +11,5 @@ const allTrainerHndls = async (req, res) => {
   }
 };
 
+
 module.exports = allTrainerHndls;

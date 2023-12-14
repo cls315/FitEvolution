@@ -1,5 +1,6 @@
 import {useEffect,useRef,useState} from 'react'
 import style from './UploadWidCloud.module.css'
+import Button from '@mui/material/Button';
 
 const UploadWidCloud = ({uploadImage}) => {
   const cloudinaryRef = useRef();
@@ -28,7 +29,8 @@ const UploadWidCloud = ({uploadImage}) => {
     widgetRef.current.open()
   } 
   return (
-    <button disabled={imageUploaded} className={style.buttonWid}onClick={handleClick}> {imageUploaded ? "Imagen cargada" : "Cargar"}</button>
+    <Button variant="contained" color="primary" size="small"
+    disabled={imageUploaded} className={style.buttonWid}onClick={handleClick}> {imageUploaded ? "Imagen cargada" : "Cargar"}</Button>
   )
 }
 

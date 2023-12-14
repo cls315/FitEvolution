@@ -6,6 +6,7 @@ const { Trainer } = require("../../db");
 const { Client } = require("../../db");
 const paymentsHndls = async (req, res) => {
   const { id, amount, idTrainer, userEmail } = req.body;
+  console.log(idTrainer);
 
   const stripe = new Stripe(`${SECRET_KEY_STRIPE}`);
   try {
@@ -42,10 +43,14 @@ const paymentsHndls = async (req, res) => {
         payment_method_types,
         payment_method,
       });
+      client.dataValues.myTrainers.push({
+        idTrainer
+      });
       await client.save();
     }
 
     // Guardar objeto trainer en la propiedad mytrainers del modelo cliente
+<<<<<<< HEAD
     const trainer = await Trainer.findByPk(idTrainer.idTrainer);
     if (trainer) {
       client.dataValues.myTrainers.push(trainer.id);
@@ -57,6 +62,25 @@ const paymentsHndls = async (req, res) => {
 
       await client.save();
       await trainer.save();
+=======
+    for(let i = 0; i < idTrainer.length; i++) {
+
+      const trainer = await Trainer.findByPk(idTrainer[i]);
+      console.log(trainer);
+      if (trainer) {
+        client.dataValues.myTrainers.push({
+          trainerId: trainer.dataValues.id,
+        });
+  
+        // Agregar todas las propiedades del cliente al array subscribers del entrenador
+        trainer.dataValues.subscribers.push({
+          ...client.dataValues// Agrega todas las propiedades del cliente
+        });
+  
+        await client.save();
+        await trainer.save();
+      }
+>>>>>>> e0cedd91b65e962667d32636f8925f69138148e7
     }
 
     // Llama a la función backupPayment para manejar la lógica adicional

@@ -1,4 +1,4 @@
-import { ejemplo, TRAINER, USUARIO_LOGED, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER, USER, BANER } from "./types";
+import { ejemplo, TRAINER, USUARIO_LOGED,GUARDAR_IDTRAINERS, GET_DEPORTISTAS, GET_TRAINERS, RUTINAS, SEARCH, FILTER_FOCUS, FILTER_SCORE, QUITAR_FILTROS, SOBRE_SCORE, GET_ROUTINES, SOBRE_FOCUS, AGREGAR_CARRITO, CLEAR_CART, DELETE_CART, SET_USER, USER, BANER } from "./types";
 
 import axios from 'axios';
 import { URLSERVER } from '../../../../configURL';
@@ -24,6 +24,7 @@ export const getTrainers = (data) => {
   return async function (dispatch) {
     try {
       let json = await axios(`${URLSERVER}/fitevolution/trainers/allTrainer`);
+      console.log(json.data);
       dispatch({
         type: GET_TRAINERS,
         payload: json.data,
@@ -248,3 +249,12 @@ export const getBaner =async(id,data)=>{
  }
       
     }
+
+export const saveIdTrainer = (id)=>{
+  return function(dispatch){
+   return dispatch({
+     type: GUARDAR_IDTRAINERS,
+     payload: id,
+   })
+  }
+}

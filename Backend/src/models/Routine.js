@@ -9,15 +9,18 @@ module.exports = (sequelize) => {
       autoIncrement: true,
     },
     exerc: {
-      type: DataTypes.ARRAY(DataTypes.JSON),
-      allowNull: false,
+      type: DataTypes.ARRAY(DataTypes.JSONB),
+      allowNull: true,
     },
     totalDuration: {
       type: DataTypes.VIRTUAL,
       get() {
-        return this.exerc.reduce((total, exerc) => {
-          return total + exerc.estimatedDuration;
-        }, 0);
+        if (this.exerc && Array.isArray(this.exerc)) {
+          return this.exerc.reduce((total, exerc) => {
+            return total + (exerc.estimatedDuration || 0);
+          }, 0);
+        }
+        return 0;
       },
       get duration() {
         const totalSeconds = this.totalDuration;

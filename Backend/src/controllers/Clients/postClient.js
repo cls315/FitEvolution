@@ -1,4 +1,4 @@
-const { Client } = require("../../db");
+const { Client, Carrito } = require("../../db");
 const { sendWelcomeEmail } = require("../../../configNodemailer/nodemailer");
 
 const postClient = async (req, res) => {
@@ -42,6 +42,7 @@ const postClient = async (req, res) => {
         role,
         myTrainers,
       });
+      await Carrito.create({ ClientId: createClient.id });
 
       // Envío el correo de bienvenida
       await sendWelcomeEmail(email, forename, surname);
