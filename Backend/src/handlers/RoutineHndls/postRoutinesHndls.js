@@ -2,10 +2,10 @@ const postRoutines = require("../../controllers/Routine/postRotuines");
 
 const postRoutinesHndls = async (req, res) => {
   try {
-    const { exerc, enfoque, precio } = req.body;
+    const {  exerc, enfoque, totalDuration, image} = req.body;
     console.log("Contenido de req.body:", req.body);
 
-    const newRoutine = await postRoutines(exerc, enfoque, precio);
+    const newRoutine = await postRoutines( exerc, enfoque, totalDuration, image);
 
     res.status(200).json(newRoutine);
   } catch (error) {

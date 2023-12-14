@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import datos from "../../../../Backend/api/datos.json";
-import style from "./FormRutine.module.css"
 
+//import axios from "axios";
+import style from "./FormRoutine.module.css"
+import { Link } from "react-router-dom";
 
 const FormRoutines = () => {
   const [selectedExercises, setSelectedExercises] = useState([]);
   const [totalDuration, setTotalDuration] = useState(0);
   const [selectedEnfoque, setSelectedEnfoque] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
-  // pare resetear el estado a 0 
+  // para resetear el estado a 0
   const [formReset, setFormReset] = useState(false);
 
- // array de ejercicios
+  // array de ejercicios
   const exercises = datos.ejercicios || [];
 
   useEffect(() => {
@@ -44,12 +46,52 @@ const FormRoutines = () => {
     );
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("Enfoque seleccionado:", selectedEnfoque);
     console.log("Ejercicios seleccionados:", selectedExercises);
     console.log("Duración total:", totalDuration);
-    setFormReset(true); // estado para reseater formulario luego de enviarlo
+    setFormReset(true); // estado para resetear formulario luego de enviarlo
+
+    const exercisesArray = selectedExercises.map((exerciseId) => {
+      const selectedExercise = exercises.find(
+        (exercise) => exercise.id === exerciseId
+      );
+
+      // Asegúrate de que selectedExercise tenga la estructura correcta
+      return {
+        id: selectedExercise.id,
+        name: selectedExercise.name,
+        estimatedDuration: selectedExercise.estimatedDuration,
+        // ... otras propiedades necesarias
+      };
+    });
+
+    try {
+      const response = await fetch(
+        "http://localhost:3001/fitevolution/routines/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            enfoque: selectedEnfoque,
+            exerc: exercisesArray, // Usa el array modificado
+            totalDuration: totalDuration,
+            image: selectedImage,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        console.log("Rutina creada exitosamente");
+      } else {
+        console.error("Error al crear la rutina");
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+    }
   };
 
   // handler para imagen local
@@ -61,14 +103,15 @@ const FormRoutines = () => {
       setSelectedImage(URL.createObjectURL(file));
     }
   };
- // useEffect para resetear formulario luego de enviarlo
+
+  // useEffect para resetear formulario luego de enviarlo
   useEffect(() => {
     if (formReset) {
       setSelectedExercises([]);
       setTotalDuration(0);
       setSelectedEnfoque("");
       setSelectedImage(null);
-      setFormReset(false); 
+      setFormReset(false);
     }
   }, [formReset]);
 
@@ -93,9 +136,7 @@ const FormRoutines = () => {
             <option value="Entrenamiento cardiovascular">
               Entrenamiento cardiovascular
             </option>
-            <option value="Entrenamiento de fuerza">
-              Entrenamiento de fuerza
-            </option>
+            <option value="Entrenamiento de fuerza">Entrenamiento de fuerza</option>
           </select>
         </div>
 
@@ -121,7 +162,6 @@ const FormRoutines = () => {
                 (exercise) => exercise.id === exerciseId
               );
 
-          
               console.log("Ejercicio seleccionado:", selectedExercise);
 
               return (
@@ -138,6 +178,7 @@ const FormRoutines = () => {
             })}
           </ul>
         </div>
+
         <div>
           <label>Seleccionar imagen :</label>
           <input type="file" accept="image/*" onChange={handleImageChange} />
@@ -153,13 +194,23 @@ const FormRoutines = () => {
             </div>
           )}
         </div>
+
         <div>
           <p>Duración total de los ejercicios: {totalDuration} minutos</p>
         </div>
 
         <button type="submit">Crear Rutina</button>
       </form>
+      <div className={style.goBack}>
+        <Link to="/dashboardtr">
+          <span className={style.backArrow}>{'<'}</span> Atrás
+        </Link>
+      </div>
     </div>
   );
 };
+
 export default FormRoutines;
+          
+
+
