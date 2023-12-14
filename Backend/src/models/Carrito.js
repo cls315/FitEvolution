@@ -23,10 +23,6 @@ module.exports = (sequelize) => {
   });
 
   // Relación con el modelo de Cliente
-  Carrito.belongsTo(sequelize.models.Client, {
-    foreignKey: "ClientId", // El nombre de la clave foránea en el modelo de Carrito
-    allowNull: false,
-  });
 
   return Carrito;
 };
