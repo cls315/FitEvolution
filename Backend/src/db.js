@@ -33,7 +33,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Trainer, Client, Routine, Exercise, Carrito } = sequelize.models;
+const { Trainer, Client, Routine, Exercise } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);s
@@ -44,8 +44,6 @@ Exercise.belongsToMany(Routine, { through: "ExerciseRoutine" }); //? many to man
 //!consultar mati. como relacionar la rutina con la tabla intermedia Client-Trainer
 
 Routine.belongsTo(Trainer); //* un entrenador puede hacer muchas rutinas, L;as rutinas pertenecen a un entrenador
-Client.hasOne(Carrito);
-Carrito.belongsTo(Client);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
