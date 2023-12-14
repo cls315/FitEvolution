@@ -22,9 +22,9 @@ module.exports = (sequelize) => {
     },
   });
 
-  // Agrega la relación con el modelo de Cliente
+  // Relación con el modelo de Cliente
   Carrito.belongsTo(sequelize.models.Client, {
-    foreignKey: "ClientId", // Se refiere al campo que acabamos de agregar
+    foreignKey: "ClientId", // El nombre de la clave foránea en el modelo de Carrito
     allowNull: false,
   });
 
