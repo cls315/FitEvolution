@@ -33,11 +33,13 @@ module.exports = (sequelize) => {
     },
     series:{
       type:DataTypes.INTEGER,
-      allowNull:false
+      allowNull:true,
+      defaultValue:4
     },
     repetitions_per_set: {
       type:DataTypes.INTEGER,
-      allowNull:false
+      allowNull:true,
+      defaultValue:10
     },
     estimatedDuration: {
       type: DataTypes.INTEGER, // en segundos

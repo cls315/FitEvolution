@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import datos from "../../../../Backend/api/datos.json";
-<<<<<<< HEAD
 import style from "./FormRutine.module.css"
 
-=======
 //import axios from "axios";
->>>>>>> feature/form
+import style from "./FormRoutine.module.css"
+import { Link } from "react-router-dom";
 
 const FormRoutines = () => {
   const [selectedExercises, setSelectedExercises] = useState([]);
@@ -53,11 +52,8 @@ const FormRoutines = () => {
     console.log("Enfoque seleccionado:", selectedEnfoque);
     console.log("Ejercicios seleccionados:", selectedExercises);
     console.log("Duración total:", totalDuration);
-<<<<<<< HEAD
     setFormReset(true); // estado para reseater formulario luego de enviarlo
   };
-
-=======
 
     const exercisesArray = selectedExercises.map((exerciseId) => {
       const selectedExercise = exercises.find(
@@ -99,7 +95,6 @@ const FormRoutines = () => {
       console.error("Error en la solicitud:", error);
     }
   };
->>>>>>> feature/form
   // handler para imagen local
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -207,7 +202,13 @@ const FormRoutines = () => {
 
         <button type="submit">Crear Rutina</button>
       </form>
+      <div className={style.goBack}>
+          
+          <Link to="/dashboardtr">
+          <span className={style.backArrow}>{'<'}</span> Atrás
+          </Link>
+        </div>
     </div>
   );
-};
+
 export default FormRoutines;
