@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { URLfrontend } from '../../../configURL';
 import { auth  } from '../../components/firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { Link } from "react-router-dom";
 // import { trainerPerfil } from '../../components/redux/actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
 //components imports
@@ -70,6 +71,9 @@ const DashboardTrainer = (props) => {
           {menu === "deportes" && <MenuprincipalTrainer trainer={trainer}/>}
           {menu === "pagos" && <PagosprincipalTrainer />}
           {menu === "entrenamientos" && <EntrePrincipalTrainer />}
+          <Link to="/createRoutine">
+          <button>Crear rutina personalizada</button>
+        </Link>
           <footer className='footerUser'><p>© 2023 FitRevolution </p></footer>
         </div> :
        <a href={`${URLfrontend}`}>Su sesion finalizó, haga click aqui.</a>

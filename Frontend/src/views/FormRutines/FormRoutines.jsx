@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import datos from "../../../../Backend/api/datos.json";
-import style from "./FormRutine.module.css"
-
+import style from "./FormRoutine.module.css"
+import { Link } from "react-router-dom";
 
 const FormRoutines = () => {
   const [selectedExercises, setSelectedExercises] = useState([]);
@@ -159,6 +159,12 @@ const FormRoutines = () => {
 
         <button type="submit">Crear Rutina</button>
       </form>
+      <div className={style.goBack}>
+          
+          <Link to="/dashboardtr">
+          <span className={style.backArrow}>{'<'}</span> Atrás
+          </Link>
+        </div>
     </div>
   );
 };
