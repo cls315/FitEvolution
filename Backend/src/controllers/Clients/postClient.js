@@ -1,4 +1,4 @@
-const { Client } = require("../../db");
+const { Client, Carrito } = require("../../db");
 const { sendWelcomeEmail } = require("../../../configNodemailer/nodemailer");
 
 const postClient = async (req, res) => {
