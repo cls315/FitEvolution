@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import datos from "../../../../Backend/api/datos.json";
+<<<<<<< HEAD
 import style from "./FormRutine.module.css"
 
+=======
+//import axios from "axios";
+>>>>>>> feature/form
 
 const FormRoutines = () => {
   const [selectedExercises, setSelectedExercises] = useState([]);
@@ -44,14 +48,58 @@ const FormRoutines = () => {
     );
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("Enfoque seleccionado:", selectedEnfoque);
     console.log("Ejercicios seleccionados:", selectedExercises);
     console.log("Duración total:", totalDuration);
+<<<<<<< HEAD
     setFormReset(true); // estado para reseater formulario luego de enviarlo
   };
 
+=======
+
+    const exercisesArray = selectedExercises.map((exerciseId) => {
+      const selectedExercise = exercises.find(
+        (exercise) => exercise.id === exerciseId
+      );
+
+      // Asegúrate de que selectedExercise tenga la estructura correcta
+      return {
+        id: selectedExercise.id,
+        name: selectedExercise.name,
+        estimatedDuration: selectedExercise.estimatedDuration,
+        // ... otras propiedades necesarias
+      };
+    });
+
+    try {
+      const response = await fetch(
+        "http://localhost:3001/fitevolution/routines/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            enfoque: selectedEnfoque,
+            ejercicios: exercisesArray, // Usa el array modificado
+            duracionTotal: totalDuration,
+            imagen: selectedImage,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        console.log("Rutina creada exitosamente");
+      } else {
+        console.error("Error al crear la rutina");
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+    }
+  };
+>>>>>>> feature/form
   // handler para imagen local
   const handleImageChange = (event) => {
     const file = event.target.files[0];
