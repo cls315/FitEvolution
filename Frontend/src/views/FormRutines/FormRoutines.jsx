@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import datos from "../../../../Backend/api/datos.json";
-import style from "./FormRutine.module.css"
 
 //import axios from "axios";
 import style from "./FormRoutine.module.css"
@@ -11,10 +10,10 @@ const FormRoutines = () => {
   const [totalDuration, setTotalDuration] = useState(0);
   const [selectedEnfoque, setSelectedEnfoque] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
-  // pare resetear el estado a 0 
+  // para resetear el estado a 0
   const [formReset, setFormReset] = useState(false);
 
- // array de ejercicios
+  // array de ejercicios
   const exercises = datos.ejercicios || [];
 
   useEffect(() => {
@@ -52,8 +51,7 @@ const FormRoutines = () => {
     console.log("Enfoque seleccionado:", selectedEnfoque);
     console.log("Ejercicios seleccionados:", selectedExercises);
     console.log("Duración total:", totalDuration);
-    setFormReset(true); // estado para reseater formulario luego de enviarlo
-  };
+    setFormReset(true); // estado para resetear formulario luego de enviarlo
 
     const exercisesArray = selectedExercises.map((exerciseId) => {
       const selectedExercise = exercises.find(
@@ -79,9 +77,9 @@ const FormRoutines = () => {
           },
           body: JSON.stringify({
             enfoque: selectedEnfoque,
-            ejercicios: exercisesArray, // Usa el array modificado
-            duracionTotal: totalDuration,
-            imagen: selectedImage,
+            exerc: exercisesArray, // Usa el array modificado
+            totalDuration: totalDuration,
+            image: selectedImage,
           }),
         }
       );
@@ -95,6 +93,7 @@ const FormRoutines = () => {
       console.error("Error en la solicitud:", error);
     }
   };
+
   // handler para imagen local
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -104,14 +103,15 @@ const FormRoutines = () => {
       setSelectedImage(URL.createObjectURL(file));
     }
   };
- // useEffect para resetear formulario luego de enviarlo
+
+  // useEffect para resetear formulario luego de enviarlo
   useEffect(() => {
     if (formReset) {
       setSelectedExercises([]);
       setTotalDuration(0);
       setSelectedEnfoque("");
       setSelectedImage(null);
-      setFormReset(false); 
+      setFormReset(false);
     }
   }, [formReset]);
 
@@ -136,9 +136,7 @@ const FormRoutines = () => {
             <option value="Entrenamiento cardiovascular">
               Entrenamiento cardiovascular
             </option>
-            <option value="Entrenamiento de fuerza">
-              Entrenamiento de fuerza
-            </option>
+            <option value="Entrenamiento de fuerza">Entrenamiento de fuerza</option>
           </select>
         </div>
 
@@ -164,7 +162,6 @@ const FormRoutines = () => {
                 (exercise) => exercise.id === exerciseId
               );
 
-          
               console.log("Ejercicio seleccionado:", selectedExercise);
 
               return (
@@ -181,6 +178,7 @@ const FormRoutines = () => {
             })}
           </ul>
         </div>
+
         <div>
           <label>Seleccionar imagen :</label>
           <input type="file" accept="image/*" onChange={handleImageChange} />
@@ -196,6 +194,7 @@ const FormRoutines = () => {
             </div>
           )}
         </div>
+
         <div>
           <p>Duración total de los ejercicios: {totalDuration} minutos</p>
         </div>
@@ -203,12 +202,15 @@ const FormRoutines = () => {
         <button type="submit">Crear Rutina</button>
       </form>
       <div className={style.goBack}>
-          
-          <Link to="/dashboardtr">
+        <Link to="/dashboardtr">
           <span className={style.backArrow}>{'<'}</span> Atrás
-          </Link>
-        </div>
+        </Link>
+      </div>
     </div>
   );
+};
 
 export default FormRoutines;
+          
+
+
