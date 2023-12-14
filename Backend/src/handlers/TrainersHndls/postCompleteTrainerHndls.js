@@ -14,8 +14,9 @@ const postCompleteTrainerHdnls = async (req, res) => {
     gender,
     focusTr,
     description,
+    status,
   } = req.body;
-
+console.log(req.body)
   try {
     const updatedTrainer = await postCompleteTrainer(
       trainerId,
@@ -29,7 +30,8 @@ const postCompleteTrainerHdnls = async (req, res) => {
       dni,
       gender,
       focusTr,
-      description
+      description,
+      status
     );
 
     // Guardar los cambios

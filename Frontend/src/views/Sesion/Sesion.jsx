@@ -68,7 +68,7 @@ const FormSesion = (props) => {
                 await axios.post(`${URLSERVER}/fitevolution/trainers`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0], puntuaciones: [] })
                 dispatch(trainerPerfil(user.email))
                 Swal.fire(`Bienvenido ${trainer.forename} a FitRevolution`)
-                navigate('/checkoutTrainer')
+                navigate('/dashboardtr')
             }
         } catch (error) {
             const requestData = error.config ? JSON.parse(error.config.data) : null;
@@ -110,7 +110,7 @@ const FormSesion = (props) => {
                 await axios.post(`${URLSERVER}/fitevolution/trainers`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0], puntuaciones: [] })
                 dispatch(trainerPerfil(user.email))
                 Swal.fire(`Bienvenido ${trainer.forename} a FitRevolution`, "", 'success')
-                navigate('/checkoutTrainer')
+                navigate('/dashboardtr')
             }
         } catch (error) {
             const requestData = error.config ? JSON.parse(error.config.data) : null;
@@ -123,7 +123,8 @@ const FormSesion = (props) => {
             }
             else if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Entrenadores") {
                 Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
-                navigate('/checkoutTrainer')
+                navigate('/dashboardtr')
+                
             }
             else if (error) Swal.fire(error.message, '', 'error')
         }

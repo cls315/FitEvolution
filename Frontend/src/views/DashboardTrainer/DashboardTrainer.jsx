@@ -5,13 +5,14 @@ import { URLfrontend } from "../../../configURL";
 import { auth } from "../../components/firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Link } from "react-router-dom";
-// import { trainerPerfil } from '../../components/redux/actions/actions';
+import { trainerPerfil } from '../../components/redux/actions/actions';
 import { useDispatch, useSelector } from "react-redux";
 //components imports
 import MenuprincipalTrainer from "../../components/menuprincipalTainer/menuprincipalTrainer";
 import DashBar from "../../components/Dashbar/Dashbar";
 import PagosprincipalTrainer from "../../components/pagosprincipalTrainer/pagosprincipalTrainer";
 import EntrePrincipalTrainer from "../../components/entreprincipalTRainer/entreprincipalTrainer";
+import SuspendedAccount from "../../components/suspendedAccount/suspendedAccount";
 //styles
 import React from "react";
 import "./DashboardTrainer.css";
@@ -19,7 +20,7 @@ import "./DashboardTrainer.css";
 const DashboardTrainer = (props) => {
   const [menu, setmenu] = useState("deportes");
   const allTrainers = useSelector((state) => state.allTrainers);
-
+  const navigate=useNavigate()
   const trainer = useSelector((state) => state.trainer);
   const dispatch = useDispatch();
 
@@ -34,6 +35,7 @@ const DashboardTrainer = (props) => {
         setUserSession(true);
         dispatch(trainerPerfil(user.email));
         console.log(trainer);
+        if(trainer.status!=="Active")navigate('/checkoutTrainer')
       } else {
         setUserSession(false);
 
@@ -56,6 +58,7 @@ const DashboardTrainer = (props) => {
     <>
       {userSession ? (
         <div className="bg-trainer-board">
+          {trainer.status==="Suspended" && <SuspendedAccount/>}
           <DashBar handleMenu={handleMenu} />
           {menu === "deportes" && <MenuprincipalTrainer trainer={trainer} />}
           {menu === "pagos" && <PagosprincipalTrainer />}
