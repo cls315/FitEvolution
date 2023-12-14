@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import datos from "../../../../Backend/api/datos.json";
+//import axios from "axios";
 
 const FormRoutines = () => {
   const [selectedExercises, setSelectedExercises] = useState([]);
@@ -22,8 +23,14 @@ const FormRoutines = () => {
   const handleSelectChange = (event) => {
     console.log("Evento onChange:", event);
     const selectedExerciseId = Number(event.target.value);
-    if (selectedExerciseId !== 0 && !selectedExercises.includes(selectedExerciseId)) {
-      setSelectedExercises((prevSelected) => [...prevSelected, selectedExerciseId]);
+    if (
+      selectedExerciseId !== 0 &&
+      !selectedExercises.includes(selectedExerciseId)
+    ) {
+      setSelectedExercises((prevSelected) => [
+        ...prevSelected,
+        selectedExerciseId,
+      ]);
     }
   };
 
@@ -33,14 +40,53 @@ const FormRoutines = () => {
     );
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("Enfoque seleccionado:", selectedEnfoque);
     console.log("Ejercicios seleccionados:", selectedExercises);
     console.log("Duración total:", totalDuration);
- 
+
+    const exercisesArray = selectedExercises.map((exerciseId) => {
+      const selectedExercise = exercises.find(
+        (exercise) => exercise.id === exerciseId
+      );
+
+      // Asegúrate de que selectedExercise tenga la estructura correcta
+      return {
+        id: selectedExercise.id,
+        name: selectedExercise.name,
+        estimatedDuration: selectedExercise.estimatedDuration,
+        // ... otras propiedades necesarias
+      };
+    });
+
+    try {
+      const response = await fetch(
+        "http://localhost:3001/fitevolution/routines/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            enfoque: selectedEnfoque,
+            ejercicios: exercisesArray, // Usa el array modificado
+            duracionTotal: totalDuration,
+            imagen: selectedImage,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        console.log("Rutina creada exitosamente");
+      } else {
+        console.error("Error al crear la rutina");
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+    }
   };
-// handler para imagen local 
+  // handler para imagen local
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     console.log("Evento de cambio de imagen:", event);
@@ -91,7 +137,6 @@ const FormRoutines = () => {
           </select>
         </div>
 
-
         <div>
           <p>Ejercicios seleccionados:</p>
           <ul>
@@ -109,7 +154,7 @@ const FormRoutines = () => {
                   <button
                     type="button"
                     onClick={() => handleRemoveExercise(exerciseId)}
-                    >
+                  >
                     Eliminar
                   </button>
                 </li>
@@ -118,19 +163,23 @@ const FormRoutines = () => {
           </ul>
         </div>
         <div>
-      <label>Seleccionar imagen :</label>
-      <input type="file" accept="image/*" onChange={handleImageChange} />
+          <label>Seleccionar imagen :</label>
+          <input type="file" accept="image/*" onChange={handleImageChange} />
 
-      {selectedImage && (
-        <div>
-          <p>Vista previa de la imagen seleccionada:</p>
-          <img src={selectedImage} alt="Selected" style={{ maxWidth: "200px" }} />
+          {selectedImage && (
+            <div>
+              <p>Vista previa de la imagen seleccionada:</p>
+              <img
+                src={selectedImage}
+                alt="Selected"
+                style={{ maxWidth: "200px" }}
+              />
+            </div>
+          )}
         </div>
-      )}
-    </div>
-                    <div>
-                      <p>Duración total de los ejercicios: {totalDuration} minutos</p>
-                    </div>
+        <div>
+          <p>Duración total de los ejercicios: {totalDuration} minutos</p>
+        </div>
 
         <button type="submit">Crear Rutina</button>
       </form>
