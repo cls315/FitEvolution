@@ -13,7 +13,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useSelector } from 'react-redux';
-
+import { FormHelperText } from '@mui/material';
 
 export default function AddressForm(props) {
   const {form,errors,handleDateofbirth,handleChange}=props
@@ -74,12 +74,14 @@ export default function AddressForm(props) {
           <TextField
             id="description"
             name="description"
-            label="Descripcion(antecendentes, matriculas, etc)"
+            error={!!errors.description}
+            label="Descripcion(antecedentes, matriculas, etc)"
             fullWidth
             autoComplete="description"
             variant="standard"
             defaultValue={trainer.description ? trainer.description : null}
             onChange={handleChange}
+            helperText={errors.description}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -89,6 +91,7 @@ export default function AddressForm(props) {
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
+              error={!!errors.focusTr}
               value={form.focusTr}
               onChange={handleChange}
               label="Enfoque"
@@ -100,6 +103,7 @@ export default function AddressForm(props) {
               <MenuItem value={"Entrenamiento cardiovascular"}>Entrenamiento cardiovascular</MenuItem>
               <MenuItem value={"Entrenamiento deportivo"}>Entrenamiento deportivo</MenuItem>
             </Select>
+            {!!errors.focusTr && <FormHelperText>{errors.focusTr}</FormHelperText>}
           </FormControl>
 
         </Grid>
@@ -108,12 +112,14 @@ export default function AddressForm(props) {
             required
             id="dni"
             name="dni"
+            error={!!errors.dni}
             label="DNI"
             fullWidth
             autoComplete="DNI"
             variant="standard"
             onChange={handleChange}
             defaultValue={form.dni ? form.dni : null}
+            helperText={errors.dni}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -121,12 +127,14 @@ export default function AddressForm(props) {
             required
             id="phoneN"
             name="phoneN"
+            error={!!errors.phoneN}
             label="Telefono"
             fullWidth
             autoComplete="Telefono"
             variant="standard"
             onChange={handleChange}
             defaultValue={form.phoneN ? form.phoneN : null}
+            helperText={errors.phoneN}  
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -136,6 +144,7 @@ export default function AddressForm(props) {
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
+              error={!!errors.nationality}
               value={form.nationality}
               onChange={handleChange}
               label="Nacionalidad"
@@ -148,21 +157,31 @@ export default function AddressForm(props) {
               <MenuItem value={"Bolivia"}>Bolivia</MenuItem>
               <MenuItem value={"Otro"}>Otro</MenuItem>
             </Select>
+            {!!errors.nationality && <FormHelperText>{errors.nationality}</FormHelperText>}
+
           </FormControl>
 
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="gender"
-            name="gender"
-            label="Genero"
-            fullWidth
-            autoComplete="gender"
-            variant="standard"
-            onChange={handleChange}
-            defaultValue={form.gender ? form.gender : null}
-          />
+        <FormControl variant="standard" fullWidth>
+            <InputLabel id="demo-simple-select-standard-label">Género</InputLabel>
+            <Select
+              labelId="demo-simple-select-standard-label"
+              id="demo-simple-select-standard"
+              error={!!errors.gender}
+              value={form.gender}
+              onChange={handleChange}
+              label="Género"
+              name="gender"
+              defaultValue={form.gender ? form.gender : null}
+            >
+              <MenuItem value={"Masculino"}>Masculino</MenuItem>
+              <MenuItem value={"Femenino"}>Femenino</MenuItem>
+              <MenuItem value={"Otro"}>Otro</MenuItem>
+            </Select>
+            {!!errors.gender && <FormHelperText>{errors.gender}</FormHelperText>}
+
+          </FormControl>
         </Grid>
         <Grid item xs={12} sm={6}>
           <LocalizationProvider dateAdapter={AdapterDayjs} variant="standard">
@@ -170,11 +189,13 @@ export default function AddressForm(props) {
           </LocalizationProvider>
         </Grid>
         <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Usar esta dirección para comunicarse con FitRevolution"
-          />
-        </Grid>
+  <FormControlLabel
+    control={<Checkbox color="secondary" name="saveAddress" checked={form.saveAddress} onChange={handleChange} />}
+    label="Usar esta dirección para comunicarse con FitRevolution"
+  />
+  {errors.saveAddress && <FormHelperText error>{errors.saveAddress}</FormHelperText>}
+</Grid>
+
       </Grid>
     </React.Fragment>
   );

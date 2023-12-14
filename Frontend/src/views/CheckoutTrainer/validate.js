@@ -21,20 +21,41 @@ export default function validate(state) {
   if (!regEx.test(state.email))
     errors.email = 'Ingresa una dirección de correo electrónico válida';
 
-    const dni = state.dni
 
-    if(!dni) {
+    if(!state.dni) {
       errors.dni='El DNI es obligatorio';
     }
-    if(isNaN(dni)) {
+    if(isNaN(state.dni)) {
       errors.dni='Ingresa un número de DNI válido';  
     }
-    if(!Number.isInteger(parseFloat(dni))) {
+    if(!Number.isInteger(parseFloat(state.dni))) {
       errors.dni='El DNI debe ser numérico';
     }
-    if(dni.length < 7 || dni.length > 9) {
+    if(state.dni.length < 7 || state.dni.length > 9) {
       errors.dni='El DNI debe tener entre 7 y 9 dígitos';
     } 
+    if (!state.description) {
+      errors.description = "La descripción es obligatoria";
+    } else if (state.description.length < 5 || state.description.length > 200) {
+      errors.description = "La descripción debe tener al menos 5 caracteres y no más de 200 caracteres";
+    }
+    if (!state.focusTr) {      
+      errors.focusTr = 'Elegir un enfoque es obligatorio';
+    }
+    if(!state.phoneN) { 
+      errors.phoneN = 'El número de teléfono es obligatorio';
+    }
+
+    const regEx2 = /^\(?(\d{3})\)?[-]?(\d{3})[-]?(\d{4})$/;
+    if(!regEx2.test(state.phoneN)) {
+      errors.phoneN = 'Ingresa un número de teléfono válido, sin 0 ni 15';
+    }
+    if(!state.nationality)
+    {errors.nationality="Elegir una Nacionalidad es obligatorio"}
+    if(!state.gender)errors.gender="Elegir un Género es obligatorio"
+    if (state.saveAddress !== true) {
+      errors.saveAddress = 'Debes aceptar esta opción para continuar.';
+    }
   return errors;
 }
 
