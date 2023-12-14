@@ -9,6 +9,7 @@ import {agregarCarrito, getRoutines, saveIdTrainer} from "../../components/redux
 import Navdetail from "./navdetail";
 
 import styles from "./detail.module.css"
+import { Button } from "@mui/material";
 
 const Detail = ()=>{
 
@@ -62,7 +63,7 @@ const Detail = ()=>{
                     <h2>Enfoque: {trainer.focusTr}</h2>
                     <h2>Descripcion: {trainer.description}</h2>
                 </div>
-                <button className={styles.btn} onClick={()=>{sumPage()}}>Selecciona tu plan</button>
+                <Button variant="contained" onClick={()=>{sumPage()}}>Selecciona tu plan</Button>
             </div>
             ) : page == 2 ? (
             <div className={styles.info}>
@@ -74,7 +75,7 @@ const Detail = ()=>{
                         <h4>{routine.enfoque}</h4>
                         <h4>Rutina de adaptacion para principiante y rutina adaptada al cliente</h4>
                         <h5>Duracion: {routine.totalDuration} dias</h5>
-                        <button className={styles.packbtn} onClick={()=>{sumPack(routine)}}>Sumar al carrito</button>
+                        <Button variant="contained" onClick={()=>{sumPack(routine)}}>Sumar al carrito</Button>
                 </div>
                 ))
                 : (<div className={styles.pack1}>
@@ -82,7 +83,7 @@ const Detail = ()=>{
                 </div>)
                 }
                 </div>
-                <button className={styles.btn} onClick={()=>{restPage()}}>Volver a detalles</button>
+                <Button variant="contained" onClick={()=>{restPage()}}>Volver a detalles</Button>
             </div>
             ) : (<div></div>)}
             <div className={styles.perfil}>

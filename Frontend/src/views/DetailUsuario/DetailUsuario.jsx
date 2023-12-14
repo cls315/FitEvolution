@@ -4,7 +4,7 @@ import {useState} from "react"
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import profileUser from "../../components/SVG/profileUser.png"
-
+import { Button } from "@mui/material";
 const DetailUsuario = ()=>{
 
     const user = useSelector((state) => state.usuario)
@@ -26,7 +26,7 @@ const DetailUsuario = ()=>{
                     <h2 className={styles.nombre}>{user.forename} {user.surname ? user.surname : ""}</h2>
                     <h3 className={styles.email}>{user.email}</h3>
                     <h3 className={styles.nacionalidad}>Argentina</h3>
-                    <button className={styles.btnCerrarSesion} onClick={()=>{closeSesion()}}>Cerrar Sesion</button>
+                    <Button variant="outlined" className={styles.btnCerrarSesion} onClick={()=>{closeSesion()}}>Cerrar Sesion</Button>
                 </div>
                 <div className={styles.packsConteiner}>
                     <div className={styles.packsHeader}>

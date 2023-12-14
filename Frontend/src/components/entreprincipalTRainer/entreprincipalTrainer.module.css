@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700&display=swap');
+
 .entreprincipalTRainer{
     display: flex;
     width: 100%;
@@ -6,19 +8,26 @@
 .input{
     width:40% ;
     height: 20%;
-    border: 3px solid #FFC107;
+    border: 3px solid #1976D2;
     margin-top: 2px;
     border-radius: 15px
 
 }
 .card{
     background-image: url("https://img.freepik.com/premium-photo/close-up-black-gym-dumbbells-isolated_312869-59.jpg");
-    color: white;
-    border: 3px solid #FFC107;
+    opacity: 0.7;
+    color: rgb(255, 255, 255);
+    text-shadow: 4px 4px 4px #3030308a;
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    border: 3px solid #1976D2;
     width: 30%;
     height: 20%;
     border-radius: 15px;
     align-items: center;
+
    
 }
 .estilo{
