@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
 import datos from "../../../../Backend/api/datos.json";
+import style from "./FormRutine.module.css"
+
 
 const FormRoutines = () => {
   const [selectedExercises, setSelectedExercises] = useState([]);
   const [totalDuration, setTotalDuration] = useState(0);
   const [selectedEnfoque, setSelectedEnfoque] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
-  // Obtén el array de ejercicios
+  // pare resetear el estado a 0 
+  const [formReset, setFormReset] = useState(false);
+
+ // array de ejercicios
   const exercises = datos.ejercicios || [];
 
   useEffect(() => {
@@ -22,8 +27,14 @@ const FormRoutines = () => {
   const handleSelectChange = (event) => {
     console.log("Evento onChange:", event);
     const selectedExerciseId = Number(event.target.value);
-    if (selectedExerciseId !== 0 && !selectedExercises.includes(selectedExerciseId)) {
-      setSelectedExercises((prevSelected) => [...prevSelected, selectedExerciseId]);
+    if (
+      selectedExerciseId !== 0 &&
+      !selectedExercises.includes(selectedExerciseId)
+    ) {
+      setSelectedExercises((prevSelected) => [
+        ...prevSelected,
+        selectedExerciseId,
+      ]);
     }
   };
 
@@ -38,9 +49,10 @@ const FormRoutines = () => {
     console.log("Enfoque seleccionado:", selectedEnfoque);
     console.log("Ejercicios seleccionados:", selectedExercises);
     console.log("Duración total:", totalDuration);
- 
+    setFormReset(true); // estado para reseater formulario luego de enviarlo
   };
-// handler para imagen local 
+
+  // handler para imagen local
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     console.log("Evento de cambio de imagen:", event);
@@ -49,11 +61,21 @@ const FormRoutines = () => {
       setSelectedImage(URL.createObjectURL(file));
     }
   };
+ // useEffect para resetear formulario luego de enviarlo
+  useEffect(() => {
+    if (formReset) {
+      setSelectedExercises([]);
+      setTotalDuration(0);
+      setSelectedEnfoque("");
+      setSelectedImage(null);
+      setFormReset(false); 
+    }
+  }, [formReset]);
 
   return (
-    <div>
+    <div className={style.formContainer}>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className={style.formGroup}>
           <label>Seleccionar enfoque:</label>
           <select
             onChange={(event) => setSelectedEnfoque(event.target.value)}
@@ -91,7 +113,6 @@ const FormRoutines = () => {
           </select>
         </div>
 
-
         <div>
           <p>Ejercicios seleccionados:</p>
           <ul>
@@ -100,7 +121,7 @@ const FormRoutines = () => {
                 (exercise) => exercise.id === exerciseId
               );
 
-              // Imprime en la consola la estructura del ejercicio
+          
               console.log("Ejercicio seleccionado:", selectedExercise);
 
               return (
@@ -109,7 +130,7 @@ const FormRoutines = () => {
                   <button
                     type="button"
                     onClick={() => handleRemoveExercise(exerciseId)}
-                    >
+                  >
                     Eliminar
                   </button>
                 </li>
@@ -118,19 +139,23 @@ const FormRoutines = () => {
           </ul>
         </div>
         <div>
-      <label>Seleccionar imagen :</label>
-      <input type="file" accept="image/*" onChange={handleImageChange} />
+          <label>Seleccionar imagen :</label>
+          <input type="file" accept="image/*" onChange={handleImageChange} />
 
-      {selectedImage && (
-        <div>
-          <p>Vista previa de la imagen seleccionada:</p>
-          <img src={selectedImage} alt="Selected" style={{ maxWidth: "200px" }} />
+          {selectedImage && (
+            <div>
+              <p>Vista previa de la imagen seleccionada:</p>
+              <img
+                src={selectedImage}
+                alt="Selected"
+                style={{ maxWidth: "200px" }}
+              />
+            </div>
+          )}
         </div>
-      )}
-    </div>
-                    <div>
-                      <p>Duración total de los ejercicios: {totalDuration} minutos</p>
-                    </div>
+        <div>
+          <p>Duración total de los ejercicios: {totalDuration} minutos</p>
+        </div>
 
         <button type="submit">Crear Rutina</button>
       </form>
