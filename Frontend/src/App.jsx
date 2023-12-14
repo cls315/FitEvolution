@@ -104,7 +104,7 @@ function App() {
         
         />
         <Route
-        path='/LoguinSuperAdmin'
+        path='/LoginOwner'
         element={<LoginForm/>}
         
         />
