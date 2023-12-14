@@ -7,6 +7,10 @@ import Checkbox from '@mui/material/Checkbox';
 import "./checkout.css"
 
 export default function PaymentForm() {
+  const handleCheckboxChange = (event) => {
+    const isChecked = event.target.checked;
+    onTermsAcceptedChange(isChecked);
+  };
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>

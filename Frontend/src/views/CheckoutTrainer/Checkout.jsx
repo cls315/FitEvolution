@@ -53,10 +53,13 @@ function getStepContent(step,errors,form,handleDateofbirth,handleChange) {
 }
 
 export default function Checkout() {
+  
   const [activeStep, setActiveStep] = React.useState(0);
   const navigate=useNavigate()
   const trainer = useSelector((state) => state.trainer)
+  console.log(trainer)
   const [errors, setErrors] = useState({});
+  console.log(errors)
   const [form, setForm] = React.useState({
     forename: trainer.forename ? trainer.forename : "",
     surname: trainer.surname ? trainer.surname : "",
@@ -68,13 +71,14 @@ export default function Checkout() {
     nationality: "",
     gender: "",
     dateOfBirth: "",
+    saveAddress:false,
   });
   console.log(form)
   console.log(trainer.id)
 
   const handleChange = (event) => {
-    const value = event.target.value
-    const property = event.target.name
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+  const property = event.target.name;
     setForm({ ...form, [property]: value });
     setErrors(validate({ ...form, [property]: value }));
   };

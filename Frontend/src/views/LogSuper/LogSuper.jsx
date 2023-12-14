@@ -11,7 +11,7 @@ const LoginForm = () => {
 
   const LogSuper =( username, password)=>{
 
-    if( username="SuperAdmin@admin" && password==="Nohayplata")
+    if( username="superadmin" && password==="Nohayplata")
     alert ("loguin correcto")
 else alert("loguin incorrecto")
   }
