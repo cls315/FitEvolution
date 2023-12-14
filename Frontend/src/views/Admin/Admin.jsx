@@ -8,6 +8,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Grids from '@mui/material/Grid';
+import Men
 import Swal from 'sweetalert2';
 import {
   flexRender,
@@ -203,6 +204,11 @@ const Admin = () => {
 
           <div style={{ display: 'flex', alignItems: 'center', marginRight: 'auto' }}>
             <Grid container spacing={2} justifyContent="center">
+            <Grid item>
+                <Button variant="contained" color="primary" onClick={ejectButton}>
+                  Enviar mensajes
+                </Button>
+              </Grid>
               <Grid item>
                 <Button variant="contained" color="primary" onClick={ejectButton}>
                   Crear ejercicios
