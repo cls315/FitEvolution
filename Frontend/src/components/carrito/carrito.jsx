@@ -5,6 +5,8 @@ import { useState,useRef,useEffect } from "react";
 import { clearCart, deleteCarrito } from "../redux/actions/actions";
 import { useSelector, useDispatch } from "react-redux";
 import Pagos from "../Pagos/Pagos";
+import Swal from 'sweetalert2'
+import { Button } from "@mui/material";
 
 
 const Carrito = ({setLoading}) => {
@@ -45,7 +47,7 @@ const Carrito = ({setLoading}) => {
 
   const pagos = ()=>{
     if(userstatus === "invitado"){
-      alert("Debes iniciar sesion");
+      Swal.fire("Para abonar, debes iniciar sesion","","error");
       return;
     } else{
       setVerPagos(!verpagos)
@@ -65,10 +67,10 @@ const Carrito = ({setLoading}) => {
       className={styles.carritoConteiner}
       ref={formRef}
      >
-      <button className={styles.btnCarrito} onClick={()=>{show===true?setShow(false):setShow(true)}}>
+      <Button className={styles.btnCarrito} onClick={()=>{show===true?setShow(false):setShow(true)}}>
       <img src={carritoimg} className={styles.carrito} />
       <span className={styles.count}>{carrito.length}</span>
-      </button>
+      </Button>
       {show ? (
         <div className={styles.menu}>
           {carrito.length > 0 ? (
@@ -91,8 +93,8 @@ const Carrito = ({setLoading}) => {
                 <h6>${total}</h6>
               </div>
 
-              <button onClick={()=>{vaciarCarrito()}} className={styles.btnvaciar}>Vaciar Carrito</button>
-        <button onClick={()=>{pagos()}} className={styles.btnvaciar}>Pagar</button>
+              <Button variant="contained" color="warning" onClick={()=>{vaciarCarrito()}} className={styles.btnvaciar}>Vaciar Carrito</Button>
+        <Button variant="contained"onClick={()=>{pagos()}} className={styles.btnvaciar}>Pagar</Button>
         {verpagos ?
          (
           <Pagos setLoading={setLoading} vaciarCarrito={vaciarCarrito} setVerPagos={setVerPagos} setShow={setShow} total={total}/> 

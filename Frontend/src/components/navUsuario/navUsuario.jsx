@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrainers, filterFocus, filterScore, quitarFiltros,sobreScore, sobreFocus, setusuario } from "../../components/redux/actions/actions"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import imageLogo from "../../images/imageLogo.jpg"
 import styles from "./navUsuario.module.css"
 
 const NavUsuario = ({setCurrentPage, setUserSession, userstatus })=>{
-
+console.log(userstatus)
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getTrainers());
@@ -74,35 +74,43 @@ const NavUsuario = ({setCurrentPage, setUserSession, userstatus })=>{
         dispatch(setusuario(""))
         setUserSession(false)
     }
-
+const navigate =useNavigate()
     return(
         <div className={styles.nav}>
             <img src={imageLogo} className={styles.logo}/>
             <div className={styles.ubibtn}>
-            <button className={styles.btn1} onClick={()=>(deleteFilters())}>Quitar filtros</button>
+            <button className={styles.btn1} onClick={()=>(deleteFilters())}>QUITAR FILTROS</button>
             <select name="focus" id="focus" defaultValue={"defaultoption"} onChange={(e)=>{filterByFocus(e)}}>
-                <option value="defaultoption" disabled>Elije un enfoque</option>
-                <option value="todos">Todos los enfoques</option>
+                <option value="defaultoption" disabled>ELIGE UN ENFOQUE</option>
+                <option value="todos">TODOS LOS ENFOQUES</option>
                 {focus.map((focus, index) => (
                     <option key={index} value={focus}>{focus}</option>
                 ))}
             </select>
             <select name="score" id="score" defaultValue={"defaultoption2"} onChange={(e)=>{filterByScore(e)}}>
-                <option value="defaultoption2" disabled>Elije el score</option>
-                <option value="todos">Todos los scores</option>
+                <option value="defaultoption2" disabled>ELIGE EL SCORE</option>
+                <option value="todos">TODOS LOS SCORES</option>
                 {scores.map((score, index)=> (
-                    <option key={index} value={score}>Solo con {score} estrellas</option>
+                    <option key={index} value={score}>SOLO CON {score} ESTRELLAS</option>
                 ))}
             </select>
-            {userstatus === "invitado" ? "" : 
+            {userstatus === "invitado" ? (
+                <Link to="/login/Deportistas">
+                <button className={styles.btn1} onClick={()=>{setUser()}}>INICIAR SESION</button>
+                </Link>
+            ) : 
+            (<>
             <Link to="/detailusuario">
-            <button className={styles.btn1}>Perfil</button>
+            <button className={styles.btn1}>PERFIL</button>
             </Link>
-            }
             <Link to="/">
-            <button className={styles.btn2} onClick={()=>{setUser()}}>Cerrar sesion</button>
+            <button className={styles.btn2} onClick={()=>{setUser()}}>CERRAR SESION</button>
             </Link>
+            </>
+    )
+}
             </div>
+            
         </div>
     )
 }

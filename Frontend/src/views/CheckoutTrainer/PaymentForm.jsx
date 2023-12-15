@@ -6,10 +6,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import "./checkout.css"
 
-export default function PaymentForm() {
+export default function PaymentForm({handleTermsAcceptedChange}) {
   const handleCheckboxChange = (event) => {
     const isChecked = event.target.checked;
-    onTermsAcceptedChange(isChecked);
+    handleTermsAcceptedChange(isChecked);
   };
   return (
     <React.Fragment>
@@ -50,10 +50,11 @@ export default function PaymentForm() {
 
           
           <Grid item xs={12}>
-            <FormControlLabel
-              control={<Checkbox color="secondary" name="saveCard" value="yes" />}
-              label="Aceptar terminos y condiciones"
-            />
+          <FormControlLabel
+        control={<Checkbox color="secondary" name="saveCard" value="yes" onChange={handleCheckboxChange} />}
+        label="Aceptar términos y condiciones"
+      />
+            
           </Grid>
         </Grid>
     </React.Fragment>
