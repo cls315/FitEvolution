@@ -20,6 +20,7 @@ export const BANER= "BANER"
 export const TRAINER= "TRAINER"
 export const POST_RUTINES= "POST_RUTINES"
 export const GUARDAR_IDTRAINERS = "GUARDAR_IDTRAINERS"
+export const ENVIAR_PUNTAJE = "ENVIAR_PUNTAJE"
 
 
 
