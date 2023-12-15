@@ -1,17 +1,26 @@
 import { useState, useEffect } from "react";
-import axios from 'axios';
 import datos from "../../../../Backend/api/datos.json";
+
+//import axios from "axios";
+import style from "./FormRoutine.module.css"
+import { Link } from "react-router-dom";
 
 const FormRoutines = () => {
   const [selectedExercises, setSelectedExercises] = useState([]);
   const [totalDuration, setTotalDuration] = useState(0);
-  const [selectedEnfoque, setSelectedEnfoque] = useState('');
+  const [selectedEnfoque, setSelectedEnfoque] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
+  // para resetear el estado a 0
+  const [formReset, setFormReset] = useState(false);
+
+  // array de ejercicios
   const exercises = datos.ejercicios || [];
 
   useEffect(() => {
     const duration = selectedExercises.reduce((total, exerciseId) => {
-      const selectedExercise = exercises.find(exercise => exercise.id === exerciseId);
+      const selectedExercise = exercises.find(
+        (exercise) => exercise.id === exerciseId
+      );
       return total + (selectedExercise?.estimatedDuration || 0);
     }, 0);
     setTotalDuration(duration);
@@ -20,7 +29,10 @@ const FormRoutines = () => {
   const handleSelectChange = (event) => {
     console.log("Evento onChange:", event);
     const selectedExerciseId = Number(event.target.value);
-    if (!selectedExercises.includes(selectedExerciseId)) {
+    if (
+      selectedExerciseId !== 0 &&
+      !selectedExercises.includes(selectedExerciseId)
+    ) {
       setSelectedExercises((prevSelected) => [
         ...prevSelected,
         selectedExerciseId,
@@ -34,42 +46,79 @@ const FormRoutines = () => {
     );
   };
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setSelectedImage(URL.createObjectURL(file));
-    }
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("Enfoque seleccionado:", selectedEnfoque);
     console.log("Ejercicios seleccionados:", selectedExercises);
     console.log("Duración total:", totalDuration);
+    setFormReset(true); // estado para resetear formulario luego de enviarlo
+
+    const exercisesArray = selectedExercises.map((exerciseId) => {
+      const selectedExercise = exercises.find(
+        (exercise) => exercise.id === exerciseId
+      );
+
+      // Asegúrate de que selectedExercise tenga la estructura correcta
+      return {
+        id: selectedExercise.id,
+        name: selectedExercise.name,
+        estimatedDuration: selectedExercise.estimatedDuration,
+        // ... otras propiedades necesarias
+      };
+    });
 
     try {
-      const response = await axios.post('http://localhost:3001/api/rutinas', {
-        enfoque: selectedEnfoque,
-        exerc: selectedExercises,
-        totalDuration: totalDuration,
-        image:selectedImage,
-      });
+      const response = await fetch(
+        "http://localhost:3001/fitevolution/routines/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            enfoque: selectedEnfoque,
+            exerc: exercisesArray, // Usa el array modificado
+            totalDuration: totalDuration,
+            image: selectedImage,
+          }),
+        }
+      );
 
-      if (response.status === 200) {
-        console.log('Rutina almacenada exitosamente');
-       
+      if (response.ok) {
+        console.log("Rutina creada exitosamente");
       } else {
-        console.error('Error al almacenar la rutina');
+        console.error("Error al crear la rutina");
       }
     } catch (error) {
-      console.error('Error en la solicitud POST:', error);
+      console.error("Error en la solicitud:", error);
     }
   };
 
+  // handler para imagen local
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    console.log("Evento de cambio de imagen:", event);
+    if (file) {
+      console.log("Archivo de imagen seleccionado:", file);
+      setSelectedImage(URL.createObjectURL(file));
+    }
+  };
+
+  // useEffect para resetear formulario luego de enviarlo
+  useEffect(() => {
+    if (formReset) {
+      setSelectedExercises([]);
+      setTotalDuration(0);
+      setSelectedEnfoque("");
+      setSelectedImage(null);
+      setFormReset(false);
+    }
+  }, [formReset]);
+
   return (
-    <div>
+    <div className={style.formContainer}>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className={style.formGroup}>
           <label>Seleccionar enfoque:</label>
           <select
             onChange={(event) => setSelectedEnfoque(event.target.value)}
@@ -87,9 +136,7 @@ const FormRoutines = () => {
             <option value="Entrenamiento cardiovascular">
               Entrenamiento cardiovascular
             </option>
-            <option value="Entrenamiento de fuerza">
-              Entrenamiento de fuerza
-            </option>
+            <option value="Entrenamiento de fuerza">Entrenamiento de fuerza</option>
           </select>
         </div>
 
@@ -154,6 +201,11 @@ const FormRoutines = () => {
 
         <button type="submit">Crear Rutina</button>
       </form>
+      <div className={style.goBack}>
+        <Link to="/dashboardtr">
+          <span className={style.backArrow}>{'<'}</span> Atrás
+        </Link>
+      </div>
     </div>
   );
 };
