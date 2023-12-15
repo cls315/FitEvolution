@@ -1,12 +1,17 @@
 import NavPerfil from "./NavPerfil";
 import styles from "./DetailUsuario.module.css"
-import {useState} from "react"
+import {useState, react, useEffect} from "react"
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import Swal from 'sweetalert2';
+import { useSelector, useDispatch } from "react-redux";
+import { enviarPuntaje, getTrainers } from "../../components/redux/actions/actions";
 import profileUser from "../../components/SVG/profileUser.png"
+import Rating from '@mui/material/Rating';
+
 
 const DetailUsuario = ()=>{
 
+    const dispatch = useDispatch()
     const user = useSelector((state) => state.usuario)
     const allTrainers = useSelector((state)=> state.allTrainers)
     const misEntrenadores = []
@@ -15,16 +20,26 @@ const DetailUsuario = ()=>{
         misEntrenadores.push(filterTrainers);
     }
 
+    
     const [pageView, setPageView] = useState(1)
     const [rutina, setRutina] = useState();
-    console.log("detail",user);
-
+    const [viewTrainer, setViewTrainer] = useState();
+    const [puntuar, setPuntuar] = useState(1);
+    const [score, setScore] = useState("")
+    const [refresh, setRefresh] = useState(0)
+    
     const navigate = useNavigate();
-
+    
     const closeSesion = ()=>{
         navigate('/')
     }
-
+    
+    const verTrainer = (id)=>{
+        const trainer = misEntrenadores.find((trainer)=>trainer.id == id)
+        setViewTrainer(trainer)
+        setScore(trainer.score)
+        setPageView(5)
+    }
     
     const verRutina = (id)=>{
         const routine = misEntrenadores.find((trainer) => trainer.rutinaPredeterminada[0].id == id)
@@ -32,6 +47,21 @@ const DetailUsuario = ()=>{
         setPageView(2)
     }
 
+    const handleRatingChange = async (event, value) => {
+        console.log("VALUE", value);
+        dispatch(enviarPuntaje(viewTrainer.id, value));
+        setRefresh(refresh +1)
+        setPuntuar(1)
+        Swal.fire(`Puntaje enviado con exito`, ``,`success`)
+        setPageView(1)
+      };
+
+useEffect(()=>{
+    dispatch(getTrainers())
+    console.log("hola");
+},[refresh])
+
+    console.log("MI ENTRENADORES ------------->", misEntrenadores);
     return(
         <div>
             <NavPerfil setPageView={setPageView}/>
@@ -106,8 +136,43 @@ const DetailUsuario = ()=>{
                             </div>
                             );})}
                       </div> 
-                      :
-                       ""
+                      : pageView == 4 ?
+                       <div className={styles.packsConteiner}>
+                        {misEntrenadores?.map((trainer)=>(
+                            <div className={styles.pack} onClick={()=>{verTrainer(trainer.id)}}>
+                                <h3>{trainer.forename} {trainer.surname}</h3>
+                                <h3>Enfoque en: {trainer.focusTr}</h3>
+                                <h3>Nacionalidad: {trainer.nationality}</h3>
+                                <h3>Click aqui para ver mas informacion</h3>
+                            </div>
+                        ))}
+                       </div> 
+                       : pageView == 5 ?
+                        <div className={styles.packsConteiner}>
+                            <div className={styles.trainerConteiner}>
+                                <div className={styles.trainerInfo}>
+                                    <h3>Nombre: {viewTrainer.forename} {viewTrainer.surname}</h3>
+                                    <h3>Emial: {viewTrainer.email}</h3>
+                                    <h3>Cel: {viewTrainer.phoneN}</h3>
+                                    <h3>Enfoque: {viewTrainer.focusTr}</h3>
+                                    <h3>{viewTrainer.description}</h3>
+                                </div>
+                                <div className={styles.trainerImg}>
+                                    <img src={viewTrainer.image} className={styles.img}/>
+                                    {puntuar == 1 || puntuar == 3?
+                                      <Rating name="half-rating-read" defaultValue={score} precision={0.5} readOnly />
+                                     : puntuar == 2 ? 
+                                     <Rating name="half-rating" defaultValue={score} precision={0.5} onChange={handleRatingChange}/>
+                                      : ""}
+                                    {puntuar !== 3 ? 
+                                     <button onClick={()=>{setPuntuar(2)}}>Click aqui para puntuar</button>
+                                     :
+                                      ""}
+                                </div>
+                            </div>
+                        </div>
+                        : 
+                        ""                                               
                 }
             </div>
         </div>

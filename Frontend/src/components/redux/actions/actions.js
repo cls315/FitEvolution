@@ -269,3 +269,18 @@ export const saveIdTrainer = (id)=>{
    })
   }
 }
+
+export const enviarPuntaje = (id, puntaje) => {
+return async function () {
+  try {
+  const pusheo = await axios.post(`${URLSERVER}/fitevolution/trainers/${id}/puntuacion`, 
+    {
+      puntuaciones: puntaje
+    })
+    console.log(pusheo);
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.message)
+  }
+}
+}
