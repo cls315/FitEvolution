@@ -63,18 +63,21 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
           }
         );
         setLoading(false)  //detiene la carga del gif
-        Swal.fire(data.message,"","info")
-        setShow(false)
-        setVerPagos(false)
-        vaciarCarrito()
-        elements.getElement(CardElement).clear();
-        dispatch(userPerfil(email))
-        navigate("/detailusuario")
+        Swal.fire(data.message, "", "success").then((result) => {
+          console.log(result); // Agrega esto para ver la estructura de result en la consola
+        
+          setShow(false);
+          vaciarCarrito();
+          setVerPagos(false);
+          elements.getElement(CardElement).clear();
+          dispatch(userPerfil(email));
+          navigate("/detailusuario");
+        });
       }
       
     }catch (error) {
       setLoading(false)  //detiene la carga del gif
-      Swal.fire(error,"","error")
+      Swal.fire(error.message,"","error")
       console.log(error);
     }
   };
@@ -106,5 +109,5 @@ function Pagos(props) {
     </Elements>
   </>);
 }
-
+  
 export default Pagos;
