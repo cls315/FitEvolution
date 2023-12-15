@@ -86,7 +86,8 @@ const [termsAccepted, setTermsAccepted] = React.useState(false);
 
   const handleDateofbirth=(newValue)=>{
     console.log(newValue)
-    let newValueformat=`${newValue.$D},${newValue.$M},${newValue.$y}`
+    let newValueformat=`${newValue.$y}-${newValue.$M}-${newValue.$D}` 
+    console.log(newValueformat)
     setForm({ ...form, dateOfBirth: newValueformat })
    
   }
