@@ -54,10 +54,7 @@ export default function PaymentForm({handleTermsAcceptedChange}) {
         control={<Checkbox color="secondary" name="saveCard" value="yes" onChange={handleCheckboxChange} />}
         label="Aceptar términos y condiciones"
       />
-            {/* <FormControlLabel
-              control={<Checkbox color="secondary" name="saveCard" value="yes" />}
-              label="Aceptar terminos y condiciones"
-            /> */}
+            
           </Grid>
         </Grid>
     </React.Fragment>

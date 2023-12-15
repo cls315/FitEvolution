@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrainers, filterFocus, filterScore, quitarFiltros,sobreScore, sobreFocus, setusuario } from "../../components/redux/actions/actions"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import imageLogo from "../../images/imageLogo.jpg"
 import styles from "./navUsuario.module.css"
 
 const NavUsuario = ({setCurrentPage, setUserSession, userstatus })=>{
-
+console.log(userstatus)
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getTrainers());
@@ -74,7 +74,7 @@ const NavUsuario = ({setCurrentPage, setUserSession, userstatus })=>{
         dispatch(setusuario(""))
         setUserSession(false)
     }
-
+const navigate =useNavigate()
     return(
         <div className={styles.nav}>
             <img src={imageLogo} className={styles.logo}/>
@@ -96,7 +96,7 @@ const NavUsuario = ({setCurrentPage, setUserSession, userstatus })=>{
             </select>
             {userstatus === "invitado" ? (
                 <Link to="/login/Deportistas">
-                <button className={styles.btn1}>INICIAR SESION</button>
+                <button className={styles.btn1} onClick={()=>{setUser()}}>INICIAR SESION</button>
                 </Link>
             ) : 
             (<>

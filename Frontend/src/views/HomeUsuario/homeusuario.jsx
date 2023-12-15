@@ -35,7 +35,7 @@ const Homeusuario = () => {
       setUserSession(false)
     }
   })
-},[])
+},[usuario])
 //-------------------------
 //--------
 
