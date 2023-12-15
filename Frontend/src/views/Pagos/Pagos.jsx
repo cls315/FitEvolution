@@ -9,7 +9,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
-
+import { URLSERVER } from "../../../configURL";
 const stripePromise = loadStripe(
   "pk_test_51OFhTFEPwEDVOkZIc5g7SBFDDufIoqCMOUPZk9tye7BBDjxK1wO76eUPLurnxieWliXSClaW2eq8DJmbBuoP9rY500PekWUykm"
 );
@@ -31,7 +31,7 @@ const CheckoutForm = () => {
         const { id } = paymentMethod;
 
         const { data } = await axios.post(
-          "http://localhost:3001/api/checkout",
+          `${URLSERVER}/api/checkout`,
           {
             id,
             amount: 10000,

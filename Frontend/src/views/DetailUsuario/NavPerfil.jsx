@@ -14,6 +14,7 @@ const NavPerfil = ({setPageView})=>{
         <div className={styles.nav}>
             <img src={imageLogo} className={styles.logo}/>
             <div className={styles.btnconteiner}>
+                <button onClick={()=>{setPageView(3)}}>Mis compras</button>
                 <button onClick={()=>{setPageView(1)}}>Mis rutinas</button>
                 <button onClick={()=>{nuevosPaquetes()}}>Nuevos paquetes</button>
             </div>
