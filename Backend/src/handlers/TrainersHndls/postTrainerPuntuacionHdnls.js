@@ -6,6 +6,7 @@ const postPuntuacionHandler = async (req, res) => {
   const entrenadorId = req.params.id;
   console.log(entrenadorId);
   const nuevaPuntuacion = req.body.puntuaciones;
+  console.log(nuevaPuntuacion);
 
   try {
     // Buscar el entrenador por ID
@@ -23,12 +24,12 @@ const postPuntuacionHandler = async (req, res) => {
       nuevaPuntuacion
     );
 
+
     // Actualizar el array de puntuaciones del entrenador
     entrenador.puntuaciones = [
       ...entrenador.puntuaciones,
       ...puntuacionesObtenidas,
     ];
-
     // Guardar los cambios en la base de datos
     await entrenador.save();
 

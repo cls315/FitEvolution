@@ -12,7 +12,7 @@ const postTrainerPuntuacion = async (entrenador, nuevaPuntuacion) => {
 
     // Agregar la nueva puntuación al array existente
     const puntuacionesActualizadas = [
-      nuevaPuntuacion.toString(), // Convertir a string para asegurar que coincida con el modelo
+      nuevaPuntuacion, // Convertir a string para asegurar que coincida con el modelo
     ];
 
     return puntuacionesActualizadas;
