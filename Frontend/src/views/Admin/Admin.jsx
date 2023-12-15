@@ -10,6 +10,7 @@ import FormControl from '@mui/material/FormControl';
 import Grids from '@mui/material/Grid';
 import MensajesMasivosAdm from '../../components/mensajesMasivosAdm/mensajesMasivosAdm'
 import Swal from 'sweetalert2';
+import logout from '../../utils/logout'
 import {
   flexRender,
   getCoreRowModel,
@@ -45,8 +46,9 @@ const Admin = () => {
   const [data, setData] = useState({});
   const [selectedRow, setSelectedRow] = useState(null);
 
-  const backButton = () => {
-    navigate('/dashboardtr')
+  const backButton = async() => {
+    await logout()
+    navigate('/')
   }
   const [refresh, setRefresh] = useState(0)
 
@@ -205,6 +207,11 @@ const Admin = () => {
           <div style={{ display: 'flex', alignItems: 'center', marginRight: 'auto' }}>
             <Grid container spacing={2} justifyContent="center">
               <Grid item>
+                <Button variant="contained" color="primary" onClick={() => { setRefresh(refresh + 1) }}>
+                  Actualizar listado
+                </Button>
+              </Grid>
+              <Grid item>
                 <MensajesMasivosAdm />
 
               </Grid>
@@ -254,6 +261,32 @@ const Admin = () => {
         <div className=" input-group flex-nowrap my-2">
 
         </div>
+        <FormControl sx={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
+          <Button
+            className="btn btn-success btn-sm"
+            onClick={() => table.setPageIndex(0)}
+          >
+            Inicio
+          </Button>
+          <Button
+            className="btn btn-success btn-sm"
+            onClick={() => table.previousPage()}
+          >
+            {`<`}
+          </Button>
+          <Button
+            className="btn btn-success btn-sm"
+            onClick={() => table.nextPage()}
+          >
+            {`>`}
+          </Button>
+          <Button
+            className="btn btn-success btn-sm"
+            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+          >
+            Fin
+          </Button>
+        </FormControl>
         <TableContainer component={Paper}>
 
           <Table className="table table-info">
@@ -294,32 +327,32 @@ const Admin = () => {
 
           </Table>
         </TableContainer>
-        <div className="d-flex justify-content-between">
+        <FormControl sx={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
           <Button
             className="btn btn-success btn-sm"
             onClick={() => table.setPageIndex(0)}
           >
-            Primer página
+            Inicio
           </Button>
           <Button
             className="btn btn-success btn-sm"
             onClick={() => table.previousPage()}
           >
-            Página anterior
+            {`<`}
           </Button>
           <Button
             className="btn btn-success btn-sm"
             onClick={() => table.nextPage()}
           >
-            Página siguiente
+            {`>`}
           </Button>
           <Button
             className="btn btn-success btn-sm"
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
           >
-            Última página
+            Fin
           </Button>
-        </div>
+        </FormControl>
       </div>
 
     </div>
