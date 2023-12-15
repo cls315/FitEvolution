@@ -2,19 +2,45 @@ import { useState, useEffect } from "react";
 import datos from "../../../../Backend/api/datos.json";
 
 //import axios from "axios";
-import style from "./FormRoutine.module.css"
+import style from "./FormRoutine.module.css";
 import { Link } from "react-router-dom";
 
 const FormRoutines = () => {
+
   const [selectedExercises, setSelectedExercises] = useState([]);
   const [totalDuration, setTotalDuration] = useState(0);
   const [selectedEnfoque, setSelectedEnfoque] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   // para resetear el estado a 0
   const [formReset, setFormReset] = useState(false);
+  //estado para clientes
+  const [clientList, setClientList] = useState([]);
+  const [selectedClient, setSelectedClient] = useState("");
 
   // array de ejercicios
   const exercises = datos.ejercicios || [];
+
+  // useEffect para traer clientes
+  useEffect(() => {
+    console.log("Client List en el render:", clientList);
+    const fetchClientes = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:3001/fitevolution/clients/"
+        );
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Data de clientes:", data);
+          setClientList(data);
+        } else {
+          console.error("Error al obtener la lista de clientes");
+        }
+      } catch (error) {
+        console.error("Error en la solicitud:", error);
+      }
+    };
+    fetchClientes();
+  }, []);
 
   useEffect(() => {
     const duration = selectedExercises.reduce((total, exerciseId) => {
@@ -51,6 +77,7 @@ const FormRoutines = () => {
     console.log("Enfoque seleccionado:", selectedEnfoque);
     console.log("Ejercicios seleccionados:", selectedExercises);
     console.log("Duración total:", totalDuration);
+    console.log("Selected Client en el submit:", selectedClient);
     setFormReset(true); // estado para resetear formulario luego de enviarlo
 
     const exercisesArray = selectedExercises.map((exerciseId) => {
@@ -76,6 +103,7 @@ const FormRoutines = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            cliente: selectedClient,
             enfoque: selectedEnfoque,
             exerc: exercisesArray, // Usa el array modificado
             totalDuration: totalDuration,
@@ -92,6 +120,7 @@ const FormRoutines = () => {
     } catch (error) {
       console.error("Error en la solicitud:", error);
     }
+    
   };
 
   // handler para imagen local
@@ -111,6 +140,7 @@ const FormRoutines = () => {
       setTotalDuration(0);
       setSelectedEnfoque("");
       setSelectedImage(null);
+      setSelectedClient("");
       setFormReset(false);
     }
   }, [formReset]);
@@ -118,6 +148,23 @@ const FormRoutines = () => {
   return (
     <div className={style.formContainer}>
       <form onSubmit={handleSubmit}>
+        <div className={style.clientes}>
+          <label>Seleccionar cliente:</label>
+          <select
+            onChange={(event) => setSelectedClient(event.target.value)}
+            value={selectedClient}
+          >
+            <option value="" disabled>
+              Selecciona un cliente
+            </option>
+            { clientList && clientList.map((cliente) => (
+              <option key={cliente.id} value={cliente.id}>
+                {cliente.forename} {cliente.surname}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <div className={style.formGroup}>
           <label>Seleccionar enfoque:</label>
           <select
@@ -136,7 +183,9 @@ const FormRoutines = () => {
             <option value="Entrenamiento cardiovascular">
               Entrenamiento cardiovascular
             </option>
-            <option value="Entrenamiento de fuerza">Entrenamiento de fuerza</option>
+            <option value="Entrenamiento de fuerza">
+              Entrenamiento de fuerza
+            </option>
           </select>
         </div>
 
@@ -203,7 +252,7 @@ const FormRoutines = () => {
       </form>
       <div className={style.goBack}>
         <Link to="/dashboardtr">
-          <span className={style.backArrow}>{'<'}</span> Atrás
+          <span className={style.backArrow}>{"<"}</span> Atrás
         </Link>
       </div>
     </div>

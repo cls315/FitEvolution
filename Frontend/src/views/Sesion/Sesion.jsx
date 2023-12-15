@@ -57,8 +57,13 @@ const FormSesion = (props) => {
                 verificationEmailAccount(allTrainers, "Deportistas", user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/clients`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0] })
+<<<<<<< HEAD
                 dispatch(userPerfil(user.email))
                 usuario.forename && Swal.fire(`Bienvenido ${usuario.forename} a FitRevolution`)
+=======
+                await dispatch(userPerfil(user.email))
+                Swal.fire(`Bienvenido a FitRevolution`)
+>>>>>>> develop
                 navigate('/homeusuario')
             }
             if (typeSession === "Entrenadores") {
@@ -66,8 +71,13 @@ const FormSesion = (props) => {
                 verificationEmailAccount(allDeportistas, "Entrenadores", user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/trainers`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0], puntuaciones: [] })
+<<<<<<< HEAD
                 dispatch(trainerPerfil(user.email))
                 trainer.forename && Swal.fire(`Bienvenido ${trainer.forename} a FitRevolution`)
+=======
+                await dispatch(trainerPerfil(user.email))
+                Swal.fire(`Bienvenido a FitRevolution`)
+>>>>>>> develop
                 navigate('/dashboardtr')
             }
         } catch (error) {
@@ -103,7 +113,7 @@ const FormSesion = (props) => {
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/clients`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0] })
                 await dispatch(userPerfil(user.email))
-                usuario.forename && Swal.fire(`Bienvenido ${usuario.forename} a FitRevolution `, '', 'success')
+                Swal.fire(`Bienvenido a FitRevolution `, '', 'success')
                 navigate('/homeusuario')
             }
             if (typeSession === "Entrenadores") {
@@ -111,8 +121,13 @@ const FormSesion = (props) => {
                 verificationEmailAccount(allDeportistas, "Entrenadores", user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/trainers`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0], puntuaciones: [] })
+<<<<<<< HEAD
                 dispatch(trainerPerfil(user.email))
                 trainer.forename && Swal.fire(`Bienvenido ${trainer.forename} a FitRevolution`, "", 'success')
+=======
+                await dispatch(trainerPerfil(user.email))
+               Swal.fire(`Bienvenido a FitRevolution`, "", 'success')
+>>>>>>> develop
                 navigate('/dashboardtr')
             }
         } catch (error) {
@@ -153,7 +168,7 @@ const FormSesion = (props) => {
 
             verificationEmail(form.email, allTrainers, allDeportistas, typeSession)
             const credentials = await signInWithEmailAndPassword(auth, form.email, form.password)
-            Swal.fire(`Bienvenido: ${credentials.user.email}`)
+            Swal.fire(`Bienvenido`)
             if (typeSession === "Deportistas") {
                 navigate('/homeusuario')
             }
