@@ -24,11 +24,14 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+ 
   const user = useSelector((state)=> state.usuario)
   const idState = useSelector((state)=> state.idsTrainers)
   const email = user.email
   const stripe = useStripe();
   const elements = useElements();
+
+
 
   const idTrainer = idState.filter(Boolean).filter((valor, índice, self) => self.indexOf(valor) === índice);
   console.log("ID STATE -------->",idState);
@@ -49,8 +52,8 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
         console.log(paymentMethod)
         const { id } = paymentMethod;
         
-        const { data } = await axios.post(
-          `${URLSERVER}/fitevolution/api/checkout`,
+        const { data } = await axios.post(`
+          ${URLSERVER}/fitevolution/api/checkout`,
           {
             id,
 

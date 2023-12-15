@@ -60,7 +60,7 @@ const Detail = ()=>{
 
     return(
         <div>
-            {loading && <LoadingComponent/>}     {/*CARGA DE GIF PARA CUANDO SE ENVIA EL PAGO DEL CARRITO*/}
+            {loading && <LoadingComponent/>}     {/CARGA DE GIF PARA CUANDO SE ENVIA EL PAGO DEL CARRITO/}
             <Navdetail setLoading={setLoading}/>
             {!trainer ? (
                 <div>
