@@ -3,11 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import StarRating from "../../components/starRating/starRating";
 import LoadingComponent from "../../components/loading/loading.component"
-<<<<<<< HEAD
 import sinimagen from "../../images/sinimagen.png"
-=======
 import Swal from "sweetalert2";
->>>>>>> ed57185f020dc60afe725b0481a25924df2a4f4f
 
 import {agregarCarrito, getRoutines, saveIdTrainer} from "../../components/redux/actions/actions"
 
