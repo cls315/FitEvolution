@@ -6,8 +6,9 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
+import { display } from '@mui/system';
 
-export default function CheckboxListSecondary() {
+export default function CheckboxListSecondary({emails,defaultemails}) {
   const [checked, setChecked] = React.useState([1]);
 
   const handleToggle = (value) => () => {
@@ -24,30 +25,19 @@ export default function CheckboxListSecondary() {
   };
 
   return (
-    <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {[0, 1, 2, 3].map((value) => {
-        const labelId = `checkbox-list-secondary-label-${value}`;
+    <List dense sx={{backgroundColor:"grey", width: '415px', maxWidth: 360, bgcolor: 'background.paper' }}>
+      {(emails.length === 0 ? defaultemails : emails).map((value,index) => {
+        const labelId = `checkbox-list-secondary-label-${index}`;
         return (
           <ListItem
-            key={value}
-            secondaryAction={
-              <Checkbox
-                edge="end"
-                onChange={handleToggle(value)}
-                checked={checked.indexOf(value) !== -1}
-                inputProps={{ 'aria-labelledby': labelId }}
-              />
-            }
+            key={index}
             disablePadding
+            sx={{backgroundColor:"#d1caca",width: '415px'}}
           >
-            <ListItemButton>
-              <ListItemAvatar>
-                <Avatar
-                  alt={`Avatar n°${value + 1}`}
-                  src={`/static/images/avatar/${value + 1}.jpg`}
-                />
-              </ListItemAvatar>
-              <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+            <ListItemButton sx={{display:'flex',flexDirection:"column"}}>
+              <ListItemText id={labelId} primary={`${value.role}`}/>
+              <ListItemText id={labelId} primary={`${value.forename}`+` ${value.surname}`} />
+              <ListItemText id={labelId} primary={`${value.email}`} />
             </ListItemButton>
           </ListItem>
         );

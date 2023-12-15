@@ -28,12 +28,12 @@ const DashboardTrainer = (props) => {
   const [userSession, setUserSession] = useState(false);
   //modo escucha de firebase
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       //esta funcion es de firebase se queda en modo escucha cada vez que se carga la aplicacion.
       if (user) {
+        dispatch(trainerPerfil(user.email));
         console.log(user.email);
         setUserSession(true);
-        dispatch(trainerPerfil(user.email));
         console.log(trainer);
         if (trainer.status !== "Active" && (trainer.focusTr === "" || !trainer.focusTr)) navigate('/checkoutTrainer')
       } else {

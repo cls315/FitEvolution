@@ -56,6 +56,7 @@ const Carrito = ({setLoading}) => {
 
   const vaciarCarrito = ()=>{
     dispatch(clearCart())
+    !verpagos? Swal.fire("Carrito vaciado","","info"):"";
   }
 
   const borarCarrito = (option)=>{

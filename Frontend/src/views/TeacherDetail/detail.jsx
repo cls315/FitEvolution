@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import StarRating from "../../components/starRating/starRating";
 import LoadingComponent from "../../components/loading/loading.component"
+import Swal from "sweetalert2";
 
 import {agregarCarrito, getRoutines, saveIdTrainer} from "../../components/redux/actions/actions"
 
@@ -38,9 +39,10 @@ const Detail = ()=>{
     
             if (!packenCarrito && !packComprado) {
                 dispatch(agregarCarrito(routine));
+                Swal.fire("Rutina agregada correctamente al carrito","","info")
                 dispatch(saveIdTrainer(id));
             } else {
-                alert("Ya agregaste este pack en el carrito o lo compraste anteriormente al mismo entrenador");
+                Swal.fire("Ya agregaste este pack en el carrito o contrataste anteriormente al mismo entrenador","","error");
             }
         }
     }
