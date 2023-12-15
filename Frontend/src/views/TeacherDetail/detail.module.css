@@ -38,7 +38,7 @@
   height: 39px;
   flex-shrink: 0;
   border-radius: 13px;
-  background: var(--amarillo, #ffd300);
+  background: #1976D2;
   color: var(--black, #202128);
   font-size: 14px;
   font-style: normal;
@@ -51,7 +51,7 @@
   height: 300px;
   flex-shrink: 0;
   border-radius: 10px;
-  border: 3px solid var(--amarillo, #ffd300);
+  border: 3px solid #1976D2;
   background: url(<path-to-image>),
     lightgray -339.9px -6.981px / 190.476% 100% no-repeat;
   box-shadow: 8px 8px 24px 0px rgba(0, 0, 0, 0.39),
@@ -125,7 +125,7 @@
   width: 40%;
   height: 80%;
   border-radius: 8px;
-  border: 3px solid var(--amarillo, #ffd300);
+  border: 3px #1976D2;
   background: #d9d9d9;
 }
 
@@ -134,7 +134,7 @@
   margin-top: 20px;
   border-radius: 13px;
   border: 1px solid #000;
-  background: var(--amarillo, #ffd300);
+  background: #1976D2;
   color: #000000;
 }
 
@@ -191,6 +191,6 @@
   border-radius: 0%;
   flex-shrink: 0;
   width: 80%;
-  background: var(--amarillo, #FFD300);
+  background: #1976D2;
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.40);
 }

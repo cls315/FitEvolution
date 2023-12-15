@@ -4,7 +4,7 @@ import {useState} from "react"
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import profileUser from "../../components/SVG/profileUser.png"
-
+import { Button } from "@mui/material";
 const DetailUsuario = ()=>{
 
     const user = useSelector((state) => state.usuario)
@@ -31,7 +31,7 @@ const DetailUsuario = ()=>{
         setRutina(routine.rutinaPredeterminada[0])
         setPageView(2)
     }
-console.log("RUTINA ----------------->", rutina);
+
     return(
         <div>
             <NavPerfil setPageView={setPageView}/>
@@ -41,7 +41,7 @@ console.log("RUTINA ----------------->", rutina);
                     <h2 className={styles.nombre}>{user.forename} {user.surname ? user.surname : ""}</h2>
                     <h3 className={styles.email}>{user.email ? user.email : ""}</h3>
                     <h3 className={styles.nacionalidad}>Argentina</h3>
-                    <button className={styles.btnCerrarSesion} onClick={()=>{closeSesion()}}>Cerrar Sesion</button>
+                    <Button variant="outlined" className={styles.btnCerrarSesion} onClick={()=>{closeSesion()}}>Cerrar Sesion</Button>
                 </div>
                 {pageView == 1 ?
                 <div className={styles.packsConteiner}>
@@ -63,53 +63,55 @@ console.log("RUTINA ----------------->", rutina);
                     </div>
                     }
                 </div>
-                 :
-                <div className={styles.packsConteiner}>
-                    <div className={styles.rutinaConteiner}>
-                        <div className={styles.rutinaInfo}>
-                           <h2>Enfoque: {rutina.enfoque}</h2>
-                           <h2>Duracion: {rutina.totalDuration}</h2>
-                           <h2>Ejercicios:</h2>
-                           {/* <div className={styles.tablaConteiner}>
-                            <div className={styles.ejercicio}>
-                            <h3 >Nombre</h3>
-                            <h3>Area a estimular</h3>
+                 : pageView == 2 ?
+                    <div className={styles.packsConteiner}>
+                        <div className={styles.rutinaConteiner}>
+                            <div className={styles.rutinaInfo}>
+                               <h2>Enfoque: {rutina.enfoque}</h2>
+                               <h2>Duracion: {rutina.totalDuration}</h2>
+                               <h2>Ejercicios:</h2>
+                               <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Areas a Ejercitar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rutina.exerc?.map((ejercicio, index) => (
+              <tr key={index}>
+                <td>{ejercicio.name}</td>
+                <td>{ejercicio.muscle_trained.join(', ')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
                             </div>
-                           {rutina.exerc?.map((ejercicio) => (
-                            <div className={styles.ejercicio}>
-                                <h3>{ejercicio.name}</h3>
-                                {ejercicio.muscle_trained.map((muscle)=>(
-                                    <h3>{muscle}</h3>
-                                ))}
+                            <div className={styles.rutinaIMG}>
+                               <img src={rutina.image}/>
                             </div>
-                           ))}
-                           </div> */}
-                           <table className={styles.table}>
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Areas a Ejercitar</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rutina.exerc?.map((ejercicio, index) => (
-          <tr key={index}>
-            <td>{ejercicio.name}</td>
-            <td>{ejercicio.muscle_trained.join(', ')}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-                        </div>
-                        <div className={styles.rutinaIMG}>
-                           <img src={rutina.image}/>
                         </div>
                     </div>
-                </div>
+                     : pageView == 3 ?
+                      <div className={styles.packsConteiner}>
+                       {user.backups?.map((comprobante) => {
+                        const dateString = comprobante[0];
+                        const shortString = dateString.slice(0, 10);
+                        const formattedDateString = shortString.split("-").reverse().join("-");
+                            return (
+                            <div className={styles.pack} >
+                              <h2>Pack con: {comprobante[4]}</h2>
+                              <h2>Valor de: {comprobante[2]}{comprobante[3]}</h2>
+                              <h2>Adquirido en la fecha: {formattedDateString}</h2>
+                            </div>
+                            );})}
+                      </div> 
+                      :
+                       ""
                 }
             </div>
         </div>
-    )
+    )   
 }
 
 export default DetailUsuario;

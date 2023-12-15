@@ -10,6 +10,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import ListEmails from './listEmails';
 
 export default function MensajesMasivosAdm() {
   const [open, setOpen] = React.useState(false);
@@ -31,42 +32,42 @@ export default function MensajesMasivosAdm() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>Mi cuenta</Button>
+      <Button variant="contained" color="primary" onClick={handleClickOpen}>Enviar mensajes</Button>
       <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
-        <DialogTitle>Fill the form</DialogTitle>
+        <DialogTitle>Envio de emails</DialogTitle>
         <DialogContent>
-          <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel htmlFor="demo-dialog-native">Age</InputLabel>
+          <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap',flexDirection:'row' }}>
+            <FormControl sx={{ m: 1, minWidth: 120}}>
+              <InputLabel htmlFor="demo-dialog-native">Tipo de cuenta</InputLabel>
               <Select
                 native
                 value={age}
                 onChange={handleChange}
-                input={<OutlinedInput label="Age" id="demo-dialog-native" />}
+                input={<OutlinedInput label="Tipo de cuenta" id="demo-dialog-native" />}
+                defaultValue='Todos'
               >
                 <option aria-label="None" value="" />
-                <option value={10}>Ten</option>
-                <option value={20}>Twenty</option>
-                <option value={30}>Thirty</option>
+                <option value={10}>Deportistas</option>
+                <option value={20}>Entrenadores</option>
+                <option value={30}>Todos</option>
               </Select>
             </FormControl>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="demo-dialog-select-label">Age</InputLabel>
+              <InputLabel id="demo-dialog-select-label">Estado de cuenta</InputLabel>
               <Select
                 labelId="demo-dialog-select-label"
                 id="demo-dialog-select"
                 value={age}
                 onChange={handleChange}
-                input={<OutlinedInput label="Age" />}
+                input={<OutlinedInput label="Estado de cuenta" />}
+                defaultValue='Todos'
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value={10}>Activos</MenuItem>
+                <MenuItem value={20}>No activos</MenuItem>
+                <MenuItem value={30}>Todos</MenuItem>
               </Select>
             </FormControl>
+            <ListEmails/>
           </Box>
         </DialogContent>
         <DialogActions>

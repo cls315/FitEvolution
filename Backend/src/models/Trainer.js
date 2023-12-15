@@ -86,7 +86,7 @@ module.exports = (sequelize) => {
         },
       },
       dateOfBirth: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.DATE,
         allowNull: true,
         validate: {
           isDate: {

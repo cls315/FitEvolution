@@ -8,7 +8,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Grids from '@mui/material/Grid';
-//import Men
+import MensajesMasivosAdm from '../../components/mensajesMasivosAdm/mensajesMasivosAdm'
 import Swal from 'sweetalert2';
 import {
   flexRender,
@@ -141,34 +141,34 @@ const Admin = () => {
       accessorKey: "banned",
       footer: "banned",
       cell: (info) =>
-      info.row.original.role==='Usuario'?
-        info.row.original.banned === "off" ? <Button style={{ color: "red" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"on"}>desbanear</Button> :
-          <Button style={{ color: "green" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"off"}>banear</Button>
-      :
-      <Grids item xs={12} sm={6}>
-      <FormControl variant="standard" fullWidth>
-        <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
-          onChange={(e) => {
-            e.preventDefault()
-            const usr=info.row.original
-            const stat=e.target.value
-            usr.status=stat
-            setData(usr)
-            setRefresh(refresh + 1)
-          }}
-          label="Enfoque"
-          name="focusTr"
-          defaultValue={info.row.original.status || ''}
-          //defaultValue={'Confirmed'} // Set defaultValue based on accessorKey
-        >
-          <MenuItem value={"Active"}>Activo</MenuItem>
-          <MenuItem value={"Suspended"}>Suspendido</MenuItem>
-          <MenuItem value={"Confirmed"}>A confirmar</MenuItem>
-        </Select>
-      </FormControl>
-    </Grids>
+        info.row.original.role === 'Usuario' ?
+          info.row.original.banned === "off" ? <Button style={{ color: "red" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"on"}>desbanear</Button> :
+            <Button style={{ color: "green" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"off"}>banear</Button>
+          :
+          <Grids item xs={12} sm={6}>
+            <FormControl variant="standard" fullWidth>
+              <Select
+                labelId="demo-simple-select-standard-label"
+                id="demo-simple-select-standard"
+                onChange={(e) => {
+                  e.preventDefault()
+                  const usr = info.row.original
+                  const stat = e.target.value
+                  usr.status = stat
+                  setData(usr)
+                  setRefresh(refresh + 1)
+                }}
+                label="Enfoque"
+                name="focusTr"
+                defaultValue={info.row.original.status || ''}
+              //defaultValue={'Confirmed'} // Set defaultValue based on accessorKey
+              >
+                <MenuItem value={"Active"}>Activo</MenuItem>
+                <MenuItem value={"Suspended"}>Suspendido</MenuItem>
+                <MenuItem value={"Confirmed"}>A confirmar</MenuItem>
+              </Select>
+            </FormControl>
+          </Grids>
     },
   ];
   const [sorting, setSorting] = useState([]);
@@ -204,10 +204,9 @@ const Admin = () => {
 
           <div style={{ display: 'flex', alignItems: 'center', marginRight: 'auto' }}>
             <Grid container spacing={2} justifyContent="center">
-            <Grid item>
-                <Button variant="contained" color="primary" onClick={ejectButton}>
-                  Enviar mensajes
-                </Button>
+              <Grid item>
+                <MensajesMasivosAdm />
+
               </Grid>
               <Grid item>
                 <Button variant="contained" color="primary" onClick={ejectButton}>
