@@ -22,7 +22,7 @@
     width: 150px;
     height: 150px;
     flex-shrink: 0;
-    border: 2px solid #ffd300;
+    border: 2px solid #1976D2;
     border-radius: 171px;
     background: lightgray -115.976px -2.382px / 190.476% 100% no-repeat;
     object-fit: cover;
@@ -56,7 +56,7 @@
     height: auto;
     border: 0.5px solid black;
     border-radius: 13px;
-    background: var(--amarillo, #ffd300);
+    background: #1976D2;
     color: var(--black, #202128);
     font-family: Raleway;
     font-size: 12px;
@@ -82,6 +82,10 @@
     padding-right: 10px;
 }
 
+.packsConteiner h1{
+    font-size: 30px;
+}
+
 .packsHeader h2{
     font-size: 20px;
 }
@@ -105,3 +109,52 @@
     text-align: center;
     font-size: 15px;
 }
+
+.rutinaConteiner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.rutinaInfo {
+ max-width: 100%;
+ max-height: 100%;
+}
+
+.rutinaIMG img{
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.tablaConteiner{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.ejercicio{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #f5f5f5;
+  }

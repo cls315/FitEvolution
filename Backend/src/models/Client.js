@@ -127,9 +127,9 @@ module.exports = (sequelize) => {
         defaultValue: [], // Valor predeterminado: array vacío
       },
       banned: {
-        type:DataTypes.ENUM("on", "off"),
+        type: DataTypes.ENUM("on", "off"),
         allownull: true,
-        defaultValue: "off"
+        defaultValue: "off",
       },
     },
     {

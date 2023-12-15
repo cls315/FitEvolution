@@ -5,6 +5,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 //Style
 import style from "./forgotPassword.module.css"
+import { Button } from "@mui/material"
 
 
 const ForgotPassword = (props) => {
@@ -25,7 +26,7 @@ const ForgotPassword = (props) => {
 
             <form className={style.Form} onSubmit={handleSubmit}>
                 <div className={style.btconteinerps}>
-                    <button onClick={volverlogin} className={style.btLoginps}>{'< volver al inicio'}</button>
+                    <Button onClick={volverlogin} className={style.btLoginps}>{'< volver al inicio'}</Button>
                 </div>
                 <h1>¿Olvidaste tu contraseña?</h1>
                 <p>Ingresa tu dirección de correo electrónico y te enviaremos instrucciones sobre cómo restablecer tu contraseña.</p>
@@ -36,7 +37,7 @@ const ForgotPassword = (props) => {
                         {errors.email && <p className={style.p1}>{errors.email}</p>}
                     </div>
                 </div>
-                <button type="submit" className={style.button}>Recuperar Contraseña</button>
+                <Button variant="contained" color="primary" size="small" type="submit" className={style.button}>Recuperar Contraseña</Button>
             </form>
         </div>
     )

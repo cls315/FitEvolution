@@ -39,12 +39,12 @@ function Copyright() {
 
 const steps = ['Datos del entrenador', 'Detalles de pago', 'Verificar y enviar'];
 
-function getStepContent(step,errors,form,handleDateofbirth,handleChange) {
+function getStepContent(step,errors,form,handleDateofbirth,handleChange,handleTermsAcceptedChange) {
   switch (step) {
     case 0:
       return <AddressForm form={form} errors={errors} handleDateofbirth={handleDateofbirth} handleChange={handleChange}/>;
     case 1:
-      return <PaymentForm />;
+      return <PaymentForm handleTermsAcceptedChange={handleTermsAcceptedChange}/>;
     case 2:
       return <Review form={form}/>;
     default:
@@ -53,7 +53,8 @@ function getStepContent(step,errors,form,handleDateofbirth,handleChange) {
 }
 
 export default function Checkout() {
-  
+const [termsAccepted, setTermsAccepted] = React.useState(false);
+
   const [activeStep, setActiveStep] = React.useState(0);
   const navigate=useNavigate()
   const trainer = useSelector((state) => state.trainer)
@@ -85,7 +86,8 @@ export default function Checkout() {
 
   const handleDateofbirth=(newValue)=>{
     console.log(newValue)
-    let newValueformat=`${newValue.$D},${newValue.$M},${newValue.$y}`
+    let newValueformat=`${newValue.$y}-${newValue.$M}-${newValue.$D}` 
+    console.log(newValueformat)
     setForm({ ...form, dateOfBirth: newValueformat })
    
   }
@@ -94,6 +96,9 @@ export default function Checkout() {
     if (Object.values(form).some(inp => inp === "")) {  //some comprueba si algun elemento del array es "", si hay un "" quiere decir que hay un input vacio
       Swal.fire('DEBÉS COMPLETAR TODOS LOS CAMPOS!', "", 'error');
       return;
+  }else if(activeStep===1 && !termsAccepted){
+    Swal.fire('TIENES QUE ACEPTAR LOS TERMINOS Y CONDICIONES',"","warning")
+    return;
   }
 
   if (Object.values(errors).some(error => error)) {
@@ -104,11 +109,12 @@ export default function Checkout() {
     console.log(activeStep)
     if(activeStep===2){
       try{
-      await axios.post(`${URLSERVER}/fitevolution/trainers/${trainer.id}/complete`)
+      await axios.post(`${URLSERVER}/fitevolution/trainers/${trainer.id}/complete`,form)
       Swal.fire('FORMULARIO ENVIADO!', "", "success");
       }catch(error){
         if (error) Swal.fire(error.message, '', 'error')
       }
+
     return;
     }
   };
@@ -121,7 +127,18 @@ export default function Checkout() {
     await logout()
     navigate('/')
   }
+const handleTermsAcceptedChange = (isChecked) => {
+  setTermsAccepted(isChecked);
+};
 
+
+//*para generar un numero de seguimiento aleatorio 
+function generarNumeroSeguimiento() {
+  const numeroAleatorio = Math.floor(Math.random() * 1000000) + 1;
+  return `#${numeroAleatorio}`;
+}
+
+const numeroSeguimiento = generarNumeroSeguimiento();
   return (<div className='conteiner'>
     <React.Fragment >
       <CssBaseline />
@@ -166,13 +183,13 @@ export default function Checkout() {
                 Gracias por elegirnos
               </Typography>
               <Typography variant="subtitle1">
-                Tu numero de seguimiento es #2001539. Te confirmaremos por email cuando este
+                Tu numero de seguimiento es {numeroSeguimiento}. Te confirmaremos por email cuando este
                 la cuenta aprobada, suele demorar menos de 24 horas.
               </Typography>
             </React.Fragment>
           ) : (
             <React.Fragment>
-              {getStepContent(activeStep,errors,form,handleDateofbirth,handleChange)}
+              {getStepContent(activeStep,errors,form,handleDateofbirth,handleChange,handleTermsAcceptedChange)}
               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 {activeStep !== 0 && (
                   <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>

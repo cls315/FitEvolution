@@ -9,6 +9,7 @@ import {agregarCarrito, getRoutines, saveIdTrainer} from "../../components/redux
 import Navdetail from "./navdetail";
 
 import styles from "./detail.module.css"
+import { Button } from "@mui/material";
 
 const Detail = ()=>{
 
@@ -23,14 +24,25 @@ const Detail = ()=>{
 
     const allTrainers = useSelector((state) => state.allTrainers)
     const allroutines = useSelector((state)=> state.routines)
+    const cart = useSelector((state)=> state.carrito)
+    const user = useSelector((state)=> state.usuario)
+    console.log(user.myTrainers);
 
     const trainer = allTrainers.find((teacher) => teacher.id == id)
     const routines = allroutines.filter((routine) => routine.trainerId == id)
 
-
-    const sumPack = (option)=>{
-        dispatch(agregarCarrito(option));
-        dispatch(saveIdTrainer(id));
+    const sumPack = (routine, id) => {
+        if (cart) {
+            const packenCarrito = cart.some((item) => item == routine);
+            const packComprado = user.myTrainers.some((trainer) => trainer == id);
+    
+            if (!packenCarrito && !packComprado) {
+                dispatch(agregarCarrito(routine));
+                dispatch(saveIdTrainer(id));
+            } else {
+                alert("Ya agregaste este pack en el carrito o lo compraste anteriormente al mismo entrenador");
+            }
+        }
     }
 
     let [page, setPage] = useState(1);
@@ -62,27 +74,27 @@ const Detail = ()=>{
                     <h2>Enfoque: {trainer.focusTr}</h2>
                     <h2>Descripcion: {trainer.description}</h2>
                 </div>
-                <button className={styles.btn} onClick={()=>{sumPage()}}>Selecciona tu plan</button>
+                <Button variant="contained" onClick={()=>{sumPage()}}>Selecciona tu plan</Button>
             </div>
             ) : page == 2 ? (
             <div className={styles.info}>
                 <div className={styles.packs}>
-                {routines ? routines.map((routine) => (
+                {routines.length ? routines.map((routine) => (
                     <div className={styles.pack1}>
                         <h2>PACK {routine.exerc.length} EJERCICIOS</h2>
                         <h3>${routine.precio}</h3>
                         <h4>{routine.enfoque}</h4>
                         <h4>Rutina de adaptacion para principiante y rutina adaptada al cliente</h4>
                         <h5>Duracion: {routine.totalDuration} dias</h5>
-                        <button className={styles.packbtn} onClick={()=>{sumPack(routine)}}>Sumar al carrito</button>
+                        <button className={styles.packbtn} onClick={()=>{sumPack(routine, id)}}>Sumar al carrito</button>
                 </div>
                 ))
                 : (<div className={styles.pack1}>
-                    <h3>No tiene rutinas creadas</h3>
+                    <h3>Este entrenador no posee rutinas creadas en este momento</h3>
                 </div>)
                 }
                 </div>
-                <button className={styles.btn} onClick={()=>{restPage()}}>Volver a detalles</button>
+                <Button variant="contained" onClick={()=>{restPage()}}>Volver a detalles</Button>
             </div>
             ) : (<div></div>)}
             <div className={styles.perfil}>

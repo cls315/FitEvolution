@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import {useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { userPerfil } from "../redux/actions/actions";
 import {
@@ -10,6 +11,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { URLSERVER } from "../../../configURL"
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const stripePromise = loadStripe(
   "pk_test_51OJh59EozKFdzJuVuFTShVCNgGjmaTewLi1dPffJwyt5UkYcxkHsuwZEyIGDLf5nMBzotOwCtymyc2AISKTcHCL3004qhvdKiA"
@@ -19,6 +21,7 @@ const stripePromise = loadStripe(
 
 const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading}) => {
 
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const user = useSelector((state)=> state.usuario)
@@ -28,7 +31,8 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
   const elements = useElements();
 
   const idTrainer = idState.filter(Boolean).filter((valor, índice, self) => self.indexOf(valor) === índice);
-
+  console.log("ID STATE -------->",idState);
+  console.log("ID TRAINER -------->",idTrainer);
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,10 +46,9 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
       });
 
       if (!error) {
-        dispatch(userPerfil(email))
         console.log(paymentMethod)
         const { id } = paymentMethod;
-
+        
         const { data } = await axios.post(
           `${URLSERVER}/fitevolution/api/checkout`,
           {
@@ -59,19 +62,19 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
 
           }
         );
-        console.log(idTrainer, email);
-        console.log(data);
         setLoading(false)  //detiene la carga del gif
-        alert(data.message)
+        Swal.fire(data.message,"","info")
         setShow(false)
         setVerPagos(false)
         vaciarCarrito()
         elements.getElement(CardElement).clear();
+        dispatch(userPerfil(email))
+        navigate("/detailusuario")
       }
-
+      
     }catch (error) {
       setLoading(false)  //detiene la carga del gif
-      alert(error)
+      Swal.fire(error,"","error")
       console.log(error);
     }
   };
