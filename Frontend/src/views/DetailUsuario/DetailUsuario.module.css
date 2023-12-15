@@ -22,7 +22,7 @@
     width: 150px;
     height: 150px;
     flex-shrink: 0;
-    border: 2px solid #ffd300;
+    border: 2px solid #1976D2;
     border-radius: 171px;
     background: lightgray -115.976px -2.382px / 190.476% 100% no-repeat;
     object-fit: cover;
@@ -56,7 +56,7 @@
     height: auto;
     border: 0.5px solid black;
     border-radius: 13px;
-    background: var(--amarillo, #ffd300);
+    background: #1976D2;
     color: var(--black, #202128);
     font-family: Raleway;
     font-size: 12px;
@@ -78,8 +78,8 @@
     background-color: #e7e7e7;
     width: 100%;
     justify-content: space-between;
-    padding-left: 10px;
-    padding-right: 10px;
+    /* padding-left: 10px;
+    padding-right: 10px; */
 }
 
 .packsConteiner h1{

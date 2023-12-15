@@ -3,13 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import StarRating from "../../components/starRating/starRating";
 import LoadingComponent from "../../components/loading/loading.component"
+<<<<<<< HEAD
 import sinimagen from "../../images/sinimagen.png"
+=======
+import Swal from "sweetalert2";
+>>>>>>> ed57185f020dc60afe725b0481a25924df2a4f4f
 
 import {agregarCarrito, getRoutines, saveIdTrainer} from "../../components/redux/actions/actions"
 
 import Navdetail from "./navdetail";
 
 import styles from "./detail.module.css"
+import { Button } from "@mui/material";
 
 const Detail = ()=>{
 
@@ -38,9 +43,10 @@ const Detail = ()=>{
     
             if (!packenCarrito && !packComprado) {
                 dispatch(agregarCarrito(routine));
+                Swal.fire("Rutina agregada correctamente al carrito","","info")
                 dispatch(saveIdTrainer(id));
             } else {
-                alert("Ya agregaste este pack en el carrito o lo compraste anteriormente al mismo entrenador");
+                Swal.fire("Ya agregaste este pack en el carrito o contrataste anteriormente al mismo entrenador","","error");
             }
         }
     }
@@ -74,7 +80,7 @@ const Detail = ()=>{
                     <h2>Enfoque: {trainer.focusTr}</h2>
                     <h2>Descripcion: {trainer.description}</h2>
                 </div>
-                <button className={styles.btn} onClick={()=>{sumPage()}}>Selecciona tu plan</button>
+                <Button variant="contained" onClick={()=>{sumPage()}}>Selecciona tu plan</Button>
             </div>
             ) : page == 2 ? (
             <div className={styles.info}>
@@ -94,7 +100,7 @@ const Detail = ()=>{
                 </div>)
                 }
                 </div>
-                <button className={styles.btn} onClick={()=>{restPage()}}>Volver a detalles</button>
+                <Button variant="contained" onClick={()=>{restPage()}}>Volver a detalles</Button>
             </div>
             ) : (<div></div>)}
             <div className={styles.perfil}>

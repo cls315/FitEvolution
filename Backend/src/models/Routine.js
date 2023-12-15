@@ -45,8 +45,8 @@ module.exports = (sequelize) => {
       allowNull: true,
       validate: {
         isBlobUrl(value) {
-          // Validar que la URL sea un Blob URL
-          if (!value.startsWith('blob:')) {
+          // Verificar si el valor es nulo antes de intentar la validación
+          if (value && !value.startsWith('blob:')) {
             throw new Error('La URL de la imagen debe ser un Blob URL.');
           }
         },

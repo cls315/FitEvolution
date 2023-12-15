@@ -64,7 +64,7 @@ console.log("ID TRAINER ------>",idTrainer);
     res.status(200).send({ message: "compra exitosa" });
   } catch (err) {
     console.log(err.message);
-    res.status(404).json({ err: "Ocurrió un error en el pago" });
+    res.status(500).json({ err: "Ocurrió un error en el pago" });
   }
 };
 

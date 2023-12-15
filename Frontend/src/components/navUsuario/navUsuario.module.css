@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700&display=swap');
+
 .nav{
     flex-direction: row;
     display: flex;
@@ -27,14 +29,14 @@
     height: auto;
     /* margin-right: 46px; */
     border: 0.5px solid black;
-    border-radius: 13px;
-    background: var(--amarillo, #ffd300);
-    color: var(--black, #202128);
-    font-family: Raleway;
+    border-radius: 5px;
+    background: #1976D2;
+    color: rgb(248, 237, 237);
+    font-family: 'Roboto';   
     font-size: 12px;
     font-style: normal;
     font-weight: 700;
-    line-height: normal;
+    /* line-height: normal; */
   }
 
   .btn2 {
@@ -45,14 +47,14 @@
     height: auto;
     margin-right: 46px;
     border: 0.5px solid black;
-    border-radius: 13px;
-    background: var(--amarillo, #ffd300);
-    color: var(--black, #202128);
-    font-family: Raleway;
+    border-radius:5px;
+    background: #1976D2;
+    color: rgb(248, 237, 237);
+    font-family: 'Roboto';
     font-size: 12px;
     font-style: normal;
     font-weight: 700;
-    line-height: normal;
+    /* line-height: normal; */
   }
 
   .nav select {
@@ -61,16 +63,16 @@
     padding-right: 30px;
     max-width: 172px;
     width: auto;
-    max-height: 26px;
+    max-height: 35px;
     height: 100vh;
-    border-radius: 13px;
-    background: var(--amarillo, #ffd300);
-    color: var(--black, #202128);
-    font-family: Raleway;
+    border-radius: 5px;
+    background: #1976D2;
+    color: rgb(248, 237, 237);
+    font-family: 'Roboto', sans-serif;    
     font-size: 12px;
     font-style: normal;
     font-weight: 700;
-    line-height: normal
+    /* line-height: normal */
   }
 
 
