@@ -3,7 +3,7 @@ import imageLogo from "../../images/imageLogo.jpg"
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@mui/material";
 
-const NavPerfil = ()=>{
+const NavPerfil = ({setPageView})=>{
 
     const navigate = useNavigate()
 
@@ -15,7 +15,8 @@ const NavPerfil = ()=>{
         <div className={styles.nav}>
             <img src={imageLogo} className={styles.logo}/>
             <div className={styles.btnconteiner}>
-                <Button variant="contained" onClick={()=>{nuevosPaquetes()}}>Nuevos paquetes</Button>
+                <Button onClick={()=>{setPageView(1)}}>Mis rutinas</Button>
+                <Button onClick={()=>{nuevosPaquetes()}}>Nuevos paquetes</Button>
             </div>
         </div>
     )

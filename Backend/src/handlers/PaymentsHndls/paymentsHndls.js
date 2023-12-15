@@ -6,8 +6,7 @@ const { Trainer } = require("../../db");
 const { Client } = require("../../db");
 const paymentsHndls = async (req, res) => {
   const { id, amount, idTrainer, userEmail } = req.body;
-  console.log(idTrainer);
-
+console.log("ID TRAINER ------>",idTrainer);
   const stripe = new Stripe(`${SECRET_KEY_STRIPE}`);
   try {
     const payment = await stripe.paymentIntents.create({
@@ -32,26 +31,10 @@ const paymentsHndls = async (req, res) => {
 
     // Guardar recibo de pago en la propiedad backups del modelo cliente
     const client = await Client.findOne({where: {email: userEmail.email }});
-    if (client) {
-      client.dataValues.backups.push({
-        receipt_email,
-        amountpayment,
-        currency,
-        description,
-        payment_method_types,
-        payment_method,
-      });
-      client.dataValues.myTrainers.push({
-        idTrainer
-      });
-      await client.save();
-    }
 
     // Guardar objeto trainer en la propiedad mytrainers del modelo cliente
-    for(let i = 0; i < idTrainer.length; i++) {
-
+    for (let i = 0; i < idTrainer.length; i++) {
       const trainer = await Trainer.findByPk(idTrainer[i]);
-      console.log(trainer);
       if (trainer) {
         client.dataValues.myTrainers.push({
           trainerId: trainer.dataValues.id,
@@ -59,7 +42,7 @@ const paymentsHndls = async (req, res) => {
   
         // Agregar todas las propiedades del cliente al array subscribers del entrenador
         trainer.dataValues.subscribers.push({
-          ...client.dataValues// Agrega todas las propiedades del cliente
+          ...client.dataValues, // Agrega todas las propiedades del cliente
         });
   
         await client.save();
@@ -74,7 +57,8 @@ const paymentsHndls = async (req, res) => {
       currency,
       description,
       payment_method_types,
-      payment_method
+      payment_method,
+      idTrainer
     );
 
     res.status(200).send({ message: "compra exitosa" });

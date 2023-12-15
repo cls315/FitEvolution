@@ -68,7 +68,7 @@ const Detail = ()=>{
             ) : page == 2 ? (
             <div className={styles.info}>
                 <div className={styles.packs}>
-                {routines ? routines.map((routine) => (
+                {routines.length ? routines.map((routine) => (
                     <div className={styles.pack1}>
                         <h2>PACK {routine.exerc.length} EJERCICIOS</h2>
                         <h3>${routine.precio}</h3>
@@ -79,7 +79,7 @@ const Detail = ()=>{
                 </div>
                 ))
                 : (<div className={styles.pack1}>
-                    <h3>No tiene rutinas creadas</h3>
+                    <h3>Este entrenador no posee rutinas creadas en este momento</h3>
                 </div>)
                 }
                 </div>
