@@ -46,7 +46,7 @@ const FormSesion = (props) => {
         axios(`${URLSERVER}/fitevolution/clients`).then(({ data }) => {
             dispatch(getDeportistas(data));
         });
-    }, [usuario,trainer]);
+    }, [usuario,trainer,dispatch]);
 
     const call_login_google = async (e) => {
         e.preventDefault();
@@ -57,7 +57,9 @@ const FormSesion = (props) => {
                 verificationEmailAccount(allTrainers, "Deportistas", user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/clients`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0] })
-                await dispatch(userPerfil(user.email))
+                dispatch(userPerfil(user.email))
+                usuario.forename && Swal.fire(`Bienvenido ${usuario.forename} a FitRevolution`)
+                dispatch(userPerfil(user.email))
                 Swal.fire(`Bienvenido a FitRevolution`)
                 navigate('/homeusuario')
             }
@@ -66,7 +68,7 @@ const FormSesion = (props) => {
                 verificationEmailAccount(allDeportistas, "Entrenadores", user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/trainers`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0], puntuaciones: [] })
-                await dispatch(trainerPerfil(user.email))
+                dispatch(trainerPerfil(user.email))
                 Swal.fire(`Bienvenido a FitRevolution`)
                 navigate('/dashboardtr')
             }
@@ -76,10 +78,13 @@ const FormSesion = (props) => {
 
             if (error.code && error.code === "auth/account-exists-with-different-credential") Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo", '', 'error')
             if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Deportistas") {
+                dispatch(userPerfil(user.email))
+
                 usuario.forename && Swal.fire(`Bienvenido nuevamente ${usuario.forename} `)
                 navigate('/homeusuario')
             }
             else if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Entrenadores") {
+                dispatch(trainerPerfil(user.email))
                 trainer.forename && Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
                 navigate('/dashboardtr')
             }
@@ -99,7 +104,7 @@ const FormSesion = (props) => {
                 console.log(user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/clients`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0] })
-                await dispatch(userPerfil(user.email))
+                dispatch(userPerfil(user.email))
                 Swal.fire(`Bienvenido a FitRevolution `, '', 'success')
                 navigate('/homeusuario')
             }
@@ -108,7 +113,7 @@ const FormSesion = (props) => {
                 verificationEmailAccount(allDeportistas, "Entrenadores", user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/trainers`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0], puntuaciones: [] })
-                await dispatch(trainerPerfil(user.email))
+                dispatch(trainerPerfil(user.email))
                Swal.fire(`Bienvenido a FitRevolution`, "", 'success')
                 navigate('/dashboardtr')
             }
@@ -118,10 +123,12 @@ const FormSesion = (props) => {
 
             if (error.code && error.code === "auth/account-exists-with-different-credential") Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo", '', 'error')
             if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Deportistas") {
+                dispatch(userPerfil(user.email))
                 usuario.forename && Swal.fire(`Bienvenido nuevamente ${usuario.forename} `)
                 navigate('/homeusuario')
             }
             else if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Entrenadores") {
+                dispatch(trainerPerfil(user.email))
                 trainer.forename && Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
                 navigate('/dashboardtr')
                 
