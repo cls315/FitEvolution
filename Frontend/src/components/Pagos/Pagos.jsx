@@ -11,6 +11,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { URLSERVER } from "../../../configURL"
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const stripePromise = loadStripe(
   "pk_test_51OJh59EozKFdzJuVuFTShVCNgGjmaTewLi1dPffJwyt5UkYcxkHsuwZEyIGDLf5nMBzotOwCtymyc2AISKTcHCL3004qhvdKiA"
@@ -62,7 +63,7 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
           }
         );
         setLoading(false)  //detiene la carga del gif
-        alert(data.message)
+        Swal.fire(data.message,"","info")
         setShow(false)
         setVerPagos(false)
         vaciarCarrito()
@@ -73,7 +74,7 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
       
     }catch (error) {
       setLoading(false)  //detiene la carga del gif
-      alert(error)
+      Swal.fire(error,"","error")
       console.log(error);
     }
   };

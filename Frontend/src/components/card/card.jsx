@@ -4,6 +4,7 @@ import {Link} from "react-router-dom"
 
 import sinimagen from "../../images/sinimagen.png"
 import StarRating from "../starRating/starRating"
+import { Button } from "@mui/material";
 
 const Card = ({profe}) => {
 
@@ -14,7 +15,7 @@ const Card = ({profe}) => {
       <h3 className={styles.enfoque}>{profe.focusTr}</h3>
       <StarRating rating={profe.score}/>
       <Link to={`/teacher/${profe.id}`}>
-      <button className={styles.btnselect}>Seleccionar Entrenador</button>
+      <Button variant="contained" size="small" >Seleccionar Entrenador</Button>
       </Link>
     </div>
   );

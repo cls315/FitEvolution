@@ -1,6 +1,7 @@
 import styles from "./NavPerfil.module.css"
 import imageLogo from "../../images/imageLogo.jpg"
 import { useNavigate } from 'react-router-dom';
+import { Button } from "@mui/material";
 
 const NavPerfil = ({setPageView})=>{
 
