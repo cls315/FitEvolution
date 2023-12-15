@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import {useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { userPerfil } from "../redux/actions/actions";
 import {
@@ -19,6 +20,7 @@ const stripePromise = loadStripe(
 
 const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading}) => {
 
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const user = useSelector((state)=> state.usuario)
@@ -28,7 +30,8 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
   const elements = useElements();
 
   const idTrainer = idState.filter(Boolean).filter((valor, índice, self) => self.indexOf(valor) === índice);
-
+  console.log("ID STATE -------->",idState);
+  console.log("ID TRAINER -------->",idTrainer);
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,10 +45,9 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
       });
 
       if (!error) {
-        dispatch(userPerfil(email))
         console.log(paymentMethod)
         const { id } = paymentMethod;
-
+        
         const { data } = await axios.post(
           `${URLSERVER}/fitevolution/api/checkout`,
           {
@@ -59,16 +61,16 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
 
           }
         );
-        console.log(idTrainer, email);
-        console.log(data);
         setLoading(false)  //detiene la carga del gif
         alert(data.message)
         setShow(false)
         setVerPagos(false)
         vaciarCarrito()
         elements.getElement(CardElement).clear();
+        dispatch(userPerfil(email))
+        navigate("/detailusuario")
       }
-
+      
     }catch (error) {
       setLoading(false)  //detiene la carga del gif
       alert(error)

@@ -14,7 +14,8 @@ const postCompleteTrainer = async (
   dni,
   gender,
   focusTr,
-  description
+  description,
+  status
 ) => {
   try {
     
@@ -36,7 +37,7 @@ const postCompleteTrainer = async (
     existingTrainer.gender = gender || existingTrainer.gender;
     existingTrainer.focusTr = focusTr || existingTrainer.focusTr;
     existingTrainer.description = description || existingTrainer.description;
-
+    existingTrainer.status = status || existingTrainer.status;
     // Actualizar rutinaPredeterminada si focusTr coincide
     if (
       [

@@ -199,28 +199,38 @@ export const setusuario = (option) => {
 
 export const userPerfil = (option) => {
   return async function (dispatch) {
-    const json = await axios(`${URLSERVER}/fitevolution/clients`);
-    const allClients = json.data;
-    const client = allClients.find((client) => client.email == option);
-    console.log("action client", client);
-    return dispatch({
-      type: USER,
-      payload: client
-    })
+    try {
+      
+      const json = await axios(`${URLSERVER}/fitevolution/clients`);
+      const allClients = json.data;
+      const client = allClients.find((client) => client.email == option);
+      console.log("action client", client);
+      return dispatch({
+        type: USER,
+        payload: client
+      })
+    } catch (error) {
+      throw new Error(error.message)
+    }
   }
 
 }
 
 export const trainerPerfil = (option)=>{
   return async function(dispatch){
-    const json = await axios(`${URLSERVER}/fitevolution/trainers/allTrainer`)
-    const allTrainers = json.data
-    const trainer = allTrainers.find((trainer) => trainer.email == option)
-    console.log("action trainer",trainer);
-    return dispatch({
-      type: TRAINER,
-      payload: trainer
-    })
+    try {
+      
+      const json = await axios(`${URLSERVER}/fitevolution/trainers/allTrainer`)
+      const allTrainers = json.data
+      const trainer = allTrainers.find((trainer) => trainer.email == option)
+      console.log("action trainer",trainer);
+      return dispatch({
+        type: TRAINER,
+        payload: trainer
+      });
+    } catch (error) {
+      throw new Error(error.message)
+    }
   }
 }
 
@@ -251,10 +261,11 @@ export const getBaner =async(id,data)=>{
     }
 
 export const saveIdTrainer = (id)=>{
+  const numberParset = parseInt(id)
   return function(dispatch){
    return dispatch({
      type: GUARDAR_IDTRAINERS,
-     payload: id,
+     payload: numberParset,
    })
   }
 }

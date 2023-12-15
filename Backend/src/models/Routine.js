@@ -9,15 +9,18 @@ module.exports = (sequelize) => {
       autoIncrement: true,
     },
     exerc: {
-      type: DataTypes.ARRAY(DataTypes.JSON),
-      allowNull: false,
+      type: DataTypes.ARRAY(DataTypes.JSONB),
+      allowNull: true,
     },
     totalDuration: {
       type: DataTypes.VIRTUAL,
       get() {
-        return this.exerc.reduce((total, exerc) => {
-          return total + exerc.estimatedDuration;
-        }, 0);
+        if (this.exerc && Array.isArray(this.exerc)) {
+          return this.exerc.reduce((total, exerc) => {
+            return total + (exerc.estimatedDuration || 0);
+          }, 0);
+        }
+        return 0;
       },
       get duration() {
         const totalSeconds = this.totalDuration;
@@ -28,12 +31,24 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING, // Puedes ajustar el tipo de datos según sea necesario
       allowNull: true, // O false, dependiendo de si el enfoque debe ser obligatorio o no
     },
+    // image: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: true,
+    //   validate: {
+    //     isUrl: {
+    //       msg: "La URL de la imagen no es válida.",
+    //     },
+    //   },
+    // },
     image: {
       type: DataTypes.TEXT,
       allowNull: true,
       validate: {
-        isUrl: {
-          msg: "La URL de la imagen no es válida.",
+        isBlobUrl(value) {
+          // Validar que la URL sea un Blob URL
+          if (!value.startsWith('blob:')) {
+            throw new Error('La URL de la imagen debe ser un Blob URL.');
+          }
         },
       },
     },

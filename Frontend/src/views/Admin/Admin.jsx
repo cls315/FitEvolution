@@ -8,6 +8,8 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Grids from '@mui/material/Grid';
+import Men
+import Swal from 'sweetalert2';
 import {
   flexRender,
   getCoreRowModel,
@@ -40,7 +42,7 @@ const Admin = () => {
   const ejectButton = () => {
     navigate('/createEj')
   }
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
   const [selectedRow, setSelectedRow] = useState(null);
 
   const backButton = () => {
@@ -49,14 +51,26 @@ const Admin = () => {
   const [refresh, setRefresh] = useState(0)
 
   useEffect(() => {
+    if (data.forename) {
+      console.log(data)
+      axios.post(`${URLSERVER}/fitevolution/trainers/${data.id}/complete`, data)
+        .then(() => {
+          Swal.fire('FORMULARIO ENVIADO!', "", "success");
+        })
+        .catch(error => {
+          Swal.fire("Para los usuarios se utiliza el boton de BANNED", '', 'error')
+        })
+    }
+
     async function fetchData() {
       const dataClients = await axios(`${URLSERVER}/fitevolution/clients`);//Cambiar a ruta deploy
       const dataTrainers = await axios(`${URLSERVER}/fitevolution/trainers/alltrainer`)
       const allusers = [...dataClients.data, ...dataTrainers.data]
       setData(allusers);
-      console.log(allusers)
     }
     fetchData();
+
+
   }, [refresh]);
 
   const dispatch = useDispatch()
@@ -123,32 +137,38 @@ const Admin = () => {
       cell: (info) => dayjs(info.getValue()).format("DD/MM/YYYY"),
     },
     {
-      header: "Cuenta",
-      accessorKey: "status",
-      footer: "Estado de cuenta",
-      cell:<Grids item xs={12} sm={6}>
-      <FormControl variant="standard" fullWidth>
-      <Select
-      labelId="demo-simple-select-standard-label"
-      id="demo-simple-select-standard"
-      onChange={()=>{}}
-      label="Enfoque"
-      name="focusTr"
-    >
-      <MenuItem value={"Active"}>Activo</MenuItem>
-      <MenuItem value={"Suspended"}>Suspendido</MenuItem>
-      <MenuItem value={"Confirmed"}>A confirmar</MenuItem>
-    </Select>
-    </FormControl>
-    </Grids>
-    },
-    {
-      header: "BANNED",
+      header: "Estado de cuenta",
       accessorKey: "banned",
       footer: "banned",
-      cell: (info) => info.row.original.banned === "off" ? <Button style={{ color: "red" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"on"}>desbanear</Button> :
-        <Button style={{ color: "green" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"off"}>banear</Button>
-
+      cell: (info) =>
+      info.row.original.role==='Usuario'?
+        info.row.original.banned === "off" ? <Button style={{ color: "red" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"on"}>desbanear</Button> :
+          <Button style={{ color: "green" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"off"}>banear</Button>
+      :
+      <Grids item xs={12} sm={6}>
+      <FormControl variant="standard" fullWidth>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          onChange={(e) => {
+            e.preventDefault()
+            const usr=info.row.original
+            const stat=e.target.value
+            usr.status=stat
+            setData(usr)
+            setRefresh(refresh + 1)
+          }}
+          label="Enfoque"
+          name="focusTr"
+          defaultValue={info.row.original.status || ''}
+          //defaultValue={'Confirmed'} // Set defaultValue based on accessorKey
+        >
+          <MenuItem value={"Active"}>Activo</MenuItem>
+          <MenuItem value={"Suspended"}>Suspendido</MenuItem>
+          <MenuItem value={"Confirmed"}>A confirmar</MenuItem>
+        </Select>
+      </FormControl>
+    </Grids>
     },
   ];
   const [sorting, setSorting] = useState([]);
@@ -184,6 +204,11 @@ const Admin = () => {
 
           <div style={{ display: 'flex', alignItems: 'center', marginRight: 'auto' }}>
             <Grid container spacing={2} justifyContent="center">
+            <Grid item>
+                <Button variant="contained" color="primary" onClick={ejectButton}>
+                  Enviar mensajes
+                </Button>
+              </Grid>
               <Grid item>
                 <Button variant="contained" color="primary" onClick={ejectButton}>
                   Crear ejercicios
@@ -201,7 +226,7 @@ const Admin = () => {
               fullWidth
               variant="outlined"
               margin="normal"
-              placeholder="Buscar Deportista"
+              placeholder="Buscar Usuarios"
               value={filtering}
               onChange={(e) => setFiltering(e.target.value)}
               InputProps={{
