@@ -28,6 +28,7 @@ const Detail = ()=>{
     const allroutines = useSelector((state)=> state.routines)
     const cart = useSelector((state)=> state.carrito)
     const user = useSelector((state)=> state.usuario)
+    console.log(user);
     console.log(user.myTrainers);
 
     const trainer = allTrainers.find((teacher) => teacher.id == id)
@@ -36,7 +37,7 @@ const Detail = ()=>{
     const sumPack = (routine, id) => {
         if (cart) {
             const packenCarrito = cart.some((item) => item == routine);
-            const packComprado = user.myTrainers.some((trainer) => trainer == id);
+            const packComprado = user.myTrainers?.some((trainer) => trainer == id);
     
             if (!packenCarrito && !packComprado) {
                 dispatch(agregarCarrito(routine));
@@ -60,7 +61,7 @@ const Detail = ()=>{
 
     return(
         <div>
-            {loading && <LoadingComponent/>}     {/CARGA DE GIF PARA CUANDO SE ENVIA EL PAGO DEL CARRITO/}
+            {/* {loading && <LoadingComponent/>}     {/CARGA DE GIF PARA CUANDO SE ENVIA EL PAGO DEL CARRITO/} */}
             <Navdetail setLoading={setLoading}/>
             {!trainer ? (
                 <div>
