@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import datos from "../../../../Backend/api/datos.json";
 import style from "./FormRutine.module.css"
-
+import {TextField, Button, Typography, Paper,List,Input ,Avatar,ListItem, Grid,FormControl,InputLabel,Select, MenuItem } from '@mui/material';
+import { Container, width } from "@mui/system";
 
 const FormRoutines = () => {
   const [selectedExercises, setSelectedExercises] = useState([]);
@@ -73,93 +74,232 @@ const FormRoutines = () => {
   }, [formReset]);
 
   return (
-    <div className={style.formContainer}>
-      <form onSubmit={handleSubmit}>
-        <div className={style.formGroup}>
-          <label>Seleccionar enfoque:</label>
-          <select
-            onChange={(event) => setSelectedEnfoque(event.target.value)}
+    <Container className={style.conteiner}>
+<h1 className={style.text}>Crear Rutinas</h1>
+       <FormControl>
+        <Grid>
+         <Typography>Seleccionar Entrenamiento</Typography>
+          <Select
+            labelId="select-label"
+            id="select"
             value={selectedEnfoque}
+            onChange={(event) => setSelectedEnfoque(event.target.value)}
+            label="Seleccionar"
+            sx={{ width: '150px' }} 
           >
-            <option value="" disabled>
+            <MenuItem value="" disabled>
               Selecciona un enfoque
-            </option>
-            <option value="Entrenamiento deportivo">
+            </MenuItem>
+            <MenuItem value="Entrenamiento deportivo">
               Entrenamiento deportivo
-            </option>
-            <option value="Entrenamiento funcional">
+            </MenuItem>
+            <MenuItem value="Entrenamiento funcional">
               Entrenamiento funcional
-            </option>
-            <option value="Entrenamiento cardiovascular">
+            </MenuItem>
+            <MenuItem value="Entrenamiento cardiovascular">
               Entrenamiento cardiovascular
-            </option>
-            <option value="Entrenamiento de fuerza">
+            </MenuItem>
+            <MenuItem value="Entrenamiento de fuerza">
               Entrenamiento de fuerza
-            </option>
-          </select>
-        </div>
+            </MenuItem>
+          </Select>
+        </Grid>
+        <br></br>
 
-        <div>
-          <label>Seleccionar ejercicios:</label>
-          <select onChange={handleSelectChange} value={""}>
-            <option value="" disabled>
-              Selecciona un ejercicio
-            </option>
-            {exercises.map((exercise) => (
-              <option key={exercise.id} value={exercise.id}>
-                {exercise.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <p>Ejercicios seleccionados:</p>
-          <ul>
-            {selectedExercises.map((exerciseId) => {
-              const selectedExercise = exercises.find(
-                (exercise) => exercise.id === exerciseId
-              );
-
+        <Grid>
+       <Typography>Ejercicio</Typography>
+          <Select 
+          Text="ejer"
+          onChange={handleSelectChange}
+          value={""}
+          label="Seleccionar"
+          sx={{ width: '150px', color:'#007bff'}} 
           
-              console.log("Ejercicio seleccionado:", selectedExercise);
+          >
+            <MenuItem value="" disabled>
+              Selecciona un ejercicio
+            </MenuItem>
+            {exercises.map((exercise) => (
+              <MenuItem key={exercise.id} value={exercise.id} sx={{color:"#0056b3"}}>
+                {exercise.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </Grid>
+        <br></br>
 
-              return (
-                <li key={exerciseId}>
-                  {selectedExercise?.name}
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveExercise(exerciseId)}
-                  >
-                    Eliminar
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <div>
-          <label>Seleccionar imagen :</label>
-          <input type="file" accept="image/*" onChange={handleImageChange} />
+        <Grid>
+        <Typography>Ejercicio seleccionado:</Typography>
+        <List>
+      {selectedExercises.map((exerciseId) => {
+        const selectedExercise = exercises.find((exercise) => exercise.id === exerciseId);
 
-          {selectedImage && (
-            <div>
-              <p>Vista previa de la imagen seleccionada:</p>
-              <img
+        console.log("Ejercicio seleccionado:", selectedExercise);
+
+        return (
+          <ListItem key={exerciseId}>
+            {selectedExercise?.name}
+            <Button
+              type="button"
+              onClick={() => handleRemoveExercise(exerciseId)}
+              variant="outlined"
+              color="secondary"
+            >
+              Eliminar
+            </Button>
+          </ListItem>
+        );
+      })}
+    </List>
+        </Grid>
+        <br></br>
+
+        <Grid  sx={{ padding: '10px'}}>
+
+          <Typography>Seleccionar Imagen</Typography>
+          <Input type="file" accept="image/*" onChange={handleImageChange} />
+
+             {selectedImage && (
+            <Grid>
+            
+              <Avatar
                 src={selectedImage}
                 alt="Selected"
-                style={{ maxWidth: "200px" }}
-              />
-            </div>
-          )}
-        </div>
-        <div>
-          <p>Duración total de los ejercicios: {totalDuration} minutos</p>
-        </div>
+                sx={{width:'120px',height:'120px', marginLeft: '25%',marginTop:'10px'}}>
+              </Avatar>
+           
+              </Grid>  
+          
+               )}
 
-        <button type="submit">Crear Rutina</button>
-      </form>
-    </div>
-  );
-};
+
+          </Grid>
+       
+        <br></br>
+        <Grid>
+        
+          <Typography>Duración total de los ejercicios: {totalDuration} minutos</Typography>       
+        </Grid>
+        <Button style={{color:"#fff"}} type="submit"variant="contained">Crear Rutina</Button>
+       </FormControl>
+    </Container>
+
+
+      //  <label>Seleccionar imagen :</label>
+//           <input type="file" accept="image/*" onChange={handleImageChange} />
+
+//           {selectedImage && (
+//             <div>
+//               <p>Vista previa de la imagen seleccionada:</p>
+//               <img
+//                 src={selectedImage}
+//                 alt="Selected"
+//                 style={{ maxWidth: "200px" }}
+//               />
+//             </div>
+//           )}
+//         </div> */}
+
+
+
+
+
+
+
+
+
+   
+//       <FormControl >
+//         <Grid>
+//         <InputLabel id="select-label">Seleccionar</InputLabel>
+//         <Select
+//           labelId="select-label"
+//           id="select"
+//           value={selectedEnfoque}
+//           onChange={(event) => setSelectedEnfoque(event.target.value)}
+//           label="Seleccionar"
+//         >
+    
+//             <option value="" disabled>
+//               Selecciona un enfoque
+//             </option>
+//             <option value="Entrenamiento deportivo">
+//               Entrenamiento deportivo
+//             </option>
+//             <option value="Entrenamiento funcional">
+//               Entrenamiento funcional
+//             </option>
+//             <option value="Entrenamiento cardiovascular">
+//               Entrenamiento cardiovascular
+//             </option>
+//             <option value="Entrenamiento de fuerza">
+//               Entrenamiento de fuerza
+//             </option>
+//           </Select>
+//         </Grid>
+//              <br></br>
+//         <Grid>
+//           <InputLabel>Seleccionar ejercicios:</InputLabel>
+//           <Select onChange={handleSelectChange} value={""}>
+//             <option value="" disabled>
+//               Selecciona un ejercicio
+//             </option>
+//             {exercises.map((exercise) => (
+//               <option key={exercise.id} value={exercise.id}>
+//                 {exercise.name}
+//               </option>
+//             ))}
+//           </Select>
+//         </Grid>
+
+//         <div>
+//           <p>Ejercicios seleccionados:</p>
+//           <ul>
+//             {selectedExercises.map((exerciseId) => {
+//               const selectedExercise = exercises.find(
+//                 (exercise) => exercise.id === exerciseId
+//               );
+
+          
+//               console.log("Ejercicio seleccionado:", selectedExercise);
+
+//               return (
+//                 <li key={exerciseId}>
+//                   {selectedExercise?.name}
+//                   <Button
+//                     type="button"
+//                     onClick={() => handleRemoveExercise(exerciseId)}
+//                   >
+//                     Eliminar
+//                   </Button>
+//                 </li>
+//               );
+//             })}
+//           </ul>
+//         </div>
+//         <div>
+//           <label>Seleccionar imagen :</label>
+//           <input type="file" accept="image/*" onChange={handleImageChange} />
+
+//           {selectedImage && (
+//             <div>
+//               <p>Vista previa de la imagen seleccionada:</p>
+//               <img
+//                 src={selectedImage}
+//                 alt="Selected"
+//                 style={{ maxWidth: "200px" }}
+//               />
+//             </div>
+//           )}
+//         </div>
+//         <div>
+//           <p>Duración total de los ejercicios: {totalDuration} minutos</p>
+//         </div>
+
+//         <Button type="submit">Crear Rutina</Button>
+//       </FormControl>
+//     </div>
+//   );
+// };
+  )}
 export default FormRoutines;

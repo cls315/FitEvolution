@@ -1,8 +1,20 @@
 .formContainer {
     max-width: 400px;
     margin: 0 auto;
+    align-content: center;
+    display: flex;
+    
   }
+  .conteiner{
+    border-radius:15px ;
+    border: 3px solid #007bff;
+    margin-top: 50px;
+    background-color:rgba(128, 128, 128, 0.185);
+    padding: 20px;
   
+    background-size: cover;
+    background-position: left top;
+  }
   .formGroup {
     margin-bottom: 16px;
   }
@@ -38,4 +50,8 @@
   
   button:hover {
     background-color: #0056b3;
+  }
+
+  .text{
+   color:  #007bff
   }

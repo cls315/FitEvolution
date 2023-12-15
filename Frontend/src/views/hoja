@@ -1,0 +1,109 @@
+    <!-- <Container className={style.conteiner}>
+<h1 className={style.text}>Crear Rutinas</h1>
+       <FormControl>
+        <Grid>
+         <Typography>Seleccionar Entrenamiento</Typography>
+          <Select
+            labelId="select-label"
+            id="select"
+            value={selectedEnfoque}
+            onChange={(event) => setSelectedEnfoque(event.target.value)}
+            label="Seleccionar"
+            sx={{ width: '150px' }} 
+          >
+            <MenuItem value="" disabled>
+              Selecciona un enfoque
+            </MenuItem>
+            <MenuItem value="Entrenamiento deportivo">
+              Entrenamiento deportivo
+            </MenuItem>
+            <MenuItem value="Entrenamiento funcional">
+              Entrenamiento funcional
+            </MenuItem>
+            <MenuItem value="Entrenamiento cardiovascular">
+              Entrenamiento cardiovascular
+            </MenuItem>
+            <MenuItem value="Entrenamiento de fuerza">
+              Entrenamiento de fuerza
+            </MenuItem>
+          </Select>
+        </Grid>
+        <br></br>
+
+        <Grid>
+       <Typography>Ejercicio</Typography>
+          <Select 
+          Text="ejer"
+          onChange={handleSelectChange}
+          value={""}
+          label="Seleccionar"
+          sx={{ width: '150px', color:'#007bff'}} 
+          
+          >
+            <MenuItem value="" disabled>
+              Selecciona un ejercicio
+            </MenuItem>
+            {exercises.map((exercise) => (
+              <MenuItem key={exercise.id} value={exercise.id} sx={{color:"#0056b3"}}>
+                {exercise.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </Grid>
+        <br></br>
+
+        <Grid>
+        <Typography>Ejercicio seleccionado:</Typography>
+        <List>
+      {selectedExercises.map((exerciseId) => {
+        const selectedExercise = exercises.find((exercise) => exercise.id === exerciseId);
+
+        console.log("Ejercicio seleccionado:", selectedExercise);
+
+        return (
+          <ListItem key={exerciseId}>
+            {selectedExercise?.name}
+            <Button
+              type="button"
+              onClick={() => handleRemoveExercise(exerciseId)}
+              variant="outlined"
+              color="secondary"
+            >
+              Eliminar
+            </Button>
+          </ListItem>
+        );
+      })}
+    </List>
+        </Grid>
+        <br></br>
+
+        <Grid  sx={{ padding: '10px'}}>
+
+          <Typography>Seleccionar Imagen</Typography>
+          <Input type="file" accept="image/*" onChange={handleImageChange} />
+
+             {selectedImage && (
+            <Grid>
+            
+              <Avatar
+                src={selectedImage}
+                alt="Selected"
+                sx={{width:'120px',height:'120px', marginLeft: '25%',marginTop:'10px'}}>
+              </Avatar>
+           
+              </Grid>  
+          
+               )}
+
+
+          </Grid>
+       
+        <br></br>
+        <Grid>
+        
+          <Typography>Duración total de los ejercicios: {totalDuration} minutos</Typography>       
+        </Grid>
+        <Button style={{color:"#fff"}} type="submit"variant="contained">Crear Rutina</Button>
+       </FormControl>
+    </Container> -->
