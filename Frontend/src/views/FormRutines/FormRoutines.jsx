@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import datos from "../../../../Backend/api/datos.json";
-
+import {URLSERVER} from "../../../configURL"
 //import axios from "axios";
 import style from "./FormRoutine.module.css";
 import { Link } from "react-router-dom";
@@ -26,7 +26,7 @@ const FormRoutines = () => {
     const fetchClientes = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3001/fitevolution/clients/"
+          `${URLSERVER}/fitevolution/clients/`
         );
         if (response.ok) {
           const data = await response.json();
@@ -96,7 +96,7 @@ const FormRoutines = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3001/fitevolution/routines/",
+        `${URLSERVER}/fitevolution/routines/`,
         {
           method: "POST",
           headers: {

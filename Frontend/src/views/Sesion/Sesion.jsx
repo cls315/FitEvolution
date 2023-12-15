@@ -76,10 +76,13 @@ const FormSesion = (props) => {
 
             if (error.code && error.code === "auth/account-exists-with-different-credential") Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo", '', 'error')
             if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Deportistas") {
+                dispatch(userPerfil(user.email))
+
                 usuario.forename && Swal.fire(`Bienvenido nuevamente ${usuario.forename} `)
                 navigate('/homeusuario')
             }
             else if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Entrenadores") {
+                dispatch(trainerPerfil(user.email))
                 trainer.forename && Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
                 navigate('/dashboardtr')
             }
@@ -118,10 +121,12 @@ const FormSesion = (props) => {
 
             if (error.code && error.code === "auth/account-exists-with-different-credential") Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo", '', 'error')
             if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Deportistas") {
+                dispatch(userPerfil(user.email))
                 usuario.forename && Swal.fire(`Bienvenido nuevamente ${usuario.forename} `)
                 navigate('/homeusuario')
             }
             else if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Entrenadores") {
+                dispatch(trainerPerfil(user.email))
                 trainer.forename && Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
                 navigate('/dashboardtr')
                 
