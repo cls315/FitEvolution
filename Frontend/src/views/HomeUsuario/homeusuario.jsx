@@ -51,7 +51,7 @@ if(!clientSave || clientSave.email !== usuario){
 
   let profes = [];
   filterTrainer.length === 0 ? profes = allTrainers : profes = filterTrainer
-
+  profes = profes.filter(entrenador => entrenador.status === "Active");
   return (<>
     {userSession ?
       <div>
