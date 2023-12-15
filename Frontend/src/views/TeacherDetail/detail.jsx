@@ -24,14 +24,25 @@ const Detail = ()=>{
 
     const allTrainers = useSelector((state) => state.allTrainers)
     const allroutines = useSelector((state)=> state.routines)
+    const cart = useSelector((state)=> state.carrito)
+    const user = useSelector((state)=> state.usuario)
+    console.log(user.myTrainers);
 
     const trainer = allTrainers.find((teacher) => teacher.id == id)
     const routines = allroutines.filter((routine) => routine.trainerId == id)
 
-
-    const sumPack = (option)=>{
-        dispatch(agregarCarrito(option));
-        dispatch(saveIdTrainer(id));
+    const sumPack = (routine, id) => {
+        if (cart) {
+            const packenCarrito = cart.some((item) => item == routine);
+            const packComprado = user.myTrainers.some((trainer) => trainer == id);
+    
+            if (!packenCarrito && !packComprado) {
+                dispatch(agregarCarrito(routine));
+                dispatch(saveIdTrainer(id));
+            } else {
+                alert("Ya agregaste este pack en el carrito o lo compraste anteriormente al mismo entrenador");
+            }
+        }
     }
 
     let [page, setPage] = useState(1);
@@ -75,7 +86,7 @@ const Detail = ()=>{
                         <h4>{routine.enfoque}</h4>
                         <h4>Rutina de adaptacion para principiante y rutina adaptada al cliente</h4>
                         <h5>Duracion: {routine.totalDuration} dias</h5>
-                        <Button variant="contained" onClick={()=>{sumPack(routine)}}>Sumar al carrito</Button>
+                        <button className={styles.packbtn} onClick={()=>{sumPack(routine, id)}}>Sumar al carrito</button>
                 </div>
                 ))
                 : (<div className={styles.pack1}>
