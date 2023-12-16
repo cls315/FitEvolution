@@ -28,9 +28,9 @@ const Detail = ()=>{
     const allroutines = useSelector((state)=> state.routines)
     const cart = useSelector((state)=> state.carrito)
     const status = useSelector((state)=>state.userStatus)
-    if(status !== "invitado"){
+    
         const user = useSelector((state)=> state.usuario)
-    }
+
 
     const trainer = allTrainers.find((teacher) => teacher.id == id)
     const routines = allroutines.filter((routine) => routine.trainerId == id)
