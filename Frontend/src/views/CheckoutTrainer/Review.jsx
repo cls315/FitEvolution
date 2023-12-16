@@ -55,7 +55,7 @@ export default function Review(props) {
     price: form.description,
     },
   ];
-  return (<div className='conteiner'>
+  return (<div >
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Verificar datos
