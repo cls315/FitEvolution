@@ -8,7 +8,6 @@ const postCompleteClientsHndls = async (req, res) => {
   const clientId = req.params.id;
 
   const {
-    clientId,
     forename,
     surname,
     image,
@@ -23,6 +22,7 @@ const postCompleteClientsHndls = async (req, res) => {
   try {
     const existingClient = await Client.findById(clientId);
     const updatedClient = await postCompleteClient(
+      clientId,
       forename,
       surname,
       image,
