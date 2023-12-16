@@ -58,9 +58,9 @@ const DashboardTrainer = (props) => {
     <>
       {userSession ? (
         <div className="bg-trainer-board">
-          {trainer.status === "Suspended" && <SuspendedAccount message={"Tu cuenta fue suspendida, por favor contacta con soporte: soporte@fitrevolution.com"} />}
-          {trainer.status === "Confirmed" && <SuspendedAccount message={"Tu cuenta se encuentra en estado de revision, tu numero de seguimiento es: #2001539. Atte: solicitudesa@fitrevolution.com"} />}
-          {trainer.status === "Active" && <><DashBar handleMenu={handleMenu} />
+           {trainer.status && trainer.status === "Suspended" && <SuspendedAccount message={"Tu cuenta fue suspendida, por favor contacta con soporte: soporte@fitrevolution.com"} />}
+          {trainer.status && trainer.status === "Confirmed" && <SuspendedAccount message={"Tu cuenta se encuentra en estado de revision, tu numero de seguimiento es: #2001539. Atte: solicitudesa@fitrevolution.com"} />}
+          {trainer.status && trainer.status === "Active" && <><DashBar handleMenu={handleMenu} />
           {menu === "deportes" && <MenuprincipalTrainer trainer={trainer} />}
           {menu === "pagos" && <PagosprincipalTrainer />}
           {menu === "entrenamientos" && <EntrePrincipalTrainer />}
