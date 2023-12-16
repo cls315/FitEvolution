@@ -27,17 +27,21 @@ const Detail = ()=>{
     const allTrainers = useSelector((state) => state.allTrainers)
     const allroutines = useSelector((state)=> state.routines)
     const cart = useSelector((state)=> state.carrito)
-    const user = useSelector((state)=> state.usuario)
-    console.log(user);
-    console.log(user.myTrainers);
+    const status = useSelector((state)=>state.userStatus)
+    if(status !== "invitado"){
+        const user = useSelector((state)=> state.usuario)
+    }
 
     const trainer = allTrainers.find((teacher) => teacher.id == id)
     const routines = allroutines.filter((routine) => routine.trainerId == id)
+    let packComprado = null
 
     const sumPack = (routine, id) => {
         if (cart) {
             const packenCarrito = cart.some((item) => item == routine);
-            const packComprado = user.myTrainers?.some((trainer) => trainer == id);
+            if(status !== "invitado"){
+             packComprado = user.myTrainers?.some((trainer) => trainer == id);
+            }
     
             if (!packenCarrito && !packComprado) {
                 dispatch(agregarCarrito(routine));
