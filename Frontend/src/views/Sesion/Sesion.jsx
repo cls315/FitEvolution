@@ -91,7 +91,7 @@ const FormSesion = (props) => {
     }
 
 
-    const call_login_facebook = async (e) => {
+  /*  const call_login_facebook = async (e) => {
         e.preventDefault();
         try {
             const user = await callLoginFacebook();
@@ -133,7 +133,7 @@ const FormSesion = (props) => {
             }
             else if (error) Swal.fire(error.message, '', 'error')
         }
-    }
+    } */
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -260,8 +260,8 @@ const FormSesion = (props) => {
                     </Button>
                 </form>
                 <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                        {/*   <Button
+                   {/* <Grid item xs={12} sm={6}>
+                           <Button
                             className={style.Face}
                             fullWidth
                             variant="contained"
@@ -270,8 +270,8 @@ const FormSesion = (props) => {
                         >
                             <IoLogoFacebook size={40} />
                             Continuar con Facebook
-                        </Button> */}
-                    </Grid>
+                        </Button> 
+                    </Grid>*/}
                     <Grid item xs={12} sm={6}>
                         <Button
                             className={style.google}
