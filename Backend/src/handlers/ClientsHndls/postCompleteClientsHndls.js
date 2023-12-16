@@ -8,6 +8,7 @@ const postCompleteClientsHndls = async (req, res) => {
   const clientId = req.params.id;
 
   const {
+    clientId,
     forename,
     surname,
     image,
