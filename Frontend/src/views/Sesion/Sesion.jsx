@@ -261,7 +261,7 @@ const FormSesion = (props) => {
                 </form>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
-                        <Button
+                        {/*   <Button
                             className={style.Face}
                             fullWidth
                             variant="contained"
@@ -270,7 +270,7 @@ const FormSesion = (props) => {
                         >
                             <IoLogoFacebook size={40} />
                             Continuar con Facebook
-                        </Button>
+                        </Button> */}
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Button
