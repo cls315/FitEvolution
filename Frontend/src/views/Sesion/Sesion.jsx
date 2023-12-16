@@ -76,14 +76,15 @@ const FormSesion = (props) => {
 
             if (error.code && error.code === "auth/account-exists-with-different-credential") Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo", '', 'error')
             if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Deportistas") {
-                dispatch(userPerfil(user.email))
-
-                usuario.forename && Swal.fire(`Bienvenido nuevamente ${usuario.forename} `)
+                //dispatch(userPerfil(user.email))
+                //usuario.forename && Swal.fire(`Bienvenido nuevamente ${usuario.forename} `)
+                Swal.fire(`Bienvenido nuevamente!! `)
                 navigate('/homeusuario')
             }
             else if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Entrenadores") {
-                dispatch(trainerPerfil(user.email))
-                trainer.forename && Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
+                //dispatch(trainerPerfil(user.email))
+                //trainer.forename && Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
+                Swal.fire(`Bienvenido nuevamente!! `)
                 navigate('/dashboardtr')
             }
             else if (error) Swal.fire(error.message, '', 'error')
@@ -121,13 +122,15 @@ const FormSesion = (props) => {
 
             if (error.code && error.code === "auth/account-exists-with-different-credential") Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo", '', 'error')
             if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Deportistas") {
-                dispatch(userPerfil(user.email))
-                usuario.forename && Swal.fire(`Bienvenido nuevamente ${usuario.forename} `)
+                //dispatch(userPerfil(user.email))
+                //usuario.forename && Swal.fire(`Bienvenido nuevamente ${usuario.forename} `)
+                Swal.fire(`Bienvenido nuevamente!! `)
                 navigate('/homeusuario')
             }
             else if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Entrenadores") {
-                dispatch(trainerPerfil(user.email))
-                trainer.forename && Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
+               // dispatch(trainerPerfil(user.email))
+               // trainer.forename && Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
+                Swal.fire(`Bienvenido nuevamente!! `)
                 navigate('/dashboardtr')
                 
             }
