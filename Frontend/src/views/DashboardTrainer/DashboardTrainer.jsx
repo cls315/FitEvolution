@@ -44,7 +44,7 @@ const DashboardTrainer = (props) => {
     });
 
     return () => { };
-  }, [allTrainers]);
+  }, []);
 
   //-------------------------*/
   const handleMenu = (e) => {
