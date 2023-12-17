@@ -35,7 +35,7 @@ const DashboardTrainer = (props) => {
         console.log(user.email);
         setUserSession(true);
         console.log(trainer);
-        if (trainer && trainer.status !== "Active" && (trainer.focusTr === "" || !trainer.focusTr)) navigate('/checkoutTrainer')
+        if (trainer && trainer.status !== "Active" && (trainer.focusTr===null || trainer.focusTr === "" || !trainer.focusTr)) navigate('/checkoutTrainer')
       } else {
         setUserSession(false);
 
