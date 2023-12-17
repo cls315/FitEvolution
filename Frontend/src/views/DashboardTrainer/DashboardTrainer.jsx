@@ -35,7 +35,6 @@ const DashboardTrainer = (props) => {
         console.log(user.email);
         setUserSession(true);
         console.log(trainer);
-        if (trainer && trainer.status !== "Active" && (trainer.focusTr===null || trainer.focusTr === "" || !trainer.focusTr)) navigate('/checkoutTrainer')
       } else {
         setUserSession(false);
 
@@ -58,6 +57,7 @@ const DashboardTrainer = (props) => {
     <>
       {userSession ? (
         <div className="bg-trainer-board">
+          {trainer && trainer.status !== "Active" &&  (trainer.focusTr===null || trainer.focusTr === "" || !trainer.focusTr) && navigate('/checkoutTrainer')}
            {trainer && trainer.status === "Suspended" && <SuspendedAccount message={"Tu cuenta fue suspendida, por favor contacta con soporte: soporte@fitrevolution.com"} />}
           {trainer && trainer.status === "Confirmed" && <SuspendedAccount message={"Tu cuenta se encuentra en estado de revision, tu numero de seguimiento es: #2001539. Atte: solicitudesa@fitrevolution.com"} />}
           {trainer && trainer.status === "Active" && <><DashBar handleMenu={handleMenu} />
