@@ -60,8 +60,9 @@ const FormSesion = (props) => {
                 verificationEmailAccount(allTrainers, "Deportistas", user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/clients`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0] })
-                await dispatch(userPerfil(userEmail))
-                usuario.forename && Swal.fire(`Bienvenido ${usuario.forename} a FitRevolution`)
+                dispatch(userPerfil(userEmail))
+                //usuario.forename && Swal.fire(`Bienvenido ${usuario.forename} a FitRevolution`)
+                Swal.fire(`Bienvenido a FitRevolution!! `)
                 navigate('/homeusuario')
             }
             if (typeSession === "Entrenadores") {
@@ -69,8 +70,9 @@ const FormSesion = (props) => {
                 verificationEmailAccount(allDeportistas, "Entrenadores", user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/trainers`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0], puntuaciones: [] })
-                await dispatch(trainerPerfil(userEmail))
-                trainer.forename && Swal.fire(`Bienvenido ${trainer.forename} a FitRevolution`)
+                dispatch(trainerPerfil(userEmail))
+                //trainer.forename && Swal.fire(`Bienvenido ${trainer.forename} a FitRevolution`)
+                Swal.fire(`Bienvenido a FitRevolution!! `)
                 navigate('/dashboardtr')
             }
         } catch (error) {
@@ -79,15 +81,15 @@ const FormSesion = (props) => {
 
             if (error.code && error.code === "auth/account-exists-with-different-credential") Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo", '', 'error')
             if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Deportistas") {
-                await dispatch(userPerfil(userEmail))
-                usuario.forename && Swal.fire(`Bienvenido nuevamente ${usuario.forename} `)
-                //Swal.fire(`Bienvenido nuevamente!! `)
+                dispatch(userPerfil(userEmail))
+                //usuario.forename && Swal.fire(`Bienvenido nuevamente ${usuario.forename} `)
+                Swal.fire(`Bienvenido nuevamente!! `)
                 navigate('/homeusuario')
             }
             else if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Entrenadores") {
-                await dispatch(trainerPerfil(userEmail))
-                trainer.forename && Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
-                //Swal.fire(`Bienvenido nuevamente!! `)
+                dispatch(trainerPerfil(userEmail))
+                //trainer.forename && Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
+                Swal.fire(`Bienvenido nuevamente!! `)
                 navigate('/dashboardtr')
             }
             else if (error) Swal.fire(error.message, '', 'error')
@@ -107,8 +109,9 @@ const FormSesion = (props) => {
                 console.log(user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/clients`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0] })
-                await dispatch(userPerfil(userEmail))
-                usuario.forename && Swal.fire(`Bienvenido ${usuario.forename} a FitRevolution `, '', 'success')
+                dispatch(userPerfil(userEmail))
+                //usuario.forename && Swal.fire(`Bienvenido ${usuario.forename} a FitRevolution `, '', 'success')
+                Swal.fire(`Bienvenido a FitRevolution!! `)
                 navigate('/homeusuario')
             }
             if (typeSession === "Entrenadores") {
@@ -116,8 +119,9 @@ const FormSesion = (props) => {
                 verificationEmailAccount(allDeportistas, "Entrenadores", user)
                 //----------------------------------------------------------
                 await axios.post(`${URLSERVER}/fitevolution/trainers`, { email: user.email, surname: user.displayName.split(" ")[1], forename: user.displayName.split(" ")[0], puntuaciones: [] })
-                await dispatch(trainerPerfil(userEmail))
-                trainer.forename && Swal.fire(`Bienvenido ${trainer.forename} a FitRevolution`, "", 'success')
+                dispatch(trainerPerfil(userEmail))
+                //trainer.forename && Swal.fire(`Bienvenido ${trainer.forename} a FitRevolution`, "", 'success')
+                Swal.fire(`Bienvenido a FitRevolution!! `)
                 navigate('/dashboardtr')
             }
         } catch (error) {
@@ -126,15 +130,15 @@ const FormSesion = (props) => {
 
             if (error.code && error.code === "auth/account-exists-with-different-credential") Swal.fire("el email ya existe, prueba iniciar sesion con otro metodo", '', 'error')
             if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Deportistas") {
-                await dispatch(userPerfil(userEmail))
-                usuario.forename && Swal.fire(`Bienvenido nuevamente ${usuario.forename} `)
-                //Swal.fire(`Bienvenido nuevamente!! `)
+                dispatch(userPerfil(userEmail))
+                //usuario.forename && Swal.fire(`Bienvenido nuevamente ${usuario.forename} `)
+                Swal.fire(`Bienvenido nuevamente!! `)
                 navigate('/homeusuario')
             }
             else if (error.response && error.response.data.error === "El usuario ya esta registrado" && typeSession === "Entrenadores") {
-               await dispatch(trainerPerfil(userEmail))
-               trainer.forename && Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
-               // Swal.fire(`Bienvenido nuevamente!! `)
+               dispatch(trainerPerfil(userEmail))
+               //trainer.forename && Swal.fire(`Bienvenido nuevamente ${trainer.forename} `)
+               Swal.fire(`Bienvenido nuevamente!! `)
                 navigate('/dashboardtr')
                 
             }
