@@ -9,8 +9,8 @@ const SessionAdmin= () => {
   const navigate = useNavigate()
 
   const Loguin = (username, password)=>{
-    if(username=== "Admin@admin.com" && password=== "postal")
-    alert("login correcto")
+    if(username=== "AdminTr" && password=== "postal")
+    Swal.fire("login correcto")
 else alert("login incorrecto")
   };
   const handleLogin = (event) => {

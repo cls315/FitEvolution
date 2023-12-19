@@ -11,6 +11,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { URLSERVER } from "../../../configURL"
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const stripePromise = loadStripe(
   "pk_test_51OJh59EozKFdzJuVuFTShVCNgGjmaTewLi1dPffJwyt5UkYcxkHsuwZEyIGDLf5nMBzotOwCtymyc2AISKTcHCL3004qhvdKiA"
@@ -23,11 +24,14 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+ 
   const user = useSelector((state)=> state.usuario)
   const idState = useSelector((state)=> state.idsTrainers)
   const email = user.email
   const stripe = useStripe();
   const elements = useElements();
+
+
 
   const idTrainer = idState.filter(Boolean).filter((valor, índice, self) => self.indexOf(valor) === índice);
   console.log("ID STATE -------->",idState);
@@ -48,8 +52,8 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
         console.log(paymentMethod)
         const { id } = paymentMethod;
         
-        const { data } = await axios.post(
-          `${URLSERVER}/fitevolution/api/checkout`,
+        const { data } = await axios.post(`
+          ${URLSERVER}/fitevolution/api/checkout`,
           {
             id,
 
@@ -62,18 +66,21 @@ const CheckoutForm = ({ total, setShow, setVerPagos, vaciarCarrito, setLoading})
           }
         );
         setLoading(false)  //detiene la carga del gif
-        alert(data.message)
-        setShow(false)
-        setVerPagos(false)
-        vaciarCarrito()
-        elements.getElement(CardElement).clear();
-        dispatch(userPerfil(email))
-        navigate("/detailusuario")
+        Swal.fire(data.message, "", "success").then((result) => {
+          console.log(result); // Agrega esto para ver la estructura de result en la consola
+        
+          setShow(false);
+          vaciarCarrito();
+          setVerPagos(false);
+          elements.getElement(CardElement).clear();
+          dispatch(userPerfil(email));
+          navigate("/detailusuario");
+        });
       }
       
     }catch (error) {
       setLoading(false)  //detiene la carga del gif
-      alert(error)
+      Swal.fire(error.message,"","error")
       console.log(error);
     }
   };
@@ -105,5 +112,5 @@ function Pagos(props) {
     </Elements>
   </>);
 }
-
+  
 export default Pagos;

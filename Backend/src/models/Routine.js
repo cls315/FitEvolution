@@ -31,22 +31,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING, // Puedes ajustar el tipo de datos según sea necesario
       allowNull: true, // O false, dependiendo de si el enfoque debe ser obligatorio o no
     },
-    // image: {
-    //   type: DataTypes.TEXT,
-    //   allowNull: true,
-    //   validate: {
-    //     isUrl: {
-    //       msg: "La URL de la imagen no es válida.",
-    //     },
-    //   },
-    // },
+    
     image: {
       type: DataTypes.TEXT,
       allowNull: true,
       validate: {
         isBlobUrl(value) {
-          // Validar que la URL sea un Blob URL
-          if (!value.startsWith('blob:')) {
+          // Verificar si el valor es nulo antes de intentar la validación
+          if (value && !value.startsWith('blob:')) {
             throw new Error('La URL de la imagen debe ser un Blob URL.');
           }
         },

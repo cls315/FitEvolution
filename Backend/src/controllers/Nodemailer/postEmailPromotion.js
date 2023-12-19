@@ -2,13 +2,12 @@
 const {emailPromotion} = require("../../../configNodemailer/emailPromotion")
 const getEmailPromotion= require("../../controllers/Nodemailer/getEmailPromotion")
 
-const postEmailPromotion= async( req, res)=>{
+const postEmailPromotion= async(emailsFilter,imgLink,message)=>{
  try {
 
-    const emails= await getEmailPromotion();
-
-    for(const {email, forename,surname}of emails){
-        await emailPromotion(email,forename,surname);
+    for(const {email, forename,surname,}of emailsFilter){
+      
+        await emailPromotion(email,forename,surname,imgLink,message);
     }
 
 

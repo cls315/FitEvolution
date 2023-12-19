@@ -8,8 +8,9 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Grids from '@mui/material/Grid';
-// import Men
-// import Swal from 'sweetalert2';
+import MensajesMasivosAdm from '../../components/mensajesMasivosAdm/mensajesMasivosAdm'
+import Swal from 'sweetalert2';
+import logout from '../../utils/logout'
 import {
   flexRender,
   getCoreRowModel,
@@ -45,8 +46,9 @@ const Admin = () => {
   const [data, setData] = useState({});
   const [selectedRow, setSelectedRow] = useState(null);
 
-  const backButton = () => {
-    navigate('/dashboardtr')
+  const backButton = async() => {
+    await logout()
+    navigate('/')
   }
   const [refresh, setRefresh] = useState(0)
 
@@ -141,34 +143,34 @@ const Admin = () => {
       accessorKey: "banned",
       footer: "banned",
       cell: (info) =>
-      info.row.original.role==='Usuario'?
-        info.row.original.banned === "off" ? <Button style={{ color: "red" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"on"}>desbanear</Button> :
-          <Button style={{ color: "green" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"off"}>banear</Button>
-      :
-      <Grids item xs={12} sm={6}>
-      <FormControl variant="standard" fullWidth>
-        <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
-          onChange={(e) => {
-            e.preventDefault()
-            const usr=info.row.original
-            const stat=e.target.value
-            usr.status=stat
-            setData(usr)
-            setRefresh(refresh + 1)
-          }}
-          label="Enfoque"
-          name="focusTr"
-          defaultValue={info.row.original.status || ''}
-          //defaultValue={'Confirmed'} // Set defaultValue based on accessorKey
-        >
-          <MenuItem value={"Active"}>Activo</MenuItem>
-          <MenuItem value={"Suspended"}>Suspendido</MenuItem>
-          <MenuItem value={"Confirmed"}>A confirmar</MenuItem>
-        </Select>
-      </FormControl>
-    </Grids>
+        info.row.original.role === 'Usuario' ?
+          info.row.original.banned === "off" ? <Button style={{ color: "red" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"on"}>desbanear</Button> :
+            <Button style={{ color: "green" }} onClick={(e) => handleBaner(e, info.row.original.id)} value={"off"}>banear</Button>
+          :
+          <Grids item xs={12} sm={6}>
+            <FormControl variant="standard" fullWidth>
+              <Select
+                labelId="demo-simple-select-standard-label"
+                id="demo-simple-select-standard"
+                onChange={(e) => {
+                  e.preventDefault()
+                  const usr = info.row.original
+                  const stat = e.target.value
+                  usr.status = stat
+                  setData(usr)
+                  setRefresh(refresh + 1)
+                }}
+                label="Enfoque"
+                name="focusTr"
+                defaultValue={info.row.original.status || ''}
+              //defaultValue={'Confirmed'} // Set defaultValue based on accessorKey
+              >
+                <MenuItem value={"Active"}>Activo</MenuItem>
+                <MenuItem value={"Suspended"}>Suspendido</MenuItem>
+                <MenuItem value={"Confirmed"}>A confirmar</MenuItem>
+              </Select>
+            </FormControl>
+          </Grids>
     },
   ];
   const [sorting, setSorting] = useState([]);
@@ -204,10 +206,14 @@ const Admin = () => {
 
           <div style={{ display: 'flex', alignItems: 'center', marginRight: 'auto' }}>
             <Grid container spacing={2} justifyContent="center">
-            <Grid item>
-                <Button variant="contained" color="primary" onClick={ejectButton}>
-                  Enviar mensajes
+              <Grid item>
+                <Button variant="contained" color="primary" onClick={() => { setRefresh(refresh + 1) }}>
+                  Actualizar listado
                 </Button>
+              </Grid>
+              <Grid item>
+                <MensajesMasivosAdm />
+
               </Grid>
               <Grid item>
                 <Button variant="contained" color="primary" onClick={ejectButton}>
@@ -255,6 +261,32 @@ const Admin = () => {
         <div className=" input-group flex-nowrap my-2">
 
         </div>
+        <FormControl sx={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
+          <Button
+            className="btn btn-success btn-sm"
+            onClick={() => table.setPageIndex(0)}
+          >
+            Inicio
+          </Button>
+          <Button
+            className="btn btn-success btn-sm"
+            onClick={() => table.previousPage()}
+          >
+            {`<`}
+          </Button>
+          <Button
+            className="btn btn-success btn-sm"
+            onClick={() => table.nextPage()}
+          >
+            {`>`}
+          </Button>
+          <Button
+            className="btn btn-success btn-sm"
+            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+          >
+            Fin
+          </Button>
+        </FormControl>
         <TableContainer component={Paper}>
 
           <Table className="table table-info">
@@ -295,32 +327,32 @@ const Admin = () => {
 
           </Table>
         </TableContainer>
-        <div className="d-flex justify-content-between">
+        <FormControl sx={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
           <Button
             className="btn btn-success btn-sm"
             onClick={() => table.setPageIndex(0)}
           >
-            Primer página
+            Inicio
           </Button>
           <Button
             className="btn btn-success btn-sm"
             onClick={() => table.previousPage()}
           >
-            Página anterior
+            {`<`}
           </Button>
           <Button
             className="btn btn-success btn-sm"
             onClick={() => table.nextPage()}
           >
-            Página siguiente
+            {`>`}
           </Button>
           <Button
             className="btn btn-success btn-sm"
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
           >
-            Última página
+            Fin
           </Button>
-        </div>
+        </FormControl>
       </div>
 
     </div>

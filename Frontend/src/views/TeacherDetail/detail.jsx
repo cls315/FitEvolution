@@ -3,12 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import StarRating from "../../components/starRating/starRating";
 import LoadingComponent from "../../components/loading/loading.component"
+import sinimagen from "../../images/sinimagen.png"
+import Swal from "sweetalert2";
 
 import {agregarCarrito, getRoutines, saveIdTrainer} from "../../components/redux/actions/actions"
 
 import Navdetail from "./navdetail";
 
 import styles from "./detail.module.css"
+import { Button } from "@mui/material";
 
 const Detail = ()=>{
 
@@ -23,14 +26,31 @@ const Detail = ()=>{
 
     const allTrainers = useSelector((state) => state.allTrainers)
     const allroutines = useSelector((state)=> state.routines)
+    const cart = useSelector((state)=> state.carrito)
+    const status = useSelector((state)=>state.userStatus)
+    if(status !== "invitado"){
+        const user = useSelector((state)=> state.usuario)
+    }
 
     const trainer = allTrainers.find((teacher) => teacher.id == id)
     const routines = allroutines.filter((routine) => routine.trainerId == id)
+    let packComprado = null
 
-
-    const sumPack = (option)=>{
-        dispatch(agregarCarrito(option));
-        dispatch(saveIdTrainer(id));
+    const sumPack = (routine, id) => {
+        if (cart) {
+            const packenCarrito = cart.some((item) => item == routine);
+            if(status !== "invitado"){
+             packComprado = user.myTrainers?.some((trainer) => trainer == id);
+            }
+    
+            if (!packenCarrito && !packComprado) {
+                dispatch(agregarCarrito(routine));
+                Swal.fire("Rutina agregada correctamente al carrito","","info")
+                dispatch(saveIdTrainer(id));
+            } else {
+                Swal.fire("Ya agregaste este pack en el carrito o contrataste anteriormente al mismo entrenador","","error");
+            }
+        }
     }
 
     let [page, setPage] = useState(1);
@@ -45,7 +65,7 @@ const Detail = ()=>{
 
     return(
         <div>
-            {loading && <LoadingComponent/>}     {/*CARGA DE GIF PARA CUANDO SE ENVIA EL PAGO DEL CARRITO*/}
+            {/* {loading && <LoadingComponent/>}     {/CARGA DE GIF PARA CUANDO SE ENVIA EL PAGO DEL CARRITO/} */}
             <Navdetail setLoading={setLoading}/>
             {!trainer ? (
                 <div>
@@ -62,7 +82,7 @@ const Detail = ()=>{
                     <h2>Enfoque: {trainer.focusTr}</h2>
                     <h2>Descripcion: {trainer.description}</h2>
                 </div>
-                <button className={styles.btn} onClick={()=>{sumPage()}}>Selecciona tu plan</button>
+                <Button variant="contained" onClick={()=>{sumPage()}}>Selecciona tu plan</Button>
             </div>
             ) : page == 2 ? (
             <div className={styles.info}>
@@ -74,7 +94,7 @@ const Detail = ()=>{
                         <h4>{routine.enfoque}</h4>
                         <h4>Rutina de adaptacion para principiante y rutina adaptada al cliente</h4>
                         <h5>Duracion: {routine.totalDuration} dias</h5>
-                        <button className={styles.packbtn} onClick={()=>{sumPack(routine)}}>Sumar al carrito</button>
+                        <button className={styles.packbtn} onClick={()=>{sumPack(routine, id)}}>Sumar al carrito</button>
                 </div>
                 ))
                 : (<div className={styles.pack1}>
@@ -82,11 +102,11 @@ const Detail = ()=>{
                 </div>)
                 }
                 </div>
-                <button className={styles.btn} onClick={()=>{restPage()}}>Volver a detalles</button>
+                <Button variant="contained" onClick={()=>{restPage()}}>Volver a detalles</Button>
             </div>
             ) : (<div></div>)}
             <div className={styles.perfil}>
-                <img src={trainer.image} className={styles.img}/>
+                <img src={trainer.image ? trainer.image : sinimagen} className={styles.img}/>
                 <StarRating rating={trainer.score} className={styles.stars}/>
             </div>
         </div>

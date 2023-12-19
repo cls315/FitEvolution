@@ -54,12 +54,12 @@ console.log(admin)
     return (
         <div className={style.dashBar}>
             <div class={style.dropdown}>
-                <Button  className={style.buttonPerfil}>CH&#9660;</Button>
+                <Button variant="contained" color="primary" className={style.buttonPerfil}>ch</Button>
                 <List class={style.dropdowncontent}>
                     <ListItem><a href="#">Mi cuenta</a></ListItem>
-                    {admin && <ListItem><Button onClick={userAdmin}>Admin</Button></ListItem>}
+                    {admin && <ListItem><Button variant="contained" color="warning" onClick={userAdmin}>Admin</Button></ListItem>}
                     <ListItem><a href="#">Ajustes</a></ListItem>
-                    <ListItem><Button onClick={exitSession} className={style.exitDashTRainer}>Salir</Button></ListItem>
+                    <ListItem><Button variant="contained" color="error" onClick={exitSession} className={style.exitDashTRainer}>Salir</Button></ListItem>
                 </List>
             </div>
             <img name='search' onClick={(e)=>handleMenu(e)} className={style.iconsDashbar} src={iconsearch} alt='icon'></img>

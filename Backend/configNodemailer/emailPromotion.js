@@ -11,29 +11,26 @@ const transporter = nodemailer.createTransport({
     },
   });
 
-  async function emailPromotion(email, forename, surname) {
+  async function emailPromotion(email,forename,surname,imgLink,message) {
     try {
-      const imagePath = 'C:\\Users\\Carlos\\OneDrive\\Escritorio\\FitEvolution\\Backend\\configNodemailer\\imagesPromo\\imagenPromo.png';
+      const imagePath = imgLink;
 
       await transporter.sendMail({
         from: "fitevolution77@gmail.com",
         to: `${email}`,
         subject: "¡Nueva promocion en FitEvolution !",
-        html:`
-         <div>
+        html:
 
+        `<div>
         <h2>Hola ${forename} ${surname}</h2>
         <p>¡Gracias por ser parte de nuestra comunidad en FitEvolution!</p>
-        <p>¡No queremos que te pierdas nuestra última promoción exclusiva!</p>
-        <a href="[Aqui iria un enlace del supuesto descuento]">
-        <img src="cid:imagen_promocion" alt="Promoción" />
-        <p>¡Esperamos que disfrutes de esta oferta especial!</p>
+        <p>¡Tenemos un mensaje para ti!</p>
+        <p>${message}</p>
         <p>Atentamente, El Equipo de FitEvolution</p>
         </a>
-
-
         </div>
-        `,
+        `
+        ,
         attachments:[
           {
             filename:'imagenPromo.png',
