@@ -4,6 +4,9 @@ import {URLSERVER} from "../../../configURL"
 //import axios from "axios";
 import style from "./FormRoutine.module.css";
 import { Link } from "react-router-dom";
+import { Grid,FormControl, InputLabel,Select, MenuItem, Button } from "@mui/material";
+import { border } from "@mui/system";
+import DeleteIcon from '@mui/icons-material/Delete'
 
 const FormRoutines = () => {
 
@@ -146,62 +149,74 @@ const FormRoutines = () => {
   }, [formReset]);
 
   return (
-    <div className={style.formContainer}>
-      <form onSubmit={handleSubmit}>
-        <div className={style.clientes}>
-          <label>Seleccionar cliente:</label>
-          <select
+    <div className={style.Form}>
+    <h1>Crear Rutinas</h1>
+    <Grid sx={{backgroundColor: 'rgba(255, 255, 255, 0.5)', borderRadius:15, border:2, marginTop:3,marginLeft:20,marginRight:20}}>
+
+      <FormControl onSubmit={handleSubmit} sx={{ m: 6, minWidth: 80 }}>
+       
+        
+        <InputLabel id="Cliente">Seleccionar Cliente</InputLabel>
+          <Select
             onChange={(event) => setSelectedClient(event.target.value)}
             value={selectedClient}
-          >
-            <option value="" disabled>
+            labelId="Cliente"
+            label="Seleccionar Cliente"
+            >
+            <MenuItem value="" disabled>
               Selecciona un cliente
-            </option>
+            </MenuItem>
             { clientList && clientList.map((cliente) => (
-              <option key={cliente.id} value={cliente.id}>
+              <MenuItem key={cliente.id} value={cliente.id}>
                 {cliente.forename} {cliente.surname}
-              </option>
+              </MenuItem>
             ))}
-          </select>
-        </div>
+          </Select>
+        
+        
+         
 
-        <div className={style.formGroup}>
-          <label>Seleccionar enfoque:</label>
-          <select
+      <FormControl sx={{ m:6, minWidth: 80 }}>
+
+          <InputLabel id="enfoque">Seleccionar enfoque:</InputLabel>
+          <Select
             onChange={(event) => setSelectedEnfoque(event.target.value)}
             value={selectedEnfoque}
-          >
-            <option value="" disabled>
+            labelId="enfoque"
+            label="Seleccionar enfoque"
+            >
+            <MenuItem value="" disabled>
               Selecciona un enfoque
-            </option>
-            <option value="Entrenamiento deportivo">
+            </MenuItem>
+            <MenuItem value="Entrenamiento deportivo">
               Entrenamiento deportivo
-            </option>
-            <option value="Entrenamiento funcional">
+            </MenuItem>
+            <MenuItem value="Entrenamiento funcional">
               Entrenamiento funcional
-            </option>
-            <option value="Entrenamiento cardiovascular">
+            </MenuItem>
+            <MenuItem value="Entrenamiento cardiovascular">
               Entrenamiento cardiovascular
-            </option>
-            <option value="Entrenamiento de fuerza">
+            </MenuItem>
+            <MenuItem value="Entrenamiento de fuerza">
               Entrenamiento de fuerza
-            </option>
-          </select>
-        </div>
-
-        <div>
-          <label>Seleccionar ejercicios:</label>
-          <select onChange={handleSelectChange} value={""}>
-            <option value="" disabled>
+            </MenuItem>
+          </Select>
+      
+            </FormControl>
+        
+        <FormControl>
+          <InputLabel id="ejercicios">Seleccionar ejercicios:</InputLabel>
+          <Select onChange={handleSelectChange} value={""} labelId="ejercicios" label="Seleccionar ejercicios">
+            <MenuItem value="" disabled>
               Selecciona un ejercicio
-            </option>
+            </MenuItem>
             {exercises.map((exercise) => (
-              <option key={exercise.id} value={exercise.id}>
+              <MenuItem key={exercise.id} value={exercise.id}>
                 {exercise.name}
-              </option>
+              </MenuItem>
             ))}
-          </select>
-        </div>
+          </Select>
+        </FormControl>
 
         <div>
           <p>Ejercicios seleccionados:</p>
@@ -209,19 +224,19 @@ const FormRoutines = () => {
             {selectedExercises.map((exerciseId) => {
               const selectedExercise = exercises.find(
                 (exercise) => exercise.id === exerciseId
-              );
-
-              console.log("Ejercicio seleccionado:", selectedExercise);
-
-              return (
+                );
+                
+                console.log("Ejercicio seleccionado:", selectedExercise);
+                
+                return (
                 <li key={exerciseId}>
                   {selectedExercise?.name}
-                  <button
-                    type="button"
+                  <Button variante="outlined" startIcon={<DeleteIcon/>}
+                    
                     onClick={() => handleRemoveExercise(exerciseId)}
-                  >
+                    >
                     Eliminar
-                  </button>
+                  </Button>
                 </li>
               );
             })}
@@ -239,7 +254,7 @@ const FormRoutines = () => {
                 src={selectedImage}
                 alt="Selected"
                 style={{ maxWidth: "200px" }}
-              />
+                />
             </div>
           )}
         </div>
@@ -248,14 +263,15 @@ const FormRoutines = () => {
           <p>Duración total de los ejercicios: {totalDuration} minutos</p>
         </div>
 
-        <button type="submit">Crear Rutina</button>
-      </form>
+        <Button variant="contained" disableElevation type="submit">Crear Rutina</Button>
+      </FormControl>
       <div className={style.goBack}>
         <Link to="/dashboardtr">
           <span className={style.backArrow}>{"<"}</span> Atrás
         </Link>
       </div>
-    </div>
+    </Grid>
+  </div>
   );
 };
 

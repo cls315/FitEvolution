@@ -1,3 +1,12 @@
+.Form{
+  
+  background-image: url("../../images/fondoLanding.png");
+  color:#fff
+}
+
+
+
+
 .formContainer {
     max-width: 400px;
     margin: 0 auto;
