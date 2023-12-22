@@ -48,13 +48,15 @@ const FormSesion = (props) => {
         axios(`${URLSERVER}/fitevolution/clients`).then(({ data }) => {
             dispatch(getDeportistas(data));
         });
-    }, [usuario,trainer,dispatch,userEmail]);
+    }, [usuario,trainer,dispatch]);
 
     const call_login_google = async (e) => {
         e.preventDefault();
+        let userEmail=""   //se dio valor a la variable por referencia, en el try se asigna un nuevo valor pero como la variable no existe en ese scope se busca en el scope anterior y asi. Cuando se encuentra la variable se actualizar y se puede usar en el bloque catch
         try {
             const user = await callLoginGoogle();
-            setUserEmail(userEmail)
+             userEmail=user.email
+            console.log(user.email)
             if (typeSession === "Deportistas") {
                 //primero buscamos si el email existe en nuestra base de datos 
                 verificationEmailAccount(allTrainers, "Deportistas", user)
@@ -103,10 +105,11 @@ const FormSesion = (props) => {
 
     const call_login_facebook = async (e) => {
         e.preventDefault();
+        let userEmail=""
         try {
             const user = await callLoginFacebook();
-            setUserEmail(userEmail)
-            console.log(user)
+            userEmail=user.email
+            console.log(user.email)
             if (typeSession === "Deportistas") {
                 //primero buscamos si el email existe en nustra base de datos 
                 verificationEmailAccount(allTrainers, "Deportistas", user)
